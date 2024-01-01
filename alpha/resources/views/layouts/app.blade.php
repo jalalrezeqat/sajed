@@ -46,7 +46,7 @@
                     @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a  class=" nav-link active"  aria-current="page" href="{{ route('register') }} ">تسجيل</a>
+                            <a  class=" nav-link active reg"  aria-current="page" href="{{ route('register') }} ">تسجيل</a>
     
                             <a   class="nav-link active" aria-current="page" href="{{ route('login') }}" >تسجيل الدخول </a>
                         </li>
