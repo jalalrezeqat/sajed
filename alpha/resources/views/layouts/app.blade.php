@@ -28,7 +28,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active reg" aria-current="page" href="{{ url('/') }}">الرئيسية</a>
+                    <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success reg">الرئيسية</button></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">الدورات</a>
@@ -42,7 +42,7 @@
                   @guest
                   @if (Route::has('login'))
                       <li class="nav-item">
-                          <a  class=" nav-link active reg"  aria-current="page" href="{{ route('register') }} ">تسجيل</a>
+                          <a  class=" nav-link active "  aria-current="page" href="{{ route('register') }} "><button class="btn btn-success reg">تسجيل</button></a>
       
                           <a   class="nav-link active" aria-current="page" href="{{ route('login') }}" >تسجيل الدخول </a>
                       </li>

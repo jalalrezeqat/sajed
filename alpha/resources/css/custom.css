@@ -38,12 +38,13 @@
     padding: 10px;
     float: right; */
     
+    
   }
 
   .nav-item  {
-    padding-left: 90px;
-    margin-left: 70px;
-
+   
+    margin-left:60px;
+    margin-right:60px;
     
   }
 
@@ -110,11 +111,6 @@
     border-radius: 20px;
     text-align: center;
  }
-.reg a:link
-{
-   color: red;
-}
-
 
 
 .slider
@@ -125,10 +121,10 @@
 
 .card
 {
-    margin-bottom: 0%;
+    margin-bottom: 10%;
     border-radius: 5%;
     background-color: #F8F8F8;
-    margin-top: 0%;
+    margin-top: 10%;
 
 }
 .card-w
@@ -157,8 +153,6 @@
 .ovarflow{
     overflow-y:scroll;
 }
-
-.ovarflow-c
-{
-
-}
+ .collapse{
+    margin: 3%;
+ }
