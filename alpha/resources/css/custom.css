@@ -1,4 +1,7 @@
-
+.dir
+{
+    direction: rtl;
+}
 .login {
     width: 90%;
     height: 20%;
@@ -50,7 +53,6 @@
 
 .mt{
     margin-top: 5% !important;
-    margin-bottom: 15% !important;
 
 }
 .mt-1{
@@ -121,28 +123,33 @@
 
 .card
 {
-    margin-bottom: 10%;
+    margin-bottom: 30%;
     border-radius: 5%;
     background-color: #F8F8F8;
-    margin-top: 10%;
+    margin-top: -20%;
 
 }
 .card-w
 {
-    
     width: 92%;
     margin: auto;
 }
 .contener 
 {
 }
-.card button {
-
-    background-color: #27AC1F;
+.card-button {
+    background-color:#F8F8F8 ;
     float: right;
     border: none;
-    color: white;
-    border-radius: 20px;
+    color: #27AC1F;
+}
+
+.but-card
+{
+    background-color:#F8F8F8 ;
+    float: left;
+    border: none;
+    color: #27AC1F;
 }
 
 .footer {
@@ -151,7 +158,9 @@
     
 }
 .ovarflow{
-    overflow-y:scroll;
+    overflow-y:visible;
+    margin-top: 25%;
+    
 }
  .collapse{
     margin: 3%;

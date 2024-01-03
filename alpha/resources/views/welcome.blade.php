@@ -18,16 +18,38 @@
       </div>
     </div>
     {{-- end slider home --}}
-    {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
-<div class="contener ">
     <div class="mt">
       <h3 class="text-center ">الدورات الاكثر طلبا </h3>
       <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     </div>
-    {{-- card course --}}
-    <div class=" card-box ovarflow card-w  slider">
+    {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
+
+<div class="contener ">
     
-      <div class="row row-cols-1 card-w    row-cols-md-3 ">
+    {{-- card course --}}
+    <div class=" card-box  card-w  slider">
+    
+      <div class="row row-cols-1 card-w dir ovarflow  row-cols-md-3 ">
+        <div class="col">
+          <div class="card">
+            <img src="img/img_avatar.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title ">دورة رياضيات</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <button class="card-button">< قراءة المزيد </button>
+              <button class="but-card">250   </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="img/img_avatar.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
         <div class="col">
           <div class="card">
             <img src="img/img_avatar.png" class="card-img-top" alt="...">
@@ -105,7 +127,7 @@
     {{-- end slide tetcher --}}
     {{-- qustion  --}}
 
-    <div class="mt-3  card-text">
+    <div class=" mt-3 card-text">
      <h2 class="card-text">الاسئلة الشائعة</h2>
 
       <p>
@@ -115,7 +137,7 @@
         </button>
       </p>
       <div class="collapse" id="collapseExample">
-        <div class="card  card-body">
+        <div class="  card-body">
           من خلال النقر على زر “اطلب بطاقتك” المتوفّر في كافة الصفحات الخاصّة بالدورات وتعبئة المعلومات المطلوبة أو من خلال
           التواصل مع فريق المبيعات عبر الواتس آب.
         </div>
@@ -128,7 +150,7 @@
         </button>
       </p>
       <div class="collapse" id="collapseExample1">
-        <div class="card card-body">
+        <div class=" card-body">
           من خلال النقر على زر “اطلب بطاقتك” المتوفّر في كافة الصفحات الخاصّة بالدورات وتعبئة المعلومات المطلوبة أو من خلال
           التواصل مع فريق المبيعات عبر الواتس آب.
         </div>
