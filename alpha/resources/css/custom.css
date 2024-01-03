@@ -1,6 +1,6 @@
 
 .login {
-    width: 80%;
+    width: 90%;
     height: 20%;
     margin: center;
 }
@@ -18,7 +18,7 @@
 {
     float: right;
     width: 60%;
-    background-color: green;
+    background-color: #27AC1F;
     
 }
 
@@ -27,7 +27,7 @@
     float: right;
 }
 .box {
-    width: 80%;
+    width: 90%;
     background-color:aquamarine;
 }
 
@@ -49,18 +49,30 @@
 
 .mt{
     margin-top: 5% !important;
+    margin-bottom: 15% !important;
 
 }
- .card-bord
+.mt-1{
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    
+}
+ /* .card-bord
  {
-    border-radius:30%;
-    background-color:azure;
- }
+    /* border-radius:1%;
+    background-color:#E4E4E4;
+    overflow:auto;
+    margin: auto;
+    height: 40%;
+    width: 90%; */
+
+
+  
  .card-bord-button
 
  {
     margin: auto;
-    background-color: green;
+    background-color: #27AC1F;
  }
  .card-img-top
  {
@@ -68,18 +80,25 @@
     border-radius: 50%;
     margin: auto;
     width: 30%;
+    margin-top: -10%;
  }
  .card-title
  {
-    color: green;
+    color: #27AC1F;
     text-align: center;
  }
  .card-text
 {
     direction: rtl;
 }
+.card-box
+{
+    background: #dbdce0;
+  
+
+}
  .reg{
-    background-color: green;
+    background-color: #27AC1F;
     border-radius: 20px;
     text-align: center;
  }
@@ -92,20 +111,47 @@
 
 .slider
 {
-    width: 75%;
+    width: 90%;
     height: 50%;
     margin: auto;
 }
+
 .card
 {
-    width: 25%;
-    margin: 5%;
+    margin-bottom: 0%;
+    border-radius: 5%;
+    background-color: #F8F8F8;
+    margin-top: 0%;
+
+}
+.card-w
+{
+    
+    width: 92%;
+    margin: auto;
+}
+.contener 
+{
 }
 .card button {
 
-    background-color: green;
+    background-color: #27AC1F;
     float: right;
     border: none;
     color: white;
     border-radius: 20px;
+}
+
+.footer {
+    background-color: #12181E;
+    direction: rtl;
+    
+}
+.ovarflow{
+    overflow-y:scroll;
+}
+
+.ovarflow-c
+{
+
 }
