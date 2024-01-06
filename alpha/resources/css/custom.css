@@ -118,7 +118,10 @@
     width: 90%;
     margin: auto;
 }
+.col{
+    margin-bottom: 6%;
 
+}
 .card
 {
     margin-bottom: 30%;

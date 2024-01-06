@@ -42,17 +42,7 @@
           </div>
         </div>
         @endforeach
-        <div class="col">
-          <div class="card shadow-lg  mb-5  rounded ">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title "></h5>
-              <p class="card-text"></p>
-              <button class="card-button"> قراءة المزيد ></button>
-              <button class="but-card">₪   </button>
-            </div>
-          </div>
-        </div>
+       
     </div>
   </div>
 </div>
@@ -96,16 +86,17 @@
 
     <div class=" mt-3  card-text">
      <h2 class="card-text">الاسئلة الشائعة</h2>
-
+      @foreach ($question as $question)
+          
+      @endforeach
       <p>
 
         <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button>
-        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn "> كيف يُمكنني الإلتحاق بالدورات على منصّة ألفا؟ </button>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn ">{{$question->question}} </button>
       </p>
       <div class="collapse" id="collapseExample">
         <div class=" qustion-box card-body">
-          من خلال النقر على زر “اطلب بطاقتك” المتوفّر في كافة الصفحات الخاصّة بالدورات وتعبئة المعلومات المطلوبة أو من خلال
-          التواصل مع فريق المبيعات عبر الواتس آب.
+          {{$question->question_text}}
         </div>
       </div>
 
