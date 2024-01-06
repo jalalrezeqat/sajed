@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Controllers\CoursesController\courses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\courses as ModelsCourses;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view('welcome');   
+
     }
+ 
+
+  
 }

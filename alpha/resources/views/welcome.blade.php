@@ -7,7 +7,7 @@
     <div id="carouselExampleSlidesOnly" class="carousel slider  slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="img/slide1.png" alt="First slide">
+          <img class="d-block  w-100" src="img/slide1.png" alt="First slide">
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
@@ -19,70 +19,37 @@
     </div>
     {{-- end slider home --}}
     <div class="mt">
-      <h3 class="text-center ">الدورات الاكثر طلبا </h3>
-      <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
+     
     </div>
     {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
 
 <div class="contener ">
-    
+      <h3 class="text-center ">الدورات الاكثر طلبا </h3>
+      <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     {{-- card course --}}
-    <div class=" card-box  card-w  slider">
-    
+    <div class=" card-box  card-w   slider">
       <div class="row row-cols-1 card-w dir ovarflow  row-cols-md-3 ">
+        @foreach($courses as $courses)
         <div class="col">
-          <div class="card">
+          <div class="card shadow-lg  mb-5  rounded ">
             <img src="img/img_avatar.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title ">دورة رياضيات</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <button class="card-button">< قراءة المزيد </button>
-              <button class="but-card">250   </button>
+              <h5 class="card-title ">{{$courses->name}}</h5>
+              <p class="card-text">{{$courses->summary}}</p>
+              <button class="card-button"> قراءة المزيد ></button>
+              <button class="but-card">{{$courses->price}}₪   </button>
             </div>
           </div>
         </div>
+        @endforeach
         <div class="col">
-          <div class="card">
+          <div class="card shadow-lg  mb-5  rounded ">
             <img src="img/img_avatar.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <h5 class="card-title "></h5>
+              <p class="card-text"></p>
+              <button class="card-button"> قراءة المزيد ></button>
+              <button class="but-card">₪   </button>
             </div>
           </div>
         </div>
@@ -127,34 +94,22 @@
     {{-- end slide tetcher --}}
     {{-- qustion  --}}
 
-    <div class=" mt-3 card-text">
+    <div class=" mt-3  card-text">
      <h2 class="card-text">الاسئلة الشائعة</h2>
 
       <p>
 
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          كيف يُمكنني الإلتحاق بالدورات على منصّة ألفا؟ 
-        </button>
+        <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn "> كيف يُمكنني الإلتحاق بالدورات على منصّة ألفا؟ </button>
       </p>
       <div class="collapse" id="collapseExample">
-        <div class="  card-body">
+        <div class=" qustion-box card-body">
           من خلال النقر على زر “اطلب بطاقتك” المتوفّر في كافة الصفحات الخاصّة بالدورات وتعبئة المعلومات المطلوبة أو من خلال
           التواصل مع فريق المبيعات عبر الواتس آب.
         </div>
       </div>
 
-      <p>
-       
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-          كيف يُمكنني الإلتحاق بالدورات على منصّة ألفا؟ 
-        </button>
-      </p>
-      <div class="collapse" id="collapseExample1">
-        <div class=" card-body">
-          من خلال النقر على زر “اطلب بطاقتك” المتوفّر في كافة الصفحات الخاصّة بالدورات وتعبئة المعلومات المطلوبة أو من خلال
-          التواصل مع فريق المبيعات عبر الواتس آب.
-        </div>
-      </div>
+
     </div>
     {{-- end qustion --}}
 
