@@ -14,8 +14,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        
-        return view('courses',compact('courses'));
+        $branch = DB::table('branches')->get();
+        return view('courses',compact('branch'));
 
     }
 
@@ -40,17 +40,10 @@ class CoursesController extends Controller
      */
     public function show(courses $courses)
     { 
-        return view('welcome',compact('courses'));
 
     }
 
-    public function card(courses $courses)
-    { 
-
-        $courses=courses::all();
-        return view('welcome',compact('courses'));
-
-    }
+   
 
     /**
      * Show the form for editing the specified resource.

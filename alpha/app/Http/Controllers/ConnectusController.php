@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\question;
+use App\Models\Connectus;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class ConnectusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $question = question::all();
-        return ($question);
-    }
-    public function card1()
-    {
-          $question = question::all();
-    
-        return view('welcome', compact('question'));
+        return view('Connectus');
+
     }
 
     /**
@@ -41,16 +35,15 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(question $question)
+    public function show(Connectus $connectus)
     {
-        $question = question::all();
-        return view('welcome', compact('question'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(question $question)
+    public function edit(Connectus $connectus)
     {
         //
     }
@@ -58,7 +51,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, question $question)
+    public function update(Request $request, Connectus $connectus)
     {
         //
     }
@@ -66,7 +59,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(question $question)
+    public function destroy(Connectus $connectus)
     {
         //
     }

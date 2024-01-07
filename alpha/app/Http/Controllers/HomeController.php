@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Controllers\CoursesController\courses;
+use App\Http\Controllers\CoursesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\courses as ModelsCourses;
@@ -13,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -25,8 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('welcome');   
+       
+        $courses = DB::table('courses')->get();
+        $questions =  DB::table('questions')->get();
+        return view('welcome' ,compact('courses','questions'));   
 
     }
  

@@ -34,10 +34,10 @@
                     <a class="nav-link" href="{{ url('/courses') }}">الدورات</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">حول الفا</a>
+                    <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">اتصل بنا</a>
+                    <a class="nav-link" href="{{ url('/Connectus') }}">اتصل بنا</a>
                   </li>
                   @guest
                   @if (Route::has('login'))
@@ -83,6 +83,97 @@
             @yield('content')
         </main>
     </div>
+
+
+    {{-- foter --}}
+   <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="footer carousel slide ">
+
+  <footer class=" text-center container  text-white">
+    <!-- Grid container -->
+    <div class=" p-4">
+      <!--Grid row-->
+      <div class="row ">
+        <!--Grid column-->
+        <div class="col-lg-3 ">
+
+          <div class="rounded-circle  d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
+            <img src="img/logofooter.jpeg" height="70" alt=""
+                 loading="lazy" />
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 ">
+
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>منصّة ألفا - alpha.ps</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i> alpha.ps</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>منصّة ألفا - alpha.ps</a>
+            </li>
+        
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 ">
+
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="{{ url('/') }}" class="text-white"><i class="fas fa-paw pe-3"></i>الرئيسيّة</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>الدورات</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>حول ألفا</a>
+            </li>
+            <li class="mb-2">
+              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>اتصل بنا</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 ">
+
+          <ul class="list-unstyled">
+            <li>
+              <p><i class="fas fa-map-marker-alt pe-2"></i>تواصل معنا وابدأ رحلتـك</p>
+              <p><i class="fas fa-map-marker-alt pe-2"></i>للحصول على مُعدّل 99.7</p>
+            </li>
+            <li>
+              <p><i class="fas fa-phone pe-2"></i>info@alpha.ps</p>
+            </li>
+            <li>
+              <p><i class="fas fa-envelope pe-2 mb-0"></i>(+970) 597-618-504</p>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center " >
+      Copyright © 2024 alpha All Rights Reserved. 
+       </div>
+    <!-- Copyright -->
+  </footer>
+
+</div>
+<!-- End of .container -->
+    <!-- Footer -->
 
 
     {{-- login --}}

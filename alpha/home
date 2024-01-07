@@ -296,3 +296,18 @@
     </div>
   </nav>
    <!--  -->
+
+
+   @foreach ($question as $question)
+          
+   @endforeach
+   <p>
+
+     <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button>
+     <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn ">{{$question->question}} </button>
+   </p>
+   <div class="collapse" id="collapseExample">
+     <div class=" qustion-box card-body">
+       {{$question->question_text}}
+     </div>
+   </div>
