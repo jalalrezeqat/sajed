@@ -27,10 +27,10 @@
       <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     {{-- card course --}}
     <div class=" card-box  card-w   slider">
-      <div class="row row-cols-1 card-w dir ovarflow  row-cols-md-3 ">
+      <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
         @foreach($courses as $courses)
-        <div class="col">
-          <div class="card shadow-lg  mb-5  rounded ">
+        <div class="col  ">
+          <div class="card  ">
             <img src="img/img_avatar.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title ">{{$courses->name}}</h5>

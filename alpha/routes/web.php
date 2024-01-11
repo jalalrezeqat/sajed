@@ -25,6 +25,27 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->na
 Route::get('/Connectus', [App\Http\Controllers\ConnectusController::class, 'index'])->name('Connectus');
 
 
+// Admin Rout
+
+
+// End Admin Rout
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::namespace('Auth')->group(function(){
+        //Login Route
+        Route::get('/login', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
+        Route::post('/login', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'store'])->name('adminlogin');
+
+    });
+
+});
+
+//contectus rout
+
+Route::post('/Connectus/add', [App\Http\Controllers\ConnectusController::class, 'store'])->name('Connectus');
+
+
+
 
 
 

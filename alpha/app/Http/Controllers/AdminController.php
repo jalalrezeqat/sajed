@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Connectus;
-use App\Http\Requests\ContectusFromRequest;
-
+use App\Models\admin;
 use Illuminate\Http\Request;
 
-class ConnectusController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Connectus');
-
+        //
     }
 
     /**
@@ -31,20 +28,13 @@ class ConnectusController extends Controller
      */
     public function store(Request $request)
     {
-         
-
-            $data = new Connectus();
-            $input = $request->all();
-            $data->fill($input)->save();
-          
-            return  redirect('Connectus');
-
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Connectus $connectus)
+    public function show(admin $admin)
     {
         //
     }
@@ -52,7 +42,7 @@ class ConnectusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Connectus $connectus)
+    public function edit(admin $admin)
     {
         //
     }
@@ -60,7 +50,7 @@ class ConnectusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Connectus $connectus)
+    public function update(Request $request, admin $admin)
     {
         //
     }
@@ -68,7 +58,7 @@ class ConnectusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Connectus $connectus)
+    public function destroy(admin $admin)
     {
         //
     }

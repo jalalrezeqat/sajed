@@ -132,12 +132,13 @@ margin: auto;
 .card
 {
     margin-bottom: 30%;
-    border-radius: 10.64px;
+    border-radius: 27.6px;
     background-color: #F8F8F8;
     margin-top: -20%;
     
 
 }
+
 .card-w
 {
     width: 80%;
@@ -191,8 +192,26 @@ margin: auto;
  {
     text-decoration: none;
  }
+ /* courses */
 
+ .card-button-courses
+ {
+    text-align: center;
+ }
+ .card-button-courses button
+ {
+    background-color: #27AC1F;
+    color: white;
+    border-radius: 10px;
+    border: 0;
+ }
+
+ /* end courses */
  /* contectus */
+.contectus-form
+{
+    border-radius: 12.34px;
+}
 .contectus-form input{
     border-radius: 12.34px;
     background-color:#E4E4E4 ;
@@ -204,8 +223,38 @@ margin: auto;
 }
 .contectus-form-but 
 {
+    width: 108.98px;
     color: white;
     background-color: #27AC1F;
     float: left;
+    border-radius: 12.34px;
 }
+
+.ff
+{
+}
+
+.contact-info
+
+{
+    float: right;
+}
+
+
  /*contectus  */
+.parent
+{
+    width: 80%;
+}
+
+.contectus-form
+{
+    float: right;
+    width: 100%;
+}
+ /* about */
+.text-bold
+{
+    font-weight: bold;
+}
+ /* end about */
