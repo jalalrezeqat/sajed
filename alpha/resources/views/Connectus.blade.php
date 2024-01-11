@@ -54,7 +54,7 @@
       <div class="col-12 col-lg-5 ">
         <div class="bg-white border rounded shadow-sm overflow-hidden">
 
-          <form class="contectus-form dir" action="{{url('Connectus/add')}}" method="POST" >
+          <form class="contectus-form dir" action="{{url('Connectus')}}" method="POST" >
             @csrf
             <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
               <div class="col-12 col-md-6">
