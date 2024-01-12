@@ -37,8 +37,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         
     });
     
+        Route::middleware('admin')->group(function(){
+            Route::get('/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
 
-        Route::get('/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
+        });
+        Route::post('/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
 
 });
 

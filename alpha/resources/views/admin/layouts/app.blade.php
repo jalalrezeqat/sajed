@@ -15,6 +15,8 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css','resources/css/login.css'])
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

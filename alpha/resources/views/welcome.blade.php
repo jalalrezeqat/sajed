@@ -17,7 +17,7 @@
       </div>
     </div>
     {{-- end slider home --}}
-    <div class="mt">
+    <div class="m">
      
     </div>
     {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
@@ -48,7 +48,7 @@
 </div>
     
     {{-- end card course --}}
-    <div class="mt-1">
+    <div class="m-1">
       <h3 class="text-center ">معلمي منصة الفا </h3>
       <h5 class="text-center ">نفتخر في ألفا بتواجد  أفضل المُدرسين على مستوى الوطن!</h5>
     </div>
@@ -83,7 +83,7 @@
     {{-- end slide tetcher --}}
     {{-- qustion  --}}
 
-    <div class=" mt-3  card-text">
+    <div class=" m-3  card-text">
      <h2 class="card-text">الاسئلة الشائعة</h2>
      @foreach ($questions as $question)
           
