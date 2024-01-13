@@ -1,3 +1,5 @@
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -16,7 +18,12 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css','resources/css/login.css'])
-
+        @vite(['resources/admin/assets/vendors/mdi/css/materialdesignicons.min.css', 
+        'resources/admin/assets/vendors/css/vendor.bundle.base.css',
+        'resources/admin/assets/css/style.css',
+        'resources/admin/assets/images/favicon.ico',
+        'resources/css/custom.css'
+        ])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -25,7 +32,7 @@
             <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                    {{-- {{ $header }} --}}
                 </div>
             </header>
 
@@ -35,5 +42,19 @@
             </main>
             
         </div>
+
+        @vite(['resources/admin/assets/vendors/js/vendor.bundle.base.js',
+        'resources/admin/assets/vendors/chart.js/Chart.min.js',
+        'resources/admin/assets/js/jquery.cookie.js',
+        'resources/admin/assets/js/off-canvas.js',
+        'resources/admin/assets/js/hoverable-collapse.js',
+        'resources/admin/assets/js/misc.js',
+        'resources/admin/assets/js/dashboard.js',
+        'resources/admin/assets/js/todolist.js',
+    
+    
+    
+    ])
     </body>
 </html>
+</nav>

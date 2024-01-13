@@ -40,13 +40,13 @@ margin: auto;
     background-color:aquamarine;
 }
 
-.navbar {
+.navbar-home {
     direction: rtl;
    padding: 0%;
     
   }
 
-  .nav-item  {
+  .nav-item-home  {
     margin: auto;
   }
 
@@ -84,7 +84,7 @@ margin: auto;
     margin: auto;
     background-color: #27AC1F;
  }
- .card-img-top
+ .card-img-top-home
  {
     padding: 5px;
     border-radius: 50%;
@@ -92,16 +92,16 @@ margin: auto;
     width: 30%;
     margin-top: -10%;
  }
- .card-title
+ .card-title-home
  {
     color: #27AC1F;
     text-align: center;
  }
- .card-text
+ .card-text-home
 {
     direction: rtl;
 }
-.card-box
+.card-box-home
 {
     background: #E4E4E4;
     border-radius: 20px;
@@ -129,7 +129,7 @@ margin: auto;
     margin-bottom: 6%;
 
 }
-.card
+.card-home
 {
     margin-bottom: 30%;
     border-radius: 27.6px;

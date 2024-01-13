@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+        <nav class="navbar navbar-home navbar-expand-lg  navbar-light bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="{{ url('/') }}"><img src="img/logo.png" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,21 +27,21 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav justify-content-center navbar-collapse mb-2 mb-lg-0">
-                  <li class="nav-item">
+                  <li class="nav-item-home">
                     <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success reg">الرئيسية</button></a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/courses') }}">الدورات</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/Connectus') }}">اتصل بنا</a>
                   </li>
                   @guest
                   @if (Route::has('login'))
-                      <li class="nav-item">
+                      <li class="nav-item-home">
                           <a  class=" nav-link active "  aria-current="page" href="{{ route('register') }} "><button class="btn btn-success reg">تسجيل</button></a>
       
                           <a   class="nav-link active" aria-current="page" href="{{ route('login') }}" >تسجيل الدخول </a>
@@ -49,13 +49,13 @@
                   @endif
       
                   @if (Route::has('register'))
-                      <li class="nav-item">
+                      <li class="nav-item-home">
                           <li> </li>
                       </li>
                   @endif
                   </li>
               @else
-                  <li class="nav-item dropdown">
+                  <li class="nav-item-home dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }}
                       </a>

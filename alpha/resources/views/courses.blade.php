@@ -27,11 +27,11 @@
       <div class="row row-cols-1 card-w dir ovarflow slider   row-cols-md-3 ">
         @foreach($branch as $branch)
         <div class="col">
-          <div class="card  ">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
+          <div class="card-home card  ">
+            <img src="img/img_avatar.png" class="card-img-top-home" alt="...">
             <div class="card-body">
-              <h5 class="card-title ">{{$branch->name}}</h5>
-              <p class="card-text">{{$branch->summary}}</p>
+              <h5 class="card-title-home ">{{$branch->name}}</h5>
+              <p class="card-text-home">{{$branch->summary}}</p>
               <div class="card-button-courses">
                 <button class="btn btn-lg">تفقد الدورات</button>
               </div>

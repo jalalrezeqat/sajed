@@ -26,15 +26,15 @@
       <h3 class="text-center ">الدورات الاكثر طلبا </h3>
       <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     {{-- card course --}}
-    <div class=" card-box  card-w   slider">
+    <div class=" card-box-home  card-w   slider">
       <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
         @foreach($courses as $courses)
         <div class="col  ">
-          <div class="card  ">
-            <img src="img/img_avatar.png" class="card-img-top" alt="...">
+          <div class="card-home card ">
+            <img src="img/img_avatar.png" class="card-img-top-home" alt="...">
             <div class="card-body">
-              <h5 class="card-title ">{{$courses->name}}</h5>
-              <p class="card-text">{{$courses->summary}}</p>
+              <h5 class="card-title-home ">{{$courses->name}}</h5>
+              <p class="card-text-home">{{$courses->summary}}</p>
               <button class="card-button"> قراءة المزيد ></button>
               <button class="but-card">{{$courses->price}}₪   </button>
             </div>
@@ -83,8 +83,8 @@
     {{-- end slide tetcher --}}
     {{-- qustion  --}}
 
-    <div class=" m-3  card-text">
-     <h2 class="card-text">الاسئلة الشائعة</h2>
+    <div class=" m-3  card-text-home">
+     <h2 class="card-text-home">الاسئلة الشائعة</h2>
      @foreach ($questions as $question)
           
    <p>
