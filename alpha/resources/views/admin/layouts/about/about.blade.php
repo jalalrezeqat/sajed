@@ -18,7 +18,7 @@
             @foreach ($vision as $vision)
           <tr>
             <td class=""> {{$vision->our_vision}} </td>
-            <td> <a href="{{route('admin.Connectus.destroy',$vision->id)}}"  class="btn btn-success">تعديل</a>
+            <td> <a href="{{route('admin.about.editvistion',$vision->id)}}"  class="btn btn-success">تعديل</a>
             </td>
             <td> <a href="{{route('admin.about.destroy',$vision->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
             </td>

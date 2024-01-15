@@ -51,6 +51,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::post('/about/add', [App\Http\Controllers\Admin\AboutController::class, 'store']);
         Route::get('/about/{about}/edit', [App\Http\Controllers\Admin\AboutController::class, 'edit'])->name('about.edit');
         Route::put('/about/update/{id}', [App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
+        Route::get('/about/{about}/editvistion', [App\Http\Controllers\Admin\AboutController::class, 'editvistion'])->name('about.editvistion');
+        Route::put('/about/updatevistion/{id}', [App\Http\Controllers\Admin\AboutController::class, 'updatevistion'])->name('about.updatevistion');
 
 
 

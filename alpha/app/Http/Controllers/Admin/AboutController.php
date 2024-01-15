@@ -67,6 +67,25 @@ class AboutController extends Controller
           return  redirect()->route('admin.about');
    
        }
+       public function editvistion(about $about)
+       {
+          return view('admin.layouts.about.editvistion',compact('about'));
+    
+        }
+
+        public function updatevistion(Request $request, $id)
+        {
+  
+        
+           $post = about::find($id);
+           $post->our_vision =$request->input('our_vision');
+ 
+           $post->save();
+ 
+           return  redirect()->route('admin.about');
+    
+        }
+
 }
 
 
