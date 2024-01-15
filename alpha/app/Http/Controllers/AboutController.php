@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\about;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class AboutController extends Controller
 {
@@ -12,7 +14,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('about');
+        $vision =  DB::table('abouts')->where('our_vision','<>', '')->get();
+        $mission =DB::table('abouts')->where('our_mission_titel','<>', '')->get();
+        return view('about',compact('vision','mission'));
 
     }
 

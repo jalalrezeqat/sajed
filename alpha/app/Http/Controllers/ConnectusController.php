@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Connectus;
 use App\Http\Requests\ContectusFromRequest;
-
 use Illuminate\Http\Request;
 
 class ConnectusController extends Controller

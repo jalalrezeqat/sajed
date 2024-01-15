@@ -260,9 +260,62 @@ margin: auto;
  /* end about */
 
  /* dashbord admin */
+/* connectus */
+.table-admin-connectus
+{
+    width: 90%;
+    margin-top: 5%;
+}
+.thead-green-connectus
+{
+    background-color: #88AB8E;
+}
+.table-admin-connectus th
+{
+    color: #F2F1EB;
+    font-weight: bold;
 
- .card-dashbord
- {
- }
+}
+.table-admin-connectus td, th {
+    border: 3px solid #88AB8E;
+    text-align: left;
+    padding: 8px;
+    text-align:right;
+    overflow:scroll ;
+    max-width: 18%;
 
+  }
+  .tdnamecontectus{
+    font-weight: bold;
+    width: 18%;
+  }
+
+/* end connectus */
+/* about */
+
+.btnaboutadd{
+
+    margin-top: 5%;
+    font-weight: bold;
+    background-color: #88AB8E;
+}
+
+.formaddm{
+
+    margin-top: 5%;
+    width: 80%;
+}
+.formaddm input{
+    border: 3px solid #88AB8E;
+
+}
+
+.inputtitelmistion
+{
+    font-weight: bold;
+    font-size: 40px;
+}
+/* end about */
  /* end dashbord */
+
+

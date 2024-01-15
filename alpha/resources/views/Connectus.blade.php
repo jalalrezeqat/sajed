@@ -81,7 +81,7 @@
               
                 <div class="col-12">
                   <label for="message" class="form-label">الرسالة <span class="text-danger"></span></label>
-                  <textarea class="form-control" id="message" name="note" rows="3" required></textarea>
+                  <textarea maxlength="200" class="form-control" id="message" name="note" rows="3" required></textarea>
                 </div>
               </div>
               <div class="col-4">

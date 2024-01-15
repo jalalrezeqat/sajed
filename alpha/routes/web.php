@@ -39,13 +39,29 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     
         Route::middleware('admin')->group(function(){
         Route::get('/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
+        //admin connectu
         Route::get('/Connectus', [App\Http\Controllers\Admin\ConnectusController::class, 'index'])->name('Connectus');
+        Route::get('/Connectus/{Connectus_id}/delete', [App\Http\Controllers\Admin\ConnectusController::class, 'destroy'])->name('Connectus.destroy');
+        
+        //admin about
+
+        Route::get('/about', [App\Http\Controllers\Admin\AboutController::class, 'index'])->name('about');
+        Route::get('/about/{about_id}/delete', [App\Http\Controllers\Admin\AboutController::class, 'destroy'])->name('about.destroy');
+        Route::get('/about/add', [App\Http\Controllers\Admin\AboutController::class, 'addmission'])->name('about.add');
+        Route::post('/about/add', [App\Http\Controllers\Admin\AboutController::class, 'store']);
+        Route::get('/about/{about}/edit', [App\Http\Controllers\Admin\AboutController::class, 'edit'])->name('about.edit');
+        Route::put('/about/update/{id}', [App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
+
+
+
+
+
 
 
         });
         Route::post('/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-
+        
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');

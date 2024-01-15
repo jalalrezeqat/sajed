@@ -23,6 +23,19 @@
     'resources/admin/assets/images/favicon.ico',
     'resources/css/custom.css'
     ])
+      @vite(['resources/admin/assets/vendors/js/vendor.bundle.base.js',
+      'resources/admin/assets/vendors/chart.js/Chart.min.js',
+      'resources/admin/assets/js/jquery.cookie.js',
+      'resources/admin/assets/js/off-canvas.js',
+      'resources/admin/assets/js/hoverable-collapse.js',
+      'resources/admin/assets/js/misc.js',
+      'resources/admin/assets/js/dashboard.js',
+      'resources/admin/assets/js/todolist.js',
+  
+  
+  
+  ])
+
   </head>
   <body class="dir">
     <div class="container-scroller  ">
@@ -280,6 +293,18 @@
   
 
 
+  @vite(['resources/admin/assets/vendors/js/vendor.bundle.base.js',
+        'resources/admin/assets/vendors/chart.js/Chart.min.js',
+        'resources/admin/assets/js/jquery.cookie.js',
+        'resources/admin/assets/js/off-canvas.js',
+        'resources/admin/assets/js/hoverable-collapse.js',
+        'resources/admin/assets/js/misc.js',
+        'resources/admin/assets/js/dashboard.js',
+        'resources/admin/assets/js/todolist.js',
+    
+    
+    
+    ])
 
 
 
