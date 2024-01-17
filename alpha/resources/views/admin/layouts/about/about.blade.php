@@ -11,7 +11,7 @@
           <tr class="">
             <th scope="col ">رؤيتنا</th>
             <th scope="col"></th>
-            <th scope="col"></th>
+           
           </tr>
         </thead>
         <tbody>
@@ -19,9 +19,9 @@
           <tr>
             <td class=""> {{$vision->our_vision}} </td>
             <td> <a href="{{route('admin.about.editvistion',$vision->id)}}"  class="btn btn-success">تعديل</a>
+                  <a href="{{route('admin.about.destroy',$vision->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
             </td>
-            <td> <a href="{{route('admin.about.destroy',$vision->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
-            </td>
+          
           </tr>
          @endforeach
         </tbody>
@@ -33,7 +33,6 @@
             <th scope="col ">مهمتنا</th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -43,9 +42,9 @@
             <td class="">{{$mission->our_mission_text}} </td>
 
             <td> <a href="{{route('admin.about.edit',$mission->id)}}"  class="btn btn-success">تعديل</a>
+                  <a href="{{route('admin.about.destroy',$mission->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
             </td>
-            <td> <a href="{{route('admin.about.destroy',$mission->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
-            </td>
+          
           </tr>
          @endforeach
         </tbody>
