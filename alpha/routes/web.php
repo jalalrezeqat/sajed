@@ -55,6 +55,20 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::put('/about/updatevistion/{id}', [App\Http\Controllers\Admin\AboutController::class, 'updatevistion'])->name('about.updatevistion');
 
 
+        //admin branch 
+
+        Route::get('/branch', [App\Http\Controllers\Admin\BranchController::class, 'index'])->name('branch');
+        Route::get('/branch/{about_id}/delete', [App\Http\Controllers\Admin\BranchController::class, 'destroy'])->name('branch.destroy');
+        Route::get('/branch/add', [App\Http\Controllers\Admin\BranchController::class, 'addbranch'])->name('branch.add');
+        Route::post('/branch/add', [App\Http\Controllers\Admin\BranchController::class, 'store']);
+        Route::get('/branch/{branch}/edit', [App\Http\Controllers\Admin\BranchController::class, 'edit'])->name('branch.edit');
+        Route::put('/branch/update/{id}', [App\Http\Controllers\Admin\BranchController::class, 'update'])->name('branch.update');
+
+
+
+
+
+
 
 
 

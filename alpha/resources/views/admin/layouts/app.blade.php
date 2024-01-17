@@ -74,16 +74,22 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{route('admin.branch')}}">
+                <span class="menu-title font-weight-bold mb-2">الفروع</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('admin.about')}}">
+                <span class="menu-title font-weight-bold mb-2">حول المنصة</span>
+              </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.Connectus')}}">
                   <span class="menu-title font-weight-bold mb-2">اتصل  بنا</span>
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.about')}}">
-                  <span class="menu-title font-weight-bold mb-2">حول المنصة</span>
-                </a>
-              </li>
+             
           
           </ul>
         </nav>
