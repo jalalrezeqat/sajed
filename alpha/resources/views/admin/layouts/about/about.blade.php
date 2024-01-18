@@ -18,8 +18,8 @@
             @foreach ($vision as $vision)
           <tr>
             <td class=""> {{$vision->our_vision}} </td>
-            <td> <a href="{{route('admin.about.editvistion',$vision->id)}}"  class="btn btn-success">تعديل</a>
-                  <a href="{{route('admin.about.destroy',$vision->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
+            <td class="editdelete"> <a href="{{route('admin.about.editvistion',$vision->id)}}"  class="btn btn-success editdelete">تعديل</a>
+                  {{-- <a href="{{route('admin.about.destroy',$vision->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a> --}}
             </td>
           
           </tr>
@@ -41,8 +41,8 @@
             <td class="tdnamecontectus">{{$mission->our_mission_titel}} </td>
             <td class="">{{$mission->our_mission_text}} </td>
 
-            <td> <a href="{{route('admin.about.edit',$mission->id)}}"  class="btn btn-success">تعديل</a>
-                  <a href="{{route('admin.about.destroy',$mission->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
+            <td class="editdelete">  <a href="{{route('admin.about.edit',$mission->id)}}"  class="btn btn-success editdelete">تعديل</a>
+                  <a href="{{route('admin.about.destroy',$mission->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
             </td>
           
           </tr>

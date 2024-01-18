@@ -20,8 +20,8 @@
             <td class="tdnamecontectus">{{$branch->name}} </td>
             <td class="">{{$branch->summary}} </td>
 
-            <td> <a href="{{route('admin.branch.edit',$branch->id)}}"  class="btn btn-success">تعديل</a>
-                  <a href="{{route('admin.branch.destroy',$branch->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger">حذف</a>
+            <td class="">  <a href="{{route('admin.branch.edit',$branch->id)}}"  class="btn btn-success editdelete">تعديل</a>
+                  <a href="{{route('admin.branch.destroy',$branch->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
             </td>
           
           </tr>
