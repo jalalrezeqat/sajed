@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="/img/fiveicon.png">
 
     <title>{{ config('app.name', 'Admin Panel ALPHA') }}</title>
 
@@ -84,12 +85,17 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{route('admin.questions')}}">
+                <span class="menu-title font-weight-bold mb-2">الاسئلة الشائعة</span>
+              </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.Connectus')}}">
                   <span class="menu-title font-weight-bold mb-2">اتصل  بنا</span>
                 </a>
               </li>
-
-             
+              
+           
           
           </ul>
         </nav>

@@ -23,8 +23,10 @@
     {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
 
 <div class="contener ">
+  <div class="m-1">
       <h3 class="text-center ">الدورات الاكثر طلبا </h3>
-      <h5 class="text-center ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
+      <h5 class="text-center  ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
+    </div>
     {{-- card course --}}
     <div class=" card-box-home  card-w   slider">
       <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
@@ -42,6 +44,9 @@
         </div>
         @endforeach
        
+    </div>
+    <div class="card-btn-allcourse ">
+    <a  href="{{ url('/courses') }} " class="btn-lg btn-allcourse">جميع الدورات</a>
     </div>
   </div>
 </div>
@@ -89,10 +94,10 @@
           
    <p>
 
-     <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button>
-     <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn ">  {{$question->question}} </button>
+     <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
+     <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$question->question}} </button>
    </p>
-   <div class="collapse" id="collapseExample">
+   <div class="collapse" id="collapse{{$question->id}}">
      <div class=" qustion-box card-body">
        {{$question->question_text}}
      </div>
