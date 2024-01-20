@@ -1,17 +1,45 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+@section('content') 
+    <div class="user-dashbord">
+    <div class="box-dashbord" id="box-dashbord">
+
+            <div>
+                <img src="img/dashbord.png" class="img-fluid   img-dashbord" alt="">
             </div>
-        </div>
+
+            <div class=" dir">
+                <div class="user_name">
+                    <h2>مرحباً بعودتك، </h2> 
+                    <h2> {{ Auth::user()->name }}</h2>
+                </div>
+                <div class="information-dashbord dir">
+                    <p>الفرع :  {{ Auth::user()->branch }}  </p>
+                    <p>رقم الهاتف : {{ Auth::user()->phone }} </p>
+                </div>
+                
+            </div>
+            <div class=" dir">
+                <div class="edit-dahbord">
+                    <br>
+                <a href="">تعديل الملف الشّخصي</a>
+                </div>
+                <div class="information-dashbord dir">
+                <p> المحافظة :  {{ Auth::user()->Governorate }}</p>
+                <p>الايميل : {{ Auth::user()->email }}  </p>         
+            </div>
+                
+            </div>
+
+            </div>
+
+            <div class="dir">
+            <p>الدورات المُسجّل بها:  </p>
+            </div>
+
+            <div class="dir">
+            <p>علامات الإمتحانات:</p>
+            </div>
     </div>
-</x-app-layout>
+
+@endsection

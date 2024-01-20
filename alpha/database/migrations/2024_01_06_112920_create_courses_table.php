@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('summary');
             $table->string('price');   
             $table->string('img_name');  
+            $table->string('branche'); 
+            $table->string('chapter'); 
+            $table->string('teacher_name'); 
             $table->string('status');    
             $table->timestamps();
         });

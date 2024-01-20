@@ -268,7 +268,65 @@ margin: auto;
     float: right;
 }
 
+/* dashbord */
+.user-dashbord
+{
+    width: 90%;
+}
 
+ #box-dashbord {
+      
+        height: 335px;
+        border: 1px solid #c3c3c3;
+        display: flex;
+        direction: rtl;
+        justify-content: flex-start;
+        background-color: #12181E;
+        border-radius: 20px;
+        margin: auto;
+        margin-bottom: 3%;
+}
+#box-dashbord div
+{
+    margin-top: 2%;
+    margin-right: 3%;
+}
+.img-dashbord
+
+{
+    float: right;
+    margin-right: 5%;
+    margin-top: 2%;
+ 
+}
+
+.user_name
+{
+    color: #85FE78;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+
+}
+.information-dashbord
+{
+    color: white;
+    display: inline-block; 
+
+}
+.edit-dahbord
+{
+    color: #85FE78;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+.edit-dahbord a
+{
+    color: white;
+}
+
+/* end dashbord */
  /*contectus  */
 .parent
 {

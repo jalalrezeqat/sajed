@@ -10,7 +10,6 @@
 
     <title>{{ config('app.name', 'Admin Panel ALPHA') }}</title>
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/custom.css','resources/css/login.css'])
 
     @vite(['resources/admin/assets/vendors/mdi/css/materialdesignicons.min.css', 
     'resources/admin/assets/vendors/css/vendor.bundle.base.css',
@@ -78,6 +77,18 @@
               <a class="nav-link" href="{{route('admin.branch')}}">
                 <span class="menu-title font-weight-bold mb-2">الفروع</span>
               </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">الدورات</span>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="#">اضافة دورة</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">اضافة دورة</a></li>
+
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.about')}}">

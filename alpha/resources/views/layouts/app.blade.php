@@ -65,13 +65,19 @@
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
+                              {{ __('تسجيل الخروج') }}
+                          </a>
+                          <a class="dropdown-item" href="{{route('dashboard')}}">
+                            
+                              {{ __(' الملف الشخصي') }}
                           </a>
       
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                               @csrf
                           </form>
+                          
                       </div>
+                      
                   </li>
               @endguest
                  
