@@ -269,18 +269,15 @@ margin: auto;
 }
 
 /* dashbord */
-.user-dashbord
+#user-dashbord
 {
-    width: 90%;
+    margin-right: 5%;
+    margin-left: 15%;
 }
-
  #box-dashbord {
-      
-        height: 335px;
-        border: 1px solid #c3c3c3;
-        display: flex;
+        width: 90%;
+        display:inline-flex;
         direction: rtl;
-        justify-content: flex-start;
         background-color: #12181E;
         border-radius: 20px;
         margin: auto;
@@ -288,14 +285,13 @@ margin: auto;
 }
 #box-dashbord div
 {
+    margin: auto;
     margin-top: 2%;
-    margin-right: 3%;
 }
 .img-dashbord
 
 {
     float: right;
-    margin-right: 5%;
     margin-top: 2%;
  
 }
@@ -305,21 +301,30 @@ margin: auto;
     color: #85FE78;
     float: right;
     margin-top: 2%;
-    margin-right: 2%;
 
 }
-.information-dashbord
+.information-dashbord 
 {
     color: white;
     display: inline-block; 
+    margin-top: 2%;
 
+}
+.link-edit 
+{    
+    display: inline-block;
+    color: white;
+    margin-bottom: 15%;
+}
+#information-dashbord1
+{
+    margin-top: 2%;
 }
 .edit-dahbord
 {
     color: #85FE78;
     float: right;
     margin-top: 2%;
-    margin-right: 2%;
 }
 .edit-dahbord a
 {
