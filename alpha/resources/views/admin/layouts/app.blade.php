@@ -39,7 +39,7 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown nav-item nav-profile dropdown" aria-labelledby="profileDropdown">
-                    <form method="get" class="dropdown-item" action="{{ route('profile.edit') }}">
+                    <form method="get" class="dropdown-item" action="">
                         @csrf
                         <button class="dropdown-item text-primary">الملف الشخصي </button>
                     </form>
@@ -90,6 +90,19 @@
                 </ul>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#slider" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">سلايدر</span>
+              </a>
+              <div class="collapse" id="slider">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.slider')}}">سلايدر </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.slidertetcher')}}">سلايدر المعلم </a></li>
+
+                </ul>
+              </div>
+            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.about')}}">
                 <span class="menu-title font-weight-bold mb-2">حول المنصة</span>

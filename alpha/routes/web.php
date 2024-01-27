@@ -24,8 +24,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/password', [ProfileController::class, 'passwordChange'])->name('password');
+    Route::put('/password/update', [ProfileController::class, 'changePasswordSave'])->name('postChangePassword');
+    Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -64,7 +66,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('/branch/{branch}/edit', [App\Http\Controllers\Admin\BranchController::class, 'edit'])->name('branch.edit');
         Route::put('/branch/update/{id}', [App\Http\Controllers\Admin\BranchController::class, 'update'])->name('branch.update');
 
-
         //commonquestions
         Route::get('/questions', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions');
         Route::get('/questions/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
@@ -72,15 +73,19 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::post('/questions/add', [App\Http\Controllers\Admin\QuestionController::class, 'store']);
         Route::get('/questions/{question}/edit', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
         Route::put('/questions/update/{id}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
-
-
-
-
-
-
-
-
-
+        
+        //slider
+        Route::get('/slider', [App\Http\Controllers\Admin\SliderController::class, 'index'])->name('slider');
+        Route::get('/slider/{slider_id}/delete', [App\Http\Controllers\Admin\SliderController::class, 'destroy'])->name('slider.destroy');
+        Route::get('/slider/add', [App\Http\Controllers\Admin\SliderController::class, 'addslider'])->name('slider.add');
+        Route::post('/slider/add', [App\Http\Controllers\Admin\SliderController::class, 'store']);
+        Route::get('/slider/{slider}/edit', [App\Http\Controllers\Admin\SliderController::class, 'edit'])->name('slider.edit');
+        Route::put('/slider/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'update'])->name('slider.update');
+        //slider tetcher
+        Route::get('/slidertetcher/add', [App\Http\Controllers\Admin\SliderController::class, 'addslidertetcher'])->name('slidertetcher.add');
+        Route::get('/slidertetcher/{slider}/edittetcher', [App\Http\Controllers\Admin\SliderController::class, 'edittetcher'])->name('slidertetcher.edit');
+        Route::get('/slidertetcher', [App\Http\Controllers\Admin\SliderController::class, 'indextetcher'])->name('slidertetcher');
+        Route::post('/slidertetcher1/add', [App\Http\Controllers\Admin\SliderController::class, 'storetetcher']);
 
 
 

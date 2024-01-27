@@ -6,9 +6,11 @@
     {{-- slider about --}}
     <div id="carouselExampleSlidesOnly" class="carousel slider-cource  slide" data-ride="carousel">
       <div class="carousel-inner">
+        @foreach($slider as $slider)
         <div class="carousel-item active">
-          <img class="d-block   w-100" src="img/aboutslider.png" alt="First slide">
+          <img class="d-block   w-100" src="{{asset('img/slider/'.$slider->img)}}" alt="First slide">
         </div>
+        @endforeach
         <div class="carousel-item">
           <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
         </div>

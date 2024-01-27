@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Connectus;
 use App\Http\Requests\ContectusFromRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ConnectusController extends Controller
 {
@@ -13,7 +15,8 @@ class ConnectusController extends Controller
      */
     public function index()
     {
-        return view('Connectus');
+        $slider =  DB::table('sliders')->where('page','=' , 'اتصل بنا')->get();
+        return view('Connectus' ,compact('slider'));
 
     }
 

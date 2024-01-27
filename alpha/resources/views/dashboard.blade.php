@@ -7,8 +7,8 @@
             <!--Grid column-->
             <div class="col-lg-2 ">
     
-              <div class="rounded-circle  d-flex align-items-center justify-content-center mb-4 mx-auto">
-                <img src="img/dashbord.png"  alt=""
+              <div class="  d-flex align-items-center justify-content-center mb-4 mx-auto">
+                <img src="{{asset('img/user_profile/'.Auth::user()->user_img)}}" class="img-dashbord rounded-circle"  alt=""
                      loading="lazy" />
               </div>
             </div>
@@ -35,7 +35,7 @@
     
               <ul class="list-unstyled  information-dashbord">
                   <li>
-                      <a class="link-edit" href="">تعديل الملف الشّخصي</a>
+                      <a class="link-edit" href="{{route('profile.edit',Auth::user()->id)}}">تعديل الملف الشّخصي</a>
                   </li>
                 <li class="mb-2">
                   <p> <img src="img/address-dashbord.png" alt=""> المحافظة :  {{ Auth::user()->Governorate }}</p>

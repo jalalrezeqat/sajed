@@ -15,7 +15,8 @@ class CoursesController extends Controller
     public function index()
     {
         $branch = DB::table('branches')->get();
-        return view('courses',compact('branch'));
+        $slider =  DB::table('sliders')->where('page','=' , 'الدورات')->get();
+        return view('courses',compact('branch','slider'));
 
     }
 

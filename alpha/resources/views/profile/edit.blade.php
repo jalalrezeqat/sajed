@@ -1,4 +1,47 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content') 
+<div class="dir edit-user-profile">
+    <a href="{{route('dashboard')}}"><button  class="btn btn-back-user btn-lg btn-success">رجوع</button></a>
+    <a href="{{route('password')}}"><button  class="btn btn-password-update-user btn-lg btn-success">تغير كلمة المرور</button> </a>
+
+<div class="form-edit-user-profile">
+    <form action="{{url('profile/update/'.Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+
+        <div class="form-group">
+            <label for="inputtitelmistion">الاسم الاول</label>
+            <input type="text" class="form-control" value="{{Auth::user()->farestname}}" name='farestname' id="farestname" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="inputtitelmistion">الاسم الثاني</label>
+            <input type="text" class="form-control" name='lastname' value="{{Auth::user()->lastname}}" id="lastname" placeholder="">
+          </div>
+        <div class="form-group">
+          <label for="inputtitelmistion">الايميل </label>
+          <input type="text" class="form-control" name='email' value="{{Auth::user()->email}}" id="email" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="inputtitelmistion">الهاتف </label>
+            <input type="text" class="form-control" name='phone' value="{{Auth::user()->phone}}" id="phone" placeholder="">
+          </div>
+        <div class="form-group">
+          <label for="inputtitelmistion">الصورة </label>
+          <input type="file" class="form-control" name='user_img' id="user_img">
+          
+        </div>
+        
+        <button type="submit" class="btn  btn-lg btn-submit-user btn-success">حفظ</button>
+      </form>
+</div>
+
+
+</div>
+@endsection
+
+
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
@@ -27,3 +70,4 @@
         </div>
     </div>
 </x-app-layout>
+ --}}

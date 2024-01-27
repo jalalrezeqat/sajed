@@ -28,7 +28,9 @@ class HomeController extends Controller
        
         $courses = DB::table('courses')->get();
         $questions =  DB::table('questions')->get();
-        return view('welcome' ,compact('courses','questions'));   
+        $slider =  DB::table('sliders')->where('page','=' , 'الرئيسية')->get();
+        $slidertetcher =  DB::table('sliders')->where('page','=' , 'المعلم')->get();
+        return view('welcome' ,compact('courses','questions','slider','slidertetcher'));   
 
     }
  

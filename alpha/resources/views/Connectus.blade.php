@@ -16,7 +16,9 @@
                 <h1 class="mb-3 dir text-center display-3 p-3" >تواصل معنا الآن!</h1>
                 <h6 class="dir text-center h3">سنكونُ سعيدين في استقبال استفساراتكُم</h4>
                   <div class="d-flex ">
-                  <img class="img-fluid text-center p-2"  src="img/contactus.png" alt="" >
+                    @foreach($slider as $slider)
+                  <img class="img-fluid text-center p-2"  src="{{asset('img/slider/'.$slider->img)}}" alt="" >
+                  @endforeach
                   <div class="ml-auto p-2">
                     <br>
                     <br>
