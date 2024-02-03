@@ -45,7 +45,7 @@
                   @guest
                   @if (Route::has('login'))
                       <li class="nav-item-home">
-                        <label class="  btn-success regester btn-lg reg "  id="login-nav" aria-current="page" for="modal-toggle-regester">تسجيل </label>  
+                        <label class="btn-success regester btn-lg reg "  aria-current="page" for="modal-toggle-regester">تسجيل </label>  
                         <label class="nav-link active "  id="login-nav" aria-current="page" for="modal-toggle">تسجيل الدخول</label>  
 
 
@@ -253,8 +253,10 @@
               <button type="submit" class="btn-login form-control">تسجيل الدخول</button>
             </div>
            <div class="col-12">
-            <a class="reg-login " href="{{ route('register') }}">انشاء حساب</a>
-            <a class="reg-login" href="">هل نسيت كلمة المرور ؟ </a>
+            <label class="nav-link active  regester-model col-6"  id="login-nav" aria-current="page" for="modal-toggle-regester">انشاءحساب </label>  
+            <a class="reg-login  col-6" href="">هل نسيت كلمة المرور ؟ </a>
+
+
 
            </div>
           
@@ -303,16 +305,16 @@
       <h4 class="mb-3 dir text-center ">أنشئ حسابك وتابع دروسك بشكل إلكترونيّ وبجودة عالية</h4>
       <div class="tabs">
 <!--  LOG IN  -->
-  <form class="contectus-form dir" action="{{url('Connectus')}}" method="POST" >
+  <form class="contectus-form dir" method="POST" action="{{ route('register') }}" >
       @csrf
       <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
         <div class="col-3" >
           <label for="email" class="form-label">  <span class="text-danger"></span></label>
-          <input type="email" class="form-control" hidden placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+          <input type="text" class="form-control" hidden placeholder="الإسم الرباعي" id="name" name="name" value="" required>
         </div>
         <div class="col-12 col-md-6">
           <label for="email" class="form-label">  <span class="text-danger"></span></label>
-          <input type="email" class="form-control" placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+          <input type="text" class="form-control" placeholder="الإسم الرباعي" id="name" name="name" value="" required>
         </div>
         <div class="col-3" >
           <label for="email" class="form-label">  <span class="text-danger"></span></label>
@@ -321,37 +323,51 @@
         <div class="col-12 col-md-6">
             <label for="fname" class="form-label"> <span class="text-danger"></span></label>
             <div class="input-group">
-              <input type="fname" class="form-control" placeholder="المحافظة" id="firestname" name="firestname" value="" required>
+              <input type="fname" class="form-control" placeholder="المحافظة" id="Governorate" name="Governorate" value="" required>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 dir ">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group  form-control dir ">
+              <label for=""  class="form-check-label" for="inlineCheckbox1">الفرع :</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="ادبي">
+                  <label class="form-check-label" for="inlineRadio1">ادبي</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="علمي">
+                  <label class="form-check-label" for="inlineRadio1">علمي</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="صناعي">
+                  <label class="form-check-label" for="inlineRadio1">صناعي</label>
+              </div>
+             
+             
             </div>
           </div>
           <div class="col-12 col-md-6">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="lname" class="form-control" id="lname" name="lastname" value="">
+              <input type="email" class="form-control" placeholder="الايميل" id="email" name="email" value="">
             </div>
           </div>
           <div class="col-12 col-md-6">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="lname" class="form-control" placeholder="الايميل" id="lname" name="lastname" value="">
+              <input type="text" class="form-control" placeholder="رقم الهاتف" id="phone" name="phone" value="">
             </div>
           </div>
           <div class="col-12 col-md-6">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="lname" class="form-control" placeholder="رقم الهاتف" id="lname" name="lastname" value="">
+              <input type="password" class="form-control" placeholder="كلمة المرور " id="password" name="password" value="">
             </div>
           </div>
           <div class="col-12 col-md-6">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="lname" class="form-control" placeholder="كلمة المرور " id="lname" name="lastname" value="">
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <label for="lname" class="form-label"> <span class="text-danger"></label>
-            <div class="input-group">
-              <input type="lname" class="form-control" placeholder=" تاكيد كلمة المرور  " id="lname" name="lastname" value="">
+              <input type="password" class="form-control" placeholder=" تاكيد كلمة المرور  " id="password_verified_at" name="password_verified_at" value="">
             </div>
           </div>
           
@@ -365,9 +381,10 @@
           </div>
         <div class="col-4">
             <div class="">
-              <button class="btn contectus-form-but " type="submit">إنشاء الحساب</button>
             </div>
           </div>
+          <button type="submit" class="btn contectus-form-but " >إنشاء الحساب</button>
+
     </form>
 
   </div>
