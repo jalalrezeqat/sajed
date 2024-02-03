@@ -16,8 +16,8 @@
           <input type="text" class="form-control" name='url' id="url" placeholder="الرابط ">
         </div>
         <div class="form-group">
-            <label for="cars">اختار الصفحة :</label>
-            <select name="page" id="page">
+            <label  for="cars">اختار الصفحة :</label>
+            <select class="form-control" name="page" id="page">
             <option name="page" value="الرئيسية">الرئيسية</option>
             <option name="page" value="الدورات">الدورات</option>
             <option value="حول الفا">حول الفا</option>

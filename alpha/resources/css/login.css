@@ -1,291 +1,280 @@
-.conntent{
-  max-width: 100%;
-}
-
-.main-container {
+.modal-content,
+.modal-backdrop {
+  opacity: 0;
+  position: fixed;
+  padding: 15px;
+  padding-top: 50px;
+  z-index: -1;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-
-.main-container,
-.main-container * {
-  box-sizing: border-box;
-}
-
-.main-container {
-  position: relative;
-  width: 932px;
-  height: 651px;
-  margin: 0 auto;
-}
-.wrapper {
-  position: absolute;
-  width: 932px;
-  height: 651px;
+ 
+.modal-content {
   top: 0;
+  bottom: 0;
+  margin: auto;
   left: 0;
-  background: #f8f8f8;
+  right: 0;
+  height: 65%;
+  overflow: hidden;
+  max-height: 98%;
+  width: 70%;
+  max-width: 90%;
   border-radius: 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transform: translateX(125%);
 }
-.pic {
-  position: absolute;
-  width: 70.584px;
-  height: 70.584px;
-  top: 30px;
-  left: 831px;
-  background: url(./assets/images/d27ab468-6f4d-4754-bec9-afd43d7c8b84.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 18;
+ 
+.modal-backdrop {
+  left: 0;
+  top: 0;
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  width: 100vw;
+  transform: scale(0);
 }
-.pic-2 {
-  position: absolute;
-  width: 6.44%;
-  height: 5.9%;
-  top: 6.85%;
-  left: 30.79%;
-  background: url(./assets/images/2e554db5-de11-46c5-9372-ac516d31c866.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 15;
+#modal-toggle {
+  display: none;
 }
-.img {
-  position: absolute;
-  width: 527px;
-  height: 551px;
-  top: 50px;
-  left: 9px;
-  background: url(./assets/images/409ca37e-8b3c-4867-887a-5a4bf5c25260.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 1;
+
+
+@media (max-width: 600px) {
+  #modal-toggle:checked ~ .modal-backdrop {
+    opacity: 0;
+  }
+ 
+  .modal-content {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
 }
-.text {
+.reg-login
+{
+color: #27AC1F;
+padding: 10px;
+
+}
+.inpout-email
+{
+  margin-bottom: 7% !important;
+  border-radius: 12.74px;
+}
+
+.btn-login
+{
+  background-color: #27AC1F;
+  color: white;
+  border-radius: 12.74px;
+
+}
+
+#modal-toggle:checked ~ .modal-backdrop {
+  opacity: 1;
+  background-color: rgba(0, 70, 62, 0.5);
+  z-index: 998;
+  transform: scale(1);
+}
+ 
+#modal-toggle:checked ~ .modal-content {
+  opacity: 1;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: auto;
+  cursor: auto;
+  z-index: 999;
+  transform: translateX(0%);
+}
+
+.modal-close-btn {
+  margin-top: 5px;
+  display: inline-block;
+  cursor: pointer;
+ position: absolute;
+ top: 5px;
+  right: 10px;
+}
+.modal-close-btn svg {
+  transition: 0.2s;
+}
+.modal-close-btn svg line {
+  stroke-width: 5px;
+  stroke: #01b491;
+}
+.modal-close-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+.tabs {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 79px;
-  top: 116px;
-  left: 562px;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #12181e;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 78.708px;
-  text-align: left;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.tabs > .radio {
+  display: none;
+}
+.tabs > .radio:checked + .table + .tabs-content {
+  display: block;
+}
+.tabs > .table {
+  order: -1;
+  flex-basis: 50%;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  z-index: 2;
 }
-.text-2 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 34px;
-  top: 194px;
-  left: 570px;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #12181e;
-  font-size: 18px;
+.tabs .tabs-content {
+  width: 100%;
+  display: none;
+}
+.tabs > .table {
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: solid #01b491 5px;
+  color: #01b491;
+  cursor: pointer;
+}
+.tabs > .table span {
+  font-weight: 600;
+}
+.tabs > .table:hover {
+  color: #01b491;
+  background: rgba(0, 121, 107, 0.2);
+}
+.tabs > .radio:checked + .table {
+  color: #fff;
+  background: #01b491;
+  cursor: auto;
+}
+.tabs > .radio:checked + .table span {
+  display: inline-block;
   font-weight: 500;
-  line-height: 33.732px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 3;
+  transform: scale(1.2);
+  transition: 0.1s;
 }
-.group {
-  position: absolute;
-  width: 318.598px;
-  height: 44.039px;
-  top: 290px;
-  left: 547px;
-  z-index: 10;
-}
-.box {
-  position: absolute;
-  width: 318.598px;
-  height: 44.039px;
-  top: 0;
-  left: 0;
-  background: #e3e3e3;
-  z-index: 11;
-  border-radius: 12.744px;
-  direction: rtl;
-}
-.wrapper-2 {
-  position: absolute;
-  width: 105px;
-  height: 22px;
-  top: 11px;
-  left: 168px;
-  z-index: 12;
-}
-.text-3 {
+
+.tabs > .tabs-content .login_socnet {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 22px;
-  top: 0;
-  left: 0;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #12181e;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 22px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 13;
+  flex-wrap: no-wrap;
+  justify-content: space-around;
 }
-.pic-3 {
-  position: absolute;
-  width: 4.74%;
-  height: 45.04%;
-  top: 27.25%;
-  left: 89.05%;
-  background: url(./assets/images/c3bccb12-25fe-4bc2-b5bc-9e59fcaef602.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 14;
+.tabs > .tabs-content .login_socnet a {
+  margin: 20px;
+  margin-bottom: 0;
+  width: 100%;
+  font-size: 60px;
+  text-decoration: none;
+  transition: 0.2s;
 }
-.section {
-  position: absolute;
-  width: 318.598px;
-  height: 44.039px;
-  top: 363px;
-  left: 547px;
-  z-index: 5;
+.tabs > .tabs-content .login_socnet a:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.2));
 }
-.box-2 {
-  position: absolute;
-  width: 318.598px;
-  height: 44.039px;
-  top: 0;
-  left: 0;
-  background: #e3e3e3;
-  z-index: 6;
-  border-radius: 12.744px;
-  direction: rtl;
+.tabs > .tabs-content .login_socnet .fa-vk {
+  color: #7986CB;
 }
-.group-2 {
-  position: absolute;
-  width: 57px;
-  height: 22px;
-  top: 11px;
-  left: 214.294px;
-  z-index: 7;
+.tabs > .tabs-content .login_socnet .fa-google-plus {
+  color: #E57373;
 }
-.text-4 {
+.tabs > .tabs-content .login_socnet .fa-facebook {
+  color: #5C6BC0;
+}
+.tabs > .tabs-content form {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 22px;
-  top: 0;
-  left: 0;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #12181e;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 22px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 8;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
 }
-.pic-4 {
-  position: absolute;
-  width: 5.34%;
-  height: 45.04%;
-  top: 27.25%;
-  left: 88.45%;
-  background: url(./assets/images/6f9b9ada-05cc-41da-ad3b-7df4f3c575a1.png)
-    no-repeat center;
-  background-size: 100% 100%;
-  z-index: 9;
-}
-.wrapper-3 {
-  position: absolute;
-  width: 34.23%;
-  height: 5.84%;
-  top: 68.36%;
-  left: 58.69%;
-  background: #27ac1f;
-  z-index: 16;
-  border-radius: 11.372px;
+
+.tabs > .tabs-content form input {
+  padding: 10px;
+  margin: 15px 0;
   border: none;
-}
-.text-5 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 5.22%;
-  top: 68.66%;
-  left: 69.64%;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #ffffff;
+  border-bottom: solid 1px #01b491;
   font-size: 18px;
-  font-weight: 700;
-  line-height: 33.732px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 17;
+  letter-spacing: 1px;
+  transition: 0.1s;
 }
-.text-6 {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 36px;
-  top: 500px;
-  left: 655px;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #27ac1f;
-  font-size: 19.11585235595703px;
-  font-weight: 700;
-  line-height: 35.823px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-  z-index: 4;
+.tabs > .tabs-content form input:focus {
+  transform: translateX(10px);
+  outline: none;
+}
+.tabs > .tabs-content input[type="submit"] {
+  padding: 15px 0;
+  width: 100%;
+  background: #01b491;
+  color: #fff;
   border: none;
+  font-size: 18px;
+  cursor: pointer;
 }
-.text-3 input {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: absolute;
-  height: 22px;
-  top: 0;
-  left: 0;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-    "Source Han Sans CN", sans-serif;
-  color: #12181e;
+.tabs > .tabs-content input[type="submit"]:focus {
+  transform: none;
+}
+
+.tabs > .tabs-content .forgot-password label {
+  margin: 0 auto;
+  width: 50%;
+  color: #01b491;
+  text-decoration: none;
   font-size: 12px;
-  font-weight: 400;
-  line-height: 22px;
-  text-align: left;
-  white-space: nowrap;
-  z-index: 13;
+  line-height: 1.5;
+}
+.tabs > .tabs-content .forgot-password label:hover {
+  text-decoration: underline;
+}
+
+.forgot-password #forgot-password-toggle {
+  display: none;
+}
+.forgot-password .forgot-password-content {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+.forgot-password .forgot-password-content input[type="email"] {
+  width: 80%;
+  margin-right: 0px;
+  border-right: none;
+}
+.forgot-password .forgot-password-content input[type="submit"] {
+  width: 20%;
+  margin-left: 0px;
+}
+.forgot-password #forgot-password-toggle:checked ~ .forgot-password-content {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: auto;
+  cursor: auto;
+  visibility: visible;
 }

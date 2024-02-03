@@ -1,7 +1,7 @@
 
 @extends('admin.layouts.app')
 @section('content')
-<a href="{{route('admin.slider')}}"><button  class="btnaboutadd btn btn-dark">رجوع</button> </a>
+<a href="{{route('admin.slidertetcher')}}"><button  class="btnaboutadd btn btn-dark">رجوع</button> </a>
 <div class="formaddm">
     <form action="{{url('admin/slidertetcher1/add')}}" method="POST" enctype="multipart/form-data">
         @csrf

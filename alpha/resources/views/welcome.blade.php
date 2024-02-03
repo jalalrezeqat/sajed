@@ -27,7 +27,7 @@
 <div class="contener ">
   <div class="m-1">
       <h3 class="text-center ">الدورات الاكثر طلبا </h3>
-      <h5 class="text-center  ">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
+      <h5 class="text-center mt">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     </div>
     {{-- card course --}}
     <div class=" card-box-home  card-w   slider">
@@ -35,10 +35,10 @@
         @foreach($courses as $courses)
         <div class="col  ">
           <div class="card-home card ">
-            <img src="img/img_avatar.png" class="card-img-top-home" alt="...">
+            <img src="img/card-img.png" class="card-img-top-home" alt="...">
             <div class="card-body">
-              <h5 class="card-title-home ">{{$courses->name}}</h5>
-              <p class="card-text-home">{{$courses->summary}}</p>
+              <h5 class="card-title-home  ">{{$courses->name}}</h5>
+              <p id="card-text-home1 mt" class="card-text-home1 ">{{$courses->summary}}</p>
               <button class="card-button"> قراءة المزيد ></button>
               <button class="but-card">{{$courses->price}}₪   </button>
             </div>
@@ -48,7 +48,7 @@
        
     </div>
     <div class="card-btn-allcourse ">
-    <a  href="{{ url('/courses') }} " class="btn-lg btn-allcourse">جميع الدورات</a>
+    <a  href="{{ url('/courses') }} " ><button  class="btn-allcourse">جميع الدورات</button></a>
     </div>
   </div>
 </div>
@@ -61,15 +61,11 @@
     </div>
 
     {{-- slide tetcher --}}
-{{-- <div id="carouselExampleIndicators" class="carousel slider  slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel   slide" data-ride="carousel">
   <div class="carousel-inner">
-    @foreach($slidertetcher as $slidertetcher)
-        <div class="carousel-item active">
-          <img
-          class="object-cover w-full h-full"
-          src="{{asset('img/slider/'.$slidertetcher->img)}}"
-          alt="{{ $slidertetcher->img }}"
-        />
+    @foreach($slidertetcher as $key => $slidertetcher)  
+    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+      <img class="d-block h-50 img-slider-tetcher" src="{{asset('img/slider/'.$slidertetcher->img)}}" alt="{{$slidertetcher->id}}">
         </div>
     @endforeach      
       </div>
@@ -81,48 +77,26 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div> --}}
+</div>
 
 
-<h1>Carousel Slider in Laravel - ITSolutionsGuides</h1>
-  
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-  
-        @foreach($slidertetcher as $key => $slidertetcher)
-            <div class="carousel-item {{$key == 'المعلم' ? 'active' : ''}}">
-              <img src="{{ asset('img/slider/'.$slidertetcher->img) }}" class="d-block w-100" alt="{{ $slider->id }}">
-            </div>
-        @endforeach
-  
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
     {{-- end slide tetcher --}}
     {{-- qustion  --}}
 
-    <div class=" m-3  card-text-home">
+    <div class=" m-3 dir card-text-home">
      <h2 class="card-text-home">الاسئلة الشائعة</h2>
      @foreach ($questions as $question)
-          
+       <div class="qustion1">   
    <p>
-
      <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
      <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$question->question}} </button>
    </p>
-   <div class="collapse" id="collapse{{$question->id}}">
-     <div class=" qustion-box card-body">
+   <div class="collapse " id="collapse{{$question->id}}">
+     <div class="  qustion-box card-body">
        {{$question->question_text}}
      </div>
    </div>
-
+</div> 
    @endforeach
 
 

@@ -16,13 +16,14 @@
  
   {{--  --}}
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/custom.css','resources/css/login.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/button.js','resources/css/custom.css','resources/css/login.css','resources/css/regestar.css'])
 </head>
 <body>
     <div id="app">
+      
         <nav class="navbar navbar-home navbar-expand-lg  navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{{ url('/') }}"><img src="img/logo.png" alt=""></a>
+              <a class="navbar-brand" href="{{ url('/') }}"><img src="img/fiveicon.png" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -32,10 +33,11 @@
                     <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success btn-lg reg">الرئيسية</button></a>
                   </li>
                   <li class="nav-item-home">
-                    <a class="nav-link" href="{{ url('/courses') }}">الدورات</a>
+                    <a class="nav-link"  href="{{ url('/courses') }}">الدورات</a>
                   </li>
                   <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
+
                   </li>
                   <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/Connectus') }}">اتصل بنا</a>
@@ -43,9 +45,10 @@
                   @guest
                   @if (Route::has('login'))
                       <li class="nav-item-home">
-                          <a  class=" nav-link active "  aria-current="page" href="{{ route('register') }} "><button class="btn btn-success btn-lg reg">تسجيل</button></a>
-      
-                          <a   class="nav-link active" aria-current="page" href="{{ route('login') }}" >تسجيل الدخول </a>
+                        <label class="  btn-success regester btn-lg reg "  id="login-nav" aria-current="page" for="modal-toggle-regester">تسجيل </label>  
+                        <label class="nav-link active "  id="login-nav" aria-current="page" for="modal-toggle">تسجيل الدخول</label>  
+
+
                       </li>
                   @endif
       
@@ -163,6 +166,7 @@
               <p><i class="fas fa-phone pe-2"></i>info@alpha.ps</p>
             </li>
             <li>
+ 
               <p><i class="fas fa-envelope pe-2 mb-0"></i>(+970) 597-618-504</p>
             </li>
           </ul>
@@ -188,5 +192,202 @@
     {{-- login --}}
 
     {{--  --}}
+{{--  --}}
+<section>
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+            
+      <!-- Login Form Popup HTML -->
+            
+  <input id="modal-toggle" type="checkbox">
+  <label class="modal-backdrop" for="modal-toggle"></label>
+  <div class="modal-content">
+      <label class="modal-close-btn" for="modal-toggle">
+        <svg width="30" height="30">
+          <line x1="5" y1="5" x2="20" y2="20"/>
+          <line x1="20" y1="5" x2="5" y2="20"/>
+        </svg>
+      </label>
+      <div class="tabs">
+<!--  LOG IN  -->
+<div class="row gy-3 gy-md-4 gy-lg-0 align-items-md-center">
+  <div class="col-12 col-lg-6">
+    <div class="row justify-content-xl-center">
+      <div class="col-12 col-xl-10">
+        <div class="d-flex mb-5">
+          <div class="justify-content-xl-center  ">
+              <div class="d-flex ">
+                {{-- @foreach($slider as $slider) --}}
+              <img class="img-fluid  p-2" src="img/login.png"  alt="" >
+              {{-- @endforeach --}}
+              <div class="ml-auto p-2">
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="d-flex contact-info">
+        
+          <div class="dir">
+           
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-5 dir">
+      <h1 class="mb-3 dir text-center ">مرحباً بك في ألفا</h6>
+      <h6 class="dir text-center ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7</h4>
+        <form method="POST" action="{{ route('login') }}">
+          @csrf
+        <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
+            <div class="col-12 inpout-email">
+              <i class="fa fa-user icon"></i>
+              <input  type="email" class="form-control" id="email" name="email" value="" placeholder="الايميل" required >
+            </div>
+            <div class="col-12 inpout-email">
+              <input type="password" class="form-control" id="password" name="password" value="" placeholder="كلمة المرور" required>
+            </div>
+            <div class="col-12 inpout-email">
+              <button type="submit" class="btn-login form-control">تسجيل الدخول</button>
+            </div>
+           <div class="col-12">
+            <a class="reg-login " href="{{ route('register') }}">انشاء حساب</a>
+            <a class="reg-login" href="">هل نسيت كلمة المرور ؟ </a>
+
+           </div>
+          
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+  </div>
+  </div>  
+<!-- partial -->
+
+      
+         
+      
+  
+  
+
+  {{-- regester --}}
+
+
+  
+  {{--  --}}
+</section>
+
+{{--  --}}
+<section>
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+            
+      <!-- Login Form Popup HTML -->
+            
+  <input id="modal-toggle-regester" type="checkbox">
+  <label class="modal-backdrop"  for="modal-toggle-regester"></label>
+  <div class="modal-content">
+      <label class="modal-close-btn" for="modal-toggle-regester">
+        <svg width="30" height="30">
+          <line x1="5" y1="5" x2="20" y2="20"/>
+          <line x1="20" y1="5" x2="5" y2="20"/>
+        </svg>
+      </label>
+      <h1 class="mb-3 dir text-center ">مرحباً بك في ألفا</h6>
+      <h4 class="mb-3 dir text-center ">أنشئ حسابك وتابع دروسك بشكل إلكترونيّ وبجودة عالية</h4>
+      <div class="tabs">
+<!--  LOG IN  -->
+  <form class="contectus-form dir" action="{{url('Connectus')}}" method="POST" >
+      @csrf
+      <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
+        <div class="col-3" >
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+          <input type="email" class="form-control" hidden placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+          <input type="email" class="form-control" placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+        </div>
+        <div class="col-3" >
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+          <input type="email"  hidden class="form-control" placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+        </div>
+        <div class="col-12 col-md-6">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group">
+              <input type="fname" class="form-control" placeholder="المحافظة" id="firestname" name="firestname" value="" required>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="lname" class="form-control" id="lname" name="lastname" value="">
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="lname" class="form-control" placeholder="الايميل" id="lname" name="lastname" value="">
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="lname" class="form-control" placeholder="رقم الهاتف" id="lname" name="lastname" value="">
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="lname" class="form-control" placeholder="كلمة المرور " id="lname" name="lastname" value="">
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="lname" class="form-control" placeholder=" تاكيد كلمة المرور  " id="lname" name="lastname" value="">
+            </div>
+          </div>
+          
+        <div class="col-4">
+            <div class="d-grid">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="d-grid">
+            </div>
+          </div>
+        <div class="col-4">
+            <div class="">
+              <button class="btn contectus-form-but " type="submit">إنشاء الحساب</button>
+            </div>
+          </div>
+    </form>
+
+  </div>
+</div>
+  </div>  
+<!-- partial -->
+
+      
+         
+      
+  
+  
+
+  {{-- regester --}}
+
+
+  
+  {{--  --}}
+</section>
+{{--  --}}
 </body>
+
 </html>

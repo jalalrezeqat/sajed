@@ -25,12 +25,13 @@
       <div>
         <h1 class=" text-bold">  <img src="img/aboutv.png" alt="">رؤيتنا :</h1>
         @foreach ($vision as $vision)
-        <p>{{$vision->our_vision}}</p>
+        <p class="vision">{{$vision->our_vision}}</p>
         </div>
         @endforeach
-        <div>
+        <div class="" >
             <h1 class="text-bold"><img src="img/aboutm.png" alt="">مهمتنا :</h1>
-            <p>تتمحور مهامنا في منصّة ألفا حول: </p>
+            <div class="mission">
+            <p class="">تتمحور مهامنا في منصّة ألفا حول: </p>
 
             <ul>
               @foreach ($mission as $mission)
@@ -38,6 +39,7 @@
                 <li><span class="text-bold">{{$mission->our_mission_titel .' : '}}</span>{{$mission->our_mission_text}}</li>
               @endforeach
             </ul>
+        </div>
         </div>
     </div>
     @endsection

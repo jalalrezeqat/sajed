@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400&display=swap');
 body{
-    font-family: 'Cairo';font-size: 22px;
-
-margin: auto;
+    font-family: 'Cairo', sans-serif;
+    margin: auto;
 }
 
 .dir
@@ -30,7 +30,17 @@ margin: auto;
     background-color: #27AC1F;
     
 }
-
+.nav-link:active {     
+    background-color:yellow;  
+}
+#login-nav
+{
+    color: #27AC1F;
+    text-decoration: underline;
+    font-size: 14px;
+    width: 108.17px;
+    margin-right: 10%;
+}
 .login h1 h6{
     width: 60%;
     float: right;
@@ -51,7 +61,7 @@ margin: auto;
   }
 
 .mt{
-    margin-top: 5% !important;
+    margin-top: 2% !important;
 
 }
 .m-1{
@@ -63,7 +73,7 @@ margin: auto;
 {
     margin-top: 2% !important;
     margin-bottom: 4% !important;
-    width: 75%;
+    width: 85%;
     margin: auto;
 
  
@@ -78,7 +88,10 @@ margin: auto;
     width: 90%; */
 
 
-  
+  .btn-slider
+  {
+
+  }
  .card-bord-button
 
  {
@@ -101,6 +114,9 @@ margin: auto;
  .card-text-home
 {
     direction: rtl;
+    margin-top: 2% !important;
+    margin-bottom: 3% !important;
+
 }
 .card-box-home
 {
@@ -111,34 +127,88 @@ margin: auto;
 }
 .card-btn-allcourse
 {
-     text-align: center;
+    text-align: center;
     padding-bottom: 50px;
 }
 
+.img-slider-tetcher
+{
+    width: 80%;
+    margin: auto;
+    
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 50px;
+  width: 50px;
+  outline: #27AC1F;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 3px solid #27AC1F;
+  background-image: none;
+}
 
+.carousel-control-next-icon:after
+{
+  content: '→';
+  font-size: 25px;
+  color: #27AC1F;
+}
+
+.carousel-control-prev-icon:after {
+  content: '←';
+  font-size: 25px;
+  color: #27AC1F;
+}
 .btn-allcourse
 {
     background-color: #27AC1F;
-    border-radius: 20px;
-    text-align: center;
+    border-radius: 70px;
+    border: none;
     color: white;
-    text-decoration: none;
-    padding: 15px;
-
+    padding: 0px;
+    font-size: 24px;
+    text-align: center;
+    width: 180px;
+    height: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 }
+.button1
+{
+    background-color: #27AC1F;
+    border-radius: 70px;
+    border: none;
+    text-align: center;
+    color: white;
+    padding: 0px;
+    width: 140px;
+    height: 40px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
+}
+.regester
+{
+    margin-top: 40%;
+    color: white;
+}
 
  .reg{
     background-color: #27AC1F;
-    border-radius: 20px;
+    border-radius: 13.52px;
+    width: 108.17px;
     text-align: center;
+    height: 38px;
+    font-size: 18px;
+    padding: 5px;
  }
 
 
 .slider
 {
-    width: 90%;
+    width: 85%;
     margin: auto;
 }
 .slider-cource
@@ -153,17 +223,18 @@ margin: auto;
 }
 .card-home
 {
-    margin-bottom: 30%;
-    border-radius: 27.6px;
+    margin-bottom: 25%;
+    border-radius: 10.64px;
     background-color: #F8F8F8;
     margin-top: -20%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     
 
 }
 
 .card-w
 {
-    width: 80%;
+    width: 85%;
     margin: auto;
 }
 .contener 
@@ -207,6 +278,9 @@ margin: auto;
     width: 100%;
     
 }
+.special{
+    background-color: red;
+}
 .ovarflow{
     overflow-y:visible;
     margin-top: 25%;
@@ -226,13 +300,13 @@ margin: auto;
  {
     text-align: center;
  }
- .card-button-courses button
+ /* .card-button-courses button
  {
     background-color: #27AC1F;
     color: white;
     border-radius: 10px;
     border: 0;
- }
+ } */
 
  /* end courses */
  /* contectus */
@@ -376,17 +450,37 @@ margin: auto;
 {
     width: 80%;
 }
-
+.qustion1
+{
+    margin-right: 8% !important;
+}
 .contectus-form
 {
     float: right;
     width: 100%;
 }
  /* about */
+ .about-icon
+ {
+    
+ }
 .text-bold
 {
     font-weight: bold;
 }
+.vision
+{
+    margin-right: 5%;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+.mission
+{
+    margin-right: 5%;
+    margin-top: 5% !important;
+
+}
+
  /* end about */
 
  /* sliders */

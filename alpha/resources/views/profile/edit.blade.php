@@ -12,23 +12,23 @@
 
         <div class="form-group">
             <label for="inputtitelmistion">الاسم الاول</label>
-            <input type="text" class="form-control" value="{{Auth::user()->farestname}}" name='farestname' id="farestname" placeholder="">
+            <input type="text" class="form-control" required value="{{Auth::user()->farestname}}" name='farestname' id="farestname" placeholder="">
           </div>
           <div class="form-group">
             <label for="inputtitelmistion">الاسم الثاني</label>
-            <input type="text" class="form-control" name='lastname' value="{{Auth::user()->lastname}}" id="lastname" placeholder="">
+            <input type="text" class="form-control" required name='lastname' value="{{Auth::user()->lastname}}" id="lastname" placeholder="">
           </div>
         <div class="form-group">
           <label for="inputtitelmistion">الايميل </label>
-          <input type="text" class="form-control" name='email' value="{{Auth::user()->email}}" id="email" placeholder="">
+          <input type="text" class="form-control" required name='email' value="{{Auth::user()->email}}" id="email" placeholder="">
         </div>
         <div class="form-group">
             <label for="inputtitelmistion">الهاتف </label>
-            <input type="text" class="form-control" name='phone' value="{{Auth::user()->phone}}" id="phone" placeholder="">
+            <input type="text" class="form-control" required name='phone' value="{{Auth::user()->phone}}" id="phone" placeholder="">
           </div>
         <div class="form-group">
           <label for="inputtitelmistion">الصورة </label>
-          <input type="file" class="form-control" name='user_img' id="user_img">
+          <input type="file" class="form-control"  name='user_img' id="user_img">
           
         </div>
         
