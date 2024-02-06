@@ -41,7 +41,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="confirmNewPasswordInput" required class="form-label">تاكيد كلمة المرور</label>
+                <label for="confirmNewPasswordInput" class="form-label">تاكيد كلمة المرور</label>
                 <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput"
                     placeholder="تاكيد كلمة المرور">
             </div>

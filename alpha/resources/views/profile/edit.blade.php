@@ -11,13 +11,10 @@
         @method('PUT')
 
         <div class="form-group">
-            <label for="inputtitelmistion">الاسم الاول</label>
-            <input type="text" class="form-control" required value="{{Auth::user()->farestname}}" name='farestname' id="farestname" placeholder="">
+            <label for="inputtitelmistion">الاسم </label>
+            <input type="text" class="form-control" required value="{{Auth::user()->name}}" name='farestname' id="farestname" placeholder="">
           </div>
-          <div class="form-group">
-            <label for="inputtitelmistion">الاسم الثاني</label>
-            <input type="text" class="form-control" required name='lastname' value="{{Auth::user()->lastname}}" id="lastname" placeholder="">
-          </div>
+        
         <div class="form-group">
           <label for="inputtitelmistion">الايميل </label>
           <input type="text" class="form-control" required name='email' value="{{Auth::user()->email}}" id="email" placeholder="">

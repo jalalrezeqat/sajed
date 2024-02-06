@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
-            $table->string('branch')->unique();
-            $table->string('Governorate')->unique();
-            $table->string('user-img')->unique();
+            $table->string('phone');
+            $table->string('branch');
+            $table->string('Governorate');
+            $table->string('user_img');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('password_verified_at');

@@ -61,7 +61,7 @@
               @else
                   <li class="nav-item-home dropdown">
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->farestname .' '. Auth::user()->lastname}}
+                        {{ Auth::user()->name }}
                       </a>
       
                       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -303,93 +303,113 @@
       </label>
       <h1 class="mb-3 dir text-center ">مرحباً بك في ألفا</h6>
       <h4 class="mb-3 dir text-center ">أنشئ حسابك وتابع دروسك بشكل إلكترونيّ وبجودة عالية</h4>
-      <div class="tabs">
-<!--  LOG IN  -->
-  <form class="contectus-form dir" method="POST" action="{{ route('register') }}" >
-      @csrf
-      <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
-        <div class="col-3" >
-          <label for="email" class="form-label">  <span class="text-danger"></span></label>
-          <input type="text" class="form-control" hidden placeholder="الإسم الرباعي" id="name" name="name" value="" required>
+
+      <div class="row justify-content-around">
+        <div class="col-12 col-md-5">
+          @error('password_verified_at')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
-        <div class="col-12 col-md-6">
-          <label for="email" class="form-label">  <span class="text-danger"></span></label>
-          <input type="text" class="form-control" placeholder="الإسم الرباعي" id="name" name="name" value="" required>
+        <div class="col-12 col-md-5">
+          @error('email')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
-        <div class="col-3" >
+      </div>
+    
+    
+      <!--  regester  -->
+  <form class="contectus-form dir" method="POST" action="{{ route('register')}}" >
+    @csrf
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @elseif (session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+
+      <div class="row gy-4 gy-xl-2 p-4 p-xl-5 d-flex justify-content-around">
+
+      
+        <div class="col-12 col-md-8">
           <label for="email" class="form-label">  <span class="text-danger"></span></label>
-          <input type="email"  hidden class="form-control" placeholder="الإسم الرباعي" id="email" name="email" value="" required>
+          <input type="text" class="form-control " placeholder="الإسم الرباعي" id="name" name="name" value="" required>
         </div>
-        <div class="col-12 col-md-6">
+       
+       
+        <div class="col-12 col-md-5">
             <label for="fname" class="form-label"> <span class="text-danger"></span></label>
             <div class="input-group">
               <input type="fname" class="form-control" placeholder="المحافظة" id="Governorate" name="Governorate" value="" required>
             </div>
           </div>
-          <div class="col-12 col-md-6 dir ">
+          <div class="col-12 col-md-5 float-reg dir ">
             <label for="fname" class="form-label"> <span class="text-danger"></span></label>
             <div class="input-group  form-control dir ">
               <label for=""  class="form-check-label" for="inlineCheckbox1">الفرع :</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="ادبي">
+                  <input class="form-check-input" type="radio" name="branch" id="branch" value="ادبي">
                   <label class="form-check-label" for="inlineRadio1">ادبي</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="علمي">
+                  <input class="form-check-input" type="radio" name="branch" id="branch" value="علمي">
                   <label class="form-check-label" for="inlineRadio1">علمي</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="صناعي">
+                  <input class="form-check-input" type="radio" name="branch" id="branch" value="صناعي">
                   <label class="form-check-label" for="inlineRadio1">صناعي</label>
               </div>
-             
-             
             </div>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-5">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="email" class="form-control" placeholder="الايميل" id="email" name="email" value="">
+              <input type="email" class="form-control" placeholder="الايميل"  id="email" name="email" required value="">
             </div>
+          
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-5">
             <label for="lname" class="form-label"> <span class="text-danger"></label>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="رقم الهاتف" id="phone" name="phone" value="">
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <label for="lname" class="form-label"> <span class="text-danger"></label>
-            <div class="input-group">
-              <input type="password" class="form-control" placeholder="كلمة المرور " id="password" name="password" value="">
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <label for="lname" class="form-label"> <span class="text-danger"></label>
-            <div class="input-group">
-              <input type="password" class="form-control" placeholder=" تاكيد كلمة المرور  " id="password_verified_at" name="password_verified_at" value="">
+              <input type="text" class="form-control" placeholder="رقم الهاتف" id="phone" name="phone" required value="">
             </div>
           </div>
           
-        <div class="col-4">
-            <div class="d-grid">
+          <div class="col-12 col-md-5">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input name="password" type="password" required class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
+              placeholder="كلمة المرور ">
+              @error('password')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
           </div>
-          <div class="col-4">
-            <div class="d-grid">
+           <div class="col-12 col-md-5">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input name="password_verified_at" type="password" required class="form-control"  id="confirmNewPasswordInput"
+              placeholder="تاكيد كلمة المرور">
+            
             </div>
           </div>
-        <div class="col-4">
-            <div class="">
-            </div>
+          <div class="col-12 col-md-4 d-flex but-regester justify-content-center">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <button type="submit" class="btn contectus-form-but " >إنشاء الحساب</button>
           </div>
-          <button type="submit" class="btn contectus-form-but " >إنشاء الحساب</button>
-
+         
+          
+      </div> 
     </form>
 
   </div>
-</div>
-  </div>  
+  </div>
+  </div>
+  </div>
+    
 <!-- partial -->
 
       

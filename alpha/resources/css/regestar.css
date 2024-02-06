@@ -7,7 +7,7 @@
   z-index: -1;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ;
 }
  
 .modal-content {
@@ -16,7 +16,7 @@
   margin: auto;
   left: 0;
   right: 0;
-  height: 70%;
+  height: 76%;
   overflow: hidden;
   max-height: 98%;
   width: 70%;
@@ -52,6 +52,15 @@
     width: 100vw;
   }
 }
+.float-left
+{
+  float: left;
+}
+.but-regester
+{
+  margin-top: 5%;
+}
+
 .reg-login
 {
 color: #27AC1F;

@@ -20,7 +20,7 @@
               <ul class="list-unstyled user_name">
                 <li class="mb-2">
                   <h3>مرحباً بعودتك، </h2> 
-                  <h3> {{ Auth::user()->farestname .' '. Auth::user()->lastname}}</h2>
+                  <h3> {{ Auth::user()->name }}</h2>
                 </li>
                 <li class="mb-2">
                   <p>  <img src="img/branch.png" alt=""> الفرع :  {{ Auth::user()->branch }}  </p>
