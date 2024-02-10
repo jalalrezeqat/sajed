@@ -37,7 +37,7 @@
             <p id="card-text-home1 " class="card-text-home1 ">{{$branch->summary}}</p>
           </div>
           <div class="card-button-courses">
-            <a  href="{{ url('/courses') }} " ><button  class="button1 ">تفقّد الدورات</button></a>
+            <a  href="{{ route('front.FrontCourcse',$branch->id) }} " ><button  class="button1 ">تفقّد الدورات</button></a>
           </div>
         </div>
       </div>

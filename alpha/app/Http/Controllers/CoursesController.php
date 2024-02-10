@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\branch;
 use App\Models\courses;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +22,25 @@ class CoursesController extends Controller
 
     }
 
+    public function indexcourse(Request $request, $id )
+    {
+
+        $branch =branch::find($id);
+        $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
+
+        return view('front.FrontCourcse',compact('branch','coursces'));
+
+    }
+    
+    public function detalescourse(Request $request, $id )
+    {
+
+        $branch =branch::find($id);
+        $b=courses::find($id);
+        $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
+        return view('front.DitalesCourse',compact('branch','coursces','b'));
+
+    }
     /**
      * Show the form for creating a new resource.
      */

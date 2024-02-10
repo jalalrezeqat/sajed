@@ -27,10 +27,11 @@ class HomeController extends Controller
     {
        
         $courses = DB::table('courses')->get();
+        $branch = DB::table('branches')->get();
         $questions =  DB::table('questions')->get();
         $slider =  DB::table('sliders')->where('page','=' , 'الرئيسية')->get();
-        $slidertetcher =  DB::table('sliders')->where('page','=' , 'المعلم')->get();
-        return view('welcome' ,compact('courses','questions','slider','slidertetcher'));   
+        $sliderteacher =  DB::table('sliders')->where('page','=' , 'المعلم')->get();
+        return view('welcome' ,compact('courses','questions','slider','sliderteacher','branch'));   
 
     }
  

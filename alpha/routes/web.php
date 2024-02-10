@@ -81,15 +81,29 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::post('/slider/add', [App\Http\Controllers\Admin\SliderController::class, 'store']);
         Route::get('/slider/{slider}/edit', [App\Http\Controllers\Admin\SliderController::class, 'edit'])->name('slider.edit');
         Route::put('/slider/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'update'])->name('slider.update');
-        //slider tetcher
-        Route::get('/slidertetcher/add', [App\Http\Controllers\Admin\SliderController::class, 'addslidertetcher'])->name('slidertetcher.add');
-        Route::get('/slidertetcher/{slider}/edittetcher', [App\Http\Controllers\Admin\SliderController::class, 'edittetcher'])->name('slidertetcher.edit');
-        Route::get('/slidertetcher', [App\Http\Controllers\Admin\SliderController::class, 'indextetcher'])->name('slidertetcher');
-        Route::post('/slidertetcher1/add', [App\Http\Controllers\Admin\SliderController::class, 'storetetcher']);
+        //slider teacher
+        Route::get('/sliderteacher/add', [App\Http\Controllers\Admin\SliderController::class, 'addsliderteacher'])->name('sliderteacher.add');
+        Route::get('/sliderteacher/{slider}/editteacher', [App\Http\Controllers\Admin\SliderController::class, 'editteacher'])->name('sliderteacher.edit');
+        Route::get('/sliderteacher', [App\Http\Controllers\Admin\SliderController::class, 'indexteacher'])->name('sliderteacher');
+        Route::post('/sliderteacher1/add', [App\Http\Controllers\Admin\SliderController::class, 'storeteacher']);
+        Route::put('/sliderteacher/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'updateteacher'])->name('slider.update');
 
+         //teacher 
+         Route::get('/teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index'])->name('teacher');
+         Route::get('/teacher/add', [App\Http\Controllers\Admin\TeacherController::class, 'viweaddteacher'])->name('teacher.viweaddteacher');
+         Route::post('/teacher/add', [App\Http\Controllers\Admin\TeacherController::class, 'store']);
+       
+         //courses
+         Route::get('/courses', [App\Http\Controllers\Admin\CoursesController::class, 'index'])->name('courses');
+         Route::get('/courses/add', [App\Http\Controllers\Admin\CoursesController::class, 'viweaddcourses'])->name('courses.viweaddcourses');
+         Route::post('/courses/add', [App\Http\Controllers\Admin\CoursesController::class, 'store']);
 
 
         });
+
+       
+
+
         Route::post('/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
         
@@ -102,6 +116,10 @@ Route::get('/Connectus', [App\Http\Controllers\ConnectusController::class, 'inde
 Route::post('/Connectus', [App\Http\Controllers\ConnectusController::class, 'store'])->name('Connectus');
 
 
+// course
+
+Route::get('/courses/{id}', [App\Http\Controllers\coursesController::class, 'indexcourse'])->name('front.FrontCourcse');
+Route::get('/coursesditels/{id}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
 
 
 require __DIR__.'/auth.php';

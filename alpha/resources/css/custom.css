@@ -132,7 +132,7 @@ body{
     padding-bottom: 50px;
 }
 
-.img-slider-tetcher
+.img-slider-teacher
 {
     width: 80%;
     margin: auto;
@@ -565,3 +565,65 @@ body{
  /* end dashbord */
 
 
+/* front course */
+.namebranch
+{
+
+    background: rgb(39, 172, 31 ,0.3);
+    width: 223.5px;
+    height: 50.45px;
+    border-top-left-radius: 12.77px;
+    border-bottom-left-radius: 12.77px;
+    float: right;
+    
+}
+
+.namebranch-text
+{
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+}
+.namecourse
+{
+    background: rgb(39, 172, 31 ,0.3);
+    width: 471.71px;
+    height: 50.45px;
+    border-top-left-radius: 12.77px;
+    border-bottom-left-radius: 12.77px;
+    float: right;
+
+}
+/*  */
+
+/* ditaels courese */
+.box-ditalescourse
+{
+    width: 100%;
+    display:inline-flex;
+    direction: rtl;
+    background-color: #12181E;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin: auto;
+    margin-bottom: 3%;
+}
+.namecours-detales
+{
+    /* margin-right: 15%; */
+    font-size: 42px;
+}
+
+.nameteacher-detales p
+{
+    font-size: 18px;
+    color: white;
+
+}
+
+.styledetales 
+{
+    width: 80%;
+}
+
+/*  */

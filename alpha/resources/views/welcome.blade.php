@@ -35,11 +35,11 @@
         @foreach($courses as $courses)
         <div class="col  ">
           <div class="card-home card ">
-            <img src="img/card-img.png" class="card-img-top-home" alt="...">
+            <img src="{{asset('img/courses/'.$courses->img_name)}}" class="card-img-top-home" alt="...">
             <div class="card-body">
               <h5 class="card-title-home  ">{{$courses->name}}</h5>
               <p id="card-text-home1 mt" class="card-text-home1 ">{{$courses->summary}}</p>
-              <button class="card-button"> قراءة المزيد ></button>
+              <a class="card-button" href="{{ route('front.DitalesCourse',$courses->id) }}"> قراءة المزيد ></a>
               <button class="but-card">{{$courses->price}}₪   </button>
             </div>
           </div>
@@ -60,12 +60,12 @@
       <h5 class="text-center ">نفتخر في ألفا بتواجد  أفضل المُدرسين على مستوى الوطن!</h5>
     </div>
 
-    {{-- slide tetcher --}}
+    {{-- slide teacher --}}
 <div id="carouselExampleIndicators" class="carousel   slide" data-ride="carousel">
   <div class="carousel-inner">
-    @foreach($slidertetcher as $key => $slidertetcher)  
+    @foreach($sliderteacher as $key => $sliderteacher)  
     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-      <img class="d-block h-50 img-slider-tetcher" src="{{asset('img/slider/'.$slidertetcher->img)}}" alt="{{$slidertetcher->id}}">
+      <img class="d-block h-50 img-slider-teacher" src="{{asset('img/slider/'.$sliderteacher->img)}}" alt="{{$sliderteacher->id}}">
         </div>
     @endforeach      
       </div>
@@ -80,7 +80,7 @@
 </div>
 
 
-    {{-- end slide tetcher --}}
+    {{-- end slide teacher --}}
     {{-- qustion  --}}
 
     <div class=" m-3 dir card-text-home">
