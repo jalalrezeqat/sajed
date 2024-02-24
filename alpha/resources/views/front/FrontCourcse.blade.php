@@ -37,7 +37,7 @@
               <div class="card-body">
                 <h5 class="card-title-home  ">{{$coursces->name}}</h5>
                 <p id="card-text-home1 mt" class="card-text-home1 ">{{$coursces->summary}}</p>
-              <a class="card-button" href="{{ url('coursesditels/',$branch->id,'/',$coursces->id ) }}"> قراءة المزيد ></a>
+              <a class="card-button" href="{{ url('coursesditels'.'/'.$coursces->id.'/'.$branch->id ) }}"> قراءة المزيد ></a>
                 <button class="but-card">{{$coursces->price}}₪   </button>
               </div>
             </div>

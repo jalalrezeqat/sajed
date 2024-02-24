@@ -19,6 +19,7 @@ class QuestionController extends Controller
     public function index()
     {
         $question =  DB::table('questions')->get();
+        
         return view('admin.layouts.questions.questions',compact('question'));
 
     }

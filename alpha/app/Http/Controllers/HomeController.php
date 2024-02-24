@@ -27,7 +27,8 @@ class HomeController extends Controller
     {
        
         $courses = DB::table('courses')->get();
-        $branch = DB::table('branches')->get();
+        $branch = DB::table('branches')->pluck('id');
+        // $courscesdet=DB::table('courses')->where('branche','=' ,$branch )->get();
         $questions =  DB::table('questions')->get();
         $slider =  DB::table('sliders')->where('page','=' , 'الرئيسية')->get();
         $sliderteacher =  DB::table('sliders')->where('page','=' , 'المعلم')->get();

@@ -85,7 +85,7 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.courses')}}">اضافة دورة</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">اضافة دورة</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.courses.lesson.viwe1')}}">مشاهدة الدروس</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.teacher')}}">اضافة معلم</a></li>
 
                 </ul>

@@ -92,13 +92,38 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
          Route::get('/teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index'])->name('teacher');
          Route::get('/teacher/add', [App\Http\Controllers\Admin\TeacherController::class, 'viweaddteacher'])->name('teacher.viweaddteacher');
          Route::post('/teacher/add', [App\Http\Controllers\Admin\TeacherController::class, 'store']);
-       
+         Route::get('/teacher/{teacher_id}/delete', [App\Http\Controllers\Admin\TeacherController::class, 'destroy'])->name('teacher.destroy');
+         Route::get('/teacher/{teacher}/edit', [App\Http\Controllers\Admin\TeacherController::class, 'edit'])->name('teacher.edit');
+         Route::put('/teacher/update/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'update'])->name('teacher.update');
+
          //courses
          Route::get('/courses', [App\Http\Controllers\Admin\CoursesController::class, 'index'])->name('courses');
+         Route::get('/courses/{courses}/edit', [App\Http\Controllers\Admin\CoursesController::class, 'updateviwe'])->name('courses.edit');
+         Route::put('/courses/update/{id}', [App\Http\Controllers\Admin\CoursesController::class, 'update'])->name('courses.update');
          Route::get('/courses/add', [App\Http\Controllers\Admin\CoursesController::class, 'viweaddcourses'])->name('courses.viweaddcourses');
          Route::post('/courses/add', [App\Http\Controllers\Admin\CoursesController::class, 'store']);
+         Route::post('/courses/active', [App\Http\Controllers\Admin\CoursesController::class, 'active'])->name('courses.active');
+         Route::get('/courses/{courses_id}/delete', [App\Http\Controllers\Admin\CoursesController::class, 'destroy'])->name('courses.destroy');
 
+        //chabter
+         Route::get('/chabter/{chabter_id}/delete', [App\Http\Controllers\Admin\CoursesController::class, 'destroychabtar'])->name('chabter.destroy');
+         Route::get('/courseschabtar/{id?}', [App\Http\Controllers\Admin\CoursesController::class, 'courseschabtar'])->name('courses.courseschabtar');
+         Route::get('/chabter/{chabters}/edit', [App\Http\Controllers\Admin\ChabterController::class, 'updatechabterviwe'])->name('chabter.edit');
+         Route::put('/chabter/update/{id}', [App\Http\Controllers\Admin\ChabterController::class, 'update'])->name('chabter.update');
+         Route::get('/courseschabtar/{chabtar_id}/delete', [App\Http\Controllers\Admin\CoursesController::class, 'destroychabtar'])->name('chabtar.destroy');
+         Route::get('/courseschabtaradd{id}', [App\Http\Controllers\Admin\CoursesController::class, 'courseschabtaradd'])->name('courses.courseschabtaradd');
+         Route::post('/courseschabtar/add', [App\Http\Controllers\Admin\ChabterController::class, 'store'])->name('courses.courseschabtaraddstore');
 
+        //lesson
+         Route::get('/lesson/{id?}', [App\Http\Controllers\Admin\LessonController::class, 'index'])->name('courses.lesson');
+         Route::get('/lessonadd/{id?}', [App\Http\Controllers\Admin\LessonController::class, 'lessonadd'])->name('courses.lessonadd');
+         Route::get('/lesson/viwe1/{id?}', [App\Http\Controllers\Admin\LessonController::class, 'lessonviwe'])->name('courses.lesson.viwe1');
+         Route::post('/lesson/add/{id?}', [App\Http\Controllers\Admin\LessonController::class, 'store'])->name('courses.lessonadd1');
+         Route::get('/lesson/{lesson}/edit', [App\Http\Controllers\Admin\LessonController::class, 'edit'])->name('lesson.edit');
+         Route::put('/lesson/update/{id}', [App\Http\Controllers\Admin\LessonController::class, 'update'])->name('lesson.update');
+         Route::get('/lesson/{lesson_id}/delete', [App\Http\Controllers\Admin\LessonController::class, 'destroy'])->name('lesson.destroy');
+
+         
         });
 
        
@@ -119,7 +144,7 @@ Route::post('/Connectus', [App\Http\Controllers\ConnectusController::class, 'sto
 // course
 
 Route::get('/courses/{id}', [App\Http\Controllers\coursesController::class, 'indexcourse'])->name('front.FrontCourcse');
-Route::get('/coursesditels/{id}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
+Route::get('/coursesditels/{id}/{branchid?}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
 
 
 require __DIR__.'/auth.php';

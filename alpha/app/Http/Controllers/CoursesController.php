@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\branch;
 use App\Models\courses;
+use App\Models\lesson;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,13 +33,21 @@ class CoursesController extends Controller
 
     }
     
-    public function detalescourse(Request $request, $id )
+    public function detalescourse(Request $request, $id ,$branchid )
     {
-
-        $branch =branch::find($id);
+        $branch =branch::find($branchid);
         $b=courses::find($id);
+        $chbter=DB::table('chabters')->where('course','=' ,$b->name )->get();
+        // dd($chbter);
         $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
-        return view('front.DitalesCourse',compact('branch','coursces','b'));
+        $chbter1=DB::table('chabters')->where('course','=' ,$b->name )->get();
+        //  dd($chbter1[0]);
+        $lesson =  DB::table('lessons')->where('course','=',$b->name)->get();
+
+        //
+// dd($lesson);
+        // 
+        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson'));
 
     }
     /**

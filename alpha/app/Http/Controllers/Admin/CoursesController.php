@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\chabter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use App\Models\courses;
+use Illuminate\Support\Facades\File;
+
 
 class CoursesController extends Controller
 {
@@ -14,19 +16,56 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.courses.courses.courses');
+
+        $courses=DB::table('courses')->get();
+        return view('admin.layouts.courses.courses.courses',compact('courses'));
 
     }
 
-    public function viweaddcourses()
+    public function viweaddcourses(Request $request)
 
     {
+       
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
         return view('admin.layouts.courses.courses.viweaddcourses',compact('branch','teacher'));
 
     }
+    
+    public function courseschabtar(Request $request)
 
+    {
+        $chabterid=$request->id;
+        $courses =courses::find($request->id);
+        // dd($courses);
+        $chabter=DB::table('chabters')->where('course','=' ,$courses->name )->get();
+        $branch = DB::table('branches')->get();
+        $teacher = DB::table('teachers')->get();
+        return view('admin.layouts.courses.courses.courseschabtar',compact('branch','chabter','courses'));
+
+    }
+    public function courseschabtaradd(Request $request)
+
+    {
+        $chabterid=$request->id;
+        $courses = DB::table('courses')->get();
+        $teacher = DB::table('teachers')->get();
+        return view('admin.layouts.courses.courses.courseschabtaradd',compact('courses','teacher','chabterid'));
+
+    }
+    
+    public function destroychabtar(int $chabter_id)
+
+    {
+        
+        $post = chabter::find($chabter_id);
+        $chabterDb = DB::table('chabters');
+        $sliderdelete= $chabterDb->where('id',$chabter_id);
+        $sliderdelete->delete();
+
+        return  redirect()->back();    
+
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -64,6 +103,8 @@ class CoursesController extends Controller
         return  redirect()->route('admin.courses');
     }
 
+    
+    
     /**
      * Display the specified resource.
      */
@@ -83,16 +124,62 @@ class CoursesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cr $cr)
+    
+    public function updateviwe(courses $courses)
+
     {
-        //
+    //    $course=DB::table('courses')->get();
+        $branch = DB::table('branches')->get();
+        $teacher = DB::table('teachers')->get();
+        return view('admin.layouts.courses.courses.updateviwe',compact('branch','teacher','courses'));
+
+    }
+    public function update(Request $request, $id)
+    {
+        $post = courses::find($id);
+        $chabter=chabter::select('course')->where('course','=',$post->name)->update(array('course' =>$request->input('name')));
+        // $chabter->course=$request->input('name');
+// dd($chabter[]);
+    //    $chabter->append([]);
+
+        $post->name =$request->input('name');
+        $post->summary =$request->input('summary');
+        $post->price =$request->input('price');
+        $post->branche =$request->input('branche');
+        $post->teacher_name =$request->input('teacher_name');
+        // $chabterDb->course= $request->input('name');
+        if($request->hasfile('img_name'))
+        {
+         
+         $distination ='img/courses/'.$post->img_name;
+         if(File::exists($distination))
+         {
+             File::delete($distination);
+         }
+         $file=$request->file('img_name');
+         $extintion=$file->getClientOriginalExtension();
+         $file_name=time().'.'.$extintion;
+         $file->move('img/courses/', $file_name);
+         $post->img_name	 =$file_name;
+      
+        }
+                //  dd($chabter->course);
+
+         $post->save();
+ 
+        return  redirect()->route('admin.courses');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(cr $cr)
+    public function destroy(int $courses_id)
     {
-        //
+        $post = courses::find($courses_id);
+        $chabterDb = DB::table('courses');
+        $sliderdelete= $chabterDb->where('id',$courses_id);
+        $sliderdelete->delete();
+
+        return  redirect()->back();  
     }
 }
