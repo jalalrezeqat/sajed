@@ -687,4 +687,69 @@ body{
    margin-left: 90px ;
    margin-right: 80px;
 }
+
+.ditelspage
+{
+    margin: auto;
+    width: 70%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+
+.ditelspageinsaid
+{
+    margin: auto;
+    width: 80%;
+    margin-top: 2%;
+    /* margin-right: 3%; */
+}
+.boxditales
+{
+    margin: auto;
+    width: 105%;
+    border-radius: 12.18px;
+    border: 0.61px solid #000;
+}
+.boxcolabss
+{
+    /* border-radius: 12.18px; */
+    padding: 2%;
+    margin-right: 0%;
+    /* border-top:  0.61px solid #000; */
+    border-bottom:  0.61px solid #000;
+
+}
+.collabs-box
+{
+    margin-right: 3%;
+}
+#collabs-box-inside
+{
+    margin-left:10%;
+    width: 100%;
+    /* border-bottom:  0.61px solid #000;  */
+}
+.card-body
+{
+    border-radius: 0%;
+    margin: 0%;
+    
+}
+.card
+{
+    border-radius: 0%;
+}
+.collapse
+{
+    margin: 0%;
+}
+.ditelsco
+{
+    margin-right: 15%;
+}
+.chabternamecollabs
+{
+    margin-right: 5%;
+}
+
 /*  */

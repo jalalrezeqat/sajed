@@ -38,16 +38,15 @@ class CoursesController extends Controller
         $branch =branch::find($branchid);
         $b=courses::find($id);
         $chbter=DB::table('chabters')->where('course','=' ,$b->name )->get();
-        // dd($chbter);
         $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
-        $chbter1=DB::table('chabters')->where('course','=' ,$b->name )->get();
-        //  dd($chbter1[0]);
-        $lesson =  DB::table('lessons')->where('course','=',$b->name)->get();
+        $chbter1=DB::table('lessons')->where('course','=' ,$b->name )->get();
+        $lesson =  DB::table('lessons')->select('id','name','chabters')->where('course','=',$b->name)->get();
+        $teatcher =DB::table('teachers')->where('name','=',$b->teacher_name)->get();
+        $chabtercount=$chbter->count();
+        $lessoncount=$lesson->count();
 
-        //
-// dd($lesson);
-        // 
-        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson'));
+      
+        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson','chbter1','chabtercount','lessoncount','teatcher'));
 
     }
     /**

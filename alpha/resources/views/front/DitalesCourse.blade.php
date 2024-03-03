@@ -12,12 +12,12 @@
   <div class="column1">
     <div class="row coursename mt-5">
 
-      <p class="user_name h1 "> {{$b->name}}</p>
-      <p class="user_name h1">{{$branch->name}} - الفصل الاول </p>
+      <p class="user_name h3 "> {{$b->name}}</p>
+      <p class="user_name h3">{{$branch->name}} - الفصل الاول </p>
     </div>
     <div class="row coursedetales mt-5">
       <p class="mt-3  col-lg-4" style="color: blanchedalmond"> مدرس الدورة : {{$b->teacher_name}} </p> 
-      <p class="mt-3  col-lg-4" style="color: blanchedalmond"> عدد دروس الدورة  : 21 درساً مسجلاً</p> 
+      <p class="mt-3  col-lg-4" style="color: blanchedalmond"> عدد دروس الدورة  : {{$lessoncount}} درساً مسجلاً</p> 
     </div>
     <div class="row coursedetales mt-5">
       <button class=" btncouresdetales  col-lg-6">اطلب بطاقتك</button>
@@ -63,35 +63,81 @@
   </div>
 </nav>
 {{-- course about --}}
-<div>
-<h1 class="dir mr-5">حول الدورة:</h1>
-<p class="dir">{{$b->summary}}</p>
+<div class="ditelspage">
+<h3 class="dir mt-5 mr-5">حول الدورة:</h3>
+<p class="dir ditelspageinsaid">{{$b->aboutcourse}}</p>
 </div>
 {{-- end --}}
 {{-- about tatcher --}}
-<h1 class="dir">مدرّس الدورة</h1>
+<div class="ditelspage">
+  <h3 class="dir">مدرّس الدورة</h3>
+  @foreach($teatcher as $teatchers)
+  <img class="img-fluid text-center p-2"  src="{{asset('img/slidertetcher/'.$teatchers->sliders_teacher)}}" alt="" >
+  @endforeach
+</div>
 
 {{-- end --}}
 
 {{-- leeson --}}
-<h1 class="dir">ماذا سأتعلم؟</h1>
-<div class=" m-3 dir card-text-home">
-  @foreach ($chbter as $chbter)
-    <div class="qustion1">   
-<p>
-  <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
-  <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$chbter->name}} </button>
-</p>
-<div class="collapse " id="collapse{{$chbter->id}}">
-  <div class="  qustion-box card-body">
-   
-    {{-- {{$lesson->name}} --}}
-  </div>
-</div>
-</div> 
-@endforeach
+<div class="ditelspage" >
+<h3 class="dir mb-5">ماذا سأتعلم؟</h3>
 
- </div>
+  <div class="boxditales dir">
+    <?php
+    $countoflesson=0;
+
+foreach($chbter as $chbters)
+  {     
+
+          foreach($lesson as $lessons)
+          {
+
+              if($lessons->chabters == $chbters->name)
+              {
+                  $countoflesson++;
+
+              };
+              $count=$countoflesson;
+
+          };
+
+   };
+?>
+    @foreach ($chbter as $chbters)
+
+    <div class="boxcolabss">
+      <div class="">
+         <div class="chabternamecollabs">
+              <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbters->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
+              <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbters->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$chbters->name}} </button>
+              {{$count}}
+         </div>
+      </div>
+    </div>
+    <div class="collapse  scroll-section" id="collapse{{$chbters->id}}">
+    {{-- <div class="collapse" id="collapse{{$chbter->id}}"> --}}
+      @foreach ($lesson as $lessons )
+
+          @if($lessons->chabters == $chbters->name)
+
+            <div class="card card-body" id="">
+             <div class="ditelsco">
+              <i style="font-size:24px" class="fa">&#xf144;</i>
+              {{$lessons->name}}
+             </div>
+              
+            </div>
+       @endif
+
+          @endforeach
+
+    </div>
+
+    @endforeach
+  </div>
+
+</div>
+ 
 {{--  --}}
     @endsection
 
@@ -114,4 +160,25 @@
      
     
     </ul>
+
+
+     @foreach ($chbter as $chbter)
+    <div class="qustion1">   
+<p>
+  <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
+  <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$chbter->name}} </button>
+</p>
+<div class="collapse " id="collapse{{$chbter->id}}">
+  <div class="  qustion-box card-body">
+    
+   @foreach ($lesson as $lessons )
+   @if($lessons->chabters == $chbter->name)
+   {{$lessons->name}}
+   @endif
+   @endforeach
+  </div>
+</div>
+</div>
+
+@endforeach
    --}}
