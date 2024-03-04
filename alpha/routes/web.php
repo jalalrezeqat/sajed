@@ -123,6 +123,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
          Route::put('/lesson/update/{id}', [App\Http\Controllers\Admin\LessonController::class, 'update'])->name('lesson.update');
          Route::get('/lesson/{lesson_id}/delete', [App\Http\Controllers\Admin\LessonController::class, 'destroy'])->name('lesson.destroy');
 
+        //codegenaret
+         Route::get('/codegenaret', [App\Http\Controllers\Admin\CodecardController::class, 'index'])->name('codegenaret');
+         Route::get('/codegenaret/add', [App\Http\Controllers\Admin\CodecardController::class, 'create'])->name('codegenaret.add');
+         Route::post('/codegenaret/save', [App\Http\Controllers\Admin\CodecardController::class, 'store'])->name('codegenaret.add.save');
+
          
         });
 

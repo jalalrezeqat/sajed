@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('courses');
+            $table->string('user')->NULL();
             $table->date('startcode');
             $table->date('endcode');
             $table->timestamps();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\codecard;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,8 @@ class CodecardController extends Controller
      */
     public function index()
     {
-        //
+        $code=DB::table('codecards')->get();
+        return view('admin.layouts.courses.genaratcode.codeindex',compact('code'));
     }
 
     /**
@@ -22,7 +23,23 @@ class CodecardController extends Controller
      */
     public function create()
     {
-        //
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersNumber = strlen($characters);
+    $codeLength = 6;
+
+    $code = '';
+
+    while (strlen($code) < 6) {
+        $position = rand(0, $charactersNumber - 1);
+        $character = $characters[$position];
+        $code = $code.$character;
+    }
+
+    if (codecard::where('code', $code)->exists()) {
+        $this->generateUniqueCode();
+    }
+        $courses=DB::table('courses')->get();
+        return view('admin.layouts.courses.genaratcode.codegenaretadd',compact('courses','code'));
     }
 
     /**
@@ -30,7 +47,12 @@ class CodecardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data = new codecard();
+        $input = $request->all();
+        $data->fill($input)->save();
+      
+        return  redirect()->route('admin.codegenaret');
     }
 
     /**
