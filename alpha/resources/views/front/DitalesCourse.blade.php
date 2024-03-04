@@ -83,11 +83,12 @@
 <h3 class="dir mb-5">ماذا سأتعلم؟</h3>
 
   <div class="boxditales dir">
+   
+
+    @foreach ($chbter as $chbters)
     <?php
     $countoflesson=0;
 
-foreach($chbter as $chbters)
-  {     
 
           foreach($lesson as $lessons)
           {
@@ -101,22 +102,22 @@ foreach($chbter as $chbters)
 
           };
 
-   };
+   
 ?>
-    @foreach ($chbter as $chbters)
-
     <div class="boxcolabss">
       <div class="">
          <div class="chabternamecollabs">
               <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbters->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
               <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbters->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$chbters->name}} </button>
-              {{$count}}
+              <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbters->id}}" aria-expanded="false" aria-controls="collapseExample " class="btn qustion-text " id="countleeson">  {{$count}} دروس </button>
+
          </div>
       </div>
     </div>
     <div class="collapse  scroll-section" id="collapse{{$chbters->id}}">
     {{-- <div class="collapse" id="collapse{{$chbter->id}}"> --}}
       @foreach ($lesson as $lessons )
+      <?php $count=0;?>
 
           @if($lessons->chabters == $chbters->name)
 
@@ -125,17 +126,17 @@ foreach($chbter as $chbters)
               <i style="font-size:24px" class="fa">&#xf144;</i>
               {{$lessons->name}}
              </div>
-              
-            </div>
-       @endif
-
-          @endforeach
+            </div> 
+             @endif
+      @endforeach
 
     </div>
 
     @endforeach
   </div>
-
+  <div class="col text-center">
+  <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+  </div>
 </div>
  
 {{--  --}}

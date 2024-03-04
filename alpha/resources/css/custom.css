@@ -692,14 +692,14 @@ body{
 {
     margin: auto;
     width: 70%;
-    margin-right: 10%;
+    /* margin-right: 10%; */
     margin-bottom: 5%;
 }
 
 .ditelspageinsaid
 {
     margin: auto;
-    width: 80%;
+    /* width: 80%; */
     margin-top: 2%;
     /* margin-right: 3%; */
 }
@@ -751,5 +751,9 @@ body{
 {
     margin-right: 5%;
 }
-
+#countleeson
+{
+    direction: rtl;
+    float: left;
+}
 /*  */
