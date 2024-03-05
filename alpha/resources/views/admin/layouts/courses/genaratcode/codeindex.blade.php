@@ -31,8 +31,8 @@
               <td class="">{{$code->endcode}} </td>
 
               <td class=""> 
-                 <a href="{{route('admin.courses.edit',$code->id)}}"  class="btn btn-dark editdelete">تعديل </a>
-                 <a href="{{route('admin.courses.destroy',$code->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
+                 <a href="{{route('admin.codegenaret.edit',$code->id)}}"  class="btn btn-dark editdelete">تعديل </a>
+                 <a href="{{route('admin.codegenaret.destroy',$code->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
               </td>
             
             </tr>

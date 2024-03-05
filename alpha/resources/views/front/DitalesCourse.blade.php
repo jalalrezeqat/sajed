@@ -89,7 +89,7 @@
     <?php
     $countoflesson=0;
 
-
+$count=0;
           foreach($lesson as $lessons)
           {
 
@@ -134,10 +134,11 @@
 
     @endforeach
   </div>
+  
   <div class="col text-center">
-  <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+    <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+    </div>
   </div>
-</div>
  
 {{--  --}}
     @endsection

@@ -14,8 +14,8 @@ class CodecardController extends Controller
      */
     public function index()
     {
-        $code=DB::table('codecards')->get();
-        return view('admin.layouts.courses.genaratcode.codeindex',compact('code'));
+        $code = DB::table('codecards')->get();
+        return view('admin.layouts.courses.genaratcode.codeindex', compact('code'));
     }
 
     /**
@@ -24,22 +24,22 @@ class CodecardController extends Controller
     public function create()
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersNumber = strlen($characters);
-    $codeLength = 6;
+        $charactersNumber = strlen($characters);
+        $codeLength = 6;
 
-    $code = '';
+        $code = '';
 
-    while (strlen($code) < 6) {
-        $position = rand(0, $charactersNumber - 1);
-        $character = $characters[$position];
-        $code = $code.$character;
-    }
+        while (strlen($code) < 6) {
+            $position = rand(0, $charactersNumber - 1);
+            $character = $characters[$position];
+            $code = $code . $character;
+        }
 
-    if (codecard::where('code', $code)->exists()) {
-        $this->generateUniqueCode();
-    }
-        $courses=DB::table('courses')->get();
-        return view('admin.layouts.courses.genaratcode.codegenaretadd',compact('courses','code'));
+        if (codecard::where('code', $code)->exists()) {
+            $this->generateUniqueCode();
+        }
+        $courses = DB::table('courses')->get();
+        return view('admin.layouts.courses.genaratcode.codegenaretadd', compact('courses', 'code'));
     }
 
     /**
@@ -47,11 +47,11 @@ class CodecardController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $data = new codecard();
         $input = $request->all();
         $data->fill($input)->save();
-      
+
         return  redirect()->route('admin.codegenaret');
     }
 
@@ -60,7 +60,8 @@ class CodecardController extends Controller
      */
     public function show(codecard $codecard)
     {
-        //
+        $courses = DB::table('courses')->get();
+        return view('admin.layouts.courses.genaratcode.codegenaretedit', compact('codecard', 'courses'));
     }
 
     /**
@@ -74,16 +75,32 @@ class CodecardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, codecard $codecard)
+    public function update(Request $request, $id)
     {
-        //
+        $post = codecard::find($id);
+        $post->code = $request->input('code');
+        $post->courses = $request->input('courses');
+        $post->user = $request->input('user');
+        $post->startcode = $request->input('startcode');
+        $post->endcode = $request->input('endcode');
+
+
+
+        $post->save();
+
+        return  redirect()->route('admin.codegenaret');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(codecard $codecard)
+    public function destroy(int $codecard_id)
     {
-        //
+
+        $questionsDb = DB::table('codecards');
+        $questionshdelete = $questionsDb->where('id', $codecard_id);
+        $questionshdelete->delete();
+
+        return  redirect()->back();
     }
 }
