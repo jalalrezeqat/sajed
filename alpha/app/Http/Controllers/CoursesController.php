@@ -8,6 +8,8 @@ use App\Models\lesson;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\codecard;
 
 
 class CoursesController extends Controller
@@ -33,12 +35,25 @@ class CoursesController extends Controller
 
     }
     
-    public function detalescourse(Request $request, $id ,$branchid )
+    public function detalescourse(Request $request, $id  )
     {
-        $branch =branch::find($branchid);
+        $user=Null;
+        if(Auth::user()){
+            $user=Auth::user()->name;
+        }
+        $branch =DB::table('branches')->pluck('name');
+        foreach ($branch as $branchs)
+        {
+            $i=0;
+            $br=$branch[$i];
+            $i++;
+            
+        }
+        $i=0;
+       // $branch =branch::find($branchid);
         $b=courses::find($id);
         $chbter=DB::table('chabters')->where('course','=' ,$b->name )->get();
-        $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
+        $coursces=DB::table('courses')->where('branche','=' ,$br )->get();
         $chbter1=DB::table('lessons')->where('course','=' ,$b->name )->get();
         $lesson =  DB::table('lessons')->select('id','name','chabters')->where('course','=',$b->name)->get();
         $teatcher =DB::table('teachers')->where('name','=',$b->teacher_name)->get();
@@ -46,7 +61,7 @@ class CoursesController extends Controller
         $lessoncount=$lesson->count();
 
       
-        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson','chbter1','chabtercount','lessoncount','teatcher'));
+        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson','chbter1','chabtercount','lessoncount','teatcher','user'));
 
     }
     /**
@@ -97,5 +112,16 @@ class CoursesController extends Controller
     public function destroy(courses $courses)
     {
         //
+    }
+    public function codesend(Request $request ,$user)
+    {
+        $codefind =DB::table('codecards')->where('code','=',$request->input('code'))->first();
+        DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
+        // $post = codecard::find($codefind);
+        // $codefind->user = $request->user;
+        // $codefind->save();
+        // dd($request->user);
+        return  redirect()->back();
+
     }
 }

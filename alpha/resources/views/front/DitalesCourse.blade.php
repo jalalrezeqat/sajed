@@ -2,7 +2,7 @@
 
     @section('content')
     <div class="namecourse  float-right mb-2">
-        <p class="namebranch-text"> الدورات > {{$branch->name}} > {{$b->name}} </p>
+        <p class="namebranch-text"> الدورات > {{$b->branche}} > {{$b->name}} </p>
     </div>
 <br>
 <br>
@@ -10,10 +10,16 @@
 <div class="box-ditalescourse" id="box-ditalescourse">
   
   <div class="column1">
-    <div class="row coursename mt-5">
+   
+  <form action="{{url('codesend/'.$user)}}" method="POST">
+  @csrf
+  @method('PUT')
 
+
+    <div class="row coursename mt-5">
+     
       <p class="user_name h3 "> {{$b->name}}</p>
-      <p class="user_name h3">{{$branch->name}} - الفصل الاول </p>
+      <p class="user_name h3">{{$b->branche}} - الفصل الاول </p>
     </div>
     <div class="row coursedetales mt-5">
       <p class="mt-3  col-lg-4" style="color: blanchedalmond"> مدرس الدورة : {{$b->teacher_name}} </p> 
@@ -24,10 +30,12 @@
       <p class="mt-3 mr-3 col-lg-5" style="color: blanchedalmond"> أدخل كود البطاقة وابدأ بالتّعلّم</p> 
     </div>
     <div class="row coursedetales">
+
       <p class="mt-3  col-lg-3" style="color: #85FE78"> السعر : {{$b->price}} ₪</p>
-      <input class="mt-3 inputorder col-lg-4" placeholder="حافظ على سريّة معلوماتك..." type="text">  
-      <button class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
+      <input class="mt-3 inputorder col-lg-4" placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">  
+      <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
       </div>
+      </form>
       <br>
       <br>
   </div>

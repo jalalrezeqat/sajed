@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
         $courses = DB::table('courses')->get();
         $branch = DB::table('branches')->pluck('id');
         // $courscesdet=DB::table('courses')->where('branche','=' ,$branch )->get();

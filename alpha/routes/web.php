@@ -122,13 +122,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/lesson/update/{id}', [App\Http\Controllers\Admin\LessonController::class, 'update'])->name('lesson.update');
         Route::get('/lesson/{lesson_id}/delete', [App\Http\Controllers\Admin\LessonController::class, 'destroy'])->name('lesson.destroy');
 
-        //codegenaret
+        //codegenaret codesend
         Route::get('/codegenaret', [App\Http\Controllers\Admin\CodecardController::class, 'index'])->name('codegenaret');
         Route::get('/codegenaret/add', [App\Http\Controllers\Admin\CodecardController::class, 'create'])->name('codegenaret.add');
         Route::post('/codegenaret/save', [App\Http\Controllers\Admin\CodecardController::class, 'store'])->name('codegenaret.add.save');
         Route::get('/codegenaret/{codecard}/edit', [App\Http\Controllers\Admin\CodecardController::class, 'show'])->name('codegenaret.edit');
         Route::put('/codegenaret/update/{id}', [App\Http\Controllers\Admin\CodecardController::class, 'update'])->name('codegenaret.update');
         Route::get('/codegenaret/{codecard_id}/delete', [App\Http\Controllers\Admin\CodecardController::class, 'destroy'])->name('codegenaret.destroy');
+
     });
 
 
@@ -147,7 +148,8 @@ Route::post('/Connectus', [App\Http\Controllers\ConnectusController::class, 'sto
 // course
 
 Route::get('/courses/{id}', [App\Http\Controllers\coursesController::class, 'indexcourse'])->name('front.FrontCourcse');
-Route::get('/coursesditels/{id}/{branchid?}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
+Route::get('/coursesditels/{id}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
+Route::put('/codesend/{user}', [App\Http\Controllers\coursesController::class, 'codesend'])->name('codesend');
 
 
 require __DIR__ . '/auth.php';

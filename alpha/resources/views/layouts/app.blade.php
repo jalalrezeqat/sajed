@@ -409,11 +409,21 @@
   </div>
   </div>
   </div>
-    
+  @if(Session::has('openModal'))
+    <script type="text/javascript">
+    $(function() {
+        $('#modal-toggle').modal('show');
+    });
+    </script>
+    @endif
 <!-- partial -->
 
-      
-         
+
+@if(session()->has('error'))
+    <script>
+        $('#modal-toggle-regester').modal('show');
+    </script>
+@endif
       
   
   
@@ -425,6 +435,13 @@
   {{--  --}}
 </section>
 {{--  --}}
-</body>
 
+</body>
+<script type="text/javascript">
+if (!Page_Validators[i].isvalid) {
+    message.style.display = "block";
+    // Reopen modal.
+    $('#modal-toggle-regester').modal('show');
+}
+</script>
 </html>

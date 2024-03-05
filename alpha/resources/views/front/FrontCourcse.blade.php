@@ -21,12 +21,13 @@
       <h3 class="text-center mt-3">دورات الثانويّة العامّة   </h3>
       <h3 class="text-center font-weight-bold">   {{$branch->name}}  </h3>
 
-        <div class="d-flex justify-content-center mt-5"> 
-            <div class="mr-5">
-                <a href="" class="btn btn-success">dd</a>
+        <div class="d-flex justify-content-center mt-5 dir"> 
+            <div id="butcour">
+               <a href="" class="btn btn-success">الفصل الاول </a>
             </div>
-            <a href="" class="btn btn-success">sd</a>
-
+            <div class="mr-5">
+            <a href="" class="btn btn-success">الفصل الثاني</a>
+            </div>
         </div>
       <div class=" card-box-home  card-w mb-5  slider">
         <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
@@ -37,7 +38,7 @@
               <div class="card-body">
                 <h5 class="card-title-home  ">{{$coursces->name}}</h5>
                 <p id="card-text-home1 mt" class="card-text-home1 ">{{$coursces->summary}}</p>
-              <a class="card-button" href="{{ url('coursesditels'.'/'.$coursces->id.'/'.$branch->id ) }}"> قراءة المزيد ></a>
+              <a class="card-button" href="{{ url('coursesditels'.'/'.$coursces->id) }}"> قراءة المزيد ></a>
                 <button class="but-card">{{$coursces->price}}₪   </button>
               </div>
             </div>
