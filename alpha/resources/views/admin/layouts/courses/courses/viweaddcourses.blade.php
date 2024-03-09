@@ -13,13 +13,16 @@
             
             <div class="form-group">
                 <label for="inputtitelmistion">اسم الدورة</label>
-                <input type="text" class="form-control" name='name' id="name	" placeholder="اسم المعلم ">
+                <input type="text" class="form-control" name='name' id="name	" placeholder="اسم الدورة ">
               </div>
               <div class="form-group">
                 <label for="inputtitelmistion">  ملخص عن الدورة </label>
-                <input type="textarea" class="form-control" name='summary' id="summary	" placeholder="اسم المعلم ">
+                <input type="textarea" class="form-control" name='summary' id="summary	" placeholder="ملخص عن الدورة">
               </div>
-
+              <div class="form-group">
+                <label for="inputtitelmistion">  حول  الدورة </label>
+                <input type="textarea" class="form-control" name='aboutcourse' id="aboutcourse	" placeholder="حول  الدورة">
+              </div>
               <div class="form-group">
                 <label for="inputtitelmistion">السعر </label>
                 <input type="number" class="form-control" name='price' id="price	" placeholder="السعر">
@@ -29,6 +32,13 @@
                 <input type="file" class="form-control" name='img_name' id="img_name">
             </div>
             <div class="form-group">
+              <label for="inputtitelmistion">الفصل</label>
+              <select class="form-control" name="chabters" id="chapter">
+                <option name="chapter" value="الفصل الاول">الفصل الاول</option>
+                <option name="chapter" value="الفصل الثاني">الفصل الثاني</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="inputtitelmistion">الفرع</label>
               <select class="form-control" name="branche" id="branche">
               @foreach ($branch as $branch )
@@ -36,7 +46,7 @@
               @endforeach
               </select>
           </div>
-         
+        
           <div class="form-group">
             <label for="inputtitelmistion">المعلم</label>
             <select class="form-control" name="teacher_name" id="teacher_name">

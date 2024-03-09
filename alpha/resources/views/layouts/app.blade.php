@@ -30,10 +30,10 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav justify-content-center navbar-collapse mb-2 mb-lg-0">
                   <li class="nav-item-home">
-                    <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success btn-lg reg">الرئيسية</button></a>
+                    <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success btn-lg reg font-weight-bold">الرئيسية</button></a>
                   </li>
                   <li class="nav-item-home">
-                    <a class="nav-link"  href="{{ url('/courses') }}">الدورات</a>
+                    <a class="nav-link font-weight-bold"  href="{{ url('/courses') }}">الدورات</a>
                   </li>
                   <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
@@ -120,14 +120,14 @@
         <div class="col-lg-3 ">
 
           <ul class="list-unstyled">
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>منصّة ألفا - alpha.ps</a>
+            <li class="mb-4">
+              <a href="#!" class="text-white"><i class=""></i>منصّة ألفا - alpha.ps</a>
             </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i> alpha.ps</a>
+            <li class="mb-4">
+              <a href="#!" class="text-white"><i class=""></i> alpha.ps</a>
             </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>منصّة ألفا - alpha.ps</a>
+            <li class="mb-4">
+              <a href="#!" class="text-white"><i class=""></i>منصّة ألفا - alpha.ps</a>
             </li>
         
           </ul>
@@ -138,17 +138,17 @@
         <div class="col-lg-3 ">
 
           <ul class="list-unstyled">
-            <li class="mb-2">
-              <a href="{{ url('/') }}" class="text-white"><i class="fas fa-paw pe-3"></i>الرئيسيّة</a>
+            <li class="mb-3">
+              <a href="{{ url('/') }}" class="text-white"><i ></i>الرئيسيّة</a>
             </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>الدورات</a>
+            <li class="mb-3">
+              <a href="#!" class="text-white " ><i ></i>الدورات</a>
             </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>حول ألفا</a>
+            <li class="mb-3">
+              <a href="#!" class="text-white"><i></i>حول ألفا</a>
             </li>
-            <li class="mb-2">
-              <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>اتصل بنا</a>
+            <li class="mb-3">
+              <a href="#!" class="text-white"><i ></i>اتصل بنا</a>
             </li>
           </ul>
         </div>
@@ -163,11 +163,11 @@
               <p><i class="fas fa-map-marker-alt pe-2"></i>للحصول على مُعدّل 99.7</p>
             </li>
             <li>
-              <p><i class="fas fa-phone pe-2"></i>info@alpha.ps</p>
+              <p><i class="fas"></i>info@alpha.ps</p>
             </li>
             <li>
  
-              <p><i class="fas fa-envelope pe-2 mb-0"></i>(+970) 597-618-504</p>
+              <p class="dir"><i class="fas "></i>+970 597-618-504</p>
             </li>
           </ul>
         </div>

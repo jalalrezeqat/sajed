@@ -21,11 +21,15 @@
                 <label for="inputtitelmistion">الصورة</label>
                 <input type="file" class="form-control" name='img' id="img">
               </div>
-            <div class="form-group">
-              <label for="inputtitelmistion">معلومات الاستاذ</label>
-              <input type="file" class="form-control" name='sliders_teacher' id="sliders_teacher">
-            </div>
-            
+              <div class="container">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="inputtitelmistion"> معلومات المعلم  </label>
+                        <textarea name='summernote' id="summernote" class="summernote form-control formaddmtextarea">
+                          {{$teacher->summernote}}
+                        </textarea>
+                    </div>    
+                </div>
            
             <button type="submit" class="btn btn-info">تحديث</button>
           </form>

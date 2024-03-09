@@ -34,7 +34,7 @@
             </div>
             <div class="mb-3">
                 <label for="newPasswordInput" class="form-label">كلمة المرور الجديدة</label>
-                <input name="new_password" type="password" required class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
+                <input name="new_password" type="password" required class="form-control" @error('new_password') is-invalid @enderror" id="newPasswordInput"
                     placeholder="كلمة المرور الجديدة">
                 @error('new_password')
                     <span class="text-danger">{{ $message }}</span>

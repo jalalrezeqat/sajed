@@ -23,20 +23,20 @@
     <!--  -->
     <div class="slider-cource dir ">
       <div>
-        <h1 class=" text-bold">  <img src="img/aboutv.png" alt="">رؤيتنا :</h1>
+        <h1 class=" text-bold" style="font-size: 32px">  <img src="img/aboutv.png" alt="">رؤيتنا :</h1>
         @foreach ($vision as $vision)
-        <p class="vision">{{$vision->our_vision}}</p>
+        <p class="vision" style="font-size: 18px">{{$vision->our_vision}}</p>
         </div>
         @endforeach
         <div class="" >
-            <h1 class="text-bold"><img src="img/aboutm.png" alt="">مهمتنا :</h1>
+            <h1 class="text-bold" style="font-size: 32px"><img src="img/aboutm.png" alt="">مهمتنا :</h1>
             <div class="mission">
-            <p class="">تتمحور مهامنا في منصّة ألفا حول: </p>
+            <p class="" style="font-size: 18px">تتمحور مهامنا في منصّة ألفا حول: </p>
 
             <ul>
               @foreach ($mission as $mission)
 
-                <li><span class="text-bold">{{$mission->our_mission_titel .' : '}}</span>{{$mission->our_mission_text}}</li>
+                <li><span class="text-bold" style="font-size: 18px">{{$mission->our_mission_titel .' : '}}</span>{{$mission->our_mission_text}}</li>
               @endforeach
             </ul>
         </div>

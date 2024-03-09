@@ -26,21 +26,21 @@
 
 <div class="contener ">
   <div class="m-1">
-      <h3 class="text-center ">الدورات الاكثر طلبا </h3>
-      <h5 class="text-center mt">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
+      <h3 class="text-center " style="font-size: 42px">الدورات الاكثر طلبا </h3>
+      <h5 class="text-center mt"style="font-size: 18px">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</h5>
     </div>
     {{-- card course --}}
     <div class=" card-box-home  card-w   slider">
       <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
         @foreach($courses as $courses)
-        <div class="col  ">
-          <div class="card-home card ">
+        <div class="col">
+          <div class="card-home card " id="card-home">
             <img src="{{asset('img/courses/'.$courses->img_name)}}" class="card-img-top-home" alt="...">
             <div class="card-body">
-              <h5 class="card-title-home  ">{{$courses->name}}</h5>
-              <p id="card-text-home1 mt" class="card-text-home1 ">{{$courses->summary}}</p>
-              <a class="card-button" href="{{ url('coursesditels'.'/'.$courses->id) }}"> قراءة المزيد ></a>
-              <button class="but-card">{{$courses->price}}₪   </button>
+              <h5 class="card-title-home mb-3">{{$courses->name}}</h5>
+              <p id="card-text-home1  mb-3" class="card-text-home1 ">{{$courses->summary}}</p>
+              <a class="card-button mt-3" href="{{ url('coursesditels'.'/'.$courses->id) }}"> قراءة المزيد ></a>
+              <button class="but-card mt-3">{{$courses->price}}₪   </button>
             </div>
           </div>
         </div>
@@ -56,8 +56,8 @@
     
     {{-- end card course --}}
     <div class="m-1">
-      <h3 class="text-center ">معلمي منصة الفا </h3>
-      <h5 class="text-center ">نفتخر في ألفا بتواجد  أفضل المُدرسين على مستوى الوطن!</h5>
+      <h3 class="text-center "style="font-size: 42px">معلمي منصة الفا </h3>
+      <h5 class="text-center "style="font-size: 18px">نفتخر في ألفا بتواجد  أفضل المُدرسين على مستوى الوطن!</h5>
     </div>
 
     {{-- slide teacher --}}
@@ -84,16 +84,16 @@
     {{-- qustion  --}}
 
     <div class=" m-3 dir card-text-home">
-     <h2 class="card-text-home">الاسئلة الشائعة</h2>
+     <h2 class="card-text-home"style="font-size: 262.5%">الاسئلة الشائعة</h2>
      @foreach ($questions as $question)
        <div class="qustion1">   
    <p>
      <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
-     <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$question->question}} </button>
+     <button  type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">{{$question->question}}</button>
    </p>
    <div class="collapse " id="collapse{{$question->id}}">
      <div class="  qustion-box card-body">
-       {{$question->question_text}}
+     <p style="font-size: 87.5%">{{$question->question_text}}</p>  
      </div>
    </div>
 </div> 

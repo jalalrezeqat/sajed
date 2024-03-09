@@ -95,7 +95,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/teacher/{teacher}/edit', [App\Http\Controllers\Admin\TeacherController::class, 'edit'])->name('teacher.edit');
         Route::put('/teacher/update/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'update'])->name('teacher.update');
 
-        //courses
+        //courses 
         Route::get('/courses', [App\Http\Controllers\Admin\CoursesController::class, 'index'])->name('courses');
         Route::get('/courses/{courses}/edit', [App\Http\Controllers\Admin\CoursesController::class, 'updateviwe'])->name('courses.edit');
         Route::put('/courses/update/{id}', [App\Http\Controllers\Admin\CoursesController::class, 'update'])->name('courses.update');
@@ -130,6 +130,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/codegenaret/update/{id}', [App\Http\Controllers\Admin\CodecardController::class, 'update'])->name('codegenaret.update');
         Route::get('/codegenaret/{codecard_id}/delete', [App\Http\Controllers\Admin\CodecardController::class, 'destroy'])->name('codegenaret.destroy');
 
+        //questionscours QuestionscoursController questionscoursadd
+
+        Route::get('/questionscours', [App\Http\Controllers\Admin\QuestionscoursController::class, 'index'])->name('questionscours');
+        Route::get('/questionscours/{id?}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'show'])->name('courses.questionscours');
+        Route::get('/questionscoursadd{id}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'questionscoursadd'])->name('courses.questionscoursadd');
+        Route::post('/questionscoursaddstore/add', [App\Http\Controllers\Admin\QuestionscoursController::class, 'store'])->name('courses.questionscoursaddstore');
+        Route::get('/questionscours/{questionscours}/edit', [App\Http\Controllers\Admin\QuestionscoursController::class, 'edit'])->name('questionscours.edit');
+        Route::put('/questionscours/update/{id}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'update'])->name('questionscours.update');
+        Route::get('/questionscours/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionscoursController::class, 'destroy'])->name('questionscours.destroy');
     });
 
 

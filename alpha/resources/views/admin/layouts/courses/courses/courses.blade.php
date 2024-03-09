@@ -13,8 +13,11 @@
         <table class=" table-admin-connectus  ">
           <thead class="thead-green-connectus">
             <tr class="">
-              <th scope="col ">السؤال</th>
-              <th scope="col">نص السؤال</th>
+              <th scope="col ">اسم الدورة</th>
+              <th scope="col">ملخص عن الدورة </th>
+              <th scope="col">حول الدورة  </th>
+              <th scope="col">مدرس الدورة   </th>
+              <th scope="col"> سعر الدورة   </th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -23,7 +26,9 @@
             <tr>
               <td class="tdnamecontectus">{{$courses->name}} </td>
               <td class="">{{$courses->summary}} </td>
-  
+              <td class="">{{$courses->aboutcourse}} </td>
+              <td class="">{{$courses->teacher_name}} </td>
+              <td class="">{{$courses->price}}₪</td>
               <td class=""> 
                  <a href="{{route('admin.courses.courseschabtar',$courses->id)}}"  class="btn btn-success editdelete">مشاهدة الفصول</a>
                  <a href="{{route('admin.courses.edit',$courses->id)}}"  class="btn btn-dark editdelete">تعديل </a>

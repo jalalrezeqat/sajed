@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('summary');
-            $table->string('price');   
-            $table->string('img_name');  
-            $table->string('branche'); 
-            $table->string('chapter'); 
-            $table->string('teacher_name'); 
-            $table->string('status');    
+            $table->string('aboutcourse');
+            $table->string('price');
+            $table->string('img_name');
+            $table->string('branche');
+            $table->string('teacher_name');
+            $table->string('chabters');
+            $table->string('status');
             $table->timestamps();
         });
     }

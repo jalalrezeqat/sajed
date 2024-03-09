@@ -20,7 +20,10 @@
                 <label for="inputtitelmistion">  ملخص عن الدورة </label>
                 <input type="textarea" class="form-control" name='summary' id="summary	" value="{{$courses->summary}}">
               </div>
-
+              <div class="form-group">
+                <label for="inputtitelmistion">  حول  الدورة </label>
+                <textarea type="textarea" class="form-control" name='aboutcourse' rows="3" id="aboutcourse	" value="{{$courses->aboutcourse}}">{{$courses->aboutcourse}}</textarea>
+              </div>
               <div class="form-group">
                 <label for="inputtitelmistion">السعر </label>
                 <input type="number" class="form-control" name='price' id="price	" value="{{$courses->price}}">

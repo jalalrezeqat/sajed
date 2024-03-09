@@ -30,7 +30,7 @@
     <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
       @foreach($branch as $branch)
       <div class="col  ">
-        <div class="card-home card ">
+        <div class="card-home card "id="card-home">
           <img src="img/card-img.png" class="card-img-top-home" alt="...">
           <div class="card-body">
             <h5 class="text-center ">{{$branch->name}}</h5>

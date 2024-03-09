@@ -20,14 +20,18 @@
             </tr>
           </thead>
           <tbody>
-              @foreach ($tetcher as $tetcher)
+              @foreach ($tetcher as $tetchers)
             <tr>
-              <td class="tdnamecontectus "><img class="img-slider" src="{{asset('img/teacher/'.$tetcher->img)}}" alt=""></td>
-              <td class="">{{$tetcher->name}} </td>
-              <td class="tdnamecontectus "><img class="img-slider" src="{{asset('img/slidertetcher/'.$tetcher->sliders_teacher)}}" alt=""></td>
+              <td class="tdnamecontectus "><img class="img-slider" src="{{asset('img/teacher/'.$tetchers->img)}}" alt=""></td>
+              <td class="">{{$tetchers->name}} </td>
+              <td class=" ">
+                <?php
+                echo     $tetchers->summernote
+                ?>
+              </td>
 
-              <td class="">  <a href="{{route('admin.teacher.edit',$tetcher->id)}}"  class="btn btn-success editdelete">تعديل</a>
-                    <a href="{{route('admin.teacher.destroy',$tetcher->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
+              <td class=""> <a href="{{route('admin.teacher.edit',$tetchers->id)}}"  class="btn btn-success editdelete">تعديل</a>
+                    <a href="{{route('admin.teacher.destroy',$tetchers->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
               </td>
             
             </tr>

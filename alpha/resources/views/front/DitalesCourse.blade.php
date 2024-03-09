@@ -32,9 +32,21 @@
     <div class="row coursedetales">
 
       <p class="mt-3  col-lg-3" style="color: #85FE78"> السعر : {{$b->price}} ₪</p>
-      <input class="mt-3 inputorder col-lg-4" placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">  
+      <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">  
+      @error('error')
+      <span class="text-danger dandermasseg inputorder col-lg-4">{{ $message }}</span>
+       @enderror
       <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
       </div>
+      @if (session('message'))
+      <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message') }}</div>
+    @endif
+    @if (session('message1'))
+    <div class="alert dandermasseg  col-lg-4 text-success">{{ session('message1') }}</div>
+  @endif
+  @if (session('message3'))
+  <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
+@endif
       </form>
       <br>
       <br>
@@ -44,7 +56,7 @@
     <img class="" src="/../img/det.png" alt=""> 
    </div>
   </div>
-      
+
 {{-- navbar  --}}
 <nav class="navbar navbar-expand-lg navbarcourse dir navbar-light bg-light">
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,16 +66,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">حول الدورة </a>
+        <a class="nav-link" href="#about">حول الدورة </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">مدرّس الدورة</a>
+        <a class="nav-link" href="#tetcher">مدرّس الدورة</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ماذا سأتعلم؟ </a>
+        <a class="nav-link" href="#how">ماذا سأتعلم؟ </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">أسئلة شائعة  </a>
+        <a class="nav-link" href="#dd">أسئلة شائعة  </a>
       </li>
      
     
@@ -72,22 +84,51 @@
 </nav>
 {{-- course about --}}
 <div class="ditelspage">
-<h3 class="dir mt-5 mr-5">حول الدورة:</h3>
+<h3 class="dir mt-5 mr-5" id="about">حول الدورة:</h3>
 <p class="dir ditelspageinsaid">{{$b->aboutcourse}}</p>
+<button class="btncouresdetales">اطلب بطاقتك</button>
 </div>
 {{-- end --}}
 {{-- about tatcher --}}
-<div class="ditelspage">
+<div class="ditelspage dir" id="tetcher">
   <h3 class="dir">مدرّس الدورة</h3>
-  @foreach($teatcher as $teatchers)
-  <img class="img-fluid text-center p-2"  src="{{asset('img/slidertetcher/'.$teatchers->sliders_teacher)}}" alt="" >
-  @endforeach
+    <div class="shadow p-3 row mt-5 bg-white rounded">
+      <div class="col-6 col-md-2">
+        @foreach($teatcher as $teatchers)
+        <img  class="imgtatecher " src="{{asset('/img/teacher/'.$teatchers->img)}}" alt="" >
+        <p style="color: #27AC1F;margin-right:6%;">{{$teatchers->name}}</p>
+        @endforeach 
+      </div>
+      <div class="col-12 sdwd col-md-10">
+        <p style="font-size:18px">
+          <?php
+          echo     $teatchers->summernote
+          ?>
+        </p>
+       </div>
+
+    </div>
 </div>
 
+{{-- <div class="col-sm">
+        @foreach($teatcher as $teatchers)
+        <img  class="imgtatecher " src="{{asset('/img/teacher/'.$teatchers->img)}}" alt="" >
+        @endforeach 
+      </div>
+      <div class="col-sm">
+        <div class="">
+          <p style="font-size:18px">حاصل على درجة الماجيستير في الرياضيات من جامعة الخليل</p>
+          <p>حاصل على درجة الماجيستير في الرياضيات من جامعة الخليل</p>
+          <p>حاصل على درجة الماجيستير في الرياضيات من جامعة الخليل</p>
+        </div>
+      </div> 
+      <div class="col-sm">
+
+      </div> --}}
 {{-- end --}}
 
 {{-- leeson --}}
-<div class="ditelspage" >
+<div class="ditelspage" id="how">
 <h3 class="dir mb-5">ماذا سأتعلم؟</h3>
 
   <div class="boxditales dir">
@@ -124,18 +165,63 @@ $count=0;
     </div>
     <div class="collapse  scroll-section" id="collapse{{$chbters->id}}">
     {{-- <div class="collapse" id="collapse{{$chbter->id}}"> --}}
-      @foreach ($lesson as $lessons )
-      <?php $count=0;?>
+      @foreach ($lesson as $key => $lessons)
+      <?php $count=0;
+      $month = date('m');
+      $day = date('d');
+      $year = date('Y');
+      $today = $year . '-' . $month . '-' . $day;
 
-          @if($lessons->chabters == $chbters->name)
+      ?>
+      
+           @if($lessons->chabters == $chbters->name)
+          
+             <div class="card card-body" id="">
+                <div class="ditelsco">
+                    <?php  if (Auth::user()): ?>
+                       @if($key == 0)
+                                  <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
+                                    <a href="#we3"><button  style="border: none;background-color:#f8fafc
+                                       ">{{$lessons->name}}</button></a>
+                      @endif
+                       @foreach ($code as $codes)
+                      @if($key > 0)        
 
-            <div class="card card-body" id="">
-             <div class="ditelsco">
-              <i style="font-size:24px" class="fa">&#xf144;</i>
-              {{$lessons->name}}
-             </div>
-            </div> 
-             @endif
+                           <?php if($codes->user ==  Auth::user()->name & $codes->endcode >= $today) : ?>
+                              <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
+                                <a href="#we3"><button style="border: none;background-color:#f8fafc
+                                  ">{{$lessons->name}}</button></a>
+
+                            <?php else:?>
+                               <i style="font-size:24px;color:" class="fa">&#xf144;</i>
+                                  <a href="#we3"><button disabled style="border: none;background-color:#f8fafc
+                                    ">{{$lessons->name}}</button></a>
+
+                          <?php endif; ?>
+                  
+                      @endif
+                        @endforeach
+                         
+                           <?php endif; ?>
+
+                             <?php  if (!Auth::user()): ?>
+                              @if($key == 0)
+                                  <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
+                                    <a href="#we3"><button  style="border: none;background-color:#f8fafc
+                                       ">{{$lessons->name}}</button></a>
+                                @endif
+                             @if($key > 0)        
+
+                                  <i style="font-size:24px;color:" class="fa">&#xf144;</i>
+                                    <a href="#we3"><button disabled style="border: none;background-color:#f8fafc
+                                       ">{{$lessons->name}}</button></a>
+                            @endif
+                             <?php endif; ?>
+
+                  </div>
+                </div> 
+         @endif
+     
       @endforeach
 
     </div>
@@ -148,6 +234,31 @@ $count=0;
     </div>
   </div>
  
+  <div class=" m-3 dir card-text-home" id="dd">
+    <h2 class="card-text-home"style="font-size: 262.5%">الاسئلة الشائعة</h2>
+    @foreach ($questionscours as $questionscourss)
+      <div class="qustion1">   
+  <p>
+    <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$questionscourss->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
+    <button  type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$questionscourss->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">{{$questionscourss->question}}</button>
+  </p>
+  <div class="collapse " id="collapse{{$questionscourss->id}}">
+    <div class="  qustion-box card-body">
+    {{-- <p style="font-size: 87.5%">{{$questionscourss->question_text}}</p>   --}}
+    <p style="font-size: 87.5%">
+    <?php
+    echo     $questionscourss->summernote
+    ?>
+    </p>
+    </div>
+  </div>
+</div> 
+  @endforeach
+   </div>
+   <div class="col text-center">
+    <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+    </div>
+  </div>
 {{--  --}}
     @endsection
 

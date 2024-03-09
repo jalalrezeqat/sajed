@@ -12,14 +12,15 @@
             <div class="d-flex mb-5">
               <div class="me-4 text-primary dir">
               </div>
-              <div class="justify-content-xl-center  ">
-                <h1 class="mb-3 dir text-center display-3 p-3" >تواصل معنا الآن!</h1>
-                <h6 class="dir text-center h3">سنكونُ سعيدين في استقبال استفساراتكُم</h4>
+              <div class="justify-content-xl-center   ">
+                <h1 class="mb-3 dir text-center display-3 p-3"style="font-size: 42px" >تواصل معنا الآن!</h1>
+                <h6 class="dir text-center h3" style="font-size: 18px">سنكونُ سعيدين في استقبال استفساراتكُم</h4>
                   <div class="d-flex ">
                     @foreach($slider as $slider)
-                  <img class="img-fluid text-center p-2"  src="{{asset('img/slider/'.$slider->img)}}" alt="" >
+                  <img class="img-fluid text-center p-2 imgcountactus"  src="{{asset('img/slider/'.$slider->img)}}" alt="" >
                   @endforeach
-                  <div class="ml-auto p-2">
+              
+                  <div class="ml-auto mrrr p-2">
                     <br>
                     <br>
                     <br>
@@ -28,11 +29,14 @@
                     <br>
                     <br>
                     </b>
-                  <h6 class="mb-3 dir"> <img width="30px" height="30px" src="img/adress.png" alt=""> فلسطين-الخليل</h6>
+                    <br><br><br><br><br><br><br>
+                    
+                  <h6 class="mb-3 dir" style="font-size: 12px"> <img width="9.87px" height="12.34px" src="img/adress.png" alt=""> فلسطين-الخليل</h6>
 
-                  <h6 class="mb-3 dir"> <img width="30px" height="30px" src="img/phone.png" alt=""> 0599999527</h6>
+                  <h6 class="mb-3 dir" style="font-size: 12px"> <img width="12.53px" height="12.53px" src="img/phone.png" alt=""> 0599999527</h6>
   
-                  <h6 class="mb-3 dir"><img width="30px" height="20px" src="img/mail.png" alt=""> info@alpha.ps</h6>
+                  <h6 class="mb-3 dir" style="font-size: 12px"><img width="12px" height="8px" src="img/mail.png" alt=""> info@alpha.ps</h6>
+                
                   </div>
                   </div>
               </div>

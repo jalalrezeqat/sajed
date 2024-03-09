@@ -20,49 +20,47 @@ class CoursesController extends Controller
     public function index()
     {
         $branch = DB::table('branches')->get();
-        $slider =  DB::table('sliders')->where('page','=' , 'الدورات')->get();
-        return view('courses',compact('branch','slider'));
-
+        $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
+        return view('courses', compact('branch', 'slider'));
     }
 
-    public function indexcourse(Request $request, $id )
+    public function indexcourse(Request $request, $id)
     {
 
-        $branch =branch::find($id);
-        $coursces=DB::table('courses')->where('branche','=' ,$branch->name )->get();
+        $branch = branch::find($id);
+        $coursces = DB::table('courses')->where('branche', '=', $branch->name)->get();
 
-        return view('front.FrontCourcse',compact('branch','coursces'));
-
+        return view('front.FrontCourcse', compact('branch', 'coursces'));
     }
-    
-    public function detalescourse(Request $request, $id  )
+
+    public function detalescourse(Request $request, $id)
     {
-        $user=Null;
-        if(Auth::user()){
-            $user=Auth::user()->name;
+        $user = 'notauth';
+        $code = '';
+        if (Auth::user()) {
+            $user = Auth::user()->name;
+            $code = DB::table('codecards')->where('user', '=', $user)->get();
         }
-        $branch =DB::table('branches')->pluck('name');
-        foreach ($branch as $branchs)
-        {
-            $i=0;
-            $br=$branch[$i];
+        $branch = DB::table('branches')->pluck('name');
+        foreach ($branch as $branchs) {
+            $i = 0;
+            $br = $branch[$i];
             $i++;
-            
         }
-        $i=0;
-       // $branch =branch::find($branchid);
-        $b=courses::find($id);
-        $chbter=DB::table('chabters')->where('course','=' ,$b->name )->get();
-        $coursces=DB::table('courses')->where('branche','=' ,$br )->get();
-        $chbter1=DB::table('lessons')->where('course','=' ,$b->name )->get();
-        $lesson =  DB::table('lessons')->select('id','name','chabters')->where('course','=',$b->name)->get();
-        $teatcher =DB::table('teachers')->where('name','=',$b->teacher_name)->get();
-        $chabtercount=$chbter->count();
-        $lessoncount=$lesson->count();
+        $i = 0;
+        // $branch =branch::find($branchid);
+        $b = courses::find($id);
+        $chbter = DB::table('chabters')->where('course', '=', $b->name)->get();
+        $coursces = DB::table('courses')->where('branche', '=', $br)->get();
+        $chbter1 = DB::table('lessons')->where('course', '=', $b->name)->get();
+        $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
+        $lesson =  DB::table('lessons')->select('id', 'name', 'chabters')->where('course', '=', $b->name)->get();
+        $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
+        $chabtercount = $chbter->count();
+        $lessoncount = $lesson->count();
 
-      
-        return view('front.DitalesCourse',compact('branch','coursces','b','chbter','lesson','chbter1','chabtercount','lessoncount','teatcher','user'));
 
+        return view('front.DitalesCourse', compact('branch', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours', 'code'));
     }
     /**
      * Show the form for creating a new resource.
@@ -77,18 +75,16 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-      
     }
 
     /**
      * Display the specified resource.
      */
     public function show(courses $courses)
-    { 
-
+    {
     }
 
-   
+
 
     /**
      * Show the form for editing the specified resource.
@@ -113,15 +109,24 @@ class CoursesController extends Controller
     {
         //
     }
-    public function codesend(Request $request ,$user)
+    public function codesend(Request $request, $user)
     {
-        $codefind =DB::table('codecards')->where('code','=',$request->input('code'))->first();
-        DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
-        // $post = codecard::find($codefind);
-        // $codefind->user = $request->user;
-        // $codefind->save();
-        // dd($request->user);
-        return  redirect()->back();
+        if (Auth::check()) {
+            $codefind = DB::table('codecards')->where('code', '=', $request->input('code'))->first();
+            if ($codefind !=  null) {
 
+                if ($codefind->user == null) {
+
+                    DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
+                    return back()->with("message1", "تم اضافة الدورة ");
+                }
+            }
+            return back()->with("message", "الكود المدخل خطآ ");
+        }
+
+        return back()->with("message3", "يرجى تسجيل الدخول قبل ادخال الكود");
+
+        //  DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
+        //return  redirect()->back();
     }
 }
