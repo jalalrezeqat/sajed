@@ -157,7 +157,9 @@ Route::post('/Connectus', [App\Http\Controllers\ConnectusController::class, 'sto
 // course
 
 Route::get('/courses/{id}', [App\Http\Controllers\coursesController::class, 'indexcourse'])->name('front.FrontCourcse');
+Route::get('/coursessecand/{id}', [App\Http\Controllers\coursesController::class, 'indexcourse1'])->name('front.FrontCourcse1');
 Route::get('/coursesditels/{id}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
+Route::get('/courseshow/{id}/{vidoe}', [App\Http\Controllers\coursesController::class, 'showcourse'])->name('front.courseshow');
 Route::put('/codesend/{user}', [App\Http\Controllers\coursesController::class, 'codesend'])->name('codesend');
 
 

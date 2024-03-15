@@ -23,14 +23,14 @@
 
         <div class="d-flex justify-content-center mt-5 dir"> 
             <div id="butcour">
-               <a href="" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapseExample" class="btn btn-success">الفصل الاول </a>
+               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btn-success">الفصل الاول </a>
+
             </div>
             <div class="mr-5">
-            <a href="" class="btn btn-success">الفصل الثاني</a>
+            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn btn-success">الفصل الثاني</a>
             </div>
         </div>
 
-        <div class="collapse " id="collapse">
           <div class="  ">
 
     <div class=" card-box-home  card-w mb-5  slider">
@@ -50,7 +50,6 @@
               @endforeach
 
               </div>
-            </div>
      
          
       </div>

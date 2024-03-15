@@ -6,7 +6,9 @@
     </div>
 <br>
 <br>
-
+ @if (session('message4'))
+    <div class="alert dandermasseg dir  col-lg-4 text-success">{{ session('message4') }}</div>
+  @endif
 <div class="box-ditalescourse" id="box-ditalescourse">
   
   <div class="column1">
@@ -19,7 +21,7 @@
     <div class="row coursename mt-5">
      
       <p class="user_name h3 "> {{$b->name}}</p>
-      <p class="user_name h3">{{$b->branche}} - الفصل الاول </p>
+      <p class="user_name h3">{{$b->branche}} -  {{$b->chabters}} </p>
     </div>
     <div class="row coursedetales mt-5">
       <p class="mt-3  col-lg-4" style="color: blanchedalmond"> مدرس الدورة : {{$b->teacher_name}} </p> 
@@ -85,8 +87,9 @@
 {{-- course about --}}
 <div class="ditelspage">
 <h3 class="dir mt-5 mr-5" id="about">حول الدورة:</h3>
-<p class="dir ditelspageinsaid">{{$b->aboutcourse}}</p>
-<button class="btncouresdetales">اطلب بطاقتك</button>
+<p style="font-size:18px; line-height:33.73px;Width:80%; text-align: justify;
+  text-justify: inter-word; " class="dir ditelspageinsaid">{{$b->aboutcourse}}</p>
+<button class="btncouresdetales">شاهد درس مجّاني </button>
 </div>
 {{-- end --}}
 {{-- about tatcher --}}
@@ -111,6 +114,7 @@
 </div>
 
 {{-- <div class="col-sm">
+  
         @foreach($teatcher as $teatchers)
         <img  class="imgtatecher " src="{{asset('/img/teacher/'.$teatchers->img)}}" alt="" >
         @endforeach 
@@ -165,55 +169,67 @@ $count=0;
     </div>
     <div class="collapse  scroll-section" id="collapse{{$chbters->id}}">
     {{-- <div class="collapse" id="collapse{{$chbter->id}}"> --}}
-      @foreach ($lesson as $key => $lessons)
+     @foreach ($lesson as $key => $lessons)
       <?php $count=0;
       $month = date('m');
       $day = date('d');
       $year = date('Y');
       $today = $year . '-' . $month . '-' . $day;
+      
 
       ?>
       
            @if($lessons->chabters == $chbters->name)
-          
+            
              <div class="card card-body" id="">
                 <div class="ditelsco">
                     <?php  if (Auth::user()): ?>
                        @if($key == 0)
                                   <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
-                                    <a href="#we3"><button  style="border: none;background-color:#f8fafc
+                                    <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button  style="border: none;background-color:#f8fafc
                                        ">{{$lessons->name}}</button></a>
+                                       
                       @endif
+                      @if($key > 0) 
+                       <?php $insid=1;?>
                        @foreach ($code as $codes)
-                      @if($key > 0)        
+                      <?php $inside1=0?>
+                           @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name & $inside1==0) 
+                           <?php $insid=0;?>
 
-                           <?php if($codes->user ==  Auth::user()->name & $codes->endcode >= $today) : ?>
                               <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
-                                <a href="#we3"><button style="border: none;background-color:#f8fafc
+                                <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button style="border: none;background-color:#f8fafc
                                   ">{{$lessons->name}}</button></a>
+                                    <?php $insid1=1;?>              
 
-                            <?php else:?>
+
+                         @endif   
+
+                          @if($codes->user !==  Auth::user()->name & $insid ==1)
                                <i style="font-size:24px;color:" class="fa">&#xf144;</i>
-                                  <a href="#we3"><button disabled style="border: none;background-color:#f8fafc
+                                  <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button disabled style="border: none;background-color:#f8fafc
                                     ">{{$lessons->name}}</button></a>
+                              <?php $insid=0;?>              
 
-                          <?php endif; ?>
-                  
+                          @endif
+
+                       @endforeach   
+
                       @endif
-                        @endforeach
+
                          
-                           <?php endif; ?>
+                  <?php endif; ?>
 
                              <?php  if (!Auth::user()): ?>
                               @if($key == 0)
                                   <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
-                                    <a href="#we3"><button  style="border: none;background-color:#f8fafc
+                                    <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button  style="border: none;background-color:#f8fafc
                                        ">{{$lessons->name}}</button></a>
                                 @endif
                              @if($key > 0)        
 
                                   <i style="font-size:24px;color:" class="fa">&#xf144;</i>
-                                    <a href="#we3"><button disabled style="border: none;background-color:#f8fafc
+                                    <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button disabled style="border: none;background-color:#f8fafc
                                        ">{{$lessons->name}}</button></a>
                             @endif
                              <?php endif; ?>
@@ -221,6 +237,8 @@ $count=0;
                   </div>
                 </div> 
          @endif
+
+
      
       @endforeach
 
@@ -266,6 +284,7 @@ $count=0;
 
 
    {{--  <ul class="navbar-nav mr-auto">
+    & $codes->endcode >= $today
       <li class="nav-item active">
         <a class="nav-link" href="#">حول الدورة </a>
       </li>

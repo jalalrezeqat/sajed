@@ -11,6 +11,9 @@
     <title>{{ config('app.name', 'ALPHA') }}</title>
 
     <!-- Fonts -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -445,3 +448,12 @@ if (!Page_Validators[i].isvalid) {
 }
 </script>
 </html>
+<script>
+  // Change the second argument to your options:
+// https://github.com/sampotts/plyr/#options
+const player = new Plyr('video', {captions: {active: true}});
+
+// Expose player so it can be used from the console
+window.player = player;
+
+</script>

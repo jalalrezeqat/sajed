@@ -491,6 +491,14 @@ th {
 }
 .namecourse {
     background: rgb(39, 172, 31, 0.3);
+    width: 490.71px;
+    height: 50.45px;
+    border-top-left-radius: 12.77px;
+    border-bottom-left-radius: 12.77px;
+    float: right;
+}
+.namecourse1 {
+    background: rgb(39, 172, 31, 0.3);
     width: 471.71px;
     height: 50.45px;
     border-top-left-radius: 12.77px;
@@ -613,6 +621,13 @@ th {
     /* border-top:  0.61px solid #000; */
     border-bottom: 0.61px solid #000;
 }
+.boxcolabssshow {
+    /* border-radius: 12.18px; */
+    padding: 2%;
+    margin-right: 0%;
+    border-top: 0.61px solid #000;
+    border-bottom: 0.61px solid #000;
+}
 .collabs-box {
     margin-right: 3%;
 }
@@ -650,5 +665,75 @@ th {
 }
 .dandermasseg {
     margin-right: 30%;
+}
+.sidbarshowcourse {
+    border: 1px solid #000;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    direction: rtl;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.player1 {
+    margin: 2%;
+    width: 180%;
+}
+.navbarshow {
+    padding: 0;
+    width: 40%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    .navbarshow {
+        width: 1000px;
+    }
+    .buttonshow {
+        font-size: 75%;
+        height: 50%;
+        width: 90%;
+    }
+    #countleeson {
+        font-size: 62.5%;
+        padding: 0%;
+    }
+}
+.vidio {
+    margin-left: 4%;
+    margin-right: 4%;
+}
+.flo {
+    float: left;
+    margin-left: 6%;
+}
+.marginr5 {
+    margin-right: 5%;
+}
+.font18px {
+    font-size: 125%;
+}
+.font14px {
+    font-size: 100%;
+}
+.butcoresscore {
+    width: 88.48px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #27ac1f;
+}
+.inpoutcours {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #12181e;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.limkdown {
+    color: #27ac1f;
 }
 /*  */

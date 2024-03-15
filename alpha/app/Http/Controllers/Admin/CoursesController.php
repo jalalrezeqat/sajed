@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\courses;
 use Illuminate\Support\Facades\File;
+use Owenoj\LaravelGetId3\GetId3;
 
 
 class CoursesController extends Controller
@@ -142,6 +143,7 @@ class CoursesController extends Controller
         $post->summary = $request->input('summary');
         $post->price = $request->input('price');
         $post->branche = $request->input('branche');
+        $post->chabters = $request->input('chabters');
         $post->aboutcourse = $request->input('aboutcourse');
         $post->teacher_name = $request->input('teacher_name');
         // $chabterDb->course= $request->input('name');

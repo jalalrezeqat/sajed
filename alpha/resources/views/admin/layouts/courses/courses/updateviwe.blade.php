@@ -40,7 +40,13 @@
               @endforeach
               </select>
           </div>
-         
+        <div class="form-group">
+              <label for="inputtitelmistion">الفصل</label>
+              <select class="form-control" name="chabters" id="chapter">
+                <option name="chapter" value="الفصل الاول">الفصل الاول</option>
+                <option name="chapter" value="الفصل الثاني">الفصل الثاني</option>
+              </select>
+            </div>
           <div class="form-group">
             <label for="inputtitelmistion">المعلم</label>
             <select class="form-control" name="teacher_name" id="teacher_name">

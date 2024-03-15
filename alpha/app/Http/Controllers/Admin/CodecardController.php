@@ -24,13 +24,13 @@ class CodecardController extends Controller
      */
     public function create()
     {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqrstuvwxyz';
         $charactersNumber = strlen($characters);
-        $codeLength = 6;
+        $codeLength = 12;
 
         $code = '';
 
-        while (strlen($code) < 6) {
+        while (strlen($code) < 12) {
             $position = rand(0, $charactersNumber - 1);
             $character = $characters[$position];
             $code = $code . $character;
@@ -104,6 +104,4 @@ class CodecardController extends Controller
 
         return  redirect()->back();
     }
-
-
 }
