@@ -139,6 +139,21 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/questionscours/{questionscours}/edit', [App\Http\Controllers\Admin\QuestionscoursController::class, 'edit'])->name('questionscours.edit');
         Route::put('/questionscours/update/{id}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'update'])->name('questionscours.update');
         Route::get('/questionscours/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionscoursController::class, 'destroy'])->name('questionscours.destroy');
+
+        //quiz
+        Route::get('/quiz', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz');
+        Route::get('/quizadd', [App\Http\Controllers\Admin\QuizController::class, 'create'])->name('quiz.add');
+        Route::post('/quizadd/add', [App\Http\Controllers\Admin\QuizController::class, 'store'])->name('quiz.add');
+
+        //qustionquiz
+        Route::get('/qustionquiz', [App\Http\Controllers\Admin\QustionquizController::class, 'index'])->name('quiz.qustionquiz');
+
+        // answers
+        Route::get('/answers/{id}', [App\Http\Controllers\Admin\AnswerquizController::class, 'index'])->name('quiz.answers');
+
+
+
+
     });
 
 

@@ -93,6 +93,8 @@
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.codegenaret')}}">انشاء كود </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.teacher')}}">اضافة معلم</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.questionscours')}}">اضافة اسئلة شائعة</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.quiz')}}">اضافة اختبار  </a></li>
+
 
 
                 </ul>

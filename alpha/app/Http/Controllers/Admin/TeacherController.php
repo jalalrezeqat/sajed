@@ -43,7 +43,7 @@ class TeacherController extends Controller
 
         $student = new teachers();
         $student->name = $request->input('name');
-        $post->summernote = $request->input('summernote');
+        $student->summernote = $request->input('summernote');
 
 
         if ($request->hasfile('img')) {
