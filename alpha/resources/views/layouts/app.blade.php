@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {{--  --}}
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/button.js','resources/css/custom.css','resources/css/login.css','resources/css/regestar.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/button.js','resources/css/custom.css','resources/css/login.css','resources/css/vedio.css','resources/css/regestar.css','resources/css/order.css'])
 </head>
 <body>
     <div id="app">
@@ -440,13 +440,14 @@
 {{--  --}}
 
 </body>
-<script type="text/javascript">
+
+{{-- <script type="text/javascript">
 if (!Page_Validators[i].isvalid) {
     message.style.display = "block";
     // Reopen modal.
     $('#modal-toggle-regester').modal('show');
 }
-</script>
+</script> --}}
 </html>
 <script>
   // Change the second argument to your options:
@@ -455,5 +456,7 @@ const player = new Plyr('video', {captions: {active: true}});
 
 // Expose player so it can be used from the console
 window.player = player;
-
+  const myModalEl = document.getElementById('myModal')
+const modal = new mdb.Modal(myModalEl)
+modal.show()
 </script>

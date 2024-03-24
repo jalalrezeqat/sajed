@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('vedio');
             $table->string('chabters');
             $table->string('course');
+            $table->string('file');
             $table->timestamps();
         });
     }

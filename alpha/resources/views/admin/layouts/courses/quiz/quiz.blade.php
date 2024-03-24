@@ -27,7 +27,9 @@
 
   
               <td class=""> 
-                 <a href="{{route('admin.questionscours.edit',$quizs->id)}}"  class="btn btn-dark editdelete">تعديل </a>
+                 <a href="{{route('admin.quiz.qustionquizzes',$quizs->id)}}"  class="btn btn-success editdelete">اضافة اسئلة </a>
+
+                 <a href="{{route('admin.quizadd.edit',$quizs->id)}}"  class="btn btn-dark editdelete">تعديل </a>
 
                  <a href="{{route('admin.questionscours.destroy',$quizs->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
                  

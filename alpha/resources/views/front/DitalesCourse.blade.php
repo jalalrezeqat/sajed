@@ -1,9 +1,11 @@
 @extends('layouts.app')
+    @vite(['resources/css/vedio.css','resources/css/order.css'])
 
     @section('content')
     <div class="namecourse  float-right mb-2">
         <p class="namebranch-text"> الدورات > {{$b->branche}} > {{$b->name}} </p>
     </div>
+    
 <br>
 <br>
  @if (session('message4'))
@@ -28,7 +30,7 @@
       <p class="mt-3  col-lg-4" style="color: blanchedalmond"> عدد دروس الدورة  : {{$lessoncount}} درساً مسجلاً</p> 
     </div>
     <div class="row coursedetales mt-5">
-      <button class=" btncouresdetales  col-lg-6">اطلب بطاقتك</button>
+      <button type="button" class=" btncouresdetales  col-lg-6"><label class=" "  aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
       <p class="mt-3 mr-3 col-lg-5" style="color: blanchedalmond"> أدخل كود البطاقة وابدأ بالتّعلّم</p> 
     </div>
     <div class="row coursedetales">
@@ -89,7 +91,9 @@
 <h3 class="dir mt-5 mr-5" id="about">حول الدورة:</h3>
 <p style="font-size:18px; line-height:33.73px;Width:80%; text-align: justify;
   text-justify: inter-word; " class="dir ditelspageinsaid">{{$b->aboutcourse}}</p>
-<button class="btncouresdetales">شاهد درس مجّاني </button>
+<button class="btncouresdetales" ><label class="btncouresdetale "  aria-current="page" for="modal-toggle-vedio">شاهد درس مجّاني</label>
+</button>
+
 </div>
 {{-- end --}}
 {{-- about tatcher --}}
@@ -180,36 +184,64 @@ $count=0;
       ?>
       
            @if($lessons->chabters == $chbters->name)
-            
+
              <div class="card card-body" id="">
                 <div class="ditelsco">
                     <?php  if (Auth::user()): ?>
                        @if($key == 0)
-                                  <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
-                                    <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button  style="border: none;background-color:#f8fafc
-                                       ">{{$lessons->name}}</button></a>
+                         <?php 
+                           $path = 'img/vedio/' . $lessons->vedio;
+                           $file = $id3->analyze($path); 
+                        ?>
+                     @foreach ($code as $codes)
+
+                           @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name ) 
+                                    <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
+                                <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button style="border: none;background-color:#f8fafc
+                                  ">{{$lessons->name}}</button></a>
+                            @else
+                              <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
+                                  <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button  style="border: none;background-color:#f8fafc
+                                       "><label class=" "  aria-current="page" for="modal-toggle-vedio"> {{$lessons->name}} </label></button></a>
                                        
+                            @endif
+                       @endforeach
+                 
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
                       @endif
+
                       @if($key > 0) 
+                      @foreach ($code as $codes)
+
                        <?php $insid=1;?>
-                       @foreach ($code as $codes)
                       <?php $inside1=0?>
-                           @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name & $inside1==0) 
+                           @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name ) 
                            <?php $insid=0;?>
 
                               <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                 <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button style="border: none;background-color:#f8fafc
                                   ">{{$lessons->name}}</button></a>
                                     <?php $insid1=1;?>              
-
+                                        <?php 
+                                         $path = 'img/vedio/' . $lessons->vedio;
+                                         $file = $id3->analyze($path); 
+                                         ?>
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
 
                          @endif   
 
-                          @if($codes->user !==  Auth::user()->name & $insid ==1)
+                          @if($codes->user !==  Auth::user()->name || $insid ==1)
                                <i style="font-size:24px;color:" class="fa">&#xf144;</i>
                                   <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button disabled style="border: none;background-color:#f8fafc
                                     ">{{$lessons->name}}</button></a>
-                              <?php $insid=0;?>              
+                                     <?php 
+                                         $path = 'img/vedio/' . $lessons->vedio;
+                                         $file = $id3->analyze($path); 
+                                         ?>
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
+
+                              <?php $insid=0;?>  
+
 
                           @endif
 
@@ -222,16 +254,29 @@ $count=0;
 
                              <?php  if (!Auth::user()): ?>
                               @if($key == 0)
-                                  <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
+                                  <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                     <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button  style="border: none;background-color:#f8fafc
-                                       ">{{$lessons->name}}</button></a>
+                                       "><label class=" "  aria-current="page" for="modal-toggle-vedio"> {{$lessons->name}} </label></button></a>
+                                        <?php 
+                                         $path = 'img/vedio/' . $lessons->vedio;
+                                         $file = $id3->analyze($path); 
+                                         ?>
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
+
                                 @endif
                              @if($key > 0)        
 
                                   <i style="font-size:24px;color:" class="fa">&#xf144;</i>
                                     <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button disabled style="border: none;background-color:#f8fafc
                                        ">{{$lessons->name}}</button></a>
+                                        <?php 
+                                         $path = 'img/vedio/' . $lessons->vedio;
+                                         $file = $id3->analyze($path); 
+                                         ?>
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
+
                             @endif
+                            
                              <?php endif; ?>
 
                   </div>
@@ -241,14 +286,51 @@ $count=0;
 
      
       @endforeach
+        <?php  if (!Auth::user()): ?>
 
+     @foreach ($quiz as $key => $quizs)
+                @if($quizs->chabters == $chbters->name)
+                 <div class="card card-body" id="">
+                <div class="ditelsco">
+                  <i class="fa  fa-book" style="font-size:24px;color:#" aria-hidden="true"></i>
+                  {{$quizs->name}}
+                </div>
+                 </div>
+                @endif
+
+    @endforeach
+       <?php endif; ?>
+    
+       {{--  --}}
+     <?php  if (Auth::user()): ?>
+
+      @foreach ($code as $codes)
+      @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name ) 
+                @foreach ($quiz as $key => $quizs)
+                @if($quizs->chabters == $chbters->name)
+                 <div class="card card-body" id="">
+                <div class="ditelsco">
+                  <i class="fa  fa-book" style="font-size:24px;color:#27AC1F" aria-hidden="true"></i>
+                  {{$quizs->name}}
+                </div>
+                 </div>
+                @endif
+
+                @endforeach
+      @endif
+    @endforeach
+     <?php endif; ?>
+
+       {{--  --}}
     </div>
-
+    
     @endforeach
   </div>
   
   <div class="col text-center">
-    <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+    <button class=" btncouresdetales mt-5 text-center"><label class=" "  aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label>
+</button>
+    
     </div>
   </div>
  
@@ -274,10 +356,208 @@ $count=0;
   @endforeach
    </div>
    <div class="col text-center">
-    <button class=" btncouresdetales mt-5 text-center">اطلب بطاقتك</button>
+    <button class=" btncouresdetales mt-5 text-center"><label class=" "  aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label>
     </div>
   </div>
 {{--  --}}
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+            
+      <!-- Login Form Popup HTML -->
+            
+  <input id="modal-toggle-vedio" type="checkbox">
+  <label class="modal-backdrop" data-bs-backdrop="static" tabindex="-1" for="modal-toggle-vedio"></label>
+  <div class="modal-content">
+      <label class="modal-close-btn" for="modal-toggle-vedio">
+        <svg width="30" height="30">
+          <line x1="5" y1="5" x2="20" y2="20"/>
+          <line x1="20" y1="5" x2="5" y2="20"/>
+        </svg>
+      </label>
+<!--  LOG IN  -->
+
+  <div class="col-12 dir" style="margin: auto;">
+     
+      <div class="vidio " style="height: 70%;width: 80%;margin: auto;">
+	        <video controls style="--plyr-color-main: #1ac266; "   crossorigin playsinline  poster="">
+		    <source src="{{asset('/img/vedio/'.$vedio->vedio)}}" type="video/mp4" size="576">
+			<source src="{{asset('img/vedio/'.$vedio->vedio)}}" type="video/mp4" size="720">
+			<source src="{{asset('img/vedio/'.$vedio->vedio)}}" type="video/mp4" size="1080">
+			<!-- Caption files -->
+			<!-- Fallback for browsers that don't support the <video> element -->
+	        </video>
+    </div>
+  </div>
+  </div>
+{{--  --}}
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+
+              {{--  --}}
+
+     
+{{--  --}}
+  <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+
+              {{--  --}}
+            
+      <!-- Login Form Popup HTML -->
+            
+  <input id="modal-toggle-order" type="checkbox">
+  <label class="modal-backdrop"  for="modal-toggle-order"></label>
+  <div class="modal-content-order">
+      <label class="modal-close-btn" for="modal-toggle-order">
+        <svg width="30" height="30">
+          <line x1="5" y1="5" x2="20" y2="20"/>
+          <line x1="20" y1="5" x2="5" y2="20"/>
+        </svg>
+      </label>
+      <h1 class="mb-3 dir text-center ">{{$b->name}}</h1>
+      <h2 class="mb-3 dir text-center ">{{$b->branche}} -  {{$b->chabters}}</h2>
+
+      <div class="row justify-content-around">
+        <div class="col-12 col-md-5">
+          @error('password_verified_at')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+        </div>
+        <div class="col-12 col-md-5">
+          @error('email')
+          <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+        </div>
+      </div>
+    
+      <div class="row dir  coursedetales mt-3" >
+      <p class=" mr-5  col-12 col-md-5" style="color: "> مدرس الدورة : {{$b->teacher_name}} </p> 
+      <p class=" col-12 col-md-5" style="color: "> عدد دروس الدورة  : {{$lessoncount}} درساً مسجلاً</p> 
+      </div>
+    
+      <!--  regester  -->
+  <form class="contectus-form dir" method="POST" action="{{ route('order.store')}}" >
+    @csrf
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @elseif (session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+
+      <div class="row gy-4 gy-xl-2 p-4 p-xl-5 d-flex justify-content-around">
+
+          <div class="col-12 col-md-4">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group">
+              <h5>ادخل اسمك الرباعي : </h5>
+            </div>
+          </div>
+           <?php  if (Auth::user()): ?>
+        <div class="col-12 col-md-8">
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+           <input type="name" class="form-control" placeholder="الاسم الرباعي" id="name" name="name" value="{{Auth::user()->name}}" required>
+        </div>
+           <?php endif; ?>
+              <?php  if (!Auth::user()): ?>
+        <div class="col-12 col-md-8">
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+           <input type="name" class="form-control" placeholder="الاسم الرباعي" id="name" name="name" value="" required>
+        </div>
+           <?php endif; ?>
+
+          <div class="col-12 col-md-4">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group">
+              <h5>اختر الدورة المطلوبة :</h5>
+            </div>
+          </div>
+        <div class="col-12 col-md-8">
+          <label for="email" class="form-label">  <span class="text-danger"></span></label>
+          <select class="form-control " name="course" id="course">
+             <option  placeholder=" " id="course" name="course" value="{{$b->name}}" required>{{$b->name}}</option>
+          </select>
+        </div>
+       
+         <div class="col-12 col-md-4">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group">
+              <h5>حدّد موقعك: </h5>
+            </div>
+          </div>
+        <div class="col-12 col-md-3">
+            <label for="fname" class=""><span class="text-danger"></span></label>
+            <div class="input-group">
+              <input type="gavarment" class="form-control" placeholder="المحافظة" id="gavarment" name="gavarment" value="" required>
+            </div>
+          </div>
+        
+             <div class="col-12 col-md-5">
+            <label for="fname" class=""><span class="text-danger"></span> </label>
+            <div class="input-group">
+              <input type="addres" class="form-control" placeholder="العنوان بالتفصيل" id="addres" name="addres" value="" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label for="fname" class="form-label"> <span class="text-danger"></span></label>
+            <div class="input-group">
+              <h5>أدخل رقم هاتفك:</h5>
+            </div>
+          </div>
+           <?php  if (Auth::user()): ?>
+          <div class="col-12 col-md-3">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="phone" class="form-control" placeholder="رقم الهاتف" id="phone" value="{{Auth::user()->phone}}" name="phone" required value="">
+            </div>
+          </div>
+          <?php endif ?>
+            <?php  if (!Auth::user()): ?>
+          <div class="col-12 col-md-3">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="رقم الهاتف" id="phone"  name="phone" required value="">
+            </div>
+          </div>
+          <?php endif ?>
+           <div class="col-12 col-md-5">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <div class="input-group">
+              <a href=""><h5 class="det-order" >قراءة المزيد حول الدورة ></h5>
+</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 d-flex but-regester justify-content-center">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <p class="order-text" >ستصلك الـبـطـاقــة خلال 48 ســـــاعة من إتمام طلبك</p>
+            </div>
+          <div class="col-12 col-md-6 d-flex  justify-content-center">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+            <button type="submit" class="btn detel-form-but " >إنشاء الحساب</button>
+          </div>
+           <div class="col-12 col-md-12 d-flex  justify-content-center">
+            <label for="lname" class="form-label"> <span class="text-danger"></label>
+              <h5 class="price-order">السعر : {{$b->price}} ₪</h5>
+            </div>
+          
+      </div> 
+    </form>
+
+  </div>
+  </div>
+  </div>
+  </div>
+{{--  --}}
+<script>
+  
+</script>
+
     @endsection
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/button.js','resources/css/custom.css','resources/css/login.css','resources/css/regestar.css'])

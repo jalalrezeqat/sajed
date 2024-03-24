@@ -4,7 +4,7 @@
 
 <div>
 
-    <a href="{{route('admin.questions.add')}}"><button  class="btnaboutadd btn btn-dark">اضافة الى الاسئلة الشائعة</button> </a>
+    <a href="{{route('admin.CommonQuestions.add')}}"><button  class="btnaboutadd btn btn-dark">اضافة الى الاسئلة الشائعة</button> </a>
   </div>
   <div class=" table-responsive">
   
@@ -22,8 +22,8 @@
               <td class="tdnamecontectus">{{$question->question}} </td>
               <td class="">{{$question->question_text}} </td>
   
-              <td class="">  <a href="{{route('admin.questions.edit',$question->id)}}"  class="btn btn-success editdelete">تعديل</a>
-                    <a href="{{route('admin.questions.destroy',$question->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
+              <td class="">  <a href="{{route('admin.CommonQuestions.edit',$question->id)}}"  class="btn btn-success editdelete">تعديل</a>
+                    <a href="{{route('admin.CommonQuestions.destroy',$question->id)}}" onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">حذف</a>
               </td>
             
             </tr>

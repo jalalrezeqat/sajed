@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,24 +10,22 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\question;
-
-
 use App\Http\Controllers;
-
+use App\Models\CommonQuestions;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class CommonQuestionsController extends Controller
 {
     public function index()
     {
-        $question =  DB::table('questions')->get();
+        $question =  DB::table('common_questions')->get();
 
-        return view('admin.layouts.questions.questions', compact('question'));
+        return view('admin.layouts.CommonQuestions.CommonQuestions', compact('question'));
     }
 
     public function destroy(int $questions_id)
     {
-        $questionsDb = DB::table('questions');
+        $questionsDb = DB::table('common_questions');
         $questionshdelete = $questionsDb->where('id', $questions_id);
         $questionshdelete->delete();
 
@@ -33,33 +33,33 @@ class QuestionController extends Controller
     }
     public function addquestions()
     {
-        return view('admin.layouts.questions.addquestions');
+        return view('admin.layouts.CommonQuestions.addCommonQuestions');
     }
 
     public function store(Request $request)
     {
 
-        $data = new question();
+        $data = new CommonQuestions();
         $input = $request->all();
         $data->fill($input)->save();
 
-        return  redirect()->route('admin.questions');
+        return  redirect()->route('admin.CommonQuestions');
     }
-    public function edit(question $question, $questionscours)
+    public function edit(CommonQuestions $question)
     {
-        return view('admin.layouts.questions.edit', compact('question'));
+        return view('admin.layouts.CommonQuestions.edit', compact('question'));
     }
 
     public function update(Request $request, $id)
     {
 
 
-        $post = question::find($id);
+        $post = CommonQuestions::find($id);
         $post->question = $request->input('question');
         $post->question_text = $request->input('question_text');
 
         $post->save();
 
-        return  redirect()->route('admin.questions');
+        return  redirect()->route('admin.CommonQuestions');
     }
 }

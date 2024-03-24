@@ -69,7 +69,14 @@ class LessonController extends Controller
             $file->move('img/vedio/', $filename);
             $student->vedio = $filename;
         }
+        if ($request->hasfile('file')) {
 
+            $file = $request->file('file');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $file->move('img/pdf/', $filename);
+            $student->file = $filename;
+        }
         $student->save();
         return  redirect()->route('admin.courses.lesson', compact('id'));
     }
@@ -124,6 +131,18 @@ class LessonController extends Controller
             $file_name = time() . '.' . $extintion;
             $file->move('img/vedio/', $file_name);
             $post->vedio     = $file_name;
+        }
+        if ($request->hasfile('file')) {
+
+            $distination = 'img/pdf/' . $post->file;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('file');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/pdf/', $file_name);
+            $post->file     = $file_name;
         }
         $chabter = DB::table('chabters')->where('name', '=', $post->chabters)->first();
         $post->save();

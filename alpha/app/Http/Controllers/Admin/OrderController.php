@@ -1,27 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
-use App\Models\quiz;
-use Illuminate\Support\Facades\DB;
-use App\Models\qustionquiz;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\order;
 use Illuminate\Http\Request;
 
-class QustionquizController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $qustionquiz = DB::table('qustionquiz')->get();
-        foreach($qustionquiz as $qustionquiz)
-        {
-             $quiz = DB::table('quizzes')->where('name','=',$qustionquiz->quizzes)->get();
-
-        };
-        return view('admin.layouts.courses.quiz.qustionquiz.qustionquiz', compact('quiz','qustionquiz'));
-
+        //
     }
 
     /**
@@ -37,21 +31,31 @@ class QustionquizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new order();
+        $student->name = $request->input('name');
+        $student->course = $request->input('course');
+        $student->gavarment = $request->input('gavarment');
+        $student->addres = $request->input('addres');
+        $student->phone = $request->input('phone');
+        if (Auth::user()) {
+            $student->email = Auth::user()->email;
+        }
+        $student->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(qustionquiz $qustionquiz)
+    public function show(order $order)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(qustionquiz $qustionquiz)
+    public function edit(order $order)
     {
         //
     }
@@ -59,7 +63,7 @@ class QustionquizController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, qustionquiz $qustionquiz)
+    public function update(Request $request, order $order)
     {
         //
     }
@@ -67,7 +71,7 @@ class QustionquizController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(qustionquiz $qustionquiz)
+    public function destroy(order $order)
     {
         //
     }

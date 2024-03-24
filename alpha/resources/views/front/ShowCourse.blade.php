@@ -4,17 +4,24 @@
     <div class="namecourse mt-5   float-right mb-2">
         <p class="namebranch-text " style="font-size:14px;"> الدورات  > {{$b->branche}} > {{$b->name}} - {{$b->branche}} -  {{$b->chabters}} </p>
     </div>
+
 <br>
 <br>
 <br>
+
     <div class="row mt-5 dir">
-      <div class="col-sm-3">
+      <div class="col-sm-4">
                 <div class="sidbarshowcourse" >
 
         <div>
             <p class="text-center mt-3" style="font-size: 25.38px">اهلا بك : {{Auth::user()->name}}</p>
             <p class="text-center" style="font-size: 12.69px">هل أنتَ مُستعد للحصول على العلامة التي تحلُم بها؟ </p>
-            <h2 class="text-center mb-3">96</h2>
+            @if($mark==null)
+             <h2 class="text-center mb-3">0</h2>
+            @else
+              <h2 class="text-center mb-3">{{$mark->mark}}</h2>
+            @endif
+
         </div>
             @foreach ($chbter as $chbters)
     <?php
@@ -63,16 +70,31 @@ $count=0;
                               <i style="font-size:14px;color:#27AC1F" class="fa">&#xf144;</i>
                                 <a href="{{ url('courseshow'.'/'.$b->id .'/'.$lessons->id)}}"><button style="border: none;background-color:#f8fafc
                                   ">{{$lessons->name}}</button></a>
+                                      <?php 
+                                         $path = 'img/vedio/' . $lessons->vedio;
+                                         $file = $id3->analyze($path); 
+                                         ?>
+                                <p class="mindet" ><?php echo $file['playtime_string']; ?> دقيقة</p>
                             
 
                   </div>
                 </div> 
          @endif
      
-
-     
       @endforeach
+@foreach ($quiz as $key => $quizs)
+                @if($quizs->chabters == $chbters->name)
+                 <div class="card card-body" id="">
+                <div class="ditelsco">
+                  <i class="fa  fa-book" style="font-size:24px;color:#27AC1F" aria-hidden="true"></i>
+                  {{$quizs->name}}
+                    <?php $m='order';?>
 
+                </div>
+                 </div>
+                @endif
+
+                @endforeach
     </div>
 
     @endforeach
@@ -81,7 +103,7 @@ $count=0;
         </div>
   </div>
     </div>
-      <div class="col-sm-9" >
+      <div class="col-sm-8" >
              <div>
                 {{-- <video  controls controlsList="nodownload" autoplay="autoplay" playsinline width="100%" src="{{asset('img/vedio/'.$lessons->vedio)}}">
                 </video> --}}
@@ -96,7 +118,11 @@ $count=0;
 			<!-- Caption files -->
 			<!-- Fallback for browsers that don't support the <video> element -->
 	        </video>
+                        <?php $m='order';?>
+                  <button class=" btncouresdetales mt-5 text-center"><label class=" "  aria-current="page" for="modal-toggle-{{$m}}"> اطلب بطاقتك </label>
+
                </div>
+
                  <div class="row mt-5  ">
                     <div class="col marginr5 ">
                         <p class="mr-5 font18px "> {{$vedios->chabters}}</p>
@@ -110,20 +136,24 @@ $count=0;
                         <p class="font18px ">{{$vedios->name}}</p>
                     </div>
                     <div class="col">
-                        <a class="flo font18px limkdown">تحميل ملخّص المُحاضرة</a>
+                        <a href="{{ url('download'.'/'.$vedios->id)}}" class="flo font18px limkdown">تحميل ملخّص المُحاضرة</a>
                     </div>
                 </div>
+                
+                <form action="{{url('markofcourse'.'/'.$b->id)}}" method="POST">
+                    @csrf
                     <div class="row dir">
                     <div class="col">
                         <div class="row marginr5">
-                         <p class="col-4 font18px" style="padding: 0%;margin-left:2%;font-size:18px">حدد معدّل تطمح في الوصول إليه في الرياضيات: </p>
-                         <input type="text" class="inpoutcours" name="" maxlength="2">
+                         <p class="col-5 font18px" style="padding: 0%;margin-left:2%;font-size:18px">حدد معدّل تطمح في الوصول إليه في الرياضيات: </p>
+                         <input type="text" class="inpoutcours" name="mark" required maxlength="2">
                          <button class=" butcoresscore  col-lg-3" style="    margin-right: 2%;">ادخال </button>
                         </div>
                     </div>
-                  
+                </form>
                 </div>
                 <div>
+                            
                     <p class="font18px marginr5">بعض النصائح المُقدّمة من ألفا لزيادة التركيز أثناء التعلّم:</p>
                     <p class="font14px marginr5">
                         <ul class="marginr5 font14px">
@@ -134,6 +164,7 @@ $count=0;
                             <li>تفاعل مع زملائك وأستاذك من خلال طرح الأسالة ومشاركة التلاخيص على جروب الواتس آب</li>
                         </ul>
                     </p>
+                    
                 </div>
 
 
@@ -143,6 +174,7 @@ $count=0;
 
 </div>
     </div>
-    
-@endsection
+    {{--  --}}
+ 
 
+@endsection

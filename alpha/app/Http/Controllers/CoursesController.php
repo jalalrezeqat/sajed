@@ -13,6 +13,9 @@ use App\Models\codecard;
 use Owenoj\LaravelGetId3\GetId3;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+use App\Models\markcourse;
+
 
 
 
@@ -72,18 +75,30 @@ class CoursesController extends Controller
         $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
         $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio')->where('course', '=', $b->name)->get();
         $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
+        $quiz = DB::table('quizzes')->get();
+        foreach ($lesson as $lessons) {
+            $vedio = DB::table('lessons')->where('id', '=', $lesson[0]->id)->first();
+        }
         $chabtercount = $chbter->count();
         $lessoncount = $lesson->count();
         //instantiate class with file
         //instantiate class with file
 
-
-        return view('front.DitalesCourse', compact('branch', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
+        foreach ($lesson as $lessons) {
+            // $content = File::get(asset('img/vedio/' . $vedios->vedio));
+            $id3 = new \getID3;
+            $path = 'img/vedio/' . $lessons->vedio;
+            $file = $id3->analyze($path);
+            // $duration_seconds = $file['playtime_string'];
+            // dd($content);
+        }
+        return view('front.DitalesCourse', compact('branch', 'id3', 'vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
     }
 
 
     public function showcourse(Request $request, $id, $vidoe)
     {
+        $quiz = DB::table('quizzes')->get();
         $user = 'notauth';
         $code = '';
         $b = courses::find($id);
@@ -97,6 +112,16 @@ class CoursesController extends Controller
                         $i = 0;
                         $br = $branch[$i];
                         $i++;
+                        $mark = DB::table('markcourses')->where('nameofstudant', '=', Auth::user()->name)->where('nameofcourse', '=', $b->name)->first();
+                        // if ($mark == null) {
+                        //     $student = new markcourse();
+                        //     $student->mark = '0';
+                        //     $student->nameofcourse = $b->name;
+                        //     if (Auth::user()) {
+                        //         $student->nameofstudant = Auth::user()->name;
+                        //     }
+                        //     $student->save();
+                        // }
                     }
                     $i = 0;
                     // $branch =branch::find($branchid);
@@ -119,15 +144,30 @@ class CoursesController extends Controller
                         //dd($file);
                         // dd($content);
                     }
+                    $id3 = new \getID3;
 
 
-                    return view('front.ShowCourse', compact('branch', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours', 'duration_seconds', 'code'));
+                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours', 'duration_seconds', 'code'));
                 }
             }
         }
         return redirect()->back()->with('message4', 'يرجى التسجيل في الدورة');
     }
+    public function download($id)
+    {
+        $file = DB::table('lessons')->where('id', '=', $id)->get();
 
+        foreach ($file as $files) {
+            if ($files->file == null) {
+                return redirect()->back();
+            }
+            $path = 'img/pdf/' . $files->file;
+        }
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::download($path, $files->file, $headers);
+    }
     /**
      * Show the form for creating a new resource.
      */

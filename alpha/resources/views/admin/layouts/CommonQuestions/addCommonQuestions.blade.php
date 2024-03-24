@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
-<a href="{{route('admin.questions')}}"><button  class="btnaboutadd btn btn-dark">رجوع</button> </a>
+<a href="{{route('admin.CommonQuestions')}}"><button  class="btnaboutadd btn btn-dark">رجوع</button> </a>
 <div class="formaddm">
-    <form action="{{url('admin/questions/add')}}" method="POST">
+    <form action="{{url('admin/CommonQuestions/add')}}" method="POST">
         @csrf
 
         <div class="form-group">

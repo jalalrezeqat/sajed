@@ -1,5 +1,5 @@
 var config = {
-  key: '<YOUR PLAYER KEY>',
+  key: '<a8016642-510d-44d8-8534-9ea82ce03c03	>',
   cast: {
     enable: true
   }

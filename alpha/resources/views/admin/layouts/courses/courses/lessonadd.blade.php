@@ -14,7 +14,11 @@
           </div>
         <div class="form-group">
             <label for="inputtitelmistion">الفيديو</label>
-            <input type="file" class="form-control" name='vedio' id="vedio">
+            <input type="file" accept="video/mp4,video/x-m4v,video/*" class="form-control" name='vedio' id="vedio">
+          </div>
+           <div class="form-group">
+            <label for="inputtitelmistion">ملخص المحاضرة</label>
+            <input type="file" accept="application/pdf" class="form-control" name='file' id="file">
           </div>
           <div class="form-group">
             <label for="inputtitelmistion">الوحدة</label>

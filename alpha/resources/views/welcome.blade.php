@@ -85,7 +85,7 @@
 
     <div class=" m-3 dir card-text-home">
      <h2 class="card-text-home"style="font-size: 262.5%">الاسئلة الشائعة</h2>
-     @foreach ($questions as $question)
+     @foreach ($CommonQuestions as $question)
        <div class="qustion1">   
    <p>
      <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$question->id}}" aria-expanded="false" aria-controls="collapseExample"></button>

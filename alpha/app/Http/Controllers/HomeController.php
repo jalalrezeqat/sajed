@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\CoursesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,13 +29,9 @@ class HomeController extends Controller
         $courses = DB::table('courses')->get();
         $branch = DB::table('branches')->pluck('id');
         // $courscesdet=DB::table('courses')->where('branche','=' ,$branch )->get();
-        $questions =  DB::table('questions')->get();
-        $slider =  DB::table('sliders')->where('page','=' , 'الرئيسية')->get();
-        $sliderteacher =  DB::table('sliders')->where('page','=' , 'المعلم')->get();
-        return view('welcome' ,compact('courses','questions','slider','sliderteacher','branch'));   
-
+        $CommonQuestions =  DB::table('common_questions')->get();
+        $slider =  DB::table('sliders')->where('page', '=', 'الرئيسية')->get();
+        $sliderteacher =  DB::table('sliders')->where('page', '=', 'المعلم')->get();
+        return view('welcome', compact('courses', 'CommonQuestions', 'slider', 'sliderteacher', 'branch'));
     }
- 
-
-  
 }

@@ -285,7 +285,20 @@ body {
     float: left;
     border-radius: 12.34px;
 }
-
+.detel-form-but {
+    width: 80%;
+    color: white;
+    background-color: #27ac1f;
+    float: left;
+    border-radius: 12.34px;
+}
+.order-text {
+    text-decoration: underline;
+}
+.contectus-form select {
+    border-radius: 12.34px;
+    background-color: #e4e4e4;
+}
 #butcour {
     margin-left: 2%;
 }
@@ -326,6 +339,14 @@ body {
     float: right;
     margin-top: 2%;
 }
+.price-order {
+    color: #27ac1f;
+}
+.det-order {
+    color: #27ac1f;
+    text-decoration: underline;
+}
+
 .information-dashbord {
     color: white;
     display: inline-block;
@@ -543,6 +564,9 @@ th {
     color: white;
     background-color: #27ac1f;
 }
+.btncouresdetale {
+    color: white;
+}
 .namecource {
     width: 80%;
 }
@@ -727,7 +751,7 @@ th {
     background-color: #27ac1f;
 }
 .inpoutcours {
-    width: 38px;
+    width: 50px;
     height: 38px;
     border: 1px solid #12181e;
     font-size: 12px;
@@ -735,5 +759,8 @@ th {
 }
 .limkdown {
     color: #27ac1f;
+}
+.mindet {
+    float: left;
 }
 /*  */

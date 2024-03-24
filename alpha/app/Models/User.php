@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-   
+
     protected $fillable = [
         'name',
         'email',
@@ -49,4 +49,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function userResults()
+    {
+        return $this->hasMany(Result::class);
+    }
 }

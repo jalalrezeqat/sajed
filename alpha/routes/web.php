@@ -66,12 +66,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/branch/update/{id}', [App\Http\Controllers\Admin\BranchController::class, 'update'])->name('branch.update');
 
         //commonquestions
-        Route::get('/questions', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions');
-        Route::get('/questions/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
-        Route::get('/questions/add', [App\Http\Controllers\Admin\QuestionController::class, 'addquestions'])->name('questions.add');
-        Route::post('/questions/add', [App\Http\Controllers\Admin\QuestionController::class, 'store']);
-        Route::get('/questions/{question}/edit', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
-        Route::put('/questions/update/{id}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
+        Route::get('/CommonQuestions', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'index'])->name('CommonQuestions');
+        Route::get('/CommonQuestions/{questions_id}/delete', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'destroy'])->name('CommonQuestions.destroy');
+        Route::get('/CommonQuestions/add', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'addquestions'])->name('CommonQuestions.add');
+        Route::post('/CommonQuestions/add', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'store']);
+        Route::get('/CommonQuestions/{question}/edit', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'edit'])->name('CommonQuestions.edit');
+        Route::put('/CommonQuestions/update/{id}', [App\Http\Controllers\Admin\CommonQuestionsController::class, 'update'])->name('CommonQuestions.update');
 
         //slider
         Route::get('/slider', [App\Http\Controllers\Admin\SliderController::class, 'index'])->name('slider');
@@ -140,20 +140,30 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/questionscours/update/{id}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'update'])->name('questionscours.update');
         Route::get('/questionscours/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionscoursController::class, 'destroy'])->name('questionscours.destroy');
 
-        //quiz
-        Route::get('/quiz', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz');
-        Route::get('/quizadd', [App\Http\Controllers\Admin\QuizController::class, 'create'])->name('quiz.add');
-        Route::post('/quizadd/add', [App\Http\Controllers\Admin\QuizController::class, 'store'])->name('quiz.add');
+        // //quiz
+        // Route::get('/quiz', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz');
+        // Route::get('/quiz/add', [App\Http\Controllers\Admin\QuizController::class, 'create'])->name('quiz.add');
+        // Route::post('/quizadd/add', [App\Http\Controllers\Admin\QuizController::class, 'store'])->name('quiz.store');
+        // Route::get('/quizadd/{quizadd}/edit', [App\Http\Controllers\Admin\QuizController::class, 'edit'])->name('quizadd.edit');
+        // Route::put('/quizadd/update/{id}', [App\Http\Controllers\Admin\QuizController::class, 'update'])->name('quizadd.update');
+        // Route::get('/quiz/{quiz_id}/delete', [App\Http\Controllers\Admin\QuizController::class, 'destroy'])->name('quiz.destroy');
 
-        //qustionquiz
-        Route::get('/qustionquiz', [App\Http\Controllers\Admin\QustionquizController::class, 'index'])->name('quiz.qustionquiz');
+        // //qustionquizzes
+        // Route::get('/quizzes/qustion/{id}', [App\Http\Controllers\Admin\qustionquizzesController::class, 'index'])->name('quiz.qustionquizzes');
+        // Route::get('/qustion/add', [App\Http\Controllers\Admin\qustionquizzesController::class, 'create'])->name('qustionquizzes.add');
+        // Route::post('/qustion/add', [App\Http\Controllers\Admin\qustionquizzesController::class, 'store'])->name('qustionquizzes.store');
+        // Route::get('/qustion/{qustion}/edit', [App\Http\Controllers\Admin\qustionquizzesController::class, 'edit'])->name('qustion.edit');
+        // Route::put('/qustion/update/{id}', [App\Http\Controllers\Admin\qustionquizzesController::class, 'update'])->name('qustion.update');
+        // Route::get('/qustion/{qustion_id}/delete', [App\Http\Controllers\Admin\qustionquizzesController::class, 'destroy'])->name('qustion.destroy');
 
-        // answers
-        Route::get('/answers/{id}', [App\Http\Controllers\Admin\AnswerquizController::class, 'index'])->name('quiz.answers');
-
-
-
-
+        // // answers
+        // Route::get('/answers/{id}', [App\Http\Controllers\Admin\AnswerquizController::class, 'index'])->name('quiz.answers');
+        // Route::get('/answersadd/add', [App\Http\Controllers\Admin\AnswerquizController::class, 'create'])->name('answers.add');
+        // Route::post('/answersadd/add', [App\Http\Controllers\Admin\AnswerquizController::class, 'store'])->name('answersadd.store');
+        // Route::get('/answers/{answerquiz}/edit', [App\Http\Controllers\Admin\AnswerquizController::class, 'edit'])->name('answers.edit');
+        // Route::put('/answers/update/{id}', [App\Http\Controllers\Admin\AnswerquizController::class, 'update'])->name('answers.update');
+        // Route::get('/answers/{answers_id}/delete', [App\Http\Controllers\Admin\AnswerquizController::class, 'destroy'])->name('answers.destroy');
+        // categories
     });
 
 
@@ -176,6 +186,14 @@ Route::get('/coursessecand/{id}', [App\Http\Controllers\coursesController::class
 Route::get('/coursesditels/{id}', [App\Http\Controllers\coursesController::class, 'detalescourse'])->name('front.DitalesCourse');
 Route::get('/courseshow/{id}/{vidoe}', [App\Http\Controllers\coursesController::class, 'showcourse'])->name('front.courseshow');
 Route::put('/codesend/{user}', [App\Http\Controllers\coursesController::class, 'codesend'])->name('codesend');
+Route::get('/download/{id}', [App\Http\Controllers\coursesController::class, 'download'])->name('front.download');
+
+
+//order
+Route::post('/order', [App\Http\Controllers\Admin\OrderController::class, 'store'])->name('order.store');
+Route::post('/markofcourse/{id}', [App\Http\Controllers\MarkcourseController::class, 'store'])->name('markofcourse.store');
+// Route::get('/quiz/{id}', [App\Http\Controllers\Admin\QuestionControllerr::class, 'showquiz'])->name('quiz');
+// Route::post('test', [\App\Http\Controllers\Admin\QuizController::class, 'storequiz'])->name('client.test.store');
 
 
 require __DIR__ . '/auth.php';

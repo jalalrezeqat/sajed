@@ -9,19 +9,32 @@
     <link rel="icon" type="image/x-icon" href="/img/fiveicon.png">
 
     <title>{{ config('app.name', 'Admin Panel ALPHA') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
+<script type="text/javascript"
+        src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
+<script type="text/javascript"
+        src="https://cdn.bitmovin.com/analytics/web/beta/2/bitmovinanalytics.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     @vite(['resources/admin/assets/vendors/mdi/css/materialdesignicons.min.css', 
     'resources/admin/assets/vendors/css/vendor.bundle.base.css',
     'resources/admin/assets/css/style.css',
     'resources/admin/assets/images/favicon.ico',
     'resources/css/custom.css'
     ])
+     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
+    <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
   </head>
   <body class="dir">
     <div class="container-scroller  ">
@@ -93,7 +106,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.codegenaret')}}">انشاء كود </a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.teacher')}}">اضافة معلم</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.questionscours')}}">اضافة اسئلة شائعة</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.quiz')}}">اضافة اختبار  </a></li>
+                  {{-- <li class="nav-item"> <a class="nav-link" href="{{route('admin.quiz')}}">اضافة اختبار  </a></li> --}}
 
 
 
@@ -119,7 +132,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('admin.questions')}}">
+              <a class="nav-link" href="{{route('admin.CommonQuestions')}}">
                 <span class="menu-title font-weight-bold mb-2">الاسئلة الشائعة</span>
               </a>
             </li>
@@ -160,6 +173,7 @@
 
 <script>
    $('#summernote').summernote();
+
 </script>
 
 
