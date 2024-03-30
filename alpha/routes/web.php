@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ProfileController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+//Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+// Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth')->group(function () {
@@ -140,6 +140,43 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/questionscours/update/{id}', [App\Http\Controllers\Admin\QuestionscoursController::class, 'update'])->name('questionscours.update');
         Route::get('/questionscours/{questions_id}/delete', [App\Http\Controllers\Admin\QuestionscoursController::class, 'destroy'])->name('questionscours.destroy');
 
+        // categories
+        // Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+
+        // questionsdestroy
+        Route::get('/categories', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('categories.index');
+        Route::post('/categoriess', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('categories.store');
+        Route::put('/categoriesu/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('categories_mass_destroy', [\App\Http\Controllers\Admin\CategoryController::class, 'massDestroy'])->name('categories.mass_destroy');
+        Route::get('/categoriesc', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('categories.create');
+        Route::get('/categoriesed/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('categories.edit');
+        Route::delete('categories/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+
+
+
+        Route::get('questions', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
+        Route::post('questionss', [App\Http\Controllers\Admin\QuestionController::class, 'store'])->name('questions.store');
+        Route::put('questionssu/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
+        Route::get('questionssc', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('questions.create');
+        Route::get('questionssed/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
+        Route::get('questionssess/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
+        Route::delete('questions_mass_destroy', [App\Http\Controllers\Admin\QuestionController::class, 'massDestroy'])->name('questions.mass_destroy');
+
+        // options
+        Route::get('options', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('options.index');
+        Route::post('optionss', [App\Http\Controllers\Admin\OptionController::class, 'store'])->name('options.store');
+        Route::put('optionsu/{option}', [App\Http\Controllers\Admin\OptionController::class, 'update'])->name('options.update');
+        Route::get('optionsuc', [App\Http\Controllers\Admin\OptionController::class, 'create'])->name('options.create');
+        Route::get('optionsue/{option}', [App\Http\Controllers\Admin\OptionController::class, 'edit'])->name('options.edit');
+        Route::get('optionsud/{option}', [App\Http\Controllers\Admin\OptionController::class, 'destroy'])->name('options.destroy');
+
+
+
+        Route::delete('options_mass_destroy', [App\Http\Controllers\Admin\OptionController::class, 'massDestroy'])->name('options.mass_destroy');
+        // results
+
         // //quiz
         // Route::get('/quiz', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz');
         // Route::get('/quiz/add', [App\Http\Controllers\Admin\QuizController::class, 'create'])->name('quiz.add');
@@ -168,7 +205,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 
 
-
     Route::post('/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
@@ -192,8 +228,10 @@ Route::get('/download/{id}', [App\Http\Controllers\coursesController::class, 'do
 //order
 Route::post('/order', [App\Http\Controllers\Admin\OrderController::class, 'store'])->name('order.store');
 Route::post('/markofcourse/{id}', [App\Http\Controllers\MarkcourseController::class, 'store'])->name('markofcourse.store');
-// Route::get('/quiz/{id}', [App\Http\Controllers\Admin\QuestionControllerr::class, 'showquiz'])->name('quiz');
-// Route::post('test', [\App\Http\Controllers\Admin\QuizController::class, 'storequiz'])->name('client.test.store');
+Route::get('/quiz/{id}/{course}', [App\Http\Controllers\CoursesController::class, 'showquiz'])->name('quiz');
+//Route::post('test', [\App\Http\Controllers\Admin\QuizController::class, 'storequiz'])->name('client.test.store');
+Route::post('/test/{id}', [App\Http\Controllers\CoursesController::class, 'storequiz'])->name('client.test.store');
+Route::get('results/{result_id}', [\App\Http\Controllers\ResultController::class, 'show'])->name('client.results.show');
 
 
 require __DIR__ . '/auth.php';

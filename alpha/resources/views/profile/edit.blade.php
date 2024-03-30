@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label for="inputtitelmistion">الاسم </label>
-            <input type="text" class="form-control" required value="{{Auth::user()->name}}" name='farestname' id="farestname" placeholder="">
+            <input type="text" class="form-control" required value="{{Auth::user()->name}}" name='name' id="name" placeholder="">
           </div>
         
         <div class="form-group">

@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('courses');
-            $table->string('user')->NULL();
+            $table->string('user')->nullable();
+            $table->integer('user_id')->nullable();
             $table->date('startcode');
             $table->date('endcode');
+
             $table->timestamps();
         });
     }

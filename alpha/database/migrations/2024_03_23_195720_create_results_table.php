@@ -16,6 +16,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnUpdate();
             $table->integer('total_points')->nullable();
+            $table->string('user');
+            $table->string('courses');
+            $table->string('namequiz');
+            $table->integer('option_total_point')->nullable();
             $table->timestamps();
         });
     }

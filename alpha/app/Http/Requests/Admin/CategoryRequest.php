@@ -25,6 +25,10 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => ['required'],
+            'courses' => ['required'],
+            'chabters' => ['required'],
+
+
         ];
     }
 }

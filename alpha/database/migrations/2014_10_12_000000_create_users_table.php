@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('branch');
             $table->string('Governorate');
-            $table->string('user_img');
+            $table->string('user_img')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('password_verified_at');

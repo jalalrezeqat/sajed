@@ -89,6 +89,11 @@ body {
     width: 30%;
     margin-top: -10%;
 }
+.card-img-profile {
+    padding: 5px;
+    border-radius: 50%;
+    width: 100%;
+}
 .card-title-home {
     color: #27ac1f;
     text-align: center;
@@ -190,6 +195,12 @@ body {
     border-radius: 10.64px;
     background-color: #f8f8f8;
     margin-top: -20%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+#card-profile {
+    margin-bottom: 25%;
+    border-radius: 10.64px;
+    background-color: #f8f8f8;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -444,14 +455,14 @@ body {
     color: #f2f1eb;
     font-weight: bold;
 }
-.table-admin-connectus td,
+/* .table-admin-connectus td,
 th {
     border: 3px solid #88ab8e;
     text-align: left;
     padding: 8px;
     text-align: right;
     max-width: 18%;
-}
+} */
 .tdnamecontectus {
     font-weight: bold;
     width: 18%;
@@ -762,5 +773,27 @@ th {
 }
 .mindet {
     float: left;
+}
+.tabel-profile {
+    border: 2px solid saddlebrown;
+    border-radius: 10px;
+}
+.tabel-profile,
+th,
+tr {
+}
+#tabel-profile td {
+    border-right: 0.59px solid #000;
+    border-bottom: none;
+    border-radius: 10px;
+}
+#cc table {
+    margin-right: 5%;
+    border-radius: 10px;
+}
+#cc table,
+th,
+td {
+    border-radius: 10px;
 }
 /*  */

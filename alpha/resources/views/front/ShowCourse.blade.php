@@ -87,7 +87,8 @@ $count=0;
                  <div class="card card-body" id="">
                 <div class="ditelsco">
                   <i class="fa  fa-book" style="font-size:24px;color:#27AC1F" aria-hidden="true"></i>
-                  {{$quizs->name}}
+ <a href="{{ url('quiz'.'/'.$quizs->id .'/'.$b->id)}}"><button style="border: none;background-color:#f8fafc
+                                  ">{{$quizs->name}}</button></a>
                     <?php $m='order';?>
 
                 </div>

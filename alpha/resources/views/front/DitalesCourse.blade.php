@@ -289,7 +289,7 @@ $count=0;
         <?php  if (!Auth::user()): ?>
 
      @foreach ($quiz as $key => $quizs)
-                @if($quizs->chabters == $chbters->name)
+                  @if($quizs->chabters == $chbters->name & $quizs->courses == $b->name)
                  <div class="card card-body" id="">
                 <div class="ditelsco">
                   <i class="fa  fa-book" style="font-size:24px;color:#" aria-hidden="true"></i>
@@ -307,7 +307,7 @@ $count=0;
       @foreach ($code as $codes)
       @if($codes->user ==  Auth::user()->name & $codes->endcode >= $today & $codes->courses == $b->name ) 
                 @foreach ($quiz as $key => $quizs)
-                @if($quizs->chabters == $chbters->name)
+                @if($quizs->chabters == $chbters->name & $quizs->courses == $b->name)
                  <div class="card card-body" id="">
                 <div class="ditelsco">
                   <i class="fa  fa-book" style="font-size:24px;color:#27AC1F" aria-hidden="true"></i>

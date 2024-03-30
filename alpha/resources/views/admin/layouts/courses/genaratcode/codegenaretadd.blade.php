@@ -25,7 +25,6 @@ $today = $year . '-' . $month . '-' . $day;
               <option  value="{{$courses->name}}">{{$courses->name}}</option>
               @endforeach
               <option  value="جميع الدورات">جميع الدورات</option>
-
               </select>
           </div>
         

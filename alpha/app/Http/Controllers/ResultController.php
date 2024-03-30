@@ -34,9 +34,13 @@ class ResultController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Result $result)
+    public function show($result_id)
     {
-        //
+        $result = Result::whereHas('user', function ($query) {
+            $query->whereId(auth()->id());
+        })->findOrFail($result_id);
+
+        return view('front.results', compact('result'));
     }
 
     /**

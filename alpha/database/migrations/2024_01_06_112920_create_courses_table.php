@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('summary');
-            $table->string('aboutcourse');
+            $table->longText('aboutcourse');
             $table->string('price');
             $table->string('img_name');
             $table->string('branche');

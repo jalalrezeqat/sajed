@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
 use App\Models\branch;
 use App\Models\courses;
 use App\Models\lesson;
@@ -15,6 +17,9 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use App\Models\markcourse;
+use App\Http\Requests\StoreTestRequest;
+use App\Models\Result;
+use App\Models\Option;
 
 
 
@@ -75,7 +80,7 @@ class CoursesController extends Controller
         $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
         $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio')->where('course', '=', $b->name)->get();
         $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
-        $quiz = DB::table('quizzes')->get();
+        $quiz = DB::table('categories')->get();
         foreach ($lesson as $lessons) {
             $vedio = DB::table('lessons')->where('id', '=', $lesson[0]->id)->first();
         }
@@ -83,6 +88,7 @@ class CoursesController extends Controller
         $lessoncount = $lesson->count();
         //instantiate class with file
         //instantiate class with file
+        $id3 = new \getID3;
 
         foreach ($lesson as $lessons) {
             // $content = File::get(asset('img/vedio/' . $vedios->vedio));
@@ -98,7 +104,7 @@ class CoursesController extends Controller
 
     public function showcourse(Request $request, $id, $vidoe)
     {
-        $quiz = DB::table('quizzes')->get();
+        $quiz = DB::table('categories')->get();
         $user = 'notauth';
         $code = '';
         $b = courses::find($id);
@@ -227,7 +233,7 @@ class CoursesController extends Controller
 
                 if ($codefind->user == null) {
 
-                    DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user, 'startcode' => $today]);
+                    DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user, 'startcode' => $today, 'user_id' => Auth::user()->id]);
                     return back()->with("message1", "تم اضافة الدورة ");
                 }
             }
@@ -238,5 +244,65 @@ class CoursesController extends Controller
 
         //  DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
         //return  redirect()->back();
+    }
+
+    public function showquiz($id, $course)
+    {
+        $course = courses::find($course);
+        if (Auth::user()) {
+            $quiz = DB::table('categories')->find($id);
+            $user = Auth::user()->name;
+            $code = DB::table('codecards')->get();
+
+            foreach ($code as $codes) {
+                if ($codes->user == $user & $codes->courses == $course->name & $codes->courses == $quiz->courses) {
+                    $categories = Category::with(['categoryQuestions' => function ($query) {
+                        $query->inRandomOrder()
+                            ->with(['questionOptions' => function ($query) {
+                                $query->inRandomOrder();
+                            }]);
+                    }])->where('id', '=', $id)
+                        ->whereHas('categoryQuestions')
+                        ->get();
+
+                    return view('front.quiz', compact('categories', 'quiz'));
+                }
+            }
+            return redirect()->back();
+        }
+    }
+    public function storequiz(StoreTestRequest $request, $id)
+    {
+        $quiz = DB::table('categories')->find($id);
+        $questions_op = DB::table('questions')->where('category_id', '=', $quiz->id)->first();
+        $option_total_point = DB::table('options')->where('question_id', '=', $questions_op->id)->get();
+        foreach ($option_total_point as $option_total_point) {
+            $total_point_quiz  = $option_total_point->points;
+            $r = $option_total_point->points;
+            $r = $total_point_quiz + $r;
+        }
+        $options = Option::find(array_values($request->input('questions')));
+
+        $result = auth()->user()->userResults()->create([
+            'total_points' => $options->sum('points'),
+            'user' => Auth::user()->name,
+            'courses' =>  $quiz->courses,
+            'namequiz' => $quiz->chabters,
+            'option_total_point' => $r,
+        ]);
+
+        $questions = $options->mapWithKeys(function ($option) {
+            return [
+                $option->question_id => [
+                    'option_id' => $option->id,
+                    'points' => $option->points
+                ]
+
+            ];
+        })->toArray();
+
+        $result->questions()->sync($questions);
+
+        return redirect()->route('client.results.show', $result->id);
     }
 }
