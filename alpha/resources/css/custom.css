@@ -455,14 +455,14 @@ body {
     color: #f2f1eb;
     font-weight: bold;
 }
-/* .table-admin-connectus td,
+.table-admin-connectus td,
 th {
     border: 3px solid #88ab8e;
     text-align: left;
     padding: 8px;
     text-align: right;
     max-width: 18%;
-} */
+}
 .tdnamecontectus {
     font-weight: bold;
     width: 18%;
@@ -774,7 +774,7 @@ th {
 .mindet {
     float: left;
 }
-.tabel-profile {
+/* .tabel-profile {
     border: 2px solid saddlebrown;
     border-radius: 10px;
 }
@@ -795,5 +795,5 @@ tr {
 th,
 td {
     border-radius: 10px;
-}
+} */
 /*  */

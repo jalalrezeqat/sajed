@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('courses');
             $table->string('user')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('courses_id')->nullable();
             $table->date('startcode');
             $table->date('endcode');
 
