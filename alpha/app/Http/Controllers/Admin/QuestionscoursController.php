@@ -90,7 +90,6 @@ class QuestionscoursController extends Controller
         // $lesson = lesson::select('chabters')->where('chabters', '=', $post->name)->update(array('chabters' => $request->input('name')));
 
         $post->question = $request->input('question');
-        $post->question_text = $request->input('question_text');
         $post->course = $request->input('course');
         // $chabterid=$request->id;
         $courseid = DB::table('courses')->where('name', '=', $post->course)->first();

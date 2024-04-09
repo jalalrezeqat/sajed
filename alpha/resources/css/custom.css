@@ -3,7 +3,12 @@ body {
     font-family: "Cairo", sans-serif;
     margin: auto;
 }
-
+.mt100px {
+    margin-top: 100px;
+}
+.mtb00px {
+    margin-bottom: 100px;
+}
 .dir {
     direction: rtl;
 }
@@ -16,7 +21,52 @@ body {
     width: 40%;
     float: left;
 }
+.btnhome {
+    width: 153.56px;
+    height: 38px;
+    background-color: #27ac1f;
+    color: white;
+    border-radius: 20px;
+}
+.margin-t4 {
+    margin-top: 5%;
+}
+.margin-b4 {
+    margin-bottom: 10%;
+}
+#shapetetcher1 {
+    width: 50px;
+    margin-top: -40px;
+    float: right;
+    margin-right: 5%;
+}
 
+#shapetetcher2 {
+    width: 50px;
+    margin-top: -40px;
+    float: left;
+    margin-left: 5%;
+}
+#shapetetcher3 {
+    width: 30px;
+    margin-top: -100px;
+    float: left;
+    margin-left: 5%;
+}
+#shapetetcher4 {
+    width: 50px;
+    margin-top: -40px;
+    float: right;
+    margin-right: 5%;
+}
+
+.btnhome:hover {
+    width: 153.56px;
+    height: 38px;
+    background-color: #27ac1f;
+    color: white;
+    border-radius: 20px;
+}
 .formlogin {
     float: right;
     width: 30%;
@@ -26,9 +76,16 @@ body {
     width: 60%;
     background-color: #27ac1f;
 }
-.nav-link:active {
-    background-color: yellow;
+
+.nav-link {
+    font-weight: bold;
+    font-size: 18px;
 }
+
+.navbar-nav a {
+    color: black;
+}
+
 #login-nav {
     color: #27ac1f;
     text-decoration: underline;
@@ -44,14 +101,18 @@ body {
     width: 90%;
     background-color: aquamarine;
 }
-
+.slidetetcher {
+    height: 500px;
+}
 .navbar-home {
     direction: rtl;
-    padding: 0%;
+    width: 80%;
+    margin-left: 5%;
 }
 
 .nav-item-home {
     margin: auto;
+    font-weight: bold;
 }
 
 .mt {
@@ -62,7 +123,7 @@ body {
     margin-bottom: 5% !important;
 }
 .m-3 {
-    margin-top: 2% !important;
+    margin-top: 100px !important;
     margin-bottom: 4% !important;
     width: 85%;
     margin: auto;
@@ -86,8 +147,20 @@ body {
     padding: 5px;
     border-radius: 50%;
     margin: auto;
-    width: 30%;
+    width: 25%;
     margin-top: -10%;
+}
+.card-img-top-cource {
+    padding: 5px;
+    border-radius: 50%;
+    margin: auto;
+    width: 20%;
+    margin-top: -10%;
+}
+.card-img-top-c {
+    border-radius: 50%;
+    margin: auto;
+    width: 50%;
 }
 .card-img-profile {
     padding: 5px;
@@ -102,6 +175,23 @@ body {
     direction: rtl;
     margin-top: 2% !important;
     margin-bottom: 3% !important;
+}
+.plusand- {
+    color: #000;
+    text-decoration: none;
+}
+.btnfcou {
+    background-color: #27ac1f;
+    width: 150px;
+    border-radius: 14px;
+    color: white;
+}
+.btnfcou:hover {
+    background-color: #27ac1f;
+    color: white;
+}
+.colorg {
+    color: #27ac1f;
 }
 .card-box-home {
     background: #e4e4e4;
@@ -128,15 +218,17 @@ body {
 }
 
 .carousel-control-next-icon:after {
-    content: "→";
+    content: "❯";
     font-size: 25px;
     color: #27ac1f;
+    margin: auto;
 }
 
 .carousel-control-prev-icon:after {
-    content: "←";
+    content: "❮";
     font-size: 25px;
     color: #27ac1f;
+    margin: auto;
 }
 .btn-allcourse {
     background-color: #27ac1f;
@@ -148,6 +240,7 @@ body {
     text-align: center;
     width: 180px;
     height: 50px;
+    font-weight: 700;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .button1 {
@@ -171,15 +264,17 @@ body {
 .reg {
     background-color: #27ac1f;
     border-radius: 13.52px;
-    width: 108.17px;
+    width: 125.75px;
     text-align: center;
     height: 38px;
     font-size: 18px;
     padding: 5px;
 }
-
+.dropdown-menu a {
+    text-align: center;
+}
 .slider {
-    width: 85%;
+    width: 70%;
     margin: auto;
 }
 .slider-cource {
@@ -196,7 +291,14 @@ body {
     background-color: #f8f8f8;
     margin-top: -20%;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    max-height: 250px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 #card-profile {
     margin-bottom: 25%;
     border-radius: 10.64px;
@@ -205,8 +307,14 @@ body {
 }
 
 .card-w {
-    width: 80%;
     margin: auto;
+}
+.card-course {
+    width: 70%;
+    margin: auto;
+}
+#mr2 {
+    margin-right: 10%;
 }
 .contener {
 }
@@ -248,7 +356,7 @@ body {
 }
 .ovarflow {
     overflow-y: visible;
-    margin-top: 25%;
+    margin-top: 12%;
 }
 .collapse {
     margin: 3%;
@@ -314,10 +422,19 @@ body {
     margin-left: 2%;
 }
 
-.contact-info {
-    float: right;
+.contact-img {
+    margin-right: 60px;
 }
-
+.contectusdet {
+    float: right;
+    color: #212529;
+    font-family: Cairo;
+    font-size: 14.4px;
+    grid-area: auto;
+    line-height: 23.04px;
+    margin: 0px 0px 16px;
+    margin-top: -120px;
+}
 /* dashbord */
 #user-dashbord {
     margin-right: 5%;
@@ -618,10 +735,19 @@ th {
     margin-left: 90px;
     margin-right: 80px;
 }
-
+.select1 select option {
+    background: rgba(100, 100, 100, 0.3);
+    color: #fff;
+}
 .ditelspage {
     margin: auto;
     width: 70%;
+    /* margin-right: 10%; */
+    margin-bottom: 5%;
+}
+.ditelspagetet {
+    margin: auto;
+    /* width: 70%; */
     /* margin-right: 10%; */
     margin-bottom: 5%;
 }
@@ -718,24 +844,6 @@ th {
     width: 40%;
 }
 
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    [class*="col-"] {
-        width: 100%;
-    }
-    .navbarshow {
-        width: 1000px;
-    }
-    .buttonshow {
-        font-size: 75%;
-        height: 50%;
-        width: 90%;
-    }
-    #countleeson {
-        font-size: 62.5%;
-        padding: 0%;
-    }
-}
 .vidio {
     margin-left: 4%;
     margin-right: 4%;
@@ -749,9 +857,19 @@ th {
 }
 .font18px {
     font-size: 125%;
+    font-weight: 700;
+}
+.font24px {
+    font-size: 24px;
+    font-weight: 700;
+}
+.font48px {
+    font-size: 300%;
+    font-weight: 700;
 }
 .font14px {
     font-size: 100%;
+    font-weight: 600;
 }
 .butcoresscore {
     width: 88.48px;
@@ -797,3 +915,179 @@ td {
     border-radius: 10px;
 } */
 /*  */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    .navbarshow {
+        width: 1000px;
+    }
+    .buttonshow {
+        font-size: 75%;
+        height: 50%;
+        width: 90%;
+    }
+    #countleeson {
+        font-size: 62.5%;
+        padding: 0%;
+    }
+    .font18px {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .font48px {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .font14px {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .card-w {
+        width: 90%;
+        margin: auto;
+    }
+    .ovarflow {
+        overflow-y: visible;
+        margin-top: 30%;
+    }
+    .card-btn-allcourse {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .btn-allcourse {
+        background-color: #27ac1f;
+        border-radius: 70px;
+        border: none;
+        color: white;
+        padding: 0px;
+        font-size: 18px;
+        text-align: center;
+        width: 150px;
+        height: 40px;
+        font-weight: 700;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .card-box-home {
+        background: #e4e4e4;
+        border-radius: 15px;
+    }
+    .font24px {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        height: 25px;
+        width: 25px;
+        outline: #27ac1f;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 3px solid #27ac1f;
+        background-image: none;
+    }
+
+    .carousel-control-next-icon:after {
+        content: "❯";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+
+    .carousel-control-prev-icon:after {
+        content: "❮";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+    .img-about {
+        margin: auto;
+        width: 300px;
+    }
+    #shapetetcher1 {
+        width: 20px;
+        margin-top: -20px;
+        float: right;
+        margin-right: 5%;
+    }
+    #shapetetcher2 {
+        width: 20px;
+        margin-top: -20px;
+        float: left;
+        margin-left: 5%;
+    }
+}
+@media only screen and (min-device-width: 1000px) and (max-width: 1026px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    .navbarshow {
+        width: 1000px;
+    }
+    .buttonshow {
+        font-size: 75%;
+        height: 50%;
+        width: 90%;
+    }
+    #countleeson {
+        font-size: 62.5%;
+        padding: 0%;
+    }
+    .card-w {
+        width: 90%;
+        margin: auto;
+    }
+    .ovarflow {
+        overflow-y: visible;
+        margin-top: 12%;
+    }
+    .btn-allcourse {
+        background-color: #27ac1f;
+        border-radius: 70px;
+        border: none;
+        color: white;
+        padding: 0px;
+        font-size: 18px;
+        text-align: center;
+        width: 150px;
+        height: 40px;
+        font-weight: 700;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .card-box-home {
+        background: #e4e4e4;
+        border-radius: 15px;
+    }
+    .font24px {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        height: 20px;
+        width: 20px;
+        outline: #27ac1f;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 3px solid #27ac1f;
+        background-image: none;
+    }
+
+    .carousel-control-next-icon:after {
+        content: "❯";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+
+    .carousel-control-prev-icon:after {
+        content: "❮";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+}

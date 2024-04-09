@@ -23,10 +23,10 @@
 
         <div class="d-flex justify-content-center mt-5 dir"> 
             <div id="butcour">
-               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btn-success">الفصل الاول </a>
+               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btnfcou">الفصل الاول </a>
             </div>
             <div class="mr-5">
-            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn btn-success">الفصل الثاني</a>
+            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn  btnfcou">الفصل الثاني</a>
             </div>
         </div>
 

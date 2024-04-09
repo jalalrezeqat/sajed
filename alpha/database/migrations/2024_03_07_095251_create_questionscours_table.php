@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->string('course');
-            $table->string('summernote', 255);
+            $table->longtext('summernote', 10000);
             $table->timestamps();
         });
     }

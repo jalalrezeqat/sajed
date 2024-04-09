@@ -116,6 +116,7 @@
   </div>
   
 </div>
+
 @endsection
 
 {{--  @foreach ($course as $courses)  

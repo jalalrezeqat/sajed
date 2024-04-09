@@ -14,6 +14,7 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,12 +32,12 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav justify-content-center navbar-collapse mb-2 mb-lg-0">
+                <ul class="navbar-nav links justify-content-center navbar-collapse mb-2 mb-lg-0">
                   <li class="nav-item-home">
-                    <a class="nav-link active " aria-current="page" href="{{ url('/') }}"><button class="btn btn-success btn-lg reg font-weight-bold">الرئيسية</button></a>
+                    <a class="nav-link  active " tabindex="1" aria-current="page" href="{{ url('/') }}"><button class="btn btn-success btn-lg reg font-weight-bold">الرئيسية</button></a>
                   </li>
                   <li class="nav-item-home">
-                    <a class="nav-link font-weight-bold"  href="{{ url('/courses') }}">الدورات</a>
+                    <a class="nav-link "  href="{{ url('/courses') }}">الدورات</a>
                   </li>
                   <li class="nav-item-home">
                     <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
@@ -67,7 +68,7 @@
                         {{ Auth::user()->name }}
                       </a>
       
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-menu dir dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('dashboard')}}">
                             
                           {{ __(' الملف الشخصي') }}
@@ -145,13 +146,13 @@
               <a href="{{ url('/') }}" class="text-white"><i ></i>الرئيسيّة</a>
             </li>
             <li class="mb-3">
-              <a href="#!" class="text-white " ><i ></i>الدورات</a>
+              <a  href="{{ url('/courses') }}" class="text-white " ><i ></i>الدورات</a>
             </li>
             <li class="mb-3">
-              <a href="#!" class="text-white"><i></i>حول ألفا</a>
+              <a href="{{ url('/about') }} "class="text-white"><i></i>حول ألفا</a>
             </li>
             <li class="mb-3">
-              <a href="#!" class="text-white"><i ></i>اتصل بنا</a>
+              <a href="{{ url('/Connectus') }}" class="text-white"><i ></i>اتصل بنا</a>
             </li>
           </ul>
         </div>
@@ -170,7 +171,7 @@
             </li>
             <li>
  
-              <p class="dir"><i class="fas "></i>+970 597-618-504</p>
+              <p  style="direction: ltr;">(+970) 597-618-504</p>
             </li>
           </ul>
         </div>
@@ -459,4 +460,8 @@ window.player = player;
   const myModalEl = document.getElementById('myModal')
 const modal = new mdb.Modal(myModalEl)
 modal.show()
+
+document.querySelector(".links").onclick=ev=>{if(ev.target.tagName=="A")
+  ev.target.className="done"
+}
 </script>

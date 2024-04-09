@@ -57,6 +57,8 @@ class CoursesController extends Controller
 
     public function detalescourse(Request $request, $id)
     {
+
+
         $user = 'notauth';
         $code = '';
         if (Auth::user()) {
@@ -98,6 +100,8 @@ class CoursesController extends Controller
             // $duration_seconds = $file['playtime_string'];
             // dd($content);
         }
+
+
         return view('front.DitalesCourse', compact('branch', 'id3', 'vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
     }
 
@@ -240,7 +244,7 @@ class CoursesController extends Controller
             return back()->with("message", "الكود المدخل خطآ ");
         }
 
-        return back()->with("message3", "يرجى تسجيل الدخول قبل ادخال الكود");
+        return back()->with("message3", "يرجى تسجيل الدخول او انشاء حساب قبل ادخال الكود");
 
         //  DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user]);
         //return  redirect()->back();

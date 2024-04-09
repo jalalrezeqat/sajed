@@ -23,11 +23,11 @@
 
         <div class="d-flex justify-content-center mt-5 dir"> 
             <div id="butcour">
-               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btn-success">الفصل الاول </a>
+               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btnfcou ">الفصل الاول </a>
 
             </div>
             <div class="mr-5">
-            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn btn-success">الفصل الثاني</a>
+            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn btnfcou">الفصل الثاني</a>
             </div>
         </div>
 
@@ -38,12 +38,19 @@
               @foreach($coursces as $coursces)
               <div class="col  ">
                 <div class="card-home card "id="card-home">
-                  <img src="/img/card-img.png" class="card-img-top-home" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title-home  ">{{$coursces->name}}</h5>
-                    <p id="card-text-home1 mt" class="card-text-home1 ">{{$coursces->summary}}</p>
-                  <a class="card-button" href="{{ url('coursesditels'.'/'.$coursces->id) }}"> قراءة المزيد ></a>
-                    <button class="but-card">{{$coursces->price}}₪   </button>
+
+                    <div class="row">
+  <div class="col-4">  <img src="/img/card-img.png" class="card-img-top-c col-3" alt="...">
+</div>
+  <div class="col-8">   <h5 class="card-title-home col-9   mb-3">{{$coursces->name}}</h5>
+</div>
+</div>
+                      
+
+                    <p id="card-text-home1 mt" class="card-text-home1 mb-3  mt-3 ">{{$coursces->summary}}</p>
+                  <a class="card-button mt-3" href="{{ url('coursesditels'.'/'.$coursces->id) }}"> قراءة المزيد ></a>
+                    <button class="but-card mt-3">{{$coursces->price}}₪   </button>
                   </div>
                 </div>
               </div>
