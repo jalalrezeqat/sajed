@@ -14,11 +14,11 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $vision =  DB::table('abouts')->where('our_vision','<>', '')->get();
-        $mission =DB::table('abouts')->where('our_mission_titel','<>', '')->get();
-        $slider =  DB::table('sliders')->where('page','=' , 'حول الفا')->get();
-        return view('about',compact('vision','mission','slider'));
-
+        $vision =  DB::table('abouts')->where('our_vision', '<>', '')->get();
+        $mission = DB::table('abouts')->where('our_mission_titel', '<>', '')->get();
+        $aboutalpha = DB::table('abouts')->where('aboutalpha', '<>', '')->get();
+        $slider =  DB::table('sliders')->where('page', '=', 'حول الفا')->get();
+        return view('about', compact('vision', 'mission', 'slider', 'aboutalpha'));
     }
 
     /**

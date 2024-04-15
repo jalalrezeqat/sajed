@@ -16,6 +16,9 @@ return new class extends Migration
             $table->longtext('summernote', 10000)->nullable();
             $table->string('our_mission_titel')->nullable();
             $table->string('our_mission_text')->nullable();
+            $table->longtext('aboutalpha', 10000)->nullable();
+
+
 
             $table->timestamps();
         });

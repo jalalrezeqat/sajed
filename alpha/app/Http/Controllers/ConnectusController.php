@@ -15,9 +15,9 @@ class ConnectusController extends Controller
      */
     public function index()
     {
-        $slider =  DB::table('sliders')->where('page','=' , 'اتصل بنا')->get();
-        return view('Connectus' ,compact('slider'));
-
+        $slider =  DB::table('sliders')->where('page', '=', 'اتصل بنا')->get();
+        $connectus = DB::table('connect_with_us')->get();
+        return view('Connectus', compact('slider', 'connectus'));
     }
 
     /**
@@ -33,14 +33,13 @@ class ConnectusController extends Controller
      */
     public function store(Request $request)
     {
-         
 
-            $data = new Connectus();
-            $input = $request->all();
-            $data->fill($input)->save();
-          
-            return  redirect('Connectus');
 
+        $data = new Connectus();
+        $input = $request->all();
+        $data->fill($input)->save();
+
+        return  redirect('Connectus');
     }
 
     /**

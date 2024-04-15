@@ -1,0 +1,196 @@
+@media (min-width: 480px) and (max-width: 1028px) {
+    /* For mobile phones: */
+
+    [class*="col-"] {
+        width: 100%;
+    }
+    .navbarshow {
+        width: 1000px;
+    }
+    .buttonshow {
+        font-size: 75%;
+        height: 50%;
+        width: 90%;
+    }
+    #countleeson {
+        font-size: 62.5%;
+        padding: 0%;
+    }
+    .card-w {
+        width: 90%;
+        margin: auto;
+    }
+    .ovarflow {
+        overflow-y: visible;
+        margin-top: 12%;
+    }
+    .btn-allcourse {
+        background-color: #27ac1f;
+        border-radius: 70px;
+        border: none;
+        color: white;
+        padding: 0px;
+        font-size: 18px;
+        text-align: center;
+        width: 150px;
+        height: 40px;
+        font-weight: 700;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .btnhome {
+        width: 105.7px;
+        height: 38px;
+        background-color: #27ac1f;
+        color: white;
+        border-radius: 20px;
+    }
+    .card-box-home {
+        background: #e4e4e4;
+        border-radius: 15px;
+    }
+    .font24px {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .font55px {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        height: 20px;
+        width: 20px;
+        outline: #27ac1f;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 3px solid #27ac1f;
+        background-image: none;
+    }
+
+    .carousel-control-next-icon:after {
+        content: "❯";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+
+    .carousel-control-prev-icon:after {
+        content: "❮";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+    #img-about {
+        margin: auto;
+        width: 50px;
+        float: left;
+    }
+    #card-home {
+        border-radius: 10.64px;
+        background-color: #f8f8f8;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -20px;
+    }
+    #card-courseshow {
+        margin-bottom: 25%;
+        border-radius: 10.64px;
+        background-color: #f8f8f8;
+        margin-top: -20%;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        max-height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .font18px {
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .font48px {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .img-about {
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        float: left;
+    }
+    .contact-img {
+        margin: auto;
+    }
+
+    .contectusdet {
+        float: right;
+        color: #212529;
+        font-family: Cairo;
+        font-size: 14.4px;
+        grid-area: auto;
+        margin: auto;
+        line-height: 23.04px;
+        margin-top: -120px;
+    }
+    .btncouresdetales {
+        margin-left: 10%;
+        width: 200px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+        margin-bottom: 2%;
+    }
+    .btncouresdetaless {
+        margin: auto;
+        margin-top: 5%;
+        width: 140px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+        margin: auto;
+    }
+
+    .inputorder {
+        width: 200px;
+        height: 39px;
+        border-radius: 10px;
+        background-color: #12181e;
+        border: 1px solid white;
+        color: white;
+        margin-left: 2%;
+    }
+    .btnsubmitorder {
+        width: 88.48px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+    }
+    .imgditels {
+        width: 300px;
+        margin-right: 40px;
+        margin-top: 95%;
+    }
+    .imgtatecher {
+        margin-right: 5%;
+        margin-top: 2%;
+        width: 150.23px;
+        height: 150.23px;
+    }
+    .nametetcher {
+        color: #27ac1f;
+        margin-right: 9%;
+        margin-top: 1%;
+    }
+}

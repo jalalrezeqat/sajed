@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -17,29 +18,25 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider =  DB::table('sliders')->where('page','<>', 'المعلم')->get();
+        $slider =  DB::table('sliders')->where('page', '<>', 'المعلم')->get();
 
-        return view('admin.layouts.slider.slider',compact('slider'));
-
+        return view('admin.layouts.slider.slider', compact('slider'));
     }
-    
+
     public function indexteacher()
     {
-        $teacher= DB::table('sliders')->where('page','=', 'المعلم')->get();
+        $teacher = DB::table('sliders')->where('page', '=', 'المعلم')->get();
 
-        return view('admin.layouts.slider.sliderteacher',compact('teacher'));
-
+        return view('admin.layouts.slider.sliderteacher', compact('teacher'));
     }
     public function addslider()
     {
-       return view('admin.layouts.slider.addslider');
- 
-     }
-     public function addsliderteacher()
-     {
+        return view('admin.layouts.slider.addslider');
+    }
+    public function addsliderteacher()
+    {
         return view('admin.layouts.slider.addsliderteacher');
-  
-      }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,12 +56,11 @@ class SliderController extends Controller
         $student->page = $request->input('page');
 
 
-        if($request->hasfile('img'))
-        {
-            
+        if ($request->hasfile('img')) {
+
             $file = $request->file('img');
             $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
+            $filename = time() . '.' . $extenstion;
             $file->move('img/slider/', $filename);
             $student->img = $filename;
         }
@@ -72,21 +68,29 @@ class SliderController extends Controller
         $student->save();
         return  redirect()->route('admin.slider');
     }
-    
+
     public function storeteacher(Request $request)
     {
         $student = new Slider();
         $student->page = $request->input('page');
 
 
-        if($request->hasfile('img'))
-        {
-            
-            $file = $request->file('img');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
-            $file->move('img/slider/', $filename);
-            $student->img = $filename;
+        if ($request->hasfile('img')) {
+            if ($request->input('mobile_dsktop') == '1') {
+                $file = $request->file('img');
+                $extenstion = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extenstion;
+                $file->move('img/slider/', $filename);
+                $student->img = $filename;
+                $student->mobile_dsktop = $request->input('mobile_dsktop');
+            } else {
+                $file = $request->file('img');
+                $extenstion = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extenstion;
+                $file->move('img/sliderphone/', $filename);
+                $student->img = $filename;
+                $student->mobile_dsktop = $request->input('mobile_dsktop');
+            }
         }
 
         $student->save();
@@ -105,70 +109,60 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('admin.layouts.slider.edit',compact('slider'));
-
+        return view('admin.layouts.slider.edit', compact('slider'));
     }
-    
+
 
     public function editteacher(Slider $slider)
     {
-        return view('admin.layouts.slider.editteacher',compact('slider'));
-
+        return view('admin.layouts.slider.editteacher', compact('slider'));
     }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
     {
-    $post = slider::find($id);
-       $post->url =$request->input('url');
-       $post->page =$request->input('page');
-       
-       if($request->hasfile('img'))
-       {
-        
-        $distination ='img/slider/'.$post->img;
-        if(File::exists($distination))
-        {
-            File::delete($distination);
+        $post = slider::find($id);
+        $post->url = $request->input('url');
+        $post->page = $request->input('page');
+
+        if ($request->hasfile('img')) {
+
+            $distination = 'img/slider/' . $post->img;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('img');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/slider/', $file_name);
+            $post->img     = $file_name;
         }
-        $file=$request->file('img');
-        $extintion=$file->getClientOriginalExtension();
-        $file_name=time().'.'.$extintion;
-        $file->move('img/slider/', $file_name);
-        $post->img	 =$file_name;
-     
-       }
-       $post->save();
+        $post->save();
 
-       return  redirect()->route('admin.slider');
-
+        return  redirect()->route('admin.slider');
     }
 
     public function updateteacher(Request $request, $id)
     {
-    $post = slider::find($id);
-      
-       
-       if($request->hasfile('img'))
-       {
-        
-        $distination ='img/slider/'.$post->img;
-        if(File::exists($distination))
-        {
-            File::delete($distination);
+        $post = slider::find($id);
+
+
+        if ($request->hasfile('img')) {
+
+            $distination = 'img/slider/' . $post->img;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('img');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/slider/', $file_name);
+            $post->img     = $file_name;
         }
-        $file=$request->file('img');
-        $extintion=$file->getClientOriginalExtension();
-        $file_name=time().'.'.$extintion;
-        $file->move('img/slider/', $file_name);
-        $post->img	 =$file_name;
-     
-       }
-       $post->save();
+        $post->save();
 
-       return  redirect()->route('admin.sliderteacher');
-
+        return  redirect()->route('admin.sliderteacher');
     }
     /**
      * Remove the specified resource from storage.
@@ -177,14 +171,13 @@ class SliderController extends Controller
     {
         $post = Slider::find($slider_id);
         $sliderDb = DB::table('sliders');
-        $sliderdelete= $sliderDb->where('id',$slider_id);
-        $distination ='img/slider/'.$post->img;
-        if(File::exists($distination))
-        {
+        $sliderdelete = $sliderDb->where('id', $slider_id);
+        $distination = 'img/slider/' . $post->img;
+        if (File::exists($distination)) {
             File::delete($distination);
         }
         $sliderdelete->delete();
 
-        return  redirect()->back();    
+        return  redirect()->back();
     }
 }

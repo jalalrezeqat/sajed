@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('img');
             $table->string('url')->nullable();
             $table->string('page');
+            $table->string('mobile_dsktop')->nullable();
             $table->timestamps();
         });
     }

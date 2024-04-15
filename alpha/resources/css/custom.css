@@ -3,11 +3,18 @@ body {
     font-family: "Cairo", sans-serif;
     margin: auto;
 }
+.imgfooter {
+    margin-left: 5%;
+}
 .mt100px {
     margin-top: 100px;
 }
 .mtb00px {
     margin-bottom: 100px;
+}
+.marginauto {
+    margin-left: 50%;
+    margin-right: 50%;
 }
 .dir {
     direction: rtl;
@@ -83,11 +90,13 @@ body {
 }
 
 .navbar-nav a {
-    color: black;
+    color: white;
 }
-
+.navbar-nav a:hover {
+    color: white;
+}
 #login-nav {
-    color: #27ac1f;
+    color: white;
     text-decoration: underline;
     font-size: 14px;
     width: 108.17px;
@@ -103,6 +112,9 @@ body {
 }
 .slidetetcher {
     height: 500px;
+}
+.nav-background {
+    background-color: #12181e;
 }
 .navbar-home {
     direction: rtl;
@@ -189,6 +201,16 @@ body {
 .btnfcou:hover {
     background-color: #27ac1f;
     color: white;
+}
+.btnfcous {
+    width: 150px;
+    border-radius: 14px;
+    color: #27ac1f;
+    border: 1px solid #27ac1f;
+}
+.btnfcous:hover {
+    color: #27ac1f;
+    border: 1px solid #27ac1f;
 }
 .colorg {
     color: #27ac1f;
@@ -298,7 +320,19 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-
+#card-courseshow {
+    margin-bottom: 25%;
+    border-radius: 10.64px;
+    background-color: #f8f8f8;
+    margin-top: -20%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    max-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 #card-profile {
     margin-bottom: 25%;
     border-radius: 10.64px;
@@ -425,6 +459,7 @@ body {
 .contact-img {
     margin-right: 60px;
 }
+
 .contectusdet {
     float: right;
     color: #212529;
@@ -545,6 +580,10 @@ body {
     margin-right: 5%;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
+    text-align: justify;
+}
+.aboutalpha {
+    text-align: justify;
 }
 .mission {
     margin-right: 5%;
@@ -631,12 +670,20 @@ th {
     border-top-left-radius: 12.77px;
     border-bottom-left-radius: 12.77px;
     float: right;
+    margin-top: 2%;
 }
 
 .namebranch-text {
     color: #000;
     text-align: center;
     font-weight: bold;
+    margin-top: 5%;
+}
+.namebranchshow-text {
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 2%;
 }
 .namecourse {
     background: rgb(39, 172, 31, 0.3);
@@ -645,6 +692,7 @@ th {
     border-top-left-radius: 12.77px;
     border-bottom-left-radius: 12.77px;
     float: right;
+    margin-top: 2%;
 }
 .namecourse1 {
     background: rgb(39, 172, 31, 0.3);
@@ -653,6 +701,7 @@ th {
     border-top-left-radius: 12.77px;
     border-bottom-left-radius: 12.77px;
     float: right;
+    margin-top: 2%;
 }
 /*  */
 
@@ -670,6 +719,12 @@ th {
 .box-ditalescourse .column1 {
     width: 80%;
     /* margin-right: 5%; */
+}
+.columncourse1 {
+    width: 75%;
+}
+.columncourse2 {
+    width: 25%;
 }
 .coursedetales {
     margin-right: 5%;
@@ -691,6 +746,17 @@ th {
     border: none;
     color: white;
     background-color: #27ac1f;
+}
+.btncouresdetaless {
+    margin: auto;
+    margin-top: 5%;
+    width: 140px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #27ac1f;
+    margin: auto;
 }
 .btncouresdetale {
     color: white;
@@ -809,7 +875,11 @@ th {
     margin: 0%;
 }
 .ditelsco {
-    margin-right: 15%;
+    margin-right: 17%;
+}
+#ditelsco1 {
+    margin-right: -14%;
+    margin-left: 3%;
 }
 .firestrecord {
     border-radius: 0%;
@@ -855,12 +925,24 @@ th {
 .marginr5 {
     margin-right: 5%;
 }
+.font42px {
+    font-size: 42px;
+    font-weight: 700;
+}
 .font18px {
     font-size: 125%;
     font-weight: 700;
 }
+.font55px {
+    font-size: 55px;
+    font-weight: 700;
+}
 .font24px {
     font-size: 24px;
+    font-weight: 700;
+}
+.font32px {
+    font-size: 32px;
     font-weight: 700;
 }
 .font48px {
@@ -870,6 +952,10 @@ th {
 .font14px {
     font-size: 100%;
     font-weight: 600;
+}
+.font20px {
+    font-size: 20px;
+    font-weight: 700;
 }
 .butcoresscore {
     width: 88.48px;
@@ -915,179 +1001,3 @@ td {
     border-radius: 10px;
 } */
 /*  */
-
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    [class*="col-"] {
-        width: 100%;
-    }
-    .navbarshow {
-        width: 1000px;
-    }
-    .buttonshow {
-        font-size: 75%;
-        height: 50%;
-        width: 90%;
-    }
-    #countleeson {
-        font-size: 62.5%;
-        padding: 0%;
-    }
-    .font18px {
-        font-size: 14px;
-        font-weight: 600;
-    }
-    .font48px {
-        font-size: 24px;
-        font-weight: 700;
-    }
-    .font14px {
-        font-size: 12px;
-        font-weight: 600;
-    }
-
-    .card-w {
-        width: 90%;
-        margin: auto;
-    }
-    .ovarflow {
-        overflow-y: visible;
-        margin-top: 30%;
-    }
-    .card-btn-allcourse {
-        text-align: center;
-        padding-bottom: 30px;
-    }
-    .btn-allcourse {
-        background-color: #27ac1f;
-        border-radius: 70px;
-        border: none;
-        color: white;
-        padding: 0px;
-        font-size: 18px;
-        text-align: center;
-        width: 150px;
-        height: 40px;
-        font-weight: 700;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    }
-    .card-box-home {
-        background: #e4e4e4;
-        border-radius: 15px;
-    }
-    .font24px {
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        height: 25px;
-        width: 25px;
-        outline: #27ac1f;
-        background-size: 100%, 100%;
-        border-radius: 50%;
-        border: 3px solid #27ac1f;
-        background-image: none;
-    }
-
-    .carousel-control-next-icon:after {
-        content: "❯";
-        font-size: 12px;
-        color: #27ac1f;
-        margin: auto;
-    }
-
-    .carousel-control-prev-icon:after {
-        content: "❮";
-        font-size: 12px;
-        color: #27ac1f;
-        margin: auto;
-    }
-    .img-about {
-        margin: auto;
-        width: 300px;
-    }
-    #shapetetcher1 {
-        width: 20px;
-        margin-top: -20px;
-        float: right;
-        margin-right: 5%;
-    }
-    #shapetetcher2 {
-        width: 20px;
-        margin-top: -20px;
-        float: left;
-        margin-left: 5%;
-    }
-}
-@media only screen and (min-device-width: 1000px) and (max-width: 1026px) {
-    /* For mobile phones: */
-    [class*="col-"] {
-        width: 100%;
-    }
-    .navbarshow {
-        width: 1000px;
-    }
-    .buttonshow {
-        font-size: 75%;
-        height: 50%;
-        width: 90%;
-    }
-    #countleeson {
-        font-size: 62.5%;
-        padding: 0%;
-    }
-    .card-w {
-        width: 90%;
-        margin: auto;
-    }
-    .ovarflow {
-        overflow-y: visible;
-        margin-top: 12%;
-    }
-    .btn-allcourse {
-        background-color: #27ac1f;
-        border-radius: 70px;
-        border: none;
-        color: white;
-        padding: 0px;
-        font-size: 18px;
-        text-align: center;
-        width: 150px;
-        height: 40px;
-        font-weight: 700;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    }
-    .card-box-home {
-        background: #e4e4e4;
-        border-radius: 15px;
-    }
-    .font24px {
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        height: 20px;
-        width: 20px;
-        outline: #27ac1f;
-        background-size: 100%, 100%;
-        border-radius: 50%;
-        border: 3px solid #27ac1f;
-        background-image: none;
-    }
-
-    .carousel-control-next-icon:after {
-        content: "❯";
-        font-size: 12px;
-        color: #27ac1f;
-        margin: auto;
-    }
-
-    .carousel-control-prev-icon:after {
-        content: "❮";
-        font-size: 12px;
-        color: #27ac1f;
-        margin: auto;
-    }
-}

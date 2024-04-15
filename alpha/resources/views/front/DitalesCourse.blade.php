@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @vite(['resources/css/vedio.css', 'resources/css/order.css'])
-
 @section('content')
+    <?php session('windowW'); ?>
+    <livewire:breakpoints />
     <section>
         <div class="namecourse  float-right mb-2">
-            <p class="namebranch-text"> الدورات > {{ $b->branche }} > {{ $b->name }} </p>
+            <p class="namebranchshow-text"> الدورات > {{ $b->branche }} > {{ $b->name }} </p>
         </div>
 
         <br>
@@ -13,6 +14,7 @@
             <div class="alert dandermasseg dir  col-lg-4 text-success">{{ session('message4') }}</div>
         @endif
         <div class="box-ditalescourse" id="box-ditalescourse">
+            @windowWidthGreaterThan(481)
 
             <div class="column1">
 
@@ -66,8 +68,65 @@
             </div>
         </div>
         <div class="column2">
-            <img class="" src="/../img/det.png" alt="">
+            <img class="imgditels" src="/../img/det.png" alt="">
         </div>
+        @endif
+        @windowWidthLessThan(480)
+        <div class="row">
+            <div class="col">
+                <img class="imgditels" src="/../img/det.png" alt="">
+
+            </div>
+            <div class="col">
+                <form action="{{ url('codesend/' . $user) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="mobiw">
+                        <div class="row coursename mt-5 ">
+
+                            <p class="user_name h3 font48px"> {{ $b->name }}</p>
+                            <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
+                        </div>
+                        <div class="row coursedetales mt-5">
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"> مدرس الدورة :
+                                {{ $b->teacher_name }} </p>
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> عدد دروس الدورة :
+                                {{ $lessoncount }} درساً مسجلاً</p>
+                        </div>
+                        <div class="row coursedetales mt-5">
+                            <button type="button" class=" btncouresdetales  col-lg-6"><label class=" "
+                                    aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
+                            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-top: 10px;"> أدخل كود البطاقة
+                                وابدأ
+                                بالتّعلّم</p>
+                        </div>
+                        <div class="row coursedetales">
+
+                            <p class="mt-3  col-lg-3" style="color: #85FE78; margin-right: 10px;"> السعر :
+                                {{ $b->price }} ₪
+                            </p>
+                            <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
+                                placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
+                            @error('error')
+                                <span class="text-danger dandermasseg inputorder col-lg-4">{{ $message }}</span>
+                            @enderror
+                            <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
+                        </div>
+                        @if (session('message'))
+                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message') }}</div>
+                        @endif
+                        @if (session('message1'))
+                            <div class="alert dandermasseg  col-lg-4 text-success">{{ session('message1') }}</div>
+                        @endif
+                        @if (session('message3'))
+                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
+                        @endif
+                </form>
+            </div>
+        </div>
+        @endif
+
         </div>
     </section>
     <section>
@@ -102,10 +161,8 @@
         {{-- course about --}}
         <div class="ditelspage">
             <h3 class="dir mt-5 mr-5 font24px" id="about">حول الدورة:</h3>
-            <p style="font-size:18px; line-height:33.73px;Width:80%; text-align: justify;
-  text-justify: inter-word; "
-                class="dir ditelspageinsaid font18px">{{ $b->aboutcourse }}</p>
-            <button class="btncouresdetales"><label class="btncouresdetale " aria-current="page"
+            <p class="font18px aboutalpha ditelspageinsaid dir">{{ $b->aboutcourse }}</p>
+            <button class="btncouresdetaless"><label class="btncouresdetale " aria-current="page"
                     for="modal-toggle-vedio">شاهد
                     درس مجّاني</label>
             </button>
@@ -122,25 +179,48 @@
                     <div class="col-2"></div>
                     <div class="col-2">
                         <div class="row" style="--bs-gutter-x:0">
+                            @windowWidthGreaterThan(1028)
+
                             @foreach ($teatcher as $teatchers)
                                 <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
                                     alt="">
                             @endforeach
                         </div>
                         <div class="row">
-                            <p style="color: #27AC1F;margin-right:15%;">{{ $teatchers->name }}</p>
+                            <p class="nametetcher" style="color: #27AC1F;margin-right:15%;">{{ $teatchers->name }}</p>
                         </div>
+                        @endif
+                        @windowWidthBetween(480, 1028)
+                        @foreach ($teatcher as $teatchers)
+                            <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
+                                alt="">
+                        @endforeach
                     </div>
-                    <div class="col-8 ">
-                        <p class="font18px">
-                            <?php
-                            echo $teatchers->summernote;
-                            ?>
-                        </p>
+                    <div class="row">
+                        <p class="nametetcher">{{ $teatchers->name }}</p>
                     </div>
+                    @endif
+                    @windowWidthLessThan(480)
+
+                    @foreach ($teatcher as $teatchers)
+                        <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}" alt="">
+                    @endforeach
                 </div>
+                <div class="row">
+                    <p class="nametetcher">{{ $teatchers->name }}</p>
+                </div>
+                @endif
             </div>
-            <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher3" alt="">
+            <div class="col-8 ">
+                <p class="">
+                    <?php
+                    echo $teatchers->summernote;
+                    ?>
+                </p>
+            </div>
+        </div>
+        </div>
+        <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher3" alt="">
 
         </div>
         </div>
@@ -215,7 +295,7 @@
 
                             @if ($lessons->chabters == $chbters->name)
                                 <div class="card card-body" id="">
-                                    <div class="ditelsco">
+                                    <div class="ditelsco  ">
                                         <?php  if (Auth::user()): ?>
                                         @if ($key == 0)
                                             <?php
@@ -223,18 +303,21 @@
                                             $file = $id3->analyze($path);
                                             ?>
                                             @foreach ($code as $codes)
-                                                @if (($codes->user == Auth::user()->name) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
                                                     <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             style="border: none;background-color:#f8fafc
-                                  ">{{ $lessons->name }}</button></a>
-                                                @else
+                                                            ">{{ $lessons->name }}</button></a>
+                                                @else(($codes->user_id != Auth::user()->id) & ($codes->endcode > $today)
+                                                    & ($codes->courses != $b->name))
+                                                    <span id="ditelsco1">مشاهدة مجانيّة</span>
                                                     <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             style="border: none;background-color:#f8fafc
-                                       "><label
+                                                                                                             "><label
                                                                 class=" font14px" aria-current="page"
-                                                                for="modal-toggle-vedio"> {{ $lessons->name }}
+                                                                for="modal-toggle-vedio">
+                                                                {{ $lessons->name }}
                                                             </label></button></a>
                                                 @endif
                                             @endforeach
@@ -246,27 +329,25 @@
                                             @foreach ($code as $codes)
                                                 <?php $insid = 1; ?>
                                                 <?php $inside1 = 0; ?>
-                                                @if (($codes->user == Auth::user()->name) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
                                                     <?php $insid = 0; ?>
 
                                                     <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             style="border: none;background-color:#f8fafc
-                                  ">{{ $lessons->name }}</button></a>
+                                                             ">{{ $lessons->name }}</button></a>
                                                     <?php $insid1 = 1; ?>
                                                     <?php
                                                     $path = 'img/vedio/' . $lessons->vedio;
                                                     $file = $id3->analyze($path);
                                                     ?>
                                                     <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
-                                                @endif
-
-                                                @if ($codes->user !== Auth::user()->name || $insid == 1)
+                                                @else
                                                     <i style="font-size:24px;color:" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             disabled
                                                             style="border: none;background-color:#f8fafc
-                                    ">{{ $lessons->name }}</button></a>
+                                                            ">{{ $lessons->name }}</button></a>
                                                     <?php
                                                     $path = 'img/vedio/' . $lessons->vedio;
                                                     $file = $id3->analyze($path);
@@ -277,12 +358,14 @@
                                                 @endif
                                             @endforeach
                                         @endif
-
-
                                         <?php endif; ?>
 
+
+                                        {{-- not auth --}}
                                         <?php  if (!Auth::user()): ?>
                                         @if ($key == 0)
+                                            <span id="ditelsco1">مشاهدة مجانيّة</span>
+
                                             <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                             <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                     style="border: none;background-color:#f8fafc
@@ -332,13 +415,24 @@
                         <?php  if (Auth::user()): ?>
 
                         @foreach ($code as $codes)
-                            @if (($codes->user == Auth::user()->name) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                            @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
                                 @foreach ($quiz as $key => $quizs)
                                     @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
                                         <div class="card card-body" id="">
                                             <div class="ditelsco">
                                                 <i class="fa  fa-book" style="font-size:24px;color:#27AC1F"
                                                     aria-hidden="true"></i>
+                                                {{ $quizs->name }}
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @else
+                                @foreach ($quiz as $key => $quizs)
+                                    @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
+                                        <div class="card card-body" id="">
+                                            <div class="ditelsco">
+                                                <i class="fa  fa-book" style="font-size:24px;" aria-hidden="true"></i>
                                                 {{ $quizs->name }}
                                             </div>
                                         </div>

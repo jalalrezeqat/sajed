@@ -86,7 +86,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/sliderteacher', [App\Http\Controllers\Admin\SliderController::class, 'indexteacher'])->name('sliderteacher');
         Route::post('/sliderteacher1/add', [App\Http\Controllers\Admin\SliderController::class, 'storeteacher']);
         Route::put('/sliderteacher/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'updateteacher'])->name('slider.update');
-
         //teacher 
         Route::get('/teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index'])->name('teacher');
         Route::get('/teacher/add', [App\Http\Controllers\Admin\TeacherController::class, 'viweaddteacher'])->name('teacher.viweaddteacher');
@@ -94,7 +93,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/teacher/{teacher_id}/delete', [App\Http\Controllers\Admin\TeacherController::class, 'destroy'])->name('teacher.destroy');
         Route::get('/teacher/{teacher}/edit', [App\Http\Controllers\Admin\TeacherController::class, 'edit'])->name('teacher.edit');
         Route::put('/teacher/update/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'update'])->name('teacher.update');
-
+        //Favoriteicon
+        Route::get('/Favoriteicon', [App\Http\Controllers\Admin\FavoriteiconController::class, 'index'])->name('Favoriteicon');
+        Route::get('/Favoriteicon/{favoriteicon}/edit', [App\Http\Controllers\Admin\FavoriteiconController::class, 'edit'])->name('Favoriteicon.edit');
+        Route::put('/favoriteicon/update/{id}', [App\Http\Controllers\Admin\FavoriteiconController::class, 'update'])->name('Favoriteicon.update');
+        //sochial
+        Route::get('/socials', [App\Http\Controllers\Admin\SocialController::class, 'index'])->name('socials');
+        Route::get('/socials/{socials}/edit', [App\Http\Controllers\Admin\SocialController::class, 'edit'])->name('socials.edit');
+        Route::put('/socials/update/{id}', [App\Http\Controllers\Admin\SocialController::class, 'update'])->name('socials.update');
+        //ConnectWithUsController
+        Route::get('/ConnectWithUs', [App\Http\Controllers\Admin\ConnectWithUsController::class, 'index'])->name('ConnectWithUs');
+        Route::get('/ConnectWithUs/{connectWithUs}/edit', [App\Http\Controllers\Admin\ConnectWithUsController::class, 'edit'])->name('ConnectWithUs.edit');
+        Route::put('/ConnectWithUs/update/{id}', [App\Http\Controllers\Admin\ConnectWithUsController::class, 'update'])->name('ConnectWithUs.update');
         //courses 
         Route::get('/courses', [App\Http\Controllers\Admin\CoursesController::class, 'index'])->name('courses');
         Route::get('/courses/{courses}/edit', [App\Http\Controllers\Admin\CoursesController::class, 'updateviwe'])->name('courses.edit');

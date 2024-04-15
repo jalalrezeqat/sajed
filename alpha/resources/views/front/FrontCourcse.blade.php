@@ -1,64 +1,80 @@
+  <!DOCTYPE html>
+  <html lang="ar">
 
-@extends('layouts.app')
+  <head>
+      <meta name="viewport" content="width=device-width">
+      <meta name="description" content="Put your description here.">
+      @vite(['resources/css/mediaipad.css'])
 
-    @section('content')
-    <div class="namebranch  float-right mb-2">
-        <p class="namebranch-text">الدورات > {{$branch->name}}</p>
-    </div>
-    <div id="carouselExampleSlidesOnly" class="carousel slider  slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block  w-100" src="{{asset('img/cona.jpeg')}}" alt="First slide">
-          </div>
-           <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
-          </div>
-        </div>
+  </head>
+  <livewire:breakpoints />
+  <?php session('windowW'); ?>
+  @extends('layouts.app')
+
+  @section('content')
+      <div class="namebranch  float-right mb-2">
+          <p class="namebranch-text">الدورات > {{ $branch->name }}</p>
       </div>
-      <h3 class="text-center mt-3" style="font-size: 42px">دورات الثانويّة العامّة   </h3>
-      <h3 class="text-center font-weight-bold"style="font-size: 42px">   {{$branch->name}}  </h3>
-
-        <div class="d-flex justify-content-center mt-5 dir"> 
-            <div id="butcour">
-               <a href="{{ route('front.FrontCourcse',$branch->id) }}" class="btn btnfcou ">الفصل الاول </a>
-
-            </div>
-            <div class="mr-5">
-            <a href="{{ route('front.FrontCourcse1',$branch->id) }}" class="btn btnfcou">الفصل الثاني</a>
-            </div>
-        </div>
-
-          <div class="  ">
-
-    <div class=" card-box-home  card-w mb-5  slider">
-            <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
-              @foreach($coursces as $coursces)
-              <div class="col  ">
-                <div class="card-home card "id="card-home">
-                  <div class="card-body">
-
-                    <div class="row">
-  <div class="col-4">  <img src="/img/card-img.png" class="card-img-top-c col-3" alt="...">
-</div>
-  <div class="col-8">   <h5 class="card-title-home col-9   mb-3">{{$coursces->name}}</h5>
-</div>
-</div>
-                      
-
-                    <p id="card-text-home1 mt" class="card-text-home1 mb-3  mt-3 ">{{$coursces->summary}}</p>
-                  <a class="card-button mt-3" href="{{ url('coursesditels'.'/'.$coursces->id) }}"> قراءة المزيد ></a>
-                    <button class="but-card mt-3">{{$coursces->price}}₪   </button>
-                  </div>
-                </div>
+      <div id="carouselExampleSlidesOnly" class="carousel slider  slide" data-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img class="d-block  w-100" src="{{ asset('img/cona.jpeg') }}" alt="First slide">
               </div>
-              @endforeach
-
+              <div class="carousel-item">
+                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
               </div>
-     
-         
+              <div class="carousel-item">
+                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+              </div>
+          </div>
+      </div>
+      <h3 class="text-center font42px mt-3"> الثانويّة العامّة </h3>
+      <h3 class="text-center font42px font-weight-bold"> {{ $branch->name }} </h3>
+
+      <div class="d-flex justify-content-center mt-5 dir">
+          <div id="butcour">
+              <a href="{{ route('front.FrontCourcse', $branch->id) }}" class="btn btnfcou ">الفصل الاول </a>
+
+          </div>
+          <div class="mr-5">
+              <a href="{{ route('front.FrontCourcse1', $branch->id) }}" class="btn btnfcous">الفصل الثاني</a>
+          </div>
       </div>
 
-    @endsection
+      <div class="  ">
+
+          <div class=" card-box-home  card-w mb-5  slider">
+              <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
+                  @foreach ($coursces as $coursces)
+                      <div class="col  ">
+
+                          <div class="card-courseshow card "id="card-courseshow">
+                              <div class="card-body">
+
+                                  <div class="row">
+                                      <div class="columncourse2"> <img src="/img/card-img.png" width="49.17px"
+                                              class="card-img-top-c col-3" alt="...">
+                                      </div>
+                                      <div class="columncourse1">
+                                          <h5 class="card-title-home col-9  font18px mb-3">{{ $coursces->name }}</h5>
+                                      </div>
+                                  </div>
+
+
+                                  <p id="card-text-home1 mt" class="card-text-home1 mb-3 font14px mt-3 ">
+                                      {{ $coursces->summary }}</p>
+                                  <a class="card-button font14px mt-3"
+                                      href="{{ url('coursesditels' . '/' . $coursces->id) }}"> قراءة
+                                      المزيد ></a>
+                                  <button class="but-card mt-3">{{ $coursces->price }}₪ </button>
+                              </div>
+                          </div>
+
+                      </div>
+                  @endforeach
+
+              </div>
+
+
+          </div>
+      @endsection

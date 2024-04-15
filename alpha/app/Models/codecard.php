@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class codecard extends Model
 {
     use HasFactory;
-    protected $table ='codecards';
+    protected $table = 'codecards';
 
     protected $fillable = [
         'code',
@@ -17,4 +17,8 @@ class codecard extends Model
         'endcode'
 
     ];
+    public function category()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

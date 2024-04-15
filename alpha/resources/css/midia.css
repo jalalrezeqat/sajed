@@ -1,0 +1,229 @@
+@media only screen and (max-width: 480px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    .navbarshow {
+        width: 1000px;
+    }
+    .buttonshow {
+        font-size: 75%;
+        height: 50%;
+        width: 90%;
+    }
+    #countleeson {
+        font-size: 62.5%;
+        padding: 0%;
+    }
+    .font18px {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .font55px {
+        font-size: 55px;
+        font-weight: 700;
+    }
+    .font48px {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .font14px {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .mt100px {
+        margin-top: 50px;
+    }
+    .card-w {
+        width: 90%;
+        margin: auto;
+    }
+    .ovarflow {
+        overflow-y: visible;
+        margin-top: 30%;
+    }
+    .card-btn-allcourse {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .btn-allcourse {
+        background-color: #27ac1f;
+        border-radius: 70px;
+        border: none;
+        color: white;
+        padding: 0px;
+        font-size: 18px;
+        text-align: center;
+        width: 150px;
+        height: 40px;
+        font-weight: 700;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .card-box-home {
+        background: #e4e4e4;
+        border-radius: 15px;
+    }
+    .font24px {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        height: 25px;
+        width: 25px;
+        outline: #27ac1f;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 3px solid #27ac1f;
+        background-image: none;
+    }
+
+    .carousel-control-next-icon:after {
+        content: "❯";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+
+    .carousel-control-prev-icon:after {
+        content: "❮";
+        font-size: 12px;
+        color: #27ac1f;
+        margin: auto;
+    }
+    .img-about {
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        float: left;
+    }
+    #shapetetcher1 {
+        width: 20px;
+        margin-top: -20px;
+        float: right;
+        margin-right: 5%;
+    }
+    #shapetetcher2 {
+        width: 20px;
+        margin-top: -20px;
+        float: left;
+        margin-left: 5%;
+    }
+    #card-home {
+        border-radius: 10.64px;
+        background-color: #f8f8f8;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        max-width: 276.43px;
+        height: 100%;
+        max-height: 220px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -20px;
+    }
+    .font55px {
+        font-size: 35px;
+        font-weight: 700;
+    }
+    .font20px {
+        font-size: 14px;
+        font-weight: 700;
+        text-align: justify;
+    }
+    .font48px {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .font42px {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .font32px {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .btnhome {
+        width: 120px;
+        height: 35px;
+        background-color: #27ac1f;
+        color: white;
+        border-radius: 20px;
+    }
+
+    .contectusdet {
+        float: right;
+        color: #212529;
+        font-family: Cairo;
+        font-size: 14.4px;
+        grid-area: auto;
+        margin: auto;
+        line-height: 23.04px;
+    }
+    .btncouresdetales {
+        margin-left: 10%;
+        width: 180px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+        margin-bottom: 2%;
+    }
+    .inputorder {
+        width: 180px;
+        height: 39px;
+        border-radius: 10px;
+        background-color: #12181e;
+        border: 1px solid white;
+        color: white;
+        margin-left: 2%;
+    }
+    .btnsubmitorder {
+        width: 88.48px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+    }
+    .imgditels {
+        width: 349px;
+        margin: auto;
+    }
+    .btncouresdetaless {
+        margin: auto;
+        margin-top: 5%;
+        width: 140px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+        margin: auto;
+    }
+    .imgtatecher {
+        margin: auto;
+        margin-top: 2%;
+        width: 150.23px;
+        height: 150.23px;
+    }
+    .nametetcher {
+        color: #27ac1f;
+        text-align: center;
+        margin-top: 1%;
+    }
+    #shapetetcher3 {
+        width: 30px;
+        margin-top: -9%;
+        float: left;
+        margin-left: 5%;
+    }
+    .butcoresscore {
+        width: 130.48px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #27ac1f;
+    }
+}

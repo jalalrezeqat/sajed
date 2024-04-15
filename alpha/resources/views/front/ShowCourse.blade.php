@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="namecourse mt-5   float-right mb-2">
-        <p class="namebranch-text " style="font-size:14px;"> الدورات > {{ $b->branche }} > {{ $b->name }} -
+        <p class="namebranchshow-text" style="font-size:14px;margin-top:2%"> الدورات > {{ $b->branche }} >
+            {{ $b->name }} -
             {{ $b->branche }} - {{ $b->chabters }} </p>
     </div>
 
@@ -143,7 +144,7 @@
                     <div class="row dir">
                         <div class="col">
                             <div class="row marginr5">
-                                <p class="col-5 font18px" style="padding: 0%;margin-left:2%;font-size:18px">حدد معدّل تطمح
+                                <p class="col-5 font18px" style="padding: 0%;margin-left:2%;">حدد معدّل تطمح
                                     في الوصول إليه في الرياضيات: </p>
                                 <input type="text" class="inpoutcours" name="mark" required maxlength="2">
                                 <button class=" butcoresscore  col-lg-3" style="    margin-right: 2%;">ادخال </button>
@@ -155,7 +156,7 @@
 
                 <p class="font18px marginr5">بعض النصائح المُقدّمة من ألفا لزيادة التركيز أثناء التعلّم:</p>
                 <p class="font14px marginr5">
-                <ul class="marginr5 font14px">
+                <ul class="marginr5  font14px">
                     <li>حدد مكان هادئ وخالٍ من الانشغال حيث يمكنك التركيز بشكل جيد</li>
                     <li>قم بتجهيز أدوات الدراسة الخاصة بك مسبقًا، مثل الكمبيوتر المحمول، والأقلام، والورق</li>
                     <li>حدد جدول زمني لدراستك والتزام به بانتظام</li>

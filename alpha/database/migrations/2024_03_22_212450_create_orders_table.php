@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('gavarment');
             $table->string('addres');
             $table->string('phone');
-            $table->string('email')->default('');
-            $table->string('stetus')->default('');
+            $table->string('email')->nullable();
+            $table->string('stetus')->nullable();
             $table->timestamps();
         });
     }
