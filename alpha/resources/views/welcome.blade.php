@@ -184,24 +184,22 @@
 
 
           {{-- slide teacher --}}
-          <div id="carouselExample" class="carousel shadow-lg  slide">
+          <div id="carousel" class="carousel shadow-lg  slide">
               <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
 
               <div class="carousel-inner">
                   @foreach ($sliderteacher as $key => $sliderteachers)
                       <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                           <img class="d-block d-block   img-slider-teacher"
-                              src="{{ asset('img/slider/' . $sliderteachers->img) }}" alt="{{ $sliderteachers->id }}">
+                              src="{{ asset('img/slider/' . $sliderteachers->img) }}" alt="صورة معلومات عن المعلم">
                       </div>
                   @endforeach
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                  data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                  data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
               </button>
@@ -360,10 +358,12 @@
           interval: 1000
       });
 
-      setInterval(() => {
+      let timer = setInterval(() => {
           $('.carousel').carousel('dispose')
           $('.carousel').carousel({
               interval: 2000
           });
-      }, 10000)
+      }, 2000)
+
+      clearInterval(timer);
   </script>

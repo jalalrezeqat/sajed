@@ -301,48 +301,56 @@
                                             <?php
                                             $path = 'img/vedio/' . $lessons->vedio;
                                             $file = $id3->analyze($path);
+                                            $auth = 1;
+                                            
                                             ?>
+
                                             @foreach ($code as $codes)
-                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
                                                     <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             style="border: none;background-color:#f8fafc
                                                             ">{{ $lessons->name }}</button></a>
-                                                @else(($codes->user_id != Auth::user()->id) & ($codes->endcode > $today)
-                                                    & ($codes->courses != $b->name))
-                                                    <span id="ditelsco1">مشاهدة مجانيّة</span>
-                                                    <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
-                                                    <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                            style="border: none;background-color:#f8fafc
-                                                                                                             "><label
-                                                                class=" font14px" aria-current="page"
-                                                                for="modal-toggle-vedio">
-                                                                {{ $lessons->name }}
-                                                            </label></button></a>
+                                                    <?php $auth = 0; ?>
                                                 @endif
                                             @endforeach
-
+                                            @if (($codes->user_id != Auth::user()->id) & ($auth != 0))
+                                                <span id="ditelsco1">مشاهدة مجانيّة</span>
+                                                <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
+                                                <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                        style="border: none;background-color:#f8fafc
+                                                                                                             "><label
+                                                            class=" font14px" aria-current="page"
+                                                            for="modal-toggle-vedio">
+                                                            {{ $lessons->name }}
+                                                        </label></button></a>
+                                            @endif
                                             <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
-                                        @endif
 
-                                        @if ($key > 0)
-                                            @foreach ($code as $codes)
-                                                <?php $insid = 1; ?>
-                                                <?php $inside1 = 0; ?>
-                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                                            <?php endif;?>
+
+
+                                            @if ($key > 0)
+                                                @foreach ($code as $codes)
                                                     <?php $insid = 0; ?>
+                                                    @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
+                                                        <?php $insid = 1; ?>
 
-                                                    <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
-                                                    <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                            style="border: none;background-color:#f8fafc
+                                                        <i style="font-size:24px;color:#27AC1F"
+                                                            class="fa">&#xf144;</i>
+                                                        <a
+                                                            href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                                style="border: none;background-color:#f8fafc
                                                              ">{{ $lessons->name }}</button></a>
-                                                    <?php $insid1 = 1; ?>
-                                                    <?php
-                                                    $path = 'img/vedio/' . $lessons->vedio;
-                                                    $file = $id3->analyze($path);
-                                                    ?>
-                                                    <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
-                                                @else
+                                                        <?php $insid1 = 1; ?>
+                                                        <?php
+                                                        $path = 'img/vedio/' . $lessons->vedio;
+                                                        $file = $id3->analyze($path);
+                                                        ?>
+                                                        <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                                    @endif
+                                                @endforeach
+                                                @if (($codes->user_id != Auth::user()->id) & ($auth != 0))
                                                     <i style="font-size:24px;color:" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             disabled
@@ -356,42 +364,41 @@
 
                                                     <?php $insid = 0; ?>
                                                 @endif
-                                            @endforeach
-                                        @endif
-                                        <?php endif; ?>
+                                            @endif
+                                            <?php endif; ?>
 
 
-                                        {{-- not auth --}}
-                                        <?php  if (!Auth::user()): ?>
-                                        @if ($key == 0)
-                                            <span id="ditelsco1">مشاهدة مجانيّة</span>
+                                            {{-- not auth --}}
+                                            <?php  if (!Auth::user()): ?>
+                                            @if ($key == 0)
+                                                <span id="ditelsco1">مشاهدة مجانيّة</span>
 
-                                            <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
-                                            <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                    style="border: none;background-color:#f8fafc
+                                                <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
+                                                <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                        style="border: none;background-color:#f8fafc
                                        "><label
-                                                        class=" " aria-current="page" for="modal-toggle-vedio">
-                                                        {{ $lessons->name }} </label></button></a>
-                                            <?php
-                                            $path = 'img/vedio/' . $lessons->vedio;
-                                            $file = $id3->analyze($path);
-                                            ?>
-                                            <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
-                                        @endif
-                                        @if ($key > 0)
-                                            <i style="font-size:24px;color:" class="fa">&#xf144;</i>
-                                            <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                    class="font14px" disabled
-                                                    style="border: none;background-color:#f8fafc
+                                                            class=" " aria-current="page" for="modal-toggle-vedio">
+                                                            {{ $lessons->name }} </label></button></a>
+                                                <?php
+                                                $path = 'img/vedio/' . $lessons->vedio;
+                                                $file = $id3->analyze($path);
+                                                ?>
+                                                <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                            @endif
+                                            @if ($key > 0)
+                                                <i style="font-size:24px;color:" class="fa">&#xf144;</i>
+                                                <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                        class="font14px" disabled
+                                                        style="border: none;background-color:#f8fafc
                                        ">{{ $lessons->name }}</button></a>
-                                            <?php
-                                            $path = 'img/vedio/' . $lessons->vedio;
-                                            $file = $id3->analyze($path);
-                                            ?>
-                                            <p class="mindet font14px"><?php echo $file['playtime_string']; ?> دقيقة</p>
-                                        @endif
+                                                <?php
+                                                $path = 'img/vedio/' . $lessons->vedio;
+                                                $file = $id3->analyze($path);
+                                                ?>
+                                                <p class="mindet font14px"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                            @endif
 
-                                        <?php endif; ?>
+                                            <?php endif; ?>
 
                                     </div>
                                 </div>
@@ -415,8 +422,11 @@
                         <?php  if (Auth::user()): ?>
 
                         @foreach ($code as $codes)
-                            @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->name))
+                            <?php $insi1 = 0; ?>
+                            @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
                                 @foreach ($quiz as $key => $quizs)
+                                    <?php $insi1 = 1; ?>
+
                                     @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
                                         <div class="card card-body" id="">
                                             <div class="ditelsco">
@@ -427,19 +437,20 @@
                                         </div>
                                     @endif
                                 @endforeach
-                            @else
-                                @foreach ($quiz as $key => $quizs)
-                                    @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
-                                        <div class="card card-body" id="">
-                                            <div class="ditelsco">
-                                                <i class="fa  fa-book" style="font-size:24px;" aria-hidden="true"></i>
-                                                {{ $quizs->name }}
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
                             @endif
                         @endforeach
+                        @if (($codes->user_id != Auth::user()->id) & ($auth != 0))
+                            @foreach ($quiz as $key => $quizs)
+                                @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
+                                    <div class="card card-body" id="">
+                                        <div class="ditelsco">
+                                            <i class="fa  fa-book" style="font-size:24px;" aria-hidden="true"></i>
+                                            {{ $quizs->name }}
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                         <?php endif; ?>
 
                         {{--  --}}
@@ -510,9 +521,9 @@
                         <div class="vidio " style="height: 70%;width: 80%;margin: auto;">
                             {{-- <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline poster=""> --}}
                             <iframe
-                                src="https://player.vdocipher.com/v2/?otp=20160313versASE323n6hDUj8CmyIN3FSQJS0R6zthNM9gPpJCws9uJ5dGKKBC3m&playbackInfo=eyJ2aWRlb0lkIjoiMzU2ZDExZjIyMDdlNDUwODhhMzBlN2UyMzAxOWMwZjgifQ"
-                                style="border:0;width:720px;height:405px" allow="encrypted-media" allowfullscreen>
-                            </iframe>
+                                src="https://player.vdocipher.com/v2/?otp=20160313versASE323hAHjGMnNOolu6wfPnPV1o2l77msDeVKWpj14pg7OYqCCCE&playbackInfo=eyJ2aWRlb0lkIjoiNDIwMDNlMWFkM2ViNDM5NGI1N2FmZjc0ODc0MWNmNmMifQ=="
+                                style="border:0;height:360px;width:640px;max-width:100%" allowFullScreen="true"
+                                allow="encrypted-media"></iframe>
                             {{--  --}}
                             <!-- Caption files -->
                             <!-- Fallback for browsers that don't support the <video> element -->

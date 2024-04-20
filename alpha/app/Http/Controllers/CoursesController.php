@@ -227,15 +227,18 @@ class CoursesController extends Controller
     }
     public function codesend(Request $request, $user)
     {
+        // dd($request->getClientIp());
+
         $month = date('m');
         $day = date('d');
         $year = date('Y');
         $today = $year . '-' . $month . '-' . $day;
         if (Auth::check()) {
             $codefind = DB::table('codecards')->where('code', '=', $request->input('code'))->first();
-            if ($codefind !=  null & $codefind->endcode >= $today) {
 
-                if ($codefind->user == null) {
+            if ($codefind !=  null && $codefind->endcode >= $today) {
+
+                if ($codefind->user_id == null) {
 
                     DB::table('codecards')->where('code', $request->input('code'))->update(['user' => $user, 'startcode' => $today, 'user_id' => Auth::user()->id]);
                     return back()->with("message1", "تم اضافة الدورة ");
