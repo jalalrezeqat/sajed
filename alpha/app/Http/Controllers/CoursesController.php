@@ -76,6 +76,7 @@ class CoursesController extends Controller
 
         // $branch =branch::find($branchid);
         $b = courses::find($id);
+        $vedio=null;
         $chbter = DB::table('chabters')->where('course', '=', $b->name)->get();
         $coursces = DB::table('courses')->where('branche', '=', $br)->get();
         $chbter1 = DB::table('lessons')->where('course', '=', $b->name)->get();
@@ -84,6 +85,7 @@ class CoursesController extends Controller
         $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
         $quiz = DB::table('categories')->get();
         foreach ($lesson as $lessons) {
+            
             $vedio = DB::table('lessons')->where('id', '=', $lesson[0]->id)->first();
         }
         $chabtercount = $chbter->count();
