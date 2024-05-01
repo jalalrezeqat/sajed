@@ -111,17 +111,22 @@
         margin-right: auto;
     }
     .font18px {
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 700;
     }
     .font48px {
-        font-size: 24px;
+        font-size: 32px;
         font-weight: 700;
+    }
+    .aboutalpha {
+        text-align: justify;
+        width: 100%;
+        margin-top: 10%;
     }
     .img-about {
         margin: auto;
         width: 300px;
-        height: 300px;
+        height: 100%;
         float: left;
     }
     .contact-img {
@@ -192,5 +197,17 @@
         color: #27ac1f;
         margin-right: 9%;
         margin-top: 1%;
+    }
+    .qustion-box {
+        background-color: #27ac1f1a;
+        padding: 10px;
+        width: 90%;
+        margin-bottom: 15%;
+    }
+    .mt100px {
+        margin-top: 50px;
+    }
+    .mtb00px {
+        margin-bottom: 50px;
     }
 }

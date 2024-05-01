@@ -19,6 +19,13 @@ body {
 .dir {
     direction: rtl;
 }
+.regester-model {
+    color: #27ac1f;
+    text-decoration: underline;
+    font-size: 14px;
+    width: 108.17px;
+    margin-right: 32%;
+}
 .login {
     width: 90%;
     height: 20%;
@@ -378,6 +385,7 @@ body {
     background-color: #27ac1f1a;
     padding: 10px;
     width: 80%;
+    margin-bottom: 15%;
 }
 
 .footer {
@@ -584,6 +592,11 @@ body {
 }
 .aboutalpha {
     text-align: justify;
+    width: 80%;
+    margin-top: 10%;
+}
+.img-about1 {
+    margin-right: 30%;
 }
 .mission {
     margin-right: 5%;

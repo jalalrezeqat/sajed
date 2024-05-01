@@ -192,14 +192,13 @@
     }
     .btncouresdetaless {
         margin: auto;
-        margin-top: 5%;
+        margin-top: 10%;
         width: 140px;
         height: 38px;
         border-radius: 10px;
         border: none;
         color: white;
         background-color: #27ac1f;
-        margin: auto;
     }
     .imgtatecher {
         margin: auto;
@@ -225,5 +224,26 @@
         border: none;
         color: white;
         background-color: #27ac1f;
+    }
+    .qustion-box {
+        background-color: #27ac1f1a;
+        padding: 10px;
+        width: 90%;
+        margin-bottom: 20%;
+    }
+    .aboutalpha {
+        text-align: justify;
+        width: 100%;
+        margin-top: 10%;
+    }
+    .box-ditalescourse {
+        width: 100%;
+        display: inline-flex;
+        direction: rtl;
+        background-color: #12181e;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin: auto;
+        /* margin-bottom: 1%; */
     }
 }

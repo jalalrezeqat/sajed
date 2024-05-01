@@ -1,3 +1,19 @@
+<head>
+    <meta name="description"
+        content="اشترك الآن في دورات التوجيهي على منصة ألفا التعليمية، دورات شاملة للفرعين العلمي والادبي مع امكانية مشاهدة الدروس وتكرارها في أي وقت وأي مكان">
+    <meta name="keywords" content="دورات التوجيهي للفرعين العلمي والادبي, شرح كامل للمواد">
+    @foreach ($coursces as $courscess)
+        <meta name='{{ $courscess->name }}' content=' {{ url('coursesditels' . '/' . $courscess->id) }}'>
+    @endforeach
+    <meta name="{{ $branch->name }}" content='{{ url('courses/1') }}' />
+    <meta name="viewport" content="width=device-width">
+    <meta name="googlebot" content="index,follow">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=640, initial-scale=.5, user-scalable=no" />
+
+    @vite(['resources/css/mediaipad.css'])
+
+</head>
 @extends('layouts.app')
 <livewire:breakpoints />
 <?php session('windowW'); ?>

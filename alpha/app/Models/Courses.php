@@ -19,7 +19,9 @@ class courses extends Model
         'teacher_name',
         'status',
         'img_name',
-        'chapter'
+        'chapter',
+        'img_teatcher'
+
 
 
     ];

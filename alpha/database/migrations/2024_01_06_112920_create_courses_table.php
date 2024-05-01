@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('aboutcourse');
             $table->string('price');
             $table->string('img_name');
+            $table->string('img_teatcher');
             $table->string('branche');
             $table->string('teacher_name');
             $table->string('chabters');

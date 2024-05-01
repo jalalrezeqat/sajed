@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description"
+        content="منصة الفا التعليمية هي منصة الكترونية فلسطينية تقدم دورات تعليمية لمرحلة التوجيهي على المنهاج الفلسطيني وتهدف لتوفير الجهد والوقت على الطلبة
+">
+    <meta name="keywords" content="حول منصفة الفا التعليمية ,  دورات تعليمية, توجيهي">
+
+</head>
 @extends('layouts.app')
 <?php session('windowW'); ?>
 <livewire:breakpoints />
@@ -14,12 +26,12 @@
 
                         <p class="font48px">حول منصّة ألفا التعليميّة</p>
                         @foreach ($aboutalpha as $aboutalphas)
-                            <p class="font18px aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
+                            <p class="font18px  aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
                         @endforeach
                     </div>
 
                     <div>
-                        <div class="row dir " style="margin-top:50px">
+                        <div class="row dir " style="margin-top:10%">
                             <div class="col">
                                 <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
                             </div>
@@ -36,7 +48,7 @@
                 </div>
                 <div class="col">
                     @foreach ($slider as $slider)
-                        <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                        <img class="img-about img-about1" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
                     @endforeach
                 </div>
             </div>
@@ -50,7 +62,7 @@
             <div class="col ring">
                 <div>
 
-                    <p class="font48px">حول منصّة ألفا التعليميّة</p>
+                    <p class="font48px" style="text-align: center">حول منصّة ألفا التعليميّة</p>
                     @foreach ($aboutalpha as $aboutalphas)
                         <p class="font18px aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
                     @endforeach
@@ -62,7 +74,7 @@
                             <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
                         </div>
                         <div class="col">
-                            <div class="row">
+                            <div class="row" style="margin:auto">
                                 <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
                                     <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                                 </div>
@@ -78,7 +90,7 @@
     </section>
     {{-- end slider about --}}
     <!--  -->
-    <section class="mt100px">
+    <section style="margin-top: 30px">
         <div class="slider-cource dir ">
             <div>
                 <h1 class=" text-bold font32px"> <img style="margin-left:3%" src="img/aboutv.png" alt="">رؤيتنا :
@@ -91,17 +103,11 @@
                 <h1 class="text-bold font32px"><img style="margin-left:3%" src="img/aboutm.png" alt="">مهمتنا :</h1>
                 <div class="mission">
                     <p class="font18px">تتمحور مهامنا في منصّة ألفا حول: </p>
-
-                    <ul>
-                        @foreach ($mission as $mission)
-                            <li>
-                                <p class="aboutalpha "><span
-                                        class="text-bold aboutalpha font18px">{{ $mission->our_mission_titel . ' : ' }}</span>
-                                    <span class="font18px aboutalpha">{{ $mission->our_mission_text }}</span>
-                                </p>
-                            </li>
-                        @endforeach
-                    </ul>
+                    @foreach ($mission as $mission)
+                        <?php
+                        echo $mission->summernote;
+                        ?>
+                    @endforeach
                 </div>
             </div>
         </div>

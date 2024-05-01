@@ -3,7 +3,14 @@
 
   <head>
       <meta name="viewport" content="width=device-width">
-      <meta name="description" content="Put your description here.">
+      <meta name="description"
+          content="استكشف دورات التوجيهي على منصة ألفا التعليمية، دورات اون لاين مُصمّمة للفرعين العلمي والادبي، شرح شامل للمواد ومتاح في أي وقت وعلى أيدي أمهر الأساتذة في فلسطين
+">
+      <meta name="keywords" content="تعلم في أي وقت وأي مكان,  دورات توجيهي أون لاين, منصة ألفا
+">
+      @foreach ($courses as $coursess)
+          <meta name="{{ $coursess->name }}" content="{{ url('coursesditels' . '/' . $coursess->id) }}" />
+      @endforeach
       @vite(['resources/css/mediaipad.css'])
 
   </head>
@@ -34,7 +41,8 @@
                       <div>
                           <div class="row dir " style="margin-top:50px">
                               <div class="col">
-                                  <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
+                                  <a href="{{ url('/courses') }}"><button class="btnhome font18px btn">ابدأ
+                                          الآن</button></a>
                               </div>
                               <div class="col">
                                   <div class="row">
@@ -62,7 +70,7 @@
           <div class="col float-right ring">
               <div>
 
-                  <p style="font-size: 30px;   font-weight:700 ;"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
+                  <p style="font-size: 40px;   font-weight:700 ;"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
                       مكان</p>
               </div>
               <div>
@@ -121,7 +129,8 @@
                       <div class="col">
                           <div class="row">
                               <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
-                                  <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
+                                  <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
+                                      أكثر</span>
                               </div>
                           </div>
                       </div>
@@ -218,7 +227,7 @@
                   height: auto;
                   border-radius: 50%;
                   top: -127px !important;
-                  box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5)
+                  /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
               }
 
               .carousel-indicators li {
@@ -241,7 +250,7 @@
               }
 
               #carouselExample {
-                  box-shadow: -5px 15px 25px rgba(7, 7, 7, 0.5) !important
+                  box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
               }
 
               .carousel-inner {
@@ -252,7 +261,7 @@
               <div class="row d-flex justify-content-center ">
                   <div class="col-lg-5 col-md-7 col-sm-9 ">
 
-                      <div id="carouselExample" class="carousel shadow-lg  slide">
+                      <div id="carouselExample" class="carousel shadow-sm  slide">
                           <div class="carousel-inner">
                               @foreach ($sliderteachermob as $key => $sliderteachermobs)
                                   <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">

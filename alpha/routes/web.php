@@ -52,8 +52,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('/about/add', [App\Http\Controllers\Admin\AboutController::class, 'store']);
         Route::get('/about/{about}/edit', [App\Http\Controllers\Admin\AboutController::class, 'edit'])->name('about.edit');
         Route::put('/about/update/{id}', [App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
+        Route::get('/about/vistion/add', [App\Http\Controllers\Admin\AboutController::class, 'addvistion'])->name('about.add.vistion');
+        Route::post('/about/vistion/add', [App\Http\Controllers\Admin\AboutController::class, 'storevistion'])->name('about.vistion.store');
         Route::get('/about/{about}/editvistion', [App\Http\Controllers\Admin\AboutController::class, 'editvistion'])->name('about.editvistion');
         Route::put('/about/updatevistion/{id}', [App\Http\Controllers\Admin\AboutController::class, 'updatevistion'])->name('about.updatevistion');
+        Route::get('/about/aboutalpha/add', [App\Http\Controllers\Admin\AboutController::class, 'aboutalpha'])->name('aboutalpha.add');
+        Route::get('/about/{aboutalpha}/aboutalpha', [App\Http\Controllers\Admin\AboutController::class, 'aboutalphaedit'])->name('about.aboutalpha');
+        Route::put('/about/aboutalpha/{id}', [App\Http\Controllers\Admin\AboutController::class, 'aboutalphaupdate'])->name('about.updateaboutalpha');
 
 
         //admin branch 

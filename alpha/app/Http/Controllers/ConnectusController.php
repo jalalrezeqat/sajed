@@ -15,9 +15,10 @@ class ConnectusController extends Controller
      */
     public function index()
     {
+        $connectwithus = DB::table('connect_with_us')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'اتصل بنا')->get();
         $connectus = DB::table('connect_with_us')->get();
-        return view('Connectus', compact('slider', 'connectus'));
+        return view('Connectus', compact('slider', 'connectus', 'connectwithus'));
     }
 
     /**

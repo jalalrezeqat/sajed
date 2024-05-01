@@ -1,17 +1,25 @@
   <!DOCTYPE html>
   <html lang="ar">
-  <livewire:breakpoints />
-  <?php session('windowW'); ?>
 
   <head>
+      <meta name="description"
+          content="اشترك الآن في دورات التوجيهي على منصة ألفا التعليمية، دورات شاملة للفرعين العلمي والادبي مع امكانية مشاهدة الدروس وتكرارها في أي وقت وأي مكان">
+      <meta name="keywords" content="دورات التوجيهي للفرعين العلمي والادبي, شرح كامل للمواد">
+      <meta name="الفرع العلمي" content='{{ url('courses/1') }}' />
+      <meta name="الفرع الادبي" content='{{ url('courses/2') }}' />
       <meta name="viewport" content="width=device-width">
-      <meta name="description" content="Put your description here.">
-      @vite(['resources/css/mediaipad.css'])
+      <meta name="googlebot" content="index,follow">
+      <meta name="robots" content="index,follow">
+      <meta name="viewport" content="width=640, initial-scale=.5, user-scalable=no" />
 
+
+      @vite(['resources/css/mediaipad.css'])
   </head>
 
   @extends('layouts.app')
 
+  <livewire:breakpoints />
+  <?php session('windowW'); ?>
   @section('content')
       {{-- slider home --}}
       <section class="">
@@ -60,16 +68,18 @@
                   </div>
               @endif
               @windowWidthBetween(480, 1028)
-              <div class="col-12">
-                  <div class="card "id="card-home">
-                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
-                      <div class="card-body">
-                          <h5 class="text-center fw-bolder font18px">{{ $branch->name }}</h5>
-                          <p id="card-text-home1 " class="card-text-home1 mt-4 font14px ">{{ $branch->summary }}</p>
-                      </div>
-                      <div class="card-button-courses">
-                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقّد
-                                  الدورات</button></a>
+              <div class="row">
+                  <div class="col">
+                      <div class="card  "id="card-home">
+                          <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+                          <div class="card-body">
+                              <h5 class="text-center fw-bolder font18px">{{ $branch->name }}</h5>
+                              <p id="card-text-home1 " class="card-text-home1 mt-4 font14px ">{{ $branch->summary }}</p>
+                          </div>
+                          <div class="card-button-courses">
+                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقّد
+                                      الدورات</button></a>
+                          </div>
                       </div>
                   </div>
               </div>

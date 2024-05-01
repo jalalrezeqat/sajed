@@ -29,9 +29,13 @@
                             <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> مدرس الدورة :
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> <span> <i class="fa  fa-user"
+                                        style="font-size:18px;color:blanchedalmond"></i>
+                                </span> مدرس الدورة :
                                 {{ $b->teacher_name }} </p>
-                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> عدد دروس الدورة :
+                            <p class="mt-3  col-lg-5 font18px" style="color: blanchedalmond"> <span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
+                                </span> عدد دروس الدورة :
                                 {{ $lessoncount }} درساً مسجلاً</p>
                         </div>
                         <div class="row coursedetales mt-5">
@@ -68,15 +72,13 @@
             </div>
         </div>
         <div class="column2">
-            <img class="imgditels" src="/../img/det.png" alt="">
+            <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
+
         </div>
         @endif
         @windowWidthLessThan(480)
         <div class="row">
-            <div class="col">
-                <img class="imgditels" src="/../img/det.png" alt="">
 
-            </div>
             <div class="col">
                 <form action="{{ url('codesend/' . $user) }}" method="POST">
                     @csrf
@@ -89,9 +91,13 @@
                             <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"> مدرس الدورة :
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"><span> <i class="fa   fa-user"
+                                        style="font-size:18px;color:blanchedalmond"></i>
+                                </span> مدرس الدورة :
                                 {{ $b->teacher_name }} </p>
-                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> عدد دروس الدورة :
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"><span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
+                                </span> عدد دروس الدورة :
                                 {{ $lessoncount }} درساً مسجلاً</p>
                         </div>
                         <div class="row coursedetales mt-5">
@@ -123,6 +129,10 @@
                             <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
                         @endif
                 </form>
+            </div>
+            <div class="col">
+                <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
+
             </div>
         </div>
         @endif
@@ -306,7 +316,9 @@
                                             ?>
 
                                             @foreach ($code as $codes)
-                                                @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
+                                                @if (
+                                                    ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id) ||
+                                                        ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                                                     <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
                                                             style="border: none;background-color:#f8fafc
@@ -333,7 +345,9 @@
                                             @if ($key > 0)
                                                 @foreach ($code as $codes)
                                                     <?php $insid = 0; ?>
-                                                    @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
+                                                    @if (
+                                                        ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id) ||
+                                                            ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                                                         <?php $insid = 1; ?>
 
                                                         <i style="font-size:24px;color:#27AC1F"
@@ -423,7 +437,9 @@
 
                         @foreach ($code as $codes)
                             <?php $insi1 = 0; ?>
-                            @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id))
+                            @if (
+                                ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id) ||
+                                    ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                                 @foreach ($quiz as $key => $quizs)
                                     <?php $insi1 = 1; ?>
 

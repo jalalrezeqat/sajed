@@ -293,7 +293,6 @@ $connectwithus = DB::table('connect_with_us')->get();
                                         @csrf
                                         <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                                             <div class="col-12 inpout-email">
-                                                <i class="fa fa-user icon"></i>
                                                 <input type="email" class="form-control" id="email"
                                                     name="email" value="" placeholder="الايميل" required>
                                             </div>
@@ -307,7 +306,8 @@ $connectwithus = DB::table('connect_with_us')->get();
                                                     الدخول</button>
                                             </div>
                                             <div class="col-12">
-                                                <label class="nav-link active  regester-model col-6" id="login-nav"
+
+                                                <label class="nav-link active regester-model col-6" id=""
                                                     aria-current="page" for="modal-toggle-regester">انشاءحساب </label>
                                                 <a class="reg-login  col-6" href="">هل نسيت كلمة
                                                     المرور

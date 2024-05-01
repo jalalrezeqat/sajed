@@ -9,13 +9,13 @@ class about extends Model
 {
     use HasFactory;
 
-    protected $table ='abouts';
+    protected $table = 'abouts';
 
     protected $fillable = [
-        'our_vision',
-        'our_mission_titel',
+        'summernote',
         'our_mission_text',
-        
+        'aboutalpha'
+
 
 
     ];

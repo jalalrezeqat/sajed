@@ -4,7 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Put your description here.">
+    <meta name="description" content="تواصل مع فريق الدعم في منصة الفا التعليمية، وقدم ملاحظاتك وآرائك">
+    <meta name="keywords" content="تواصل معنا الآن, منصة الفا التعليمية">
+    @foreach ($connectwithus as $connectwithus)
+        <meta name='og:phone_number' content='{{ $connectwithus->phone }}'>
+        <meta name='og:email' content='{{ $connectwithus->email }}'>
+    @endforeach
+
+
 </head>
 @extends('layouts.app')
 <?php session('windowW'); ?>
@@ -34,15 +41,11 @@
                                     </div>
                                     <div class=" contectusdet">
                                         @foreach ($connectus as $connectus)
-                                            <p class="mb-3 dir"> <img width="30px" height="30px" src="img/adress.png"
-                                                    alt="">
-                                                {{ $connectus->address }}</p>
-
                                             <p style="direction: ltr;" class="mb-3 dir">
-                                                {{ $connectus->phone }}<img width="30px" height="30px"
+                                                {{ $connectus->phone }}<img width="20px" height="20px"
                                                     src="img/phone.png" alt=""></p>
 
-                                            <p class="mb-3 dir"><img width="30px" height="30px" src="img/mail.png"
+                                            <p class="mb-3 dir"><img width="20px" height="20px" src="img/mail.png"
                                                     alt="">
                                                 {{ $connectus->email }}</p>
                                         @endforeach

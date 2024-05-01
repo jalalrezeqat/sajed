@@ -96,6 +96,16 @@ class CoursesController extends Controller
             $student->img_name = $filename;
         }
 
+        if ($request->hasfile('img_teatcher')) {
+
+            $file = $request->file('img_teatcher');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $file->move('img/teatcher_course/', $filename);
+            $student->img_teatcher = $filename;
+        }
+
+
 
         $student->save();
         return  redirect()->route('admin.courses');
@@ -158,6 +168,18 @@ class CoursesController extends Controller
             $file_name = time() . '.' . $extintion;
             $file->move('img/courses/', $file_name);
             $post->img_name     = $file_name;
+        }
+        if ($request->hasfile('img_teatcher')) {
+
+            $distination = 'img/teatcher_course/' . $post->img_name;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('img_teatcher');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/teatcher_course/', $file_name);
+            $post->img_teatcher     = $file_name;
         }
         //  dd($chabter->course);
 
