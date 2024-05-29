@@ -24,7 +24,8 @@ class LessonController extends Controller
     {
         $chabterid = $request->id;
         $chabter = chabter::find($id);
-        $lesson = DB::table('lessons')->where('chabters', '=', $chabter->name)->where('course', '=', $chabter->course)->get();
+
+        $lesson = DB::table('lessons')->where('chabters', '=', $chabter->id)->where('course', '=', $chabter->course)->get();
         return view('admin.layouts.courses.courses.lesson', compact('lesson', 'chabterid', 'chabter'));
     }
     public function lessonadd(Request $request, $id)
@@ -59,8 +60,9 @@ class LessonController extends Controller
         $student = new lesson();
         $student->name = $request->input('name');
         $student->chabters = $request->input('chabters');
-        $courses = DB::table('chabters')->where('name', '=', $request->input('chabters'))->pluck('course');
-        $student->course = $courses[0];
+        // $courses = DB::table('chabters')->where('id', '=', $request->input('chabters'))->get();
+        $courses = chabter::find($request->input('chabters'));
+        $student->course = $courses->course;
         if ($request->hasfile('vedio')) {
 
             $file = $request->file('vedio');

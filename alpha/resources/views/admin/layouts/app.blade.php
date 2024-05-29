@@ -103,6 +103,15 @@
                                         معلم</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.questionscours') }}">اضافة اسئلة شائعة</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.categories.index') }}">اضافة
+                                        اختبار </a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.questions.index') }}">اضافة
+                                        اسئلة الاحتبار</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.questions.index') }}">اضافة
+                                        اسئلة الاحتبار</a></li>
                                 {{-- <li class="nav-item"> <a class="nav-link" href="{{route('admin.quiz')}}">اضافة اختبار  </a></li> --}}
                             </ul>
                         </div>

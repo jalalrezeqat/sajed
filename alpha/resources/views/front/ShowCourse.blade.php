@@ -31,7 +31,7 @@
                     
                     $count = 0;
                     foreach ($lesson as $lessons) {
-                        if ($lessons->chabters == $chbters->name) {
+                        if ($lessons->chabters == $chbters->id) {
                             $countoflesson++;
                         }
                         $count = $countoflesson;
@@ -63,7 +63,7 @@
                             
                             ?>
 
-                            @if ($lessons->chabters == $chbters->name)
+                            @if ($lessons->chabters == $chbters->id)
                                 <div class="card card-body" id="">
                                     <div class="ditelsco">
 

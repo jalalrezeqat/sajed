@@ -32,7 +32,11 @@
                             <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> <span> <i class="fa  fa-user"
                                         style="font-size:18px;color:blanchedalmond"></i>
                                 </span> مدرس الدورة :
-                                {{ $b->teacher_name }} </p>
+                                @foreach ($teatcher as $teatchers)
+                                    {{ $teatchers->name }}
+                            </p>
+                            @endforeach
+
                             <p class="mt-3  col-lg-5 font18px" style="color: blanchedalmond"> <span><i class="fa fa-list"
                                         style="font-size:18px;"></i>
                                 </span> عدد دروس الدورة :
@@ -94,7 +98,11 @@
                             <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"><span> <i class="fa   fa-user"
                                         style="font-size:18px;color:blanchedalmond"></i>
                                 </span> مدرس الدورة :
-                                {{ $b->teacher_name }} </p>
+                                @foreach ($teatcher as $teatchers)
+                                    {{ $teatchers->name }}
+                            </p>
+                            @endforeach
+
                             <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"><span><i class="fa fa-list"
                                         style="font-size:18px;"></i>
                                 </span> عدد دروس الدورة :
@@ -264,10 +272,11 @@
                 @foreach ($chbter as $chbters)
                     <?php
                     $countoflesson = 0;
+                    $auth = 1;
                     
                     $count = 0;
                     foreach ($lesson as $lessons) {
-                        if ($lessons->chabters == $chbters->name) {
+                        if ($lessons->chabters == $chbters->id) {
                             $countoflesson++;
                         }
                         $count = $countoflesson;
@@ -303,7 +312,7 @@
                             
                             ?>
 
-                            @if ($lessons->chabters == $chbters->name)
+                            @if ($lessons->chabters == $chbters->id)
                                 <div class="card card-body" id="">
                                     <div class="ditelsco  ">
                                         <?php  if (Auth::user()): ?>
@@ -418,10 +427,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        <?php $count = 0;
+                        $month = date('m');
+                        $day = date('d');
+                        $year = date('Y');
+                        $today = $year . '-' . $month . '-' . $day;
+                        
+                        ?>
+
                         <?php  if (!Auth::user()): ?>
 
                         @foreach ($quiz as $key => $quizs)
-                            @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
+                            @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
                                 <div class="card card-body" id="">
                                     <div class="ditelsco">
                                         <i class="fa  fa-book" style="font-size:24px;color:#" aria-hidden="true"></i>
@@ -436,14 +453,16 @@
                         <?php  if (Auth::user()): ?>
 
                         @foreach ($code as $codes)
-                            <?php $insi1 = 0; ?>
+                            <?php $insi1 = 0;
+                            ?>
+
                             @if (
                                 ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses_id == $b->id) ||
                                     ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                                 @foreach ($quiz as $key => $quizs)
                                     <?php $insi1 = 1; ?>
 
-                                    @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
+                                    @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
                                         <div class="card card-body" id="">
                                             <div class="ditelsco">
                                                 <i class="fa  fa-book" style="font-size:24px;color:#27AC1F"
@@ -457,7 +476,7 @@
                         @endforeach
                         @if (($codes->user_id != Auth::user()->id) & ($auth != 0))
                             @foreach ($quiz as $key => $quizs)
-                                @if (($quizs->chabters == $chbters->name) & ($quizs->courses == $b->name))
+                                @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
                                     <div class="card card-body" id="">
                                         <div class="ditelsco">
                                             <i class="fa  fa-book" style="font-size:24px;" aria-hidden="true"></i>

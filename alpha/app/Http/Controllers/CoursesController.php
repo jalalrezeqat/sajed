@@ -76,16 +76,16 @@ class CoursesController extends Controller
 
         // $branch =branch::find($branchid);
         $b = courses::find($id);
-        $vedio=null;
-        $chbter = DB::table('chabters')->where('course', '=', $b->name)->get();
+        $vedio = null;
+        $chbter = DB::table('chabters')->where('course', '=', $b->id)->get();
         $coursces = DB::table('courses')->where('branche', '=', $br)->get();
         $chbter1 = DB::table('lessons')->where('course', '=', $b->name)->get();
-        $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
-        $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio')->where('course', '=', $b->name)->get();
-        $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
+        $questionscours = DB::table('questionscours')->where('course', '=', $b->id)->get();
+        $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio')->where('course', '=', $b->id)->get();
+        $teatcher = DB::table('teachers')->where('id', '=', $b->teacher_name)->get();
         $quiz = DB::table('categories')->get();
         foreach ($lesson as $lessons) {
-            
+
             $vedio = DB::table('lessons')->where('id', '=', $lesson[0]->id)->first();
         }
         $chabtercount = $chbter->count();
@@ -118,7 +118,7 @@ class CoursesController extends Controller
             $user = Auth::user()->name;
             $code = DB::table('codecards')->get();
             foreach ($code as $codes) {
-                if ($codes->user == $user & $codes->courses == $b->name) {
+                if ($codes->user == $user & $codes->courses == $b->id || $codes->user == $user & $codes->courses == 'جميع الدورات') {
                     $branch = DB::table('branches')->pluck('name');
                     foreach ($branch as $branchs) {
                         $i = 0;
@@ -138,11 +138,11 @@ class CoursesController extends Controller
                     $i = 0;
                     // $branch =branch::find($branchid);
                     $b = courses::find($id);
-                    $chbter = DB::table('chabters')->where('course', '=', $b->name)->get();
+                    $chbter = DB::table('chabters')->where('course', '=', $b->id)->get();
                     $coursces = DB::table('courses')->where('branche', '=', $br)->get();
-                    $chbter1 = DB::table('lessons')->where('course', '=', $b->name)->get();
+                    $chbter1 = DB::table('lessons')->where('course', '=', $b->id)->get();
                     $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
-                    $lesson =  DB::table('lessons')->where('course', '=', $b->name)->get();
+                    $lesson =  DB::table('lessons')->where('course', '=', $b->id)->get();
                     $teatcher = DB::table('teachers')->where('name', '=', $b->teacher_name)->get();
                     $chabtercount = $chbter->count();
                     $lessoncount = $lesson->count();

@@ -51,7 +51,7 @@
                 <label for="inputtitelmistion">المعلم</label>
                 <select class="form-control" name="teacher_name" id="teacher_name">
                     @foreach ($teacher as $teacher)
-                        <option value="{{ $teacher->name }}">{{ $teacher->name }}</option>
+                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                     @endforeach
                 </select>
             </div>

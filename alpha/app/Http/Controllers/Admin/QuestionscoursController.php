@@ -52,7 +52,7 @@ class QuestionscoursController extends Controller
         $student->summernote = $request->input('summernote');
         $courseid = DB::table('courses')->where('name', '=', $student->course)->first();
         $student->save();
-        return  redirect()->route('admin.courses.questionscours', $courseid->id);
+        return  redirect()->route('admin.courses.questionscours', $student->course);
     }
 
     /**
@@ -63,8 +63,8 @@ class QuestionscoursController extends Controller
 
         $chabterid = $request->id;
         $courses = courses::find($request->id);
-        // dd($courses);
-        $questionscours = DB::table('questionscours')->where('course', '=', $courses->name)->get();
+        // dd($courses->name);
+        $questionscours = DB::table('questionscours')->where('course', '=', $courses->id)->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
         return view('admin.layouts.courses.questions.questioncviwe', compact('branch', 'questionscours', 'courses'));

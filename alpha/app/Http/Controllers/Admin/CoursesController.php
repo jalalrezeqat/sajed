@@ -20,7 +20,8 @@ class CoursesController extends Controller
     {
 
         $courses = DB::table('courses')->get();
-        return view('admin.layouts.courses.courses.courses', compact('courses'));
+        $teatcher = DB::table('teachers')->get();
+        return view('admin.layouts.courses.courses.courses', compact('courses', 'teatcher'));
     }
 
     public function viweaddcourses(Request $request)
@@ -38,7 +39,7 @@ class CoursesController extends Controller
         $chabterid = $request->id;
         $courses = courses::find($request->id);
         // dd($courses);
-        $chabter = DB::table('chabters')->where('course', '=', $courses->name)->get();
+        $chabter = DB::table('chabters')->where('course', '=', $courses->id)->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
         return view('admin.layouts.courses.courses.courseschabtar', compact('branch', 'chabter', 'courses'));

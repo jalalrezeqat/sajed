@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('vedio');
+            $table->string('vedio')->nullable();
             $table->string('chabters');
             $table->string('course');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

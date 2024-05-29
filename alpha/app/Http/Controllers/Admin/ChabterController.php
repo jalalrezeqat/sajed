@@ -40,7 +40,7 @@ class ChabterController extends Controller
         $student = new chabter();
         $student->name = $request->input('name');
         $student->course = $request->input('course');
-        $courseid = DB::table('courses')->where('name', '=', $student->course)->first();
+        $courseid = DB::table('courses')->where('id', '=', $student->course)->first();
         $student->save();
         return  redirect()->route('admin.courses.courseschabtar', $courseid->id);
     }
@@ -67,12 +67,12 @@ class ChabterController extends Controller
     public function update(Request $request, $id)
     {
         $post = chabter::find($id);
-        $lesson = lesson::select('chabters')->where('chabters', '=', $post->name)->update(array('chabters' => $request->input('name')));
+        // $lesson = lesson::select('chabters')->where('chabters', '=', $post->name)->update(array('chabters' => $request->input('name')));
 
         $post->name = $request->input('name');
         $post->course = $request->input('course');
         // $chabterid=$request->id;
-        $courseid = DB::table('courses')->where('name', '=', $post->course)->first();
+        $courseid = DB::table('courses')->where('id', '=', $post->course)->first();
         $post->save();
 
         return  redirect()->route('admin.courses.courseschabtar', $courseid->id);
