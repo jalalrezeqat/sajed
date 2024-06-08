@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.questions.store') }}" method="POST">
+                <form action="{{ route('admin.questions.store',$category_id) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="question_text">{{ __('نص السؤال') }}</label>

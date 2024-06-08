@@ -23,7 +23,7 @@
                     </a>
 
                 </div>
-                <a href="{{ url('admin/questions/'.$questions->id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
+                <a href="{{ url('admin/questions/'.$questions->category_id ) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
 
             </div>
             <div class="card-body">
@@ -53,10 +53,10 @@
                                 <td>{{ $option->points}}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.options.edit', $option->id) }}" class="btn btn-info">
+                                        <a href="{{ route('admin.options.edit', $option->id) }}" class="btn btn-info editdelete">
                                             تعديل
                                         </a>
-                                        <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.options.destroy', $option->id) }}" method="POST">
+                                        <form onclick="return confirm('are you sure ? ')" class="d-inline " action="{{ route('admin.options.destroy', $option->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">

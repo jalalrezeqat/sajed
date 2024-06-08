@@ -15,27 +15,26 @@ use Illuminate\Support\Facades\DB;
 class QuestionController extends Controller
 {
 
-    public function index(Request $request, $id): View
+    public function index(Request $request, $category_id): View
     {
         // $questions = Question::all();
         $chabterid = $request->id;
-        $Category = Category::find($id);
+        $Category = Category::find($category_id);
         $questions =Question::where('category_id', '=', $Category->id)->get();
         return view('admin.questions.index', compact('questions','Category'));
     }
 
-    public function create(): View
+    public function create($category_id): View
     {
         $categories = Category::all()->pluck('name', 'id');
 
-        return view('admin.questions.create', compact('categories'));
+        return view('admin.questions.create', compact('categories','category_id'));
     }
 
-    public function store(QuestionRequest $request): RedirectResponse
+    public function store(QuestionRequest $request ,$category_id): RedirectResponse
     {
         Question::create($request->validated());
-
-        return redirect()->route('admin.questions.index')->with([
+        return redirect()->route('admin.questions.index',compact('category_id'))->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'
         ]);

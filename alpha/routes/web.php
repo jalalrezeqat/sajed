@@ -171,13 +171,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 
 
-        Route::get('questions/{id?}', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
-        Route::post('questionss', [App\Http\Controllers\Admin\QuestionController::class, 'store'])->name('questions.store');
+        Route::get('questions/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
+        Route::post('questionss/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'store'])->name('questions.store');
         Route::put('questionssu/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
-        Route::get('questionssc', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('questions.create');
+        Route::get('questionssc/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('questions.create');
         Route::get('questionssed/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
         Route::get('questionssess/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
-        Route::delete('questions_mass_destroy', [App\Http\Controllers\Admin\QuestionController::class, 'massDestroy'])->name('questions.mass_destroy');
+        Route::get('questions_mass_destroy', [App\Http\Controllers\Admin\QuestionController::class, 'massDestroy'])->name('questions.mass_destroy');
 
         // options
         Route::get('options/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('options.index');

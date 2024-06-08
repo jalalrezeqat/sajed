@@ -13,7 +13,7 @@
                     {{ __('الاسئلة') }}
                 </h6>
                 <div class="ml-auto">
-                    <a href="{{ route('admin.questions.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.questions.create',$Category->id) }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
@@ -49,7 +49,7 @@
                                 <td>{{ $question->question_text }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-info">
+                                        <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-info editdelete">
                                            تعديل
                                         </a>
                                         <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.questions.destroy', $question->id) }}" method="POST">

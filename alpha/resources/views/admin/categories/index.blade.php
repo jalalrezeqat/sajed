@@ -49,13 +49,13 @@
                                
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info">
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info editdelete">
                                           تعديل
                                         </a>
                                         <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                            <button class="btn btn-danger " style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                               حذف
                                             </button>
                                         </form>
