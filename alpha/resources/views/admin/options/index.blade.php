@@ -10,16 +10,21 @@
         <div class="card">
             <div class="card-header py-3 d-flex">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    {{ __('option') }}
+                    {{ __('الاجابات') }}
                 </h6>
                 <div class="ml-auto">
                     <a href="{{ route('admin.options.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
-                        <span class="text">{{ __('New option') }}</span>
+                        
+                        <span class="text">{{ __('اضافة اجابة') }}</span>
+
                     </a>
+
                 </div>
+                <a href="{{ url('admin/questions/'.$questions->id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -29,11 +34,11 @@
                                 <th width="10">
 
                                 </th>
-                                <th>No</th>
-                                <th>Question</th>
-                                <th>option Text</th>
-                                <th>Point</th>
-                                <th>Action</th>
+                                <th></th>
+                                <th>السؤال</th>
+                                <th>نص الاجابة</th>
+                                <th>النقاط</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,13 +54,13 @@
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.options.edit', $option->id) }}" class="btn btn-info">
-                                            <i class="fa fa-pencil-alt"></i>
+                                            تعديل
                                         </a>
                                         <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.options.destroy', $option->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
-                                                <i class="fa fa-trash"></i>
+                                               حذف
                                             </button>
                                         </form>
                                     </div>

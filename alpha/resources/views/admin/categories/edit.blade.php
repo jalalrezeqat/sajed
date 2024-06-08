@@ -18,8 +18,8 @@
         <div class="card shadow">
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">{{ __('edit category')}}</h1>
-                    <a href="{{ route('admin.categories.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('Go Back') }}</a>
+                    <h1 class="h3 mb-0 text-gray-800">{{ __('تعديل الاختبار')}}</h1>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
                 </div>
             </div>
             <div class="card-body">
@@ -27,10 +27,27 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label for="name">name</label>
+                        <label for="name">اسم الاختبار</label>
                         <input type="text" class="form-control" id="name" placeholder="name" name="name" value="{{ old('name', $category->name) }}" />
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">{{ __('Save')}}</button>
+                    <div class="form-group">
+                        <label for="name">{{ __('اسم الدورة') }}</label>
+                        <select class="form-control" name="courses" id="courses">
+                        @foreach ($courses as $courses )
+                       <option  value="{{$courses->name}}">{{$courses->name}}</option>
+                        @endforeach
+              </select>                    </div>
+                     <div class="form-group">
+                        <label for="name">{{ __('اسم الوحدة') }}</label>
+                        <div class="form-group">
+                        <select class="form-control" name="chabters" id="chabters">
+                        @foreach ($chabters as $chabters )
+                       <option  value="{{$chabters->name}}">{{$chabters->name}}</option>
+                        @endforeach
+                        </select>            
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">{{ __('حفظ')}}</button>
                 </form>
             </div>
         </div>

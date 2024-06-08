@@ -171,7 +171,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 
 
-        Route::get('questions', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
+        Route::get('questions/{id?}', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
         Route::post('questionss', [App\Http\Controllers\Admin\QuestionController::class, 'store'])->name('questions.store');
         Route::put('questionssu/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
         Route::get('questionssc', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('questions.create');
@@ -180,7 +180,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::delete('questions_mass_destroy', [App\Http\Controllers\Admin\QuestionController::class, 'massDestroy'])->name('questions.mass_destroy');
 
         // options
-        Route::get('options', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('options.index');
+        Route::get('options/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('options.index');
         Route::post('optionss', [App\Http\Controllers\Admin\OptionController::class, 'store'])->name('options.store');
         Route::put('optionsu/{option}', [App\Http\Controllers\Admin\OptionController::class, 'update'])->name('options.update');
         Route::get('optionsuc', [App\Http\Controllers\Admin\OptionController::class, 'create'])->name('options.create');

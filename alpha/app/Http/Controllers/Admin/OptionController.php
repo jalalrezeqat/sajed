@@ -9,15 +9,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\OptionRequest;
 use App\Models\Question;
-
+use Illuminate\Support\Facades\DB;
 class OptionController extends Controller
 {
 
-    public function index(): View
+    public function index(Request $request, $id): View
     {
-        $options = Option::all();
-
-        return view('admin.options.index', compact('options'));
+        // $options = Option::all();
+        $questionsid = $request->id;
+        $questions = Question::find($id);
+        $options =Option::where('question_id', '=', $questions->id)->get();
+        return view('admin.options.index', compact('options','questionsid','questions'));
     }
 
     public function create(): View

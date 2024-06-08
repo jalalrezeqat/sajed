@@ -45,7 +45,9 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        return view('admin.categories.edit', compact('category'));
+        $courses = DB::table('courses')->get();
+        $chabters = DB::table('chabters')->get();
+        return view('admin.categories.edit', compact('category','courses', 'chabters'));
     }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse

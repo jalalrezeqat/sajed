@@ -8,15 +8,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\QuestionRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class QuestionController extends Controller
 {
 
-    public function index(): View
+    public function index(Request $request, $id): View
     {
-        $questions = Question::all();
-
-        return view('admin.questions.index', compact('questions'));
+        // $questions = Question::all();
+        $chabterid = $request->id;
+        $Category = Category::find($id);
+        $questions =Question::where('category_id', '=', $Category->id)->get();
+        return view('admin.questions.index', compact('questions','Category'));
     }
 
     public function create(): View

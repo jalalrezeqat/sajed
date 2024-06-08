@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->longtext('summernote', 10000)->nullable();
-            $table->string('our_mission_text')->nullable();
+            $table->string('aboutalpha', 10000)->nullable();
             $table->longtext('our_vision', 10000)->nullable();
 
 

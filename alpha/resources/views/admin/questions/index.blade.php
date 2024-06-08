@@ -10,16 +10,19 @@
         <div class="card">
             <div class="card-header py-3 d-flex">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    {{ __('question') }}
+                    {{ __('الاسئلة') }}
                 </h6>
                 <div class="ml-auto">
                     <a href="{{ route('admin.questions.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
-                        <span class="text">{{ __('New question') }}</span>
+                        <span class="text">{{ __('اضافة سؤال') }}</span>
                     </a>
+
                 </div>
+                <a href="{{ url('admin/categories') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -29,10 +32,10 @@
                                 <th width="10">
 
                                 </th>
-                                <th>No</th>
-                                <th>Category</th>
-                                <th>Question Text</th>
-                                <th>Action</th>
+                                <th></th>
+                                <th>الاختبار</th>
+                                <th>نص السؤال</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,15 +50,17 @@
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-info">
-                                            <i class="fa fa-pencil-alt"></i>
+                                           تعديل
                                         </a>
                                         <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.questions.destroy', $question->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
-                                                <i class="fa fa-trash"></i>
+                                                حذف
                                             </button>
                                         </form>
+                                        <a href="{{ route('admin.options.index', $question->id) }}"
+                                             class="btn btn-success editdelete">مشاهدة الاجابات</a>
                                     </div>
                                 </td>
                             </tr>

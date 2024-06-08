@@ -39,18 +39,7 @@
                                                 class="d-block" alt="">
                                         @endforeach
                                     </div>
-                                    <div class=" contectusdet">
-                                        @foreach ($connectus as $connectus)
-                                            <p style="direction: ltr;" class="mb-3 dir">
-                                                {{ $connectus->phone }}<img width="20px" height="20px"
-                                                    src="img/phone.png" alt=""></p>
-
-                                            <p class="mb-3 dir"><img width="20px" height="20px" src="img/mail.png"
-                                                    alt="">
-                                                {{ $connectus->email }}</p>
-                                        @endforeach
-
-                                    </div>
+                                   
                                 </div>
                                 @endif
                                 @windowWidthBetween(480, 1028)
@@ -61,23 +50,7 @@
                                                 class="d-block" alt="">
                                         @endforeach
                                     </div>
-                                    <div class=" contectusdet ">
-                                        @foreach ($connectus as $connectus)
-                                            <p class="mb-3 dir"> <img width="30px" height="30px" src="img/adress.png"
-                                                    alt="">
-                                                {{ $connectus->address }}</p>
-
-                                            <p style="direction: ltr;float:right " class="mb-3 ">
-                                                {{ $connectus->phone }}<img width="30px" height="30px"
-                                                    src="img/phone.png" alt=""></p>
-                                            <br>
-                                            <br>
-                                            <p class="mb-3 dir"><img width="30px" height="30px" src="img/mail.png"
-                                                    alt="">
-                                                {{ $connectus->email }}</p>
-                                        @endforeach
-
-                                    </div>
+                               
                                 </div>
                                 @endif
                                 @windowWidthLessThan(480)
@@ -89,22 +62,6 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
-                            <div class=" contectusdet">
-                                @foreach ($connectus as $connectus)
-                                    <p class="mb-3 dir"> <img width="30px" height="30px" src="img/adress.png"
-                                            alt="">
-                                        {{ $connectus->address }}</p>
-
-                                    <p class="mb-3 dir"> <img width="30px" height="30px" src="img/phone.png"
-                                            alt="">
-                                        {{ $connectus->phone }}</p>
-
-                                    <p class="mb-3 dir"><img width="30px" height="30px" src="img/mail.png"
-                                            alt="">
-                                        {{ $connectus->email }}</p>
-                                @endforeach
-
                             </div>
                             @endif
                         </div>

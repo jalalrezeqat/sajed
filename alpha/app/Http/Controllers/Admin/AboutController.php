@@ -49,10 +49,10 @@ class AboutController extends Controller
 
    public function storevistion(Request $request)
    {
-
       $data = new about();
       $input = $request->all();
       $data->fill($input)->save();
+      dd( $data->fill($input)->save());
       return  redirect()->route('admin.about');
    }
    public function edit(about $about)
