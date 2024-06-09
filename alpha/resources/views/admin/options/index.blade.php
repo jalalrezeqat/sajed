@@ -13,7 +13,7 @@
                     {{ __('الاجابات') }}
                 </h6>
                 <div class="ml-auto">
-                    <a href="{{ route('admin.options.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.options.create',$questionsid) }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
@@ -53,12 +53,12 @@
                                 <td>{{ $option->points}}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.options.edit', $option->id) }}" class="btn btn-info editdelete">
+                                        <a href="{{ url('admin/optionsue/' .$option->id ,$questionsid) }}" class="btn btn-info editdelete">
                                             تعديل
                                         </a>
-                                        <form onclick="return confirm('are you sure ? ')" class="d-inline " action="{{ route('admin.options.destroy', $option->id) }}" method="POST">
+                                        <form onclick="return confirm('are you sure ? ')" class="d-inline " action="{{ route('admin.options.destroy', $option->id) }}" method="GET">
                                             @csrf
-                                            @method('delete')
+                                            <!-- @method('delete') -->
                                             <button class="btn btn-danger" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
                                                حذف
                                             </button>

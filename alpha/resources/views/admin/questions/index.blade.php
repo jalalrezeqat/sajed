@@ -49,7 +49,7 @@
                                 <td>{{ $question->question_text }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-info editdelete">
+                                        <a href="{{ url('admin/questionssed/'. $question->id ,$category_id) }}" class="btn btn-info editdelete">
                                            تعديل
                                         </a>
                                         <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.questions.destroy', $question->id) }}" method="POST">

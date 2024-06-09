@@ -84,7 +84,7 @@
                             @endif
                         @endforeach
                         @foreach ($quiz as $key => $quizs)
-                            @if ($quizs->chabters == $chbters->name)
+                            @if ($quizs->chabters == $chbters->id)
                                 <div class="card card-body" id="">
                                     <div class="ditelsco">
                                         <i class="fa  fa-book" style="font-size:24px;color:#27AC1F" aria-hidden="true"></i>

@@ -264,7 +264,7 @@ class CoursesController extends Controller
             $code = DB::table('codecards')->get();
 
             foreach ($code as $codes) {
-                if ($codes->user == $user & $codes->courses == $course->name & $codes->courses == $quiz->courses) {
+                if ($codes->user == $user & $codes->courses == $course->id & $codes->courses == $quiz->courses) {
                     $categories = Category::with(['categoryQuestions' => function ($query) {
                         $query->inRandomOrder()
                             ->with(['questionOptions' => function ($query) {

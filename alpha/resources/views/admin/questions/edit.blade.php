@@ -19,11 +19,12 @@
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">{{ __('تعديل السؤال')}}</h1>
-                    <a href="{{ url('admin/questions/'.$question->id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
+                    <a href="{{ url('admin/questions/'.$category_id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.questions.update', $question->id) }}" method="POST">
+
+                <form action="{{ url('admin/questionssu/'. $question->id ,$category_id) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="form-group">

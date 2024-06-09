@@ -22,18 +22,18 @@ class OptionController extends Controller
         return view('admin.options.index', compact('options','questionsid','questions'));
     }
 
-    public function create(): View
+    public function create(Request $request, $id): View
     {
-        $questions = Question::all()->pluck('question_text', 'id');
+        $questions = Question::where('id','=',$id)->pluck('question_text', 'id');
 
-        return view('admin.options.create', compact('questions'));
+        return view('admin.options.create', compact('questions','id'));
     }
 
-    public function store(OptionRequest $request): RedirectResponse
+    public function store(OptionRequest $request ,$id): RedirectResponse
     {
         Option::create($request->validated());
 
-        return redirect()->route('admin.options.index')->with([
+        return redirect()->route('admin.options.index',$id)->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'
         ]);
@@ -44,18 +44,18 @@ class OptionController extends Controller
         return view('admin.options.show', compact('option'));
     }
 
-    public function edit(Option $option): View
+    public function edit(Option $option ,$id): View
     {
-        $questions = Question::all()->pluck('question_text', 'id');
+        $questions = Question::where('id','=',$id)->pluck('question_text', 'id');
 
-        return view('admin.options.edit', compact('option', 'questions'));
+        return view('admin.options.edit', compact('option', 'questions','id'));
     }
 
-    public function update(OptionRequest $request, Option $option): RedirectResponse
+    public function update(OptionRequest $request, Option $option ,$questionsid): RedirectResponse
     {
         $option->update($request->validated());
 
-        return redirect()->route('admin.options.index')->with([
+        return redirect()->route('admin.options.index',$questionsid)->with([
             'message' => 'successfully updated !',
             'alert-type' => 'info'
         ]);
@@ -63,6 +63,7 @@ class OptionController extends Controller
 
     public function destroy(Option $option): RedirectResponse
     {
+        
         $option->delete();
 
         return back()->with([

@@ -173,18 +173,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('questions/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'index'])->name('questions.index');
         Route::post('questionss/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'store'])->name('questions.store');
-        Route::put('questionssu/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
+        Route::put('questionssu/{question}/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'update'])->name('questions.update');
         Route::get('questionssc/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'create'])->name('questions.create');
-        Route::get('questionssed/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
-        Route::get('questionssess/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
+        Route::get('questionssed/{question}/{category_id?}', [App\Http\Controllers\Admin\QuestionController::class, 'edit'])->name('questions.edit');
+        Route::DELETE('questionssess/{question}', [App\Http\Controllers\Admin\QuestionController::class, 'destroy'])->name('questions.destroy');
         Route::get('questions_mass_destroy', [App\Http\Controllers\Admin\QuestionController::class, 'massDestroy'])->name('questions.mass_destroy');
 
         // options
         Route::get('options/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('options.index');
-        Route::post('optionss', [App\Http\Controllers\Admin\OptionController::class, 'store'])->name('options.store');
-        Route::put('optionsu/{option}', [App\Http\Controllers\Admin\OptionController::class, 'update'])->name('options.update');
-        Route::get('optionsuc', [App\Http\Controllers\Admin\OptionController::class, 'create'])->name('options.create');
-        Route::get('optionsue/{option}', [App\Http\Controllers\Admin\OptionController::class, 'edit'])->name('options.edit');
+        Route::post('optionss/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'store'])->name('options.store');
+        Route::put('optionsu/{option}/{questionsid?}', [App\Http\Controllers\Admin\OptionController::class, 'update'])->name('options.update');
+        Route::get('optionsuc/{questionsid?}', [App\Http\Controllers\Admin\OptionController::class, 'create'])->name('options.create');
+        Route::get('optionsue/{option}/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'edit'])->name('options.edit');
         Route::get('optionsud/{option}', [App\Http\Controllers\Admin\OptionController::class, 'destroy'])->name('options.destroy');
 
 

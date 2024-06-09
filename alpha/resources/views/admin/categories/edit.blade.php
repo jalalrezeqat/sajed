@@ -34,7 +34,7 @@
                         <label for="name">{{ __('اسم الدورة') }}</label>
                         <select class="form-control" name="courses" id="courses">
                         @foreach ($courses as $courses )
-                       <option  value="{{$courses->name}}">{{$courses->name}}</option>
+                       <option  value="{{$courses->id}}">{{$courses->name}}</option>
                         @endforeach
               </select>                    </div>
                      <div class="form-group">
@@ -42,7 +42,7 @@
                         <div class="form-group">
                         <select class="form-control" name="chabters" id="chabters">
                         @foreach ($chabters as $chabters )
-                       <option  value="{{$chabters->name}}">{{$chabters->name}}</option>
+                       <option  value="{{$chabters->id}}">{{$chabters->name}}</option>
                         @endforeach
                         </select>            
                     </div>

@@ -21,12 +21,12 @@ class QuestionController extends Controller
         $chabterid = $request->id;
         $Category = Category::find($category_id);
         $questions =Question::where('category_id', '=', $Category->id)->get();
-        return view('admin.questions.index', compact('questions','Category'));
+        return view('admin.questions.index', compact('questions','Category','category_id'));
     }
 
     public function create($category_id): View
     {
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::where('id','=',$category_id)->pluck('name', 'id');
 
         return view('admin.questions.create', compact('categories','category_id'));
     }
@@ -45,18 +45,18 @@ class QuestionController extends Controller
         return view('admin.questions.show', compact('question'));
     }
 
-    public function edit(Question $question): View
+    public function edit(Question $question ,$category_id): View
     {
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::where('id','=',$category_id)->pluck('name', 'id');
 
-        return view('admin.questions.edit', compact('question', 'categories'));
+        return view('admin.questions.edit', compact('question', 'categories','category_id'));
     }
 
-    public function update(QuestionRequest $request, Question $question): RedirectResponse
+    public function update(QuestionRequest $request, Question $question ,$category_id): RedirectResponse
     {
         $question->update($request->validated());
 
-        return redirect()->route('admin.questions.index')->with([
+        return redirect()->route('admin.questions.index',$category_id)->with([
             'message' => 'successfully updated !',
             'alert-type' => 'info'
         ]);
@@ -65,11 +65,13 @@ class QuestionController extends Controller
     public function destroy(Question $question): RedirectResponse
     {
         $question->delete();
+        return redirect()->back()->with('message','Task is completely deleted');
+        // $question->delete();
 
-        return back()->with([
-            'message' => 'successfully deleted !',
-            'alert-type' => 'danger'
-        ]);
+        // return back()->with([
+        //     'message' => 'successfully deleted !',
+        //     'alert-type' => 'danger'
+        // ]);
     }
 
     public function massDestroy()

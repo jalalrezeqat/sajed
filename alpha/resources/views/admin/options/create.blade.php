@@ -21,11 +21,11 @@
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">{{ __('create option') }}</h1>
-                    <a href="{{ route('admin.options.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('Go Back') }}</a>
+                    <a href="{{ route('admin.options.index',$id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('Go Back') }}</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.options.store') }}" method="POST">
+                <form action="{{ route('admin.options.store',$id) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="question">{{ __('question') }}</label>

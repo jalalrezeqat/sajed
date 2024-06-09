@@ -21,7 +21,7 @@
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">{{ __('اضافة سؤال') }}</h1>
-                    <a href="{{ route('admin.questions.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
+                    <a href="{{ route('admin.questions.index',$category_id) }}" class="btn btn-primary btn-sm shadow-sm">{{ __('رجوع') }}</a>
                 </div>
             </div>
             <div class="card-body">
