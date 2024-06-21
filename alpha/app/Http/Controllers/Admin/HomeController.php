@@ -126,4 +126,20 @@ class HomeController extends Controller
         }
         return view('admin.layouts.chart.couresstut', compact('coures', 'code', 'code1'));
     }
+    public function couresserch(Request $request)
+    {
+        $start = $request->input('stare');
+        $end = $request->input('end');
+        $coures = DB::table('courses')->get();
+
+        foreach ($coures as $couress) {
+            $code  = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+            $code
+                = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('courses', '=', $couress->id)->where('startcode', '>', $start)
+                ->where('startcode', '<', $end)->get();
+        }
+        return view('admin.layouts.chart.couresserch', compact('coures', 'code', 'code1', 'start', 'end'));
+    }
 }

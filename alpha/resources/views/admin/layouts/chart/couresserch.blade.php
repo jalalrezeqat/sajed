@@ -8,15 +8,15 @@
                 <div class="row">
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion"> من تاريخ</label>
-                        <input type="date" name="start" class="form-control">
+                        <input type="date" name="start">
                     </div>
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion">الى تاريخ </label>
-                        <input type="date" name="end" class="form-control">
+                        <input type="date" name="end">
                     </div>
                     <div class="  col-3">
-                        <label for="inputtitelmistion"></label>
-                        <button type="submit" class="btn btn-info form-control">بحث</button>
+
+                        <button type="submit" class="btn btn-info">بحث</button>
                     </div>
                 </div>
             </form>
@@ -34,6 +34,8 @@
                             $code = DB::table('codecards')
                                 ->where('user_id', '!=', null)
                                 ->where('courses', '=', $couress->id)
+                                ->where('startcode', '>=', $start)
+                                ->where('startcode', '<=', $end)
                                 ->get();
                             
                             ?>
