@@ -23,13 +23,12 @@ class ChabterController extends Controller
     /**
      * Show the form for creating a new resource
      */
-    public function updatechabterviwe(chabter $chabters)
+    public function updatechabterviwe(chabter $chabters, $course)
     {
 
-
-        $courses = DB::table('courses')->get();
+        $courses = DB::table('courses')->where('id', '=', $course)->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.updatechabterviwe', compact('chabters', 'courses'));
+        return view('admin.layouts.courses.courses.updatechabterviwe', compact('chabters', 'courses', 'course'));
     }
 
     /**

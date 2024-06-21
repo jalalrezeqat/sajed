@@ -31,6 +31,7 @@ class ResultRequest extends FormRequest
             'questions'    => [
                 'array',
             ],
+
         ];
     }
 }

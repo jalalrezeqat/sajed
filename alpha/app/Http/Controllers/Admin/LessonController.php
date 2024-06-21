@@ -109,7 +109,7 @@ class LessonController extends Controller
      */
     public function edit(lesson $lesson)
     {
-        $chabter = DB::table('chabters')->where('name', '=', $lesson->chabters)->get();
+        $chabter = DB::table('chabters')->where('id', '=', $lesson->chabters)->get();
         return view('admin.layouts.courses.courses.lessonedit', compact('lesson', 'chabter'));
     }
 

@@ -1,7 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
     <div class="formaddm">
-        <a href="{{ url()->previous() }}"><button class="btnaboutadd btn btn-dark">رجوع </button></a>
+        <a href="{{ route('admin.courses.lesson', $lesson->chabters) }}"><button class="btnaboutadd btn btn-dark">رجوع
+            </button></a>
         <form action="{{ url('admin/lesson/update/' . $lesson->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')

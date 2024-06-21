@@ -122,7 +122,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         //chabter
         Route::get('/chabter/{chabter_id}/delete', [App\Http\Controllers\Admin\CoursesController::class, 'destroychabtar'])->name('chabter.destroy');
         Route::get('/courseschabtar/{id?}', [App\Http\Controllers\Admin\CoursesController::class, 'courseschabtar'])->name('courses.courseschabtar');
-        Route::get('/chabter/{chabters}/edit', [App\Http\Controllers\Admin\ChabterController::class, 'updatechabterviwe'])->name('chabter.edit');
+        Route::get('/chabter/edit/{chabters}/{course}', [App\Http\Controllers\Admin\ChabterController::class, 'updatechabterviwe'])->name('chabter.edit');
         Route::put('/chabter/update/{id}', [App\Http\Controllers\Admin\ChabterController::class, 'update'])->name('chabter.update');
         Route::get('/courseschabtar/{chabtar_id}/delete', [App\Http\Controllers\Admin\CoursesController::class, 'destroychabtar'])->name('chabtar.destroy');
         Route::get('/courseschabtaradd{id}', [App\Http\Controllers\Admin\CoursesController::class, 'courseschabtaradd'])->name('courses.courseschabtaradd');
@@ -186,10 +186,30 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('optionsuc/{questionsid?}', [App\Http\Controllers\Admin\OptionController::class, 'create'])->name('options.create');
         Route::get('optionsue/{option}/{id?}', [App\Http\Controllers\Admin\OptionController::class, 'edit'])->name('options.edit');
         Route::get('optionsud/{option}', [App\Http\Controllers\Admin\OptionController::class, 'destroy'])->name('options.destroy');
-
-
-
         Route::delete('options_mass_destroy', [App\Http\Controllers\Admin\OptionController::class, 'massDestroy'])->name('options.mass_destroy');
+
+        //policies 
+        Route::get('policies/', [App\Http\Controllers\Admin\PoliciesController::class, 'index'])->name('policies');
+        Route::get('/policies/add', [App\Http\Controllers\Admin\PoliciesController::class, 'create'])->name('policies.add');
+        Route::post('/policies/add', [App\Http\Controllers\Admin\PoliciesController::class, 'store']);
+        Route::get('/policies/{policies}/edit', [App\Http\Controllers\Admin\PoliciesController::class, 'edit'])->name('policies.edit');
+        Route::put('/policies/update/{id}', [App\Http\Controllers\Admin\PoliciesController::class, 'update'])->name('policies.update');
+        Route::get('/policies/{policies}/delete', [App\Http\Controllers\Admin\PoliciesController::class, 'destroy'])->name('policies.destroy');
+
+        //dashbord tetchaer
+        Route::get('/teacher/dashbord', [App\Http\Controllers\Admin\TeacherController::class, 'indexdashbord'])->name('teacher.dashbord');
+        Route::get('/teacher/dashbord/add', [App\Http\Controllers\Admin\TeacherController::class, 'create'])->name('teacher.dashbord.add');
+        Route::post('/teacher/dashbord/add', [App\Http\Controllers\Admin\TeacherController::class, 'storeteacherdahbord']);
+        Route::get('/teacher/dashbord/{dashbord}/edit', [App\Http\Controllers\Admin\TeacherController::class, 'editdashbord'])->name('teacherdashbord.edit');
+        Route::put('/teacher/dashbord/update/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'updatedashbord'])->name('teacher.dashbord.update');
+        Route::get('/teacher/dashbord/{teacher_id}/delete', [App\Http\Controllers\Admin\TeacherController::class, 'destroydashbord'])->name('teacherdashbord.destroy');
+
+        //chart
+        Route::get('/dashbord/sudant', [App\Http\Controllers\Admin\HomeController::class, 'studantdetales'])->name('dashbord.studant');
+        Route::post('/dashbord/sudant/serach', [App\Http\Controllers\Admin\HomeController::class, 'studantserch'])->name('dashbord.serchstudant');
+        Route::get('/dashbord/coures', [App\Http\Controllers\Admin\HomeController::class, 'couresstauet'])->name('dashbord.coures');
+
+
         // results
 
         // //quiz

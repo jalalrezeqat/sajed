@@ -40,7 +40,9 @@ class CodecardController extends Controller
             $this->generateUniqueCode();
         }
         $courses = DB::table('courses')->get();
-        return view('admin.layouts.courses.genaratcode.codegenaretadd', compact('courses', 'code'));
+        $branches = DB::table('branches')->get();
+
+        return view('admin.layouts.courses.genaratcode.codegenaretadd', compact('courses', 'code', 'branches'));
     }
 
     /**

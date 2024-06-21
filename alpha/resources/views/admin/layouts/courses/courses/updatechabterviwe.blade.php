@@ -2,7 +2,8 @@
 @section('content')
     <div>
 
-        <a href="{{ route('admin.courses') }}"><button class="btnaboutadd btn btn-dark">رجوع </button></a>
+        <a href="{{ route('admin.courses.courseschabtar', $course) }}"><button class="btnaboutadd btn btn-dark">رجوع
+            </button></a>
 
     </div>
 

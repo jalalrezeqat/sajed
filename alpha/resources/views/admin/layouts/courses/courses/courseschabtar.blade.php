@@ -27,7 +27,8 @@
                         <td class="">
                             <a href="{{ route('admin.courses.lesson', $chabter->id) }}"
                                 class="btn btn-success editdelete">مشاهدة الدروس</a>
-                            <a href="{{ route('admin.chabter.edit', $chabter->id) }}" class="btn btn-dark editdelete">تعديل
+                            <a href="{{ url('admin/chabter/edit/' . $chabter->id, $courses->id) }}"
+                                class="btn btn-dark editdelete">تعديل
                             </a>
 
                             <a href="{{ route('admin.chabtar.destroy', $chabter->id) }}"

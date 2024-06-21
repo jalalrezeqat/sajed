@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="/img/fiveicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>{{ config('app.name', 'Admin Panel ALPHA') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +107,7 @@
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.categories.index') }}">اضافة
                                         اختبار </a></li>
-                              
+
                                 {{-- <li class="nav-item"> <a class="nav-link" href="{{route('admin.quiz')}}">اضافة اختبار  </a></li> --}}
                             </ul>
                         </div>
@@ -142,11 +143,34 @@
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.ConnectWithUs') }}">معلومات الموقع
                                     </a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.policies') }}">سياسات الموقع
+                                    </a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.teacher.dashbord') }}">انشاء
+                                        مدرس
+                                    </a></li>
 
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#chart" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <span class="menu-title">تحليل</span>
+                        </a>
+                        <div class="collapse" id="chart">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.dashbord.studant') }}">معلومات
+                                        الطلاب
+                                    </a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.dashbord.coures') }}">الدورات</a></li>
 
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.about') }}">
                             <span class="menu-title font-weight-bold mb-2">حول المنصة</span>

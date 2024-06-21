@@ -1,7 +1,6 @@
-(function($) {
+(function ($) {
   'use strict';
   $(function() {
-
     Chart.defaults.global.legend.labels.usePointStyle = true;
     
     if ($("#serviceSaleProgress").length) {
@@ -449,10 +448,11 @@
       gradientStrokeGreen.addColorStop(0, 'rgba(6, 185, 157, 1)');
       gradientStrokeGreen.addColorStop(1, 'rgba(132, 217, 210, 1)');
       var gradientLegendGreen = 'linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))';      
-
       var trafficChartData = {
+     
         datasets: [{
-          data: [30, 30, 40],
+
+          data: [20, 60, 20],
           backgroundColor: [
             gradientStrokeBlue,
             gradientStrokeGreen,

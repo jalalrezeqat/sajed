@@ -20,13 +20,22 @@
 
             <div class="form-group">
                 <label for="inputtitelmistion">الدورة</label>
-                <select class="form-control" name="courses" id="courses">
+                <select class="form-control" name="courses" id="cboOptions" onchange="showDiv('div',this)">
                     @foreach ($courses as $courses)
                         <option value="{{ $courses->id }}">{{ $courses->name }}</option>
                     @endforeach
                     <option value="جميع الدورات">جميع الدورات</option>
+
                 </select>
             </div>
+            {{-- <div class="form-group">
+                <label for="inputtitelmistion">الفرع</label>
+                <select class="form-control"id="div2" style="display:none;">
+                    @foreach ($branches as $branches)
+                        <option value="{{ $branches->id }}">{{ $branches->name }}</option>
+                    @endforeach
+                </select>
+            </div> --}}
 
             <div class="form-group">
                 <label for="inputtitelmistion">تاريخ البداية </label>
@@ -41,3 +50,16 @@
         </form>
     </div>
 @endsection
+
+{{-- <script>
+    function showDiv(prefix, chooser) {
+        var selectedOption = (chooser.options[chooser.selectedIndex].value);
+        if (selectedOption == "جميع الدورات") {
+            var div = document.getElementById(prefix + "2");
+            div.style.display = 'block';
+        } else {
+            var div = document.getElementById(prefix + "2");
+            div.style.display = 'None';
+        }
+    }
+</script> --}}

@@ -27,7 +27,7 @@ class ProfileController extends Controller
         $coursename = DB::table('courses')->get();
 
         $quizreselt = DB::table('results')->where('user_id', '=', Auth::user()->id)->get();
-        return view('dashboard', compact('quizreselt', 'course', 'coursename', 'quizreselt'));
+        return view('dashboard', compact('quizreselt', 'course', 'coursename'));
     }
     public function edit(Request $request): View
     {

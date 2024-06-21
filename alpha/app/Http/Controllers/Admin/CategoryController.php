@@ -17,8 +17,10 @@ class CategoryController extends Controller
     public function index(): View
     {
         $categories = Category::all();
+        $courses = DB::table('courses')->get();
+        $chabters = DB::table('chabters')->get();
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories', 'courses', 'chabters'));
     }
 
     public function create(): View
@@ -47,7 +49,7 @@ class CategoryController extends Controller
     {
         $courses = DB::table('courses')->get();
         $chabters = DB::table('chabters')->get();
-        return view('admin.categories.edit', compact('category','courses', 'chabters'));
+        return view('admin.categories.edit', compact('category', 'courses', 'chabters'));
     }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse

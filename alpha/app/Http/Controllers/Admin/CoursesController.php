@@ -48,7 +48,7 @@ class CoursesController extends Controller
 
     {
         $chabterid = $request->id;
-        $courses = DB::table('courses')->get();
+        $courses = DB::table('courses')->where('id', '=', $chabterid)->get();
         $teacher = DB::table('teachers')->get();
         return view('admin.layouts.courses.courses.courseschabtaradd', compact('courses', 'teacher', 'chabterid'));
     }

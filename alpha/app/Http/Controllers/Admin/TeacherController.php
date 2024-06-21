@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\teachers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Models\user;
 
 
 
@@ -21,6 +22,11 @@ class TeacherController extends Controller
         $tetcher =  DB::table('teachers')->get();
         return view('admin.layouts.courses.teacher.teacher', compact('tetcher'));
     }
+    public function indexdashbord()
+    {
+        $tetcher =  DB::table('users')->where('stutes', '=', '1')->get();
+        return view('admin.layouts.courses.teacher.teacherdashbord', compact('tetcher'));
+    }
 
     public function viweaddteacher()
 
@@ -32,7 +38,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $tetcher =  DB::table('teachers')->get();
+        return view('admin.layouts.courses.teacher.teaherdashbordadd', compact('tetcher'));
     }
 
     /**
@@ -65,6 +72,70 @@ class TeacherController extends Controller
 
         $student->save();
         return  redirect()->route('admin.teacher');
+    }
+    public function storeteacherdahbord(Request $request)
+    {
+        $post = new user();
+        $post->name = $request->input('name');
+        $post->email = $request->input('email');
+        $post->phone = $request->input('phone');
+        $post->id_teacher = $request->input('id_teacher');
+        $post->password = $request->input('password');
+        $post->password_verified_at = $request->input('password_verified_at');
+        $post->branch = '-';
+        $post->Governorate = '-';
+        $post->stutes = '1';
+
+
+
+
+        //    $post->user_img =$request->input('user_img');
+        if ($request->hasfile('user_img')) {
+
+            $distination = 'img/user_profile/' . $post->user_img;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('user_img');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/user_profile/', $file_name);
+            $post->user_img     = $file_name;
+        }
+        $post->save();
+        return  redirect()->route('admin.teacher.dashbord');
+    }
+    public function updatedashbord(Request $request, $id)
+    {
+        $post = user::find($id);
+        $post->name = $request->input('name');
+        $post->email = $request->input('email');
+        $post->phone = $request->input('phone');
+        $post->id_teacher = $request->input('id_teacher');
+
+        //    $post->user_img =$request->input('user_img');
+        if ($request->hasfile('user_img')) {
+
+            $distination = 'img/user_profile/' . $post->user_img;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('user_img');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/user_profile/', $file_name);
+            $post->user_img     = $file_name;
+        }
+        $post->save();
+
+        return  redirect()->route('admin.teacher.dashbord');
+    }
+
+    public function editdashbord(Request $request, $dashbord)
+    {
+        $tetcher =  DB::table('teachers')->get();
+        $user = DB::table('users')->where('id', '=', $dashbord)->first();
+        return view('admin.layouts.courses.teacher.editdashbord', compact('dashbord', 'user', 'tetcher'));
     }
 
     /**
@@ -135,6 +206,20 @@ class TeacherController extends Controller
         if (File::exists($distination)) {
             File::delete($distination);
         }
+        if (File::exists($distinationslider)) {
+            File::delete($distinationslider);
+        }
+        $sliderdelete->delete();
+
+        return  redirect()->back();
+    }
+    public function destroydashbord(int $teacher_id)
+    {
+        $post = user::find($teacher_id);
+        $sliderDb = DB::table('users');
+        $sliderdelete = $sliderDb->where('id', $teacher_id);
+        $distinationslider = 'img/user_profile/' . $post->user_img;
+
         if (File::exists($distinationslider)) {
             File::delete($distinationslider);
         }

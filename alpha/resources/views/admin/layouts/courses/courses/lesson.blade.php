@@ -1,7 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
     <div>
-        <a href="{{ url()->previous() }}"><button class="btnaboutadd btn btn-dark">رجوع </button></a>
+        <a href="{{ route('admin.courses.courseschabtar', $chabter->id) }}"><button class="btnaboutadd btn btn-dark">رجوع
+            </button></a>
         <a href="{{ route('admin.courses.lessonadd', $chabter->id) }}"><button class="btnaboutadd btn btn-dark">اضافة الى
                 الدرس</button></a>
 
