@@ -167,7 +167,11 @@
                                     </a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.dashbord.coures') }}">الدورات</a></li>
-
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.dashbord.countstudant') }}"> عدد الدورات التي يشترك فيها
+                                        كل
+                                        طالب
+                                    </a></li>
                             </ul>
                         </div>
                     </li>

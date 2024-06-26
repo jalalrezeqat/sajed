@@ -83,25 +83,31 @@ class HomeController extends Controller
     {
         $user = DB::table('users')->where('id_teacher', '=', Null)->get();
         $usercount = DB::table('users')->where('id_teacher', '=', Null)->count();
-        $msg = 'عدد الطلاب    : ';
+        $msg = ' عدد الطلاب المسجلين في المنصة   : ';
+        $code  = DB::table('codecards')->get();
 
-        return view('admin.layouts.chart.studant', compact('user', 'usercount', 'msg'));
+        return view('admin.layouts.chart.studant', compact('user', 'usercount', 'msg', 'code'));
     }
     public function studantserch(Request $request)
 
     {
 
         $code  = DB::table('codecards')->get();
+        $user = DB::table('users')->get();
+
         $studant = $request->input('studant');
         // $student->name = $request->input('studant');
         if ($studant == '1') {
 
-            foreach ($code as $codes) {
-                $user = DB::table('users')->where('id', '=', $codes->user_id)->get();
-                $usercount =
-                    DB::table('users')->where('id', '=', $codes->user_id)->count();
-                $msg = 'عدد الطلاب المشتركين : ';
+            foreach ($user as $users) {
+                foreach ($code as $codes) {
+
+                    $user = DB::table('users')->where('id', '=', $codes->user_id)->get();
+                    $usercount =
+                        DB::table('users')->where('id', '=', $codes->user_id)->count();
+                }
             }
+            $msg = 'عدد الطلاب المشتركين : ';
         } elseif ($studant == '2') {
             foreach ($code as $codes) {
                 $user = DB::table('users')->where('id_teacher', '=', Null)->where('id', '!=', $codes->user_id)->get();
@@ -128,7 +134,7 @@ class HomeController extends Controller
     }
     public function couresserch(Request $request)
     {
-        $start = $request->input('stare');
+        $start = $request->input('start');
         $end = $request->input('end');
         $coures = DB::table('courses')->get();
 
@@ -141,5 +147,19 @@ class HomeController extends Controller
                 ->where('startcode', '<', $end)->get();
         }
         return view('admin.layouts.chart.couresserch', compact('coures', 'code', 'code1', 'start', 'end'));
+    }
+
+    public function countstudant()
+    {
+        $coures = DB::table('courses')->get();
+
+        foreach ($coures as $couress) {
+            $code  = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+            $code
+                = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('courses', '=', $couress->id)->get();
+        }
+        return view('admin.layouts.chart.countstudant', compact('coures', 'code', 'code1'));
     }
 }

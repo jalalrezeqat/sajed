@@ -1,6 +1,12 @@
 @extends('admin.layouts.app')
 @section('content')
     <div class="content-wrapper">
+        <div class="mb-5">
+
+            <a href="{{ route('admin.dashbord.coures') }}"><button class="btnaboutadd btn btn-dark">رجوع </button></a>
+
+        </div>
+
         <div class=" mb-5">
             <form action="{{ route('admin.dashbord.serchscoures') }}" method="POST">
                 @csrf
@@ -8,11 +14,11 @@
                 <div class="row">
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion"> من تاريخ</label>
-                        <input type="date" name="start">
+                        <input type="date" name="start" required>
                     </div>
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion">الى تاريخ </label>
-                        <input type="date" name="end">
+                        <input type="date" name="end" required>
                     </div>
                     <div class="  col-3">
 
@@ -39,12 +45,15 @@
                                 ->get();
                             
                             ?>
-                            <h6 class="mb-2"> عدد الطلاب المسجلين في الدورة : {{ $code->count() }}
-                            </h6>
-                            <h6 class="mb-2"> المبلغ المالي للمنصة : {{ $couress->price * 0.5 * $code->count() }}
-                            </h6>
-                            <h6 class="mb-2"> المبلغ المالي للمدرس : {{ $couress->price * 0.5 * $code->count() }}
-                            </h6>
+                            <h6 class="mb-2"> عدد الطلاب المسجلين في الدورة من تاريخ : {{ $start }} -
+                                {{ $end }}
+
+                                <h6 class="mb-2"> عدد الطلاب المسجلين في الدورة : {{ $code->count() }}
+                                </h6>
+                                <h6 class="mb-2"> المبلغ المالي للمنصة : {{ $couress->price * 0.5 * $code->count() }}
+                                </h6>
+                                <h6 class="mb-2"> المبلغ المالي للمدرس : {{ $couress->price * 0.5 * $code->count() }}
+                                </h6>
 
                         </div>
                     </div>

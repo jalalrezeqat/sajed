@@ -209,6 +209,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('/dashbord/sudant/serach', [App\Http\Controllers\Admin\HomeController::class, 'studantserch'])->name('dashbord.serchstudant');
         Route::get('/dashbord/coures', [App\Http\Controllers\Admin\HomeController::class, 'couresstauet'])->name('dashbord.coures');
         Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
+        Route::get('/dashbord/count/studant', [App\Http\Controllers\Admin\HomeController::class, 'countstudant'])->name('dashbord.countstudant');
 
 
         // results

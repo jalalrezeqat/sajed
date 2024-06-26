@@ -8,11 +8,11 @@
                 <div class="row">
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion"> من تاريخ</label>
-                        <input type="date" name="start" class="form-control">
+                        <input type="date" name="start" class="form-control" required>
                     </div>
                     <div class="form-grou col-3">
                         <label for="inputtitelmistion">الى تاريخ </label>
-                        <input type="date" name="end" class="form-control">
+                        <input type="date" name="end" class="form-control" required>
                     </div>
                     <div class="  col-3">
                         <label for="inputtitelmistion"></label>

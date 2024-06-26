@@ -21,6 +21,16 @@
     <div>
         <h2>{{ $msg }}{{ $usercount }}</h2>
     </div>
+    <?php
+    $c = 0;
+    foreach ($code as $codes) {
+        foreach ($user as $users) {
+            if ($codes->user_id == $users->id) {
+                $a = $users->name;
+            }
+        }
+    }
+    ?>
     <div class=" table-responsive">
 
         <table class=" table-admin-connectus  ">
@@ -32,6 +42,8 @@
                     <th scope="col"> الهاتف </th>
                     <th scope="col"> الفرع </th>
                     <th scope="col"> المحافظة </th>
+                    <th scope="col"> عدد الدورات التي يشترك فيها </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +55,20 @@
                         <td class="">{{ $users->phone }} </td>
                         <td class="">{{ $users->branch }} </td>
                         <td class="">{{ $users->Governorate }} </td>
+                        <?php $count = 0; ?>
+
+                        @foreach ($code as $codes)
+                            @if ($codes->user_id == $users->id)
+                                <?php $c++;
+                                $count = 0;
+                                $count = $count + $c;
+                                ?>
+                            @endif
+                        @endforeach
+                        <?php $c = 0; ?>
+
+                        <td class=""><?php echo $count; ?> </td>
+
                     </tr>
                 @endforeach
             </tbody>
