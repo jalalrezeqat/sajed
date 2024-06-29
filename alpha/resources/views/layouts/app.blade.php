@@ -21,6 +21,7 @@ $connectwithus = DB::table('connect_with_us')->get();
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @foreach ($iconfav as $iconfavs)
         <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
     @endforeach
 
     <title>{{ config('app.name', 'ALPHA') }}</title>
@@ -38,6 +39,9 @@ $connectwithus = DB::table('connect_with_us')->get();
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css'])
     @livewireStyles
 
+
+
+    </style>
 </head>
 
 <body>
@@ -65,7 +69,9 @@ $connectwithus = DB::table('connect_with_us')->get();
                                         class="btn btn-success btn-lg reg font-weight-bold">الرئيسية</button></a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link " href="{{ url('/courses') }}">الدورات</a>
+                                <a class="nav-link " href="{{ url('/courses') }}">
+
+                                    الدورات</a>
                             </li>
                             <li class="nav-item-home">
                                 <a class="nav-link" href="{{ url('/about') }}">حول الفا</a>
@@ -129,6 +135,7 @@ $connectwithus = DB::table('connect_with_us')->get();
             </nav>
         </div>
         <main class="">
+
             @yield('content')
         </main>
     </div>
@@ -349,7 +356,7 @@ $connectwithus = DB::table('connect_with_us')->get();
 
                     <!-- Login Form Popup HTML -->
 
-                    <input id="modal-toggle-regester" type="checkbox">
+                    <input id="modal-toggle-regester" style='display:none' type="checkbox">
                     <label class="modal-backdrop" for="modal-toggle-regester"></label>
                     <div class="modal-content">
                         <label class="modal-close-btn" for="modal-toggle-regester">
@@ -481,21 +488,22 @@ $connectwithus = DB::table('connect_with_us')->get();
                 </div>
             </div>
         </div>
-        @if (Session::has('openModal'))
+        </div>
+        {{-- @if (1 == 1)
             <script type="text/javascript">
                 $(function() {
                     $('#modal-toggle').modal('show');
                 });
             </script>
-        @endif
+        @endif --}}
         <!-- partial -->
 
 
-        @if (session()->has('error'))
+        {{-- @if (1 == 1)
             <script>
                 $('#modal-toggle-regester').modal('show');
             </script>
-        @endif
+        @endif --}}
 
 
 
@@ -509,15 +517,13 @@ $connectwithus = DB::table('connect_with_us')->get();
     {{--  --}}
     @livewireScripts
 
+    {{-- @if (!Auth::user())
+        <script>
+            $('#modal-toggle-regester').click();
+        </script>
+    @endif --}}
 </body>
 
-{{-- <script type="text/javascript">
-if (!Page_Validators[i].isvalid) {
-    message.style.display = "block";
-    // Reopen modal.
-    $('#modal-toggle-regester').modal('show');
-}
-</script> --}}
 
 </html>
 <script>

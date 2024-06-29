@@ -35,11 +35,11 @@
                                 <div class="col">
                                     <div class=" contact-img">
                                         @foreach ($slider as $slider)
-                                            <img class="img-about d-block" src="{{ asset('img/slider/' . $slider->img) }}"
+                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
                                                 class="d-block" alt="">
                                         @endforeach
                                     </div>
-                                   
+
                                 </div>
                                 @endif
                                 @windowWidthBetween(480, 1028)
@@ -50,14 +50,14 @@
                                                 class="d-block" alt="">
                                         @endforeach
                                     </div>
-                               
+
                                 </div>
                                 @endif
                                 @windowWidthLessThan(480)
                                 <div class="col">
                                     <div class=" contact-img">
                                         @foreach ($slider as $slider)
-                                            <img class="img-about d-block" src="{{ asset('img/slider/' . $slider->img) }}"
+                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
                                                 class="d-block" alt="">
                                         @endforeach
                                     </div>
@@ -89,13 +89,11 @@
                     </div>
                     <div class="col-12">
                         <label for="email" class="form-label">الايميل <span class="text-danger"></span></label>
-                        <input type="email" class="form-control" id="email" name="email" value=""
-                            required>
+                        <input type="email" class="form-control" id="email" name="email" value="" required>
                     </div>
                     <div class="col-12">
                         <label for="pohne" class="form-label">رقم الهاتف <span class="text-danger"></span></label>
-                        <input type="pohne" class="form-control" id="phonenumber" name="phone" value=""
-                            required>
+                        <input type="pohne" class="form-control" id="phonenumber" name="phone" value="" required>
                     </div>
                     <div class="col-12 col-md-12">
 

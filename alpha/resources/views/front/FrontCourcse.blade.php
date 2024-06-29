@@ -53,7 +53,7 @@
 
       <div class="  ">
 
-          <div class=" card-box-home  card-w mb-5  slider">
+          {{-- <div class=" card-box-home  card-w mb-5  slider">
               <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
                   @foreach ($coursces as $coursces)
                       <div class="col  ">
@@ -83,8 +83,28 @@
                       </div>
                   @endforeach
 
+              </div> --}}
+          <div class=" card-box-home  card-w  mtb00px  ">
+              <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
+                  @foreach ($coursces as $coursces)
+                      <div class="col">
+                          <div class="card-home card card-home " id="card-home">
+                              <img src="{{ asset('img/courses/' . $coursces->img_name) }}" class="card-img-top-home"
+                                  alt="...">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4">{{ $coursces->name }}</p>
+                                  <p class=" font14px ">{{ $coursces->summary }}</p>
+                                  <a class="card-button font14px margin-t4"
+                                      href="{{ url('coursesditels' . '/' . $coursces->id) }}">
+                                      قراءة المزيد ></a>
+                                  <button class="but-card font14px margin-t4 ">{{ $coursces->price }}₪ </button>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+
               </div>
 
-
           </div>
+          <br><br><br>
       @endsection

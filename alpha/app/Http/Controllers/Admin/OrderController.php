@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\order;
 use Illuminate\Http\Request;
@@ -15,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order = DB::table('orders')->get();
+        $coureses = DB::table('courses')->get();
+
+        return view('admin.layouts.courses.order', compact('order'));
     }
 
     /**

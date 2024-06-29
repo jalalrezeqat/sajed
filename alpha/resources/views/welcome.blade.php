@@ -8,11 +8,81 @@
 ">
       <meta name="keywords" content="تعلم في أي وقت وأي مكان,  دورات توجيهي أون لاين, منصة ألفا
 ">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       @foreach ($courses as $coursess)
           <meta name="{{ $coursess->name }}" content="{{ url('coursesditels' . '/' . $coursess->id) }}" />
       @endforeach
       @vite(['resources/css/mediaipad.css'])
+      <style>
+          /* #ac-wrapper {
 
+              width: 100%;
+              height: 100%;
+              background: url("images/pop-bg.png") repeat top left transparent;
+              position: fixed;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(0, 0, 0, .5);
+
+          }
+
+          .toolbarLB {
+              text-align: right;
+              padding: 10px;
+
+          }
+
+          .closeLB {
+              color: #27AC1F;
+              cursor: pointer;
+
+          }
+*/
+          /* #popup {
+              background: none repeat scroll 0 0 #FFFFFF;
+              border-radius: 18px;
+              -moz-border-radius: 18px;
+              -webkit-border-radius: 18px;
+              height: 361px;
+              margin: 5% auto;
+              position: relative;
+              width: 597px;
+          } */
+
+          /* .lightbox.closed {
+              display: none;
+          }
+
+          * {
+              padding: 0;
+              margin: 0;
+          } */
+
+
+          /*
+          .float {
+              position: fixed;
+              width: 60px;
+              height: 60px;
+              bottom: 40px;
+              right: 40px;
+              background-color: #0C9;
+              color: #FFF;
+              border-radius: 50px;
+              text-align: center;
+              box-shadow: 2px 2px 3px #999;
+          }
+
+          .my-float {
+              margin-top: 22px;
+          } */
+      </style>
   </head>
   <livewire:breakpoints />
   <?php session('windowW'); ?>
@@ -20,7 +90,20 @@
   @extends('layouts.app')
 
   @section('content')
-      <section>
+      <section class="homepage">
+          {{-- <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
+              <div id="popup">
+                  <div class="lightbox">
+                      <div class="toolbarLB">
+                          <span class="closeLB" onClick="PopUp('hide')">
+                              <p class="sss">X</p>
+                          </span>
+
+                      </div>
+                  </div>
+
+              </div>
+          </div> --}}
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
                   @windowWidthGreaterThan(1024)
@@ -31,7 +114,7 @@
                           <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
                       </div>
                       <div>
-                          <p style="font-size: 25px;margin-top:50px;    font-weight:700 ;
+                          <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات مرحلة
                               التوجيهي التي تحتاجها
                               للحـصـول عـلى مـعـدل
@@ -41,8 +124,9 @@
                       <div>
                           <div class="row dir " style="margin-top:50px">
                               <div class="col">
-                                  <a href="{{ url('/courses') }}"><button class="btnhome font18px btn">ابدأ
-                                          الآن</button></a>
+
+                                  <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                                      </button></a>
                               </div>
                               <div class="col">
                                   <div class="row">
@@ -59,7 +143,8 @@
                   </div>
                   <div class="col  float-left">
                       @foreach ($slider as $slider)
-                          <img id="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                          <img id="img-about" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
+                              alt="">
                       @endforeach
                   </div>
               </div>
@@ -70,25 +155,25 @@
           <div class="col float-right ring">
               <div>
 
-                  <p style="font-size: 40px;   font-weight:700 ;"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
+                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
                       مكان</p>
               </div>
               <div>
-                  <p style="font-size: 14px;margin-top:50px;    font-weight:700 ;
+                  <p style="font-size: 1.8vw;margin-top:20px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات مرحلة
                       التوجيهي التي تحتاجها
                       للحـصـول عـلى مـعـدل
                       تحلم به وعلى ايدي امهر الاساتذة.</p>
               </div>
               <div>
-                  <div class="row dir " style="margin-top:50px">
+                  <div class="row dir " style="margin-top:20px">
                       <div class="col">
-                          <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ
-                                  الآن</button></a>
+                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                              </button></a>
                       </div>
                       <div class="col">
                           <div class="row">
-                              <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
+                              <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
                                   <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                               </div>
                           </div>
@@ -98,7 +183,7 @@
           </div>
           <div class="col  float-left">
               @foreach ($slider as $slider)
-                  <img width="266.43px" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
               @endforeach
           </div>
           </div>
@@ -107,7 +192,7 @@
           @windowWidthLessThan(481)
           <div class="col float-left">
               @foreach ($slider as $slider)
-                  <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
               @endforeach
           </div>
           <div class="col float-right ring">
@@ -122,9 +207,10 @@
                       تحلم به وعلى ايدي امهر الاساتذة.</p>
               </div>
               <div>
-                  <div class="row dir " style="margin-top:50px">
+                  <div class="row dir " style="margin-top:20px">
                       <div class="col">
-                          <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
+                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                              </button></a>
                       </div>
                       <div class="col">
                           <div class="row">
@@ -152,7 +238,7 @@
                   <p class="text-center font18px mt"style="">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك</p>
               </div>
               {{-- card course --}}
-              <div class=" card-box-home  card-w  mtb00px  slider">
+              <div class=" card-box-home  card-w  mtb00px  ">
                   <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
                       @foreach ($courses as $courses)
                           <div class="col">
@@ -173,7 +259,8 @@
 
                   </div>
                   <div class="card-btn-allcourse ">
-                      <a href="{{ url('/courses') }} "><button class="btn-allcourse">جميع الدورات</button></a>
+                      <a href="{{ url('/courses') }} "><button class="button1 ">جميع الدورات
+                          </button></a>
                   </div>
               </div>
           </div>
@@ -193,7 +280,7 @@
 
 
           {{-- slide teacher --}}
-          <div id="carousel" class="carousel shadow-lg  slide">
+          <div id="carousel" class="carousel shadow-lg slider-tet slide">
               <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
 
               <div class="carousel-inner">
@@ -261,7 +348,7 @@
               <div class="row d-flex justify-content-center ">
                   <div class="col-lg-5 col-md-7 col-sm-9 ">
 
-                      <div id="carouselExample" class="carousel shadow-sm  slide">
+                      <div id="carouselExample" class="carousel  shadow-sm  slide">
                           <div class="carousel-inner">
                               @foreach ($sliderteachermob as $key => $sliderteachermobs)
                                   <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -344,12 +431,18 @@
                   </a>
               @endforeach
 
-
           </div>
       </section>
       {{-- end qustion --}}
-  @endsection
+      <a href="https://www.google.com/" target="_blank" class="float">
+          <i class="fa fa-whatsapp  my-float fa-2x"></i>
+      </a>
 
+      {{--  --}}
+
+      {{--  --}}
+  @endsection
+  <?php $c = 'show'; ?>
   <script>
       function changeIcon(anchor) {
           var icon = anchor.querySelector("i");
@@ -374,5 +467,31 @@
           });
       }, 2000)
 
-      clearInterval(timer);
+      lightBoxClose = function() {
+          document.querySelector(".lightbox").classList.add("closed");
+      }
+
+      function PopUp(hideOrshow) {
+          if (hideOrshow == 'hide') {
+              document.getElementById('ac-wrapper').style.display = "none";
+          } else if (localStorage.getItem("popupWasShown") == null) {
+              localStorage.setItem("popupWasShown", 1);
+              document.getElementById('ac-wrapper').removeAttribute('style');
+          }
+      }
+      var c = <?php echo json_encode($c); ?>;
+
+      //   window.onload = function() {
+      //       setTimeout(function() {
+      //           PopUp(c);
+      //       }, 0);
+      //   }
+
+
+      function hideNow(e) {
+          if (e.target.id == 'ac-wrapper') document.getElementById('ac-wrapper').style.display = 'none';
+      }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>

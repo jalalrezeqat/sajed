@@ -113,6 +113,11 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.order') }}">
+                            <span class="menu-title font-weight-bold mb-2">طلبات البطاقات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#slider" aria-expanded="false"
                             aria-controls="ui-basic">
                             <span class="menu-title">سلايدر</span>
@@ -174,6 +179,11 @@
                                     </a></li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.order') }}">
+                            <span class="menu-title font-weight-bold mb-2">طلبات البطاقات</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.about') }}">

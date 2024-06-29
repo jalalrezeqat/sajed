@@ -71,7 +71,7 @@
                                                 class="card-img-profile" alt="...">
                                         </div>
                                         <div class="col-9">
-                                            <a href="{{ url('coursesditels' . '/' . $coursenames->id) }}"
+                                            <a href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
                                                 class="card-title-home mt-3">{{ $coursenames->name }}</a>
                                         </div>
                                     </div>

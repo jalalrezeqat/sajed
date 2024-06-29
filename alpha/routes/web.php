@@ -211,6 +211,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
         Route::get('/dashbord/count/studant', [App\Http\Controllers\Admin\HomeController::class, 'countstudant'])->name('dashbord.countstudant');
 
+        //order
+        Route::get('/order', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order');
+
 
         // results
 

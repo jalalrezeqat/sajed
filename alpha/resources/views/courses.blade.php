@@ -53,7 +53,24 @@
               @foreach ($branch as $branch)
                   @windowWidthGreaterThan(1028)
 
-                  <div class="col  ">
+                  <div class="col">
+                      <div class="card-home card card-home " id="card-home-coures">
+                          <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+
+                          <div class="card-body">
+                              <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                              <p class=" font14px ">{{ $branch->summary }}</p>
+
+                          </div>
+                          <div class="card-button-courses">
+
+                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد جميع
+                                      الدورات </button></a>
+
+                          </div>
+                      </div>
+                  </div>
+                  {{-- <div class="col  ">
                       <div class="card "id="card-home">
                           <img src="img/card-img.png" class="card-img-top-cource" alt="...">
                           <div class="card-body">
@@ -61,40 +78,51 @@
                               <p id="card-text-home1 " class="card-text-home1 mt-4 font14px ">{{ $branch->summary }}</p>
                           </div>
                           <div class="card-button-courses">
-                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقّد
-                                      الدورات</button></a>
+
+                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقد جميع
+                                      الدورات
+
+
                           </div>
                       </div>
-                  </div>
+                  </div> --}}
               @endif
               @windowWidthBetween(480, 1028)
-              <div class="row">
-                  <div class="col">
-                      <div class="card  "id="card-home">
-                          <img src="img/card-img.png" class="card-img-top-cource" alt="...">
-                          <div class="card-body">
-                              <h5 class="text-center fw-bolder font18px">{{ $branch->name }}</h5>
-                              <p id="card-text-home1 " class="card-text-home1 mt-4 font14px ">{{ $branch->summary }}</p>
-                          </div>
-                          <div class="card-button-courses">
-                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقّد
-                                      الدورات</button></a>
-                          </div>
+
+              <div class="col">
+                  <div class="card-home card card-home " id="card-home-coures">
+                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+
+                      <div class="card-body">
+                          <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                          <p class=" font14px ">{{ $branch->summary }}</p>
+
+                      </div>
+                      <div class="card-button-courses">
+
+                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد جميع
+                                  الدورات </button></a>
+
                       </div>
                   </div>
               </div>
               @endif
               @windowWidthLessThan(481)
-              <div class="col  ">
-                  <div class="card "id="card-home">
+
+              <div class="col">
+                  <div class="card-home card card-home " id="card-home-coures">
                       <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+
                       <div class="card-body">
-                          <h5 class="text-center fw-bolder font18px">{{ $branch->name }}</h5>
-                          <p id="card-text-home1 " class="card-text-home1 mt-4 font14px ">{{ $branch->summary }}</p>
+                          <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                          <p class=" font14px ">{{ $branch->summary }}</p>
+
                       </div>
                       <div class="card-button-courses">
-                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button1 ">تفقّد
-                                  الدورات</button></a>
+
+                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد جميع
+                                  الدورات </button></a>
+
                       </div>
                   </div>
               </div>

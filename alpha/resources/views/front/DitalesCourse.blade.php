@@ -328,13 +328,15 @@
                                                 @if (
                                                     ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->id) ||
                                                         ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
-                                                    <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
-                                                    <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                            style="border: none;background-color:#f8fafc
-                                                            ">{{ $lessons->name }}</button></a>
                                                     <?php $auth = 0; ?>
                                                 @endif
                                             @endforeach
+                                            @if ($auth == 0)
+                                                <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
+                                                <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                        style="border: none;background-color:#f8fafc
+                                                            ">{{ $lessons->name }}</button></a>
+                                            @endif
                                             @if ($auth != 0)
                                                 <span id="ditelsco1">مشاهدة مجانيّة</span>
                                                 <i style="font-size:24px;color:27AC1F" class="fa">&#xf144;</i>
@@ -358,22 +360,21 @@
                                                         ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->id) ||
                                                             ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                                                         <?php $insid = 1; ?>
-
-                                                        <i style="font-size:24px;color:#27AC1F"
-                                                            class="fa">&#xf144;</i>
-                                                        <a
-                                                            href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
-                                                                style="border: none;background-color:#f8fafc
-                                                             ">{{ $lessons->name }}</button></a>
-                                                        <?php $insid1 = 1; ?>
-                                                        <?php
-                                                        $path = 'img/vedio/' . $lessons->vedio;
-                                                        $file = $id3->analyze($path);
-                                                        ?>
-                                                        <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
                                                         <?php $auth = 0; ?>
                                                     @endif
                                                 @endforeach
+                                                @if ($auth == 0)
+                                                    <i style="font-size:24px;color:#27AC1F" class="fa">&#xf144;</i>
+                                                    <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
+                                                            style="border: none;background-color:#f8fafc
+                                                             ">{{ $lessons->name }}</button></a>
+                                                    <?php $insid1 = 1; ?>
+                                                    <?php
+                                                    $path = 'img/vedio/' . $lessons->vedio;
+                                                    $file = $id3->analyze($path);
+                                                    ?>
+                                                    <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                                @endif
                                                 @if ($auth != 0)
                                                     <i style="font-size:24px;color:" class="fa">&#xf144;</i>
                                                     <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}"><button
@@ -453,28 +454,28 @@
                         {{--  --}}
                         <?php  if (Auth::user()): ?>
 
-                        @foreach ($code as $codes)
+                        {{-- @foreach ($code as $codes)
                             <?php $insi1 = 0;
                             ?>
 
-                            @if (
-                                ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->id) ||
-                                    ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
-                                @foreach ($quiz as $key => $quizs)
-                                    <?php $insi1 = 1; ?>
-
-                                    @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
-                                        <div class="card card-body" id="">
-                                            <div class="ditelsco">
-                                                <i class="fa  fa-book" style="font-size:24px;color:#27AC1F"
-                                                    aria-hidden="true"></i>
-                                                {{ $quizs->name }}
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                            @if (($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today) & ($codes->courses == $b->id) || ($codes->courses == 'جميع الدورات') & ($codes->user_id == Auth::user()->id) & ($codes->endcode >= $today))
                             @endif
-                        @endforeach
+                        @endforeach --}}
+                        @if ($auth == 0)
+                            @foreach ($quiz as $key => $quizs)
+                                <?php $insi1 = 1; ?>
+
+                                @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
+                                    <div class="card card-body" id="">
+                                        <div class="ditelsco">
+                                            <i class="fa  fa-book" style="font-size:24px;color:#27AC1F"
+                                                aria-hidden="true"></i>
+                                            {{ $quizs->name }}
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                         @if (($codes->user_id != Auth::user()->id) & ($auth != 0))
                             @foreach ($quiz as $key => $quizs)
                                 @if (($quizs->chabters == $chbters->id) & ($quizs->courses == $b->id))
@@ -673,7 +674,7 @@
                                                         <select class="form-control select1 " name="course"
                                                             id="course">
                                                             <option placeholder=" " id="course" name="course"
-                                                                value="{{ $b->name }}" required>
+                                                                value="{{ $b->id }}" required>
                                                                 {{ $b->name }}
                                                             </option>
                                                         </select>

@@ -48,36 +48,27 @@
 
     <div class="  ">
 
-        <div class=" card-box-home  card-w mb-5  slider">
+        <div class=" card-box-home  card-w  mtb00px  ">
             <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
                 @foreach ($coursces as $coursces)
-                    <div class="col  ">
-                        <div class="card-courseshow card "id="card-courseshow">
+                    <div class="col">
+                        <div class="card-home card card-home " id="card-home">
+                            <img src="{{ asset('img/courses/' . $coursces->img_name) }}" class="card-img-top-home"
+                                alt="...">
                             <div class="card-body">
-
-                                <div class="row">
-                                    <div class="columncourse2"> <img src="/img/card-img.png" width="49.17px"
-                                            class="card-img-top-c col-3" alt="...">
-                                    </div>
-                                    <div class="columncourse1">
-                                        <h5 class="card-title-home col-9  font18px mb-3">{{ $coursces->name }}</h5>
-                                    </div>
-                                </div>
-
-
-                                <p id="card-text-home1 mt" class="card-text-home1 mb-3 font14px mt-3 ">
-                                    {{ $coursces->summary }}</p>
-                                <a class="card-button font14px mt-3"
-                                    href="{{ url('coursesditels' . '/' . $coursces->id) }}"> قراءة
-                                    المزيد ></a>
-                                <button class="but-card mt-3">{{ $coursces->price }}₪ </button>
+                                <p class="card-title-home font18px margin-b4">{{ $coursces->name }}</p>
+                                <p class=" font14px ">{{ $coursces->summary }}</p>
+                                <a class="card-button font14px margin-t4"
+                                    href="{{ url('coursesditels' . '/' . $coursces->id) }}">
+                                    قراءة المزيد ></a>
+                                <button class="but-card font14px margin-t4 ">{{ $coursces->price }}₪ </button>
                             </div>
                         </div>
                     </div>
+                @endforeach
+
             </div>
-            @endforeach
 
         </div>
-
     </div>
 @endsection

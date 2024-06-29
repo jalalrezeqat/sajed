@@ -27,6 +27,8 @@
                 </div>
             </form>
         </div>
+
+
         <div class="row">
             @foreach ($coures as $couress)
                 <div class="col-md-4 stretch-card grid-margin">

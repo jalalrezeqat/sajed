@@ -8,7 +8,7 @@
             @method('PUT')
             <div class="form-group">
                 <label for="inputtitelmistion">صورة </label>
-                <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name='img'
+                <input type="file" accept="image/png, image/gif, image/jpeg,image/ico" class="form-control" name='img'
                     id="img">
             </div>
 

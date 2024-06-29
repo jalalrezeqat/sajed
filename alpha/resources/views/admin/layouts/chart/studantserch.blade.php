@@ -24,8 +24,19 @@
             </div>
         </form>
     </div>
+
+    <?php $count = 0; ?>
+    @foreach ($code as $codes)
+        @foreach ($user as $users)
+            @if ($codes->user_id == $users->id)
+                <p>{{ $codes->user_id }} | {{ $users->name }} \+
+                </p>
+            @endif
+        @endforeach
+    @endforeach
+
     <div>
-        <h2>{{ $msg }}{{ $usercount }}</h2>
+        <h2>{{ $msg }} {{ $count }}</h2>
     </div>
     <div class=" table-responsive">
 
@@ -41,16 +52,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($user as $users)
-                    <tr>
-                        <td class="">{{ $users->id }} </td>
-                        <td class="tdnamecontectus">{{ $users->name }} </td>
-                        <td class="">{{ $users->email }} </td>
-                        <td class="">{{ $users->phone }} </td>
-                        <td class="">{{ $users->branch }} </td>
-                        <td class="">{{ $users->Governorate }} </td>
-                    </tr>
+                @foreach ($code as $codes)
+                    @foreach ($user as $users)
+                        @if ($codes->user_id == $users->id)
+                            <tr>
+                                <td class="">{{ $users->id }} </td>
+                                <td class="tdnamecontectus">{{ $users->name }} </td>
+                                <td class="">{{ $users->email }} </td>
+                                <td class="">{{ $users->phone }} </td>
+                                <td class="">{{ $users->branch }} </td>
+                                <td class="">{{ $users->Governorate }} </td>
+                                <td class="">{{ $codes->courses }} </td>
+
+                            </tr>
+                        @endif
+                    @endforeach
                 @endforeach
+
             </tbody>
         </table>
     </div>

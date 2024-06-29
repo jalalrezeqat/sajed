@@ -98,25 +98,39 @@ class HomeController extends Controller
         $studant = $request->input('studant');
         // $student->name = $request->input('studant');
         if ($studant == '1') {
+            $count = 0;
+            // foreach ($code as $codes) {
+            //     foreach ($user as $users) {
 
-            foreach ($user as $users) {
-                foreach ($code as $codes) {
+            //         $user = DB::table('users')
+            //             ->where('id', '=', $codes->user_id)
+            //             ->get();
 
-                    $user = DB::table('users')->where('id', '=', $codes->user_id)->get();
-                    $usercount =
-                        DB::table('users')->where('id', '=', $codes->user_id)->count();
-                }
-            }
+            //         $count = $usercount + $count;
+            //     }
+
+
+
+            // foreach ($code as $codes) {
+            // foreach ($user as $users) {
+
+            // $user = DB::table('users')->where('id', '=', $codes->user_id)->get();
+            // $usercount =
+            // DB::table('users')->where('id', '=', $codes->user_id)->count();
+            // }
+            // }
             $msg = 'عدد الطلاب المشتركين : ';
         } elseif ($studant == '2') {
             foreach ($code as $codes) {
-                $user = DB::table('users')->where('id_teacher', '=', Null)->where('id', '!=', $codes->user_id)->get();
-                $usercount =    DB::table('users')->where('id_teacher', '=', Null)->where('id', '!=', $codes->user_id)->count();
-                $msg = 'عدد الطلاب غير المشتركين  : ';
+                foreach ($user as $users) {
+                    $user = DB::table('users')->where('id_teacher', '=', Null)->get();
+                    // $usercount = DB::table('users')->where('id_teacher', '=', Null)->where('id', '!=', $codes->user_id)->count();
+                    $msg = 'عدد الطلاب غير المشتركين : ';
+                }
             }
         }
 
-        return view('admin.layouts.chart.studantserch', compact('user', 'usercount', 'msg'));
+        return view('admin.layouts.chart.studantserch', compact('user', 'code',  'msg'));
     }
 
     public function couresstauet()
@@ -124,7 +138,7 @@ class HomeController extends Controller
         $coures = DB::table('courses')->get();
 
         foreach ($coures as $couress) {
-            $code  = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code = DB::table('codecards')->where('user_id', '!=', null)->get();
             $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
             $code
                 = DB::table('codecards')->where('user_id', '!=', null)
@@ -139,7 +153,7 @@ class HomeController extends Controller
         $coures = DB::table('courses')->get();
 
         foreach ($coures as $couress) {
-            $code  = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code = DB::table('codecards')->where('user_id', '!=', null)->get();
             $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
             $code
                 = DB::table('codecards')->where('user_id', '!=', null)
@@ -154,7 +168,7 @@ class HomeController extends Controller
         $coures = DB::table('courses')->get();
 
         foreach ($coures as $couress) {
-            $code  = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code = DB::table('codecards')->where('user_id', '!=', null)->get();
             $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
             $code
                 = DB::table('codecards')->where('user_id', '!=', null)
