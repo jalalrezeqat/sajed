@@ -8,6 +8,7 @@
 ">
       <meta name="keywords" content="تعلم في أي وقت وأي مكان,  دورات توجيهي أون لاين, منصة ألفا
 ">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       @foreach ($courses as $coursess)
@@ -224,6 +225,76 @@
           </div>
           </div>
           @endif
+      </section>
+      <section>
+      <div class="  " id="">
+        <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p>
+
+        <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
+            @foreach ($course as $coursess)
+                @foreach ($coursename as $coursenames)
+                    @if ($coursenames->id == $coursess->courses)
+                        <div class="col colcard">
+                            <div class="card-home card  " id="card-profile">
+                                <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
+                                    alt="...">
+                                <div class="card-body">
+                                    @foreach ($lessonid as $lessonids)
+                                        @if ($coursenames->id == $lessonids->nameofcourse)
+                                            <p class="card-title-home font14px "><a
+                                                    href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
+                                                    class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                            </p>
+                                        @else
+                                            <p class="card-title-home font14px "><a
+                                                    href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                    class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            @endforeach
+        </div> -->
+      
+        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            
+  <div class="carousel-inner">
+  
+    <div class="carousel-item active">
+      <div class="card-wrapper container-sm d-flex  row-cols-md-3 justify-content-around">
+      @foreach ($course as $coursess)
+                @foreach ($coursename as $coursenames)
+                    @if ($coursenames->id == $coursess->courses)
+      <div class="card  " style="width: 18rem;">
+  <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+   
+  </div>
+</div>
+@endif
+                @endforeach
+            @endforeach
+</div>
+    </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  </div>
+</div>
+</div>
+  
+    </div>
       </section>
       {{-- end slider home --}}
 
@@ -456,17 +527,18 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script>
-      $('.carousel').carousel({
-          interval: 50
-      });
+    //   $('.carousel').carousel({
+    //       interval: 50
+    //   });
 
-      let timer = setInterval(() => {
-          $('.carousel').carousel('dispose')
-          $('.carousel').carousel({
-              interval: 89
-          });
-      }, 900)
+    //   let timer = setInterval(() => {
+    //       $('.carousel').carousel('dispose')
+    //       $('.carousel').carousel({
+    //           interval: 89
+    //       });
+    //   }, 900)
 
       lightBoxClose = function() {
           document.querySelector(".lightbox").classList.add("closed");

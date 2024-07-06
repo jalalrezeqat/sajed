@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\CoursesController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\courses as ModelsCourses;
 use Tanthammar\LivewireWindowSize\HasBreakpoints;
@@ -26,8 +28,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-
+    {       
+         $course = DB::table('codecards')->where('user_id', '=', Auth::user()->id)->get();
+        $coursename = DB::table('courses')->get();
+        $lessonid  = DB::table('markcourses')->get();
         $courses = DB::table('courses')->get();
         $branch = DB::table('branches')->pluck('id');
         // $courscesdet=DB::table('courses')->where('branche','=' ,$branch )->get();
@@ -35,6 +39,6 @@ class HomeController extends Controller
         $slider =  DB::table('sliders')->where('page', '=', 'الرئيسية')->get();
         $sliderteacher =  DB::table('sliders')->where('page', '=', 'المعلم')->where('mobile_dsktop', '=', '1')->get();
         $sliderteachermob =  DB::table('sliders')->where('page', '=', 'المعلم')->where('mobile_dsktop', '=', '2')->get();
-        return view('welcome', compact('courses', 'sliderteachermob', 'CommonQuestions', 'slider', 'sliderteacher', 'branch'));
+        return view('welcome', compact('courses', 'sliderteachermob', 'CommonQuestions', 'slider', 'sliderteacher', 'branch','coursename','lessonid','course'));
     }
 }
