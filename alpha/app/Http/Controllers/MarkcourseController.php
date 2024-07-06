@@ -32,17 +32,17 @@ class MarkcourseController extends Controller
     {
 
         $nameofcourse = DB::table('courses')->where('id', '=', $id)->first();
-        $mark = DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->name)->where('nameofstudant', '=', Auth::user()->name)->first();
+        $mark = DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->name)->where('nameofstudant', '=', Auth::user()->id)->first();
 
         $student = new markcourse();
         if ($mark != null) {
-            DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->name)->where('nameofstudant', '=', Auth::user()->name)->update(['mark' => $request->input('mark')]);
+            DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->id)->where('nameofstudant', '=', Auth::user()->id)->update(['mark' => $request->input('mark')]);
             return redirect()->back();
         } else {
             $student->mark = $request->input('mark');
-            $student->nameofcourse = $nameofcourse->name;
+            $student->nameofcourse = $nameofcourse->id;
             if (Auth::user()) {
-                $student->nameofstudant = Auth::user()->name;
+                $student->nameofstudant = Auth::user()->id;
             }
             $student->save();
             return redirect()->back();

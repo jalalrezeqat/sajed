@@ -23,22 +23,19 @@
 
   @section('content')
       <div class="namebranch  float-right mb-2">
-          <p class="namebranch-text">الدورات > {{ $branch->name }}</p>
+          <p class="namebranch-text"><a class="text-dark" href="{{ url('courses') }}">الدورات</a> > <a class="text-dark"
+                  href="{{ url('courses/' . $branch->id) }}">{{ $branch->name }}</a></p>
+
       </div>
-      <div id="carouselExampleSlidesOnly" class="carousel slider  slide" data-ride="carousel">
-          <div class="carousel-inner">
+      <div class="carousel-inner">
+          @foreach ($slider as $slider)
               <div class="carousel-item active">
-                  <img class="d-block  w-100" src="{{ asset('img/cona.jpeg') }}" alt="First slide">
+                  <img class="d-block  slider-cource " src="{{ asset('img/slider/' . $slider->img) }}" alt="First slide">
               </div>
-              <div class="carousel-item">
-                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                  <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
-              </div>
-          </div>
+          @endforeach
+
       </div>
-      <h3 class="text-center font42px mt-3"> الثانويّة العامّة </h3>
+      <h3 class="text-center font42px mt-3"> دورات التوجيهي </h3>
       <h3 class="text-center font42px font-weight-bold"> {{ $branch->name }} </h3>
 
       <div class="d-flex justify-content-center mt-5 dir">
@@ -87,13 +84,13 @@
           <div class=" card-box-home  card-w  mtb00px  ">
               <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
                   @foreach ($coursces as $coursces)
-                      <div class="col">
+                      <div class="col colcard">
                           <div class="card-home card card-home " id="card-home">
                               <img src="{{ asset('img/courses/' . $coursces->img_name) }}" class="card-img-top-home"
                                   alt="...">
                               <div class="card-body">
                                   <p class="card-title-home font18px margin-b4">{{ $coursces->name }}</p>
-                                  <p class=" font14px ">{{ $coursces->summary }}</p>
+                                  <p class=" font18px ">{{ $coursces->summary }}</p>
                                   <a class="card-button font14px margin-t4"
                                       href="{{ url('coursesditels' . '/' . $coursces->id) }}">
                                       قراءة المزيد ></a>

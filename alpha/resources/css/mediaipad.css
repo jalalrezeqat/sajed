@@ -109,6 +109,9 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .card-course {
+        width: 95%;
+    }
     .font18px {
         font-size: 1.6vw;
         font-weight: 700;
@@ -117,6 +120,7 @@
         font-size: 4.5vw;
         font-weight: 700;
     }
+
     .font14px {
         font-size: 1.3vw;
         font-weight: 500;
@@ -139,7 +143,28 @@
         margin-bottom: 2vw;
         display: block;
     }
-
+    .slider-cource {
+        width: 70vw;
+        height: 30vw;
+        margin: auto;
+        margin-bottom: 4%;
+    }
+    .box-ditalescourse {
+        width: 100%;
+        display: inline-flex;
+        direction: rtl;
+        background-color: #12181e;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin: auto;
+        /* margin-bottom: 1%; */
+    }
+    .imgditels {
+        width: 30vw;
+        height: 60vw;
+        position: absolute;
+        bottom: 0px;
+    }
     .contectusdet {
         float: right;
         color: #212529;
@@ -189,11 +214,7 @@
         color: white;
         background-color: #27ac1f;
     }
-    .imgditels {
-        width: 300px;
-        margin-right: 40px;
-        margin-top: 95%;
-    }
+
     .imgtatecher {
         margin-right: 5%;
         margin-top: 2%;
@@ -254,10 +275,8 @@
         border-radius: 10.64px;
         background-color: #f8f8f8;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        width: 100%;
-        max-width: 30vw;
-        height: 100%;
-        max-height: 29.6125vw;
+        max-width: 34vw;
+        max-height: 24.6125vw;
         margin-left: auto;
         margin-right: auto;
         margin-top: -5vw;

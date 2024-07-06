@@ -90,7 +90,8 @@
     </section>
     {{-- end slider about --}}
     <!--  -->
-    <section style="margin-top: 30px">
+
+    <section style="margin-top: 30px; ">
         <div class="slider-cource dir ">
             <div>
                 <h1 class=" text-bold font32px"> <img style="margin-left:3%" src="img/aboutv.png" alt="">رؤيتنا :
@@ -111,9 +112,12 @@
                 </div>
             </div>
         </div>
-    @endsection
 
-</section>
+    </section>
+
+    </html>
+@endsection
+
 {{-- 
       <div id="carouselExampleSlidesOnly" class="carousel slider-cource  slide" data-ride="carousel">
       <div class="carousel-inner">

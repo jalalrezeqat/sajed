@@ -60,6 +60,8 @@ class LessonController extends Controller
         $student = new lesson();
         $student->name = $request->input('name');
         $student->chabters = $request->input('chabters');
+        $student->iframe = $request->input('iframe');
+
         // $courses = DB::table('chabters')->where('id', '=', $request->input('chabters'))->get();
         $courses = chabter::find($request->input('chabters'));
         $student->course = $courses->course;
@@ -121,6 +123,7 @@ class LessonController extends Controller
         $post = lesson::find($id);
         $post->name = $request->input('name');
         $post->chabters = $request->input('chabters');
+        $post->iframe = $request->input('iframe');
 
         if ($request->hasfile('vedio')) {
 
@@ -146,7 +149,7 @@ class LessonController extends Controller
             $file->move('img/pdf/', $file_name);
             $post->file     = $file_name;
         }
-        $chabter = DB::table('chabters')->where('name', '=', $post->chabters)->first();
+        $chabter = DB::table('chabters')->where('id', '=', $post->chabters)->first();
         $post->save();
         return  redirect()->route('admin.courses.lesson', $chabter->id);
     }

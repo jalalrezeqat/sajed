@@ -25,9 +25,9 @@ class ProfileController extends Controller
     {
         $course = DB::table('codecards')->where('user_id', '=', Auth::user()->id)->get();
         $coursename = DB::table('courses')->get();
-
+        $lessonid  = DB::table('markcourses')->get();
         $quizreselt = DB::table('results')->where('user_id', '=', Auth::user()->id)->get();
-        return view('dashboard', compact('quizreselt', 'course', 'coursename'));
+        return view('dashboard', compact('quizreselt', 'course', 'coursename', 'lessonid'));
     }
     public function edit(Request $request): View
     {

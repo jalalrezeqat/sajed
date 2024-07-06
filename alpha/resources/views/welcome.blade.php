@@ -65,14 +65,14 @@
           } */
 
 
-          /*
+
           .float {
               position: fixed;
               width: 60px;
               height: 60px;
               bottom: 40px;
               right: 40px;
-              background-color: #0C9;
+              background-color: #12181e;
               color: #FFF;
               border-radius: 50px;
               text-align: center;
@@ -81,17 +81,14 @@
 
           .my-float {
               margin-top: 22px;
-          } */
+          }
       </style>
   </head>
-  <livewire:breakpoints />
-  <?php session('windowW'); ?>
 
   @extends('layouts.app')
-
   @section('content')
       <section class="homepage">
-          {{-- <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
+          <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
               <div id="popup">
                   <div class="lightbox">
                       <div class="toolbarLB">
@@ -103,7 +100,7 @@
                   </div>
 
               </div>
-          </div> --}}
+          </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
                   @windowWidthGreaterThan(1024)
@@ -159,7 +156,7 @@
                       مكان</p>
               </div>
               <div>
-                  <p style="font-size: 1.8vw;margin-top:20px;    font-weight:700 ;
+                  <p class="font18px" style="margin-top:20px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات مرحلة
                       التوجيهي التي تحتاجها
                       للحـصـول عـلى مـعـدل
@@ -190,7 +187,7 @@
           </div>
           @endif
           @windowWidthLessThan(481)
-          <div class="col float-left">
+          <div class="col ">
               @foreach ($slider as $slider)
                   <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
               @endforeach
@@ -201,7 +198,7 @@
                   <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
               </div>
               <div>
-                  <p class="font20px">نحن نقدم لك كافة دورات مرحلة
+                  <p class="font18px">نحن نقدم لك كافة دورات مرحلة
                       التوجيهي التي تحتاجها
                       للحـصـول عـلى مـعـدل
                       تحلم به وعلى ايدي امهر الاساتذة.</p>
@@ -241,17 +238,17 @@
               <div class=" card-box-home  card-w  mtb00px  ">
                   <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
                       @foreach ($courses as $courses)
-                          <div class="col">
+                          <div class="col colcard ">
                               <div class="card-home card card-home " id="card-home">
                                   <img src="{{ asset('img/courses/' . $courses->img_name) }}" class="card-img-top-home"
                                       alt="...">
                                   <div class="card-body">
                                       <p class="card-title-home font18px margin-b4">{{ $courses->name }}</p>
-                                      <p class=" font14px ">{{ $courses->summary }}</p>
+                                      <p class=" font18px ">{{ $courses->summary }}</p>
                                       <a class="card-button font14px margin-t4"
                                           href="{{ url('coursesditels' . '/' . $courses->id) }}">
                                           قراءة المزيد ></a>
-                                      <button class="but-card font14px margin-t4 ">{{ $courses->price }}₪ </button>
+                                      <label class="but-card font14px margin-t4 ">{{ $courses->price }}₪ </label>
                                   </div>
                               </div>
                           </div>
@@ -276,7 +273,7 @@
                   الوطن!
               </p>
           </div>
-          @windowWidthGreaterThan(480)
+          @windowWidthGreaterThan(482)
 
 
           {{-- slide teacher --}}
@@ -305,7 +302,7 @@
 
           @endif
           {{--  --}}
-          @windowWidthLessThan(481)
+          @windowWidthLessThan(480)
 
           <style>
               .img-1 {
@@ -365,7 +362,7 @@
                           </button>
                           <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
                               data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="carousel-control-next-icon"></span>
                               <span class="visually-hidden">Next</span>
                           </button>
                           {{-- <ol class="carousel-indicators">
@@ -415,20 +412,24 @@
               @foreach ($CommonQuestions as $question)
                   <div class="qustion1">
                       <p>
-                          <a class="purple-head hover-black plusand-" onclick="changeIcon(this)" id="myBtn">
-                              <i id="faPlus" class="fa colorg fa-plus font-xs"></i>
+                          <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
+                              <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
+                                  aria-expanded="false" aria-controls="collapseExample"
+                                  class="fa colorg fa-plus font-xs"></i>
                               <button type="button" data-bs-toggle="collapse"
-                                  data-bs-target="#collapse{{ $question->id }}" aria-expanded="false"
+                                  data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
                                   aria-controls="collapseExample"
-                                  class="btn qustion-text  font18px">{{ $question->question }}</button>
+                                  class="btn qustion-text font18px">{{ $question->question }}</button>
                       </p>
-                      <div class="collapse " id="collapse{{ $question->id }}">
+                      <div class="collapse " id="collapse{{ $question->id }}qu">
                           <div class="  qustion-box card-body">
-                              <p style="font14px">{{ $question->question_text }}</p>
+                              <p style="font-size: 87.5%">{{ $question->question_text }}</p>
+                              {{-- <p style="font-size: 87.5%">
+                               
+                              </p> --}}
                           </div>
                       </div>
                   </div>
-                  </a>
               @endforeach
 
           </div>
@@ -457,15 +458,15 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>
       $('.carousel').carousel({
-          interval: 1000
+          interval: 50
       });
 
       let timer = setInterval(() => {
           $('.carousel').carousel('dispose')
           $('.carousel').carousel({
-              interval: 2000
+              interval: 89
           });
-      }, 2000)
+      }, 900)
 
       lightBoxClose = function() {
           document.querySelector(".lightbox").classList.add("closed");
@@ -491,7 +492,4 @@
       function hideNow(e) {
           if (e.target.id == 'ac-wrapper') document.getElementById('ac-wrapper').style.display = 'none';
       }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>

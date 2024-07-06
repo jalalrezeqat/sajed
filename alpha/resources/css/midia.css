@@ -9,16 +9,25 @@
     }
     .buttonshow {
         font-size: 75%;
-        height: 50%;
+    }
+    .sidbarshowcourse {
         width: 90%;
+        margin: auto;
+        border: 1px solid #000;
+        border-radius: 20px;
+        /* border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px; */
+        direction: rtl;
+        margin-top: 3%;
+        margin-bottom: 3%;
     }
     #countleeson {
         font-size: 62.5%;
         padding: 0%;
     }
     .font18px {
-        font-size: 3vw;
-        font-weight: 500;
+        font-size: 3.5vw;
+        font-weight: 700;
     }
 
     .font48px {
@@ -26,7 +35,7 @@
         font-weight: 700;
     }
     .font14px {
-        font-size: 12px;
+        font-size: 3vw;
         font-weight: 500;
     }
     .mt100px {
@@ -91,8 +100,8 @@
     }
     .img-about {
         margin: auto;
-        width: 300px;
-        height: 300px;
+        width: 70vw;
+        height: 80vw;
         float: left;
     }
     #shapetetcher1 {
@@ -199,8 +208,15 @@
         background-color: #27ac1f;
     }
     .imgditels {
-        width: 349px;
-        margin: auto;
+        width: 70vw;
+        height: 68vw;
+        position: absolute;
+        bottom: 0px;
+        margin-left: 444px;
+    }
+
+    .column2 {
+        position: relative;
     }
     .btncouresdetaless {
         margin: auto;
@@ -263,11 +279,30 @@
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         margin: auto;
+        height: 220vw;
+
         /* margin-bottom: 1%; */
     }
+    #card-profile {
+        margin-bottom: 25%;
+        margin: 0;
+        padding: 0;
+        border-radius: 10.64px;
+        background-color: #f8f8f8;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    .colcard {
+        margin-bottom: 20%;
+    }
     .img-home {
-        width: 59.895vw;
-        height: 64.7075vw;
+        width: 67.895vw;
+        height: 72.7075vw;
+    }
+    .slider-cource {
+        width: 100%;
+        height: 50vw;
+        margin: auto;
+        margin-bottom: 4%;
     }
     .button1 {
         background-color: #27ac1f;
@@ -313,5 +348,14 @@
         height: 100vw;
         margin-right: auto;
         margin-left: auto;
+    }
+    .namecourse {
+        background: rgb(39, 172, 31, 0.3);
+        width: 350px;
+        height: 50.45px;
+        border-top-left-radius: 12.77px;
+        border-bottom-left-radius: 12.77px;
+        float: right;
+        margin-top: 3%;
     }
 }

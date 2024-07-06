@@ -4,8 +4,11 @@
     <?php session('windowW'); ?>
     <livewire:breakpoints />
     <section>
+
         <div class="namecourse  float-right mb-2">
-            <p class="namebranchshow-text"> الدورات > {{ $b->branche }} > {{ $b->name }} </p>
+            <p class="namebranchshow-text"> <a class=" text-dark" href="{{ url('courses') }}">الدورات</a> > <a
+                    class=" text-dark" href="{{ url('courses/' . $b->id) }}">{{ $b->branche }}</a>
+                > {{ $b->name }} </p>
         </div>
 
         <br>
@@ -29,29 +32,29 @@
                             <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"> <span> <i class="fa  fa-user"
-                                        style="font-size:18px;color:blanchedalmond"></i>
+                            <p class="mt-3  col-lg-4 font14px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
+                                        style="font-size:14px;color:#F8F8F8"></i>
                                 </span> مدرس الدورة :
                                 @foreach ($teatcher as $teatchers)
                                     {{ $teatchers->name }}
                             </p>
                             @endforeach
 
-                            <p class="mt-3  col-lg-5 font18px" style="color: blanchedalmond"> <span><i class="fa fa-list"
-                                        style="font-size:18px;"></i>
+                            <p class="mt-3  col-lg-5 font14px" style="color: #F8F8F8"> <span><i class="fa fa-list"
+                                        style="font-size:14px;"></i>
                                 </span> عدد دروس الدورة :
                                 {{ $lessoncount }} درساً مسجلاً</p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <button type="button" class=" btncouresdetales  col-lg-6"><label class=" "
+                            <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                     aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-right: 25px;"> أدخل كود البطاقة
+                            <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 25px;"> أدخل كود البطاقة
                                 وابدأ
                                 بالتّعلّم</p>
                         </div>
                         <div class="row coursedetales">
 
-                            <p class="mt-3  col-lg-3" style="color: #85FE78; margin-right: 10px;"> السعر :
+                            <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
                                 {{ $b->price }} ₪
                             </p>
                             <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
@@ -81,9 +84,9 @@
         </div>
         @endif
         @windowWidthLessThan(480)
-        <div class="row">
+        <div class="row mobiw">
 
-            <div class="col">
+            <div class="col-12">
                 <form action="{{ url('codesend/' . $user) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -111,15 +114,16 @@
                         <div class="row coursedetales mt-5">
                             <button type="button" class=" btncouresdetales  col-lg-6"><label class=" "
                                     aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-top: 10px;"> أدخل كود البطاقة
-                                وابدأ
-                                بالتّعلّم</p>
-                        </div>
-                        <div class="row coursedetales">
-
                             <p class="mt-3  col-lg-3" style="color: #85FE78; margin-right: 10px;"> السعر :
                                 {{ $b->price }} ₪
                             </p>
+                        </div>
+                        <div class="row coursedetales">
+
+
+                            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-top: 10px;"> أدخل كود البطاقة
+                                وابدأ
+                                بالتّعلّم</p>
                             <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
                                 placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
                             @error('error')
@@ -137,23 +141,22 @@
                             <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
                         @endif
                 </form>
-            </div>
-            <div class="col">
-                <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
 
             </div>
+
+        </div>
+        <div class="column2">
+            <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
         </div>
         @endif
 
         </div>
     </section>
     <section>
+
         {{-- navbar  --}}
-        <nav class="navbar navbar-expand-lg navbarcourse dir navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light">
+
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav mr-auto">
@@ -287,7 +290,9 @@
                         <div class="">
                             <div class="chabternamecollabs">
                                 <a class="purple-head hover-black plusand-" onclick="changeIcon(this)" id="myBtn">
-                                    <i id="faPlus" class="fa colorg fa-plus font-xs"></i>
+                                    <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $chbters->id }}"
+                                        aria-expanded="false" aria-controls="collapseExample"
+                                        class="fa colorg fa-plus font-xs"></i>
                                     <button type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse{{ $chbters->id }}" aria-expanded="false"
                                         aria-controls="collapseExample" class="btn qustion-text font18px ">
@@ -348,7 +353,7 @@
                                                             {{ $lessons->name }}
                                                         </label></button></a>
                                             @endif
-                                            <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                            {{-- <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p> --}}
 
                                             <?php endif;?>
 
@@ -510,7 +515,9 @@
                 <div class="qustion1">
                     <p>
                         <a class="purple-head hover-black plusand-" onclick="changeIcon(this)" id="myBtn">
-                            <i id="faPlus" class="fa colorg fa-plus font-xs"></i>
+                            <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $questionscourss->id }}qu"
+                                aria-expanded="false" aria-controls="collapseExample"
+                                class="fa colorg fa-plus font-xs"></i>
                             <button type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse{{ $questionscourss->id }}qu" aria-expanded="false"
                                 aria-controls="collapseExample"
@@ -555,7 +562,7 @@
 
                     <div class="col-12 dir" style="margin: auto;">
 
-                        <div class="vidio " style="height: 70%;width: 80%;margin: auto;">
+                        <div class="vidio " style="height: 95%;width: 95%;margin: auto;">
                             {{-- <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline poster=""> --}}
                             <iframe
                                 src="https://player.vdocipher.com/v2/?otp=20160313versASE323hAHjGMnNOolu6wfPnPV1o2l77msDeVKWpj14pg7OYqCCCE&playbackInfo=eyJ2aWRlb0lkIjoiNDIwMDNlMWFkM2ViNDM5NGI1N2FmZjc0ODc0MWNmNmMifQ=="
@@ -827,13 +834,3 @@
 
 @endforeach
    --}}
-
-                        <script>
-                            navigator.clipboard.readText()
-                                .then(text => {
-                                    console.log('Pasted content: ', text);
-                                })
-                                .catch(err => {
-                                    console.error('Failed to read clipboard contents: ', err);
-                                });
-                        </script>

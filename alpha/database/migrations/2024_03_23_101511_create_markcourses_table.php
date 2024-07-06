@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nameofstudant');
             $table->string('mark');
+            $table->string('idlesson')->nullable();
             $table->string('nameofcourse'); //default
             $table->timestamps();
         });

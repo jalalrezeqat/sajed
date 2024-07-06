@@ -16,9 +16,14 @@
                     id="vedio">
             </div>
             <div class="form-group">
+                <label for="inputtitelmistion">الفيديو من منصة خارجية </label>
+                <input type="text" class="form-control" name='iframe' id="iframe" placeholder="اسم الدرس ">
+            </div>
+            <div class="form-group">
                 <label for="inputtitelmistion">ملخص المحاضرة</label>
                 <input type="file" accept="application/pdf" class="form-control" name='file' id="file">
             </div>
+
             <div class="form-group">
                 <label for="inputtitelmistion">الوحدة</label>
                 <select class="form-control" name="chabters" id="chabters">

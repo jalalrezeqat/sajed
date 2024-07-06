@@ -54,29 +54,30 @@
             </div>
         </div>
     </div>
-
-    <div class="dir" id="cc">
-        <p>الدورات المسجل بها</p>
+    <div class="dir profile-coures " id="">
+        <p class="mb-5">الدورات المسجل بها</p>
 
         <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
             @foreach ($course as $courses)
                 @foreach ($coursename as $coursenames)
                     @if ($coursenames->id == $courses->courses)
-                        <div class="col">
-                            <div class=" card " id="card-profile">
+                        <div class="col colcard">
+                            <div class="card-home card  " id="card-profile">
+                                <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
+                                    alt="...">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="{{ asset('img/courses/' . $coursenames->img_name) }}"
-                                                class="card-img-profile" alt="...">
-                                        </div>
-                                        <div class="col-9">
-                                            <a href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                class="card-title-home mt-3">{{ $coursenames->name }}</a>
-                                        </div>
-                                    </div>
-                                    {{-- <a class="card-button mt-3" href="{{ url('coursesditels'.'/'.$courses->id) }}"> قراءة المزيد ></a> --}}
-
+                                    @foreach ($lessonid as $lessonids)
+                                        @if ($coursenames->id == $lessonids->nameofcourse)
+                                            <p class="card-title-home font14px "><a
+                                                    href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
+                                                    class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                            </p>
+                                        @else
+                                            <p class="card-title-home font14px "><a
+                                                    href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                    class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -84,10 +85,9 @@
                 @endforeach
             @endforeach
         </div>
-
     </div>
-    <div class="dir " id="cc">
-        <p>علامات الامتحانات</p>
+    <div class="dir profile-coures " id="cc">
+        <p class="mb-5">علامات الامتحانات</p>
         <div>
             <table class="tabel-profile">
                 <thead>

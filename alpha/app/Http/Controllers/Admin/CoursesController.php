@@ -172,7 +172,7 @@ class CoursesController extends Controller
         }
         if ($request->hasfile('img_teatcher')) {
 
-            $distination = 'img/teatcher_course/' . $post->img_name;
+            $distination = 'img/teatcher_course/' . $post->img_teatcher;
             if (File::exists($distination)) {
                 File::delete($distination);
             }
@@ -180,7 +180,7 @@ class CoursesController extends Controller
             $extintion = $file->getClientOriginalExtension();
             $file_name = time() . '.' . $extintion;
             $file->move('img/teatcher_course/', $file_name);
-            $post->img_teatcher     = $file_name;
+            $post->img_teatcher = $file_name;
         }
         //  dd($chabter->course);
 

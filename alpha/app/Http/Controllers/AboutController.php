@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\about;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Tanthammar\LivewireWindowSize\HasBreakpoints;
 
 
 class AboutController extends Controller

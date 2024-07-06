@@ -41,18 +41,20 @@ class CoursesController extends Controller
     {
 
         $branch = branch::find($id);
+        $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
+
         $coursces = DB::table('courses')->where('branche', '=', $branch->name)->where('chabters', '=', 'الفصل الاول')->get();
 
-        return view('front.FrontCourcse', compact('branch', 'coursces'));
+        return view('front.FrontCourcse', compact('branch', 'coursces', 'slider'));
     }
 
     public function indexcourse1(Request $request, $id)
     {
-
+        $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
         $branch = branch::find($id);
         $coursces = DB::table('courses')->where('branche', '=', $branch->name)->where('chabters', '=', 'الفصل الثاني')->get();
 
-        return view('front.FrontSecCourcse', compact('branch', 'coursces'));
+        return view('front.FrontSecCourcse', compact('branch', 'coursces', 'slider'));
     }
 
     public function detalescourse(Request $request, $id)
@@ -124,7 +126,7 @@ class CoursesController extends Controller
                         $i = 0;
                         $br = $branch[$i];
                         $i++;
-                        $mark = DB::table('markcourses')->where('nameofstudant', '=', Auth::user()->name)->where('nameofcourse', '=', $b->name)->first();
+                        $mark = DB::table('markcourses')->where('nameofstudant', '=', Auth::user()->id)->where('nameofcourse', '=', $b->id)->first();
                         // if ($mark == null) {
                         //     $student = new markcourse();
                         //     $student->mark = '0';
@@ -147,19 +149,22 @@ class CoursesController extends Controller
                     $chabtercount = $chbter->count();
                     $lessoncount = $lesson->count();
                     $vedio = DB::table('lessons')->where('id', '=', $vidoe)->get();
-                    foreach ($vedio as $vedios) {
-                        $path = 'img/vedio/' . $vedios->vedio;
-                        // $content = File::get(asset('img/vedio/' . $vedios->vedio));
-                        $id3 = new \getID3;
-                        $file = $id3->analyze($path);
-                        $duration_seconds = $file['playtime_string'];
-                        //dd($file);
-                        // dd($content);
-                    }
+                    // foreach ($vedio as $vedios) {
+                    //     if ('img/vedio/' . $vedios->vedio != Null) {
+
+                    //         $path = 'img/vedio/' . $vedios->vedio;
+                    //         // $content = File::get(asset('img/vedio/' . $vedios->vedio));
+                    //         $id3 = new \getID3;
+                    //         $file = $id3->analyze($path);
+                    //         $duration_seconds = $file['playtime_string'];
+                    //         //dd($file);
+                    //         // dd($content);
+                    //     }
+                    // }
                     $id3 = new \getID3;
 
 
-                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours', 'duration_seconds', 'code'));
+                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code'));
                 }
             }
         }

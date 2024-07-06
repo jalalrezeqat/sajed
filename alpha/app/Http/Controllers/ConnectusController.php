@@ -7,6 +7,7 @@ use App\Http\Requests\ContectusFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Tanthammar\LivewireWindowSize\HasBreakpoints;
 
 class ConnectusController extends Controller
 {
