@@ -28,8 +28,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {       
-         $course = DB::table('codecards')->where('user_id', '=', Auth::user()->id)->get();
+    {
         $coursename = DB::table('courses')->get();
         $lessonid  = DB::table('markcourses')->get();
         $courses = DB::table('courses')->get();
@@ -39,6 +38,6 @@ class HomeController extends Controller
         $slider =  DB::table('sliders')->where('page', '=', 'الرئيسية')->get();
         $sliderteacher =  DB::table('sliders')->where('page', '=', 'المعلم')->where('mobile_dsktop', '=', '1')->get();
         $sliderteachermob =  DB::table('sliders')->where('page', '=', 'المعلم')->where('mobile_dsktop', '=', '2')->get();
-        return view('welcome', compact('courses', 'sliderteachermob', 'CommonQuestions', 'slider', 'sliderteacher', 'branch','coursename','lessonid','course'));
+        return view('welcome', compact('courses', 'sliderteachermob', 'CommonQuestions', 'slider', 'sliderteacher', 'branch', 'coursename', 'lessonid'));
     }
 }

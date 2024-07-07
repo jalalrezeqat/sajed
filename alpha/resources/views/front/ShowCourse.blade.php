@@ -133,7 +133,10 @@
                                                         <a class="text-dark "
                                                             href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}">{{ $lessons->name }}</a>
 
-
+                                                        <?php
+                                                        
+                                                        $playback = $key;
+                                                        ?>
 
                                                     </div>
                                                 </div>
@@ -213,7 +216,14 @@
 
                         </div>
                         @endif
-
+                        <div class="btn-show  marginr5 mt-5 ">
+                            <br>
+                            <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lesson[$playback]->id) }}">
+                                <button class="btn btn-info" onclick="playback()">تم انهاء
+                                    المشاهدة</button>
+                            </a>
+                            <?php dd($lesson[$playback+]->id); ?>
+                        </div>
                         <div class="row mt-5  ">
                             <div class="col marginr5 ">
                                 @foreach ($chbter as $chbter)
@@ -289,5 +299,10 @@
                 ->update(['idlesson' => $vedios->id]);
             ?>
         }, 0);
+    }
+
+    function playback() {
+        alert("Hello! I am an alert box!!");
+
     }
 </script>
