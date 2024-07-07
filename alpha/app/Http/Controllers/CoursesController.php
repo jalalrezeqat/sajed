@@ -267,7 +267,7 @@ class CoursesController extends Controller
             $quiz = DB::table('categories')->find($id);
             $user = Auth::user()->id;
             $code = DB::table('codecards')->get();
-
+            $results= DB::table('results')->get();
             foreach ($code as $codes) {
                 if ($codes->user_id == $user & $codes->courses == $course->id & $codes->courses == $quiz->courses) {
                     $categories = Category::with(['categoryQuestions' => function ($query) {
@@ -279,7 +279,7 @@ class CoursesController extends Controller
                         ->whereHas('categoryQuestions')
                         ->get();
 
-                    return view('front.quiz', compact('categories', 'quiz'));
+                    return view('front.quiz', compact('categories', 'quiz','results'));
                 }
             }
             return redirect()->back();
@@ -290,7 +290,6 @@ class CoursesController extends Controller
         $user = Auth::user()->id;
         $quiz = DB::table('categories')->find($id);
         $result = DB::table('results')->where('user_id', '=', $user)->where('namequiz', '=', $quiz->id)->first();
-        if ($result == Null) {
             $questions_op = DB::table('questions')->where('category_id', '=', $quiz->id)->first();
             $option_total_point = DB::table('options')->where('question_id', '=', $questions_op->id)->get();
 
@@ -300,6 +299,7 @@ class CoursesController extends Controller
                 $total_point_quiz  = $option_total_point->points;
                 $r = $option_total_point->points;
                 $r = $total_point_quiz + $r;
+            }
                 $result = auth()->user()->userResults()->create([
                     'total_points' => $options->sum('points'),
                     'user' => Auth::user()->name,
@@ -307,7 +307,7 @@ class CoursesController extends Controller
                     'namequiz' => $quiz->id,
                     'option_total_point' => $r,
                 ]);
-            }
+            
 
 
             $questions = $options->mapWithKeys(function ($option) {
@@ -321,48 +321,7 @@ class CoursesController extends Controller
             })->toArray();
 
             $result->questions()->sync($questions);
-        } elseif ($result->namequiz == $quiz->id) {
-            $resultid  = DB::table('results')->where('namequiz', '=', $quiz->id)->first();
-            // $resultpoint = DB::table('results')->where('id', '=', $resultid->id)->update(['total_points' => '0']);
-            $questions_op = DB::table('questions')->where('category_id', '=', $quiz->id)->first();
-            $option_total_point = DB::table('options')->where('question_id', '=', $questions_op->id)->get();
-            $options = Option::find(array_values($request->input('questions')));
-
-            $resultid = DB::table('results')->where('user_id', '=', $user)->where('namequiz', '=', $quiz->id)->first();
-            foreach ($option_total_point as $option_total_points) {
-                $total_point_quiz  = $option_total_points->points;
-                $r = $option_total_points->points;
-                $rr = $total_point_quiz + $r;
-
-                $result = auth()->user()->userResults()->where('user_id', '=', $user)->where('namequiz', '=', $quiz->id)->update(
-                    [
-
-                        'total_points' => $options->sum('points'),
-                        'user' => Auth::user()->name,
-                        'courses' =>  $quiz->courses,
-                        'namequiz' => $quiz->id,
-                        'option_total_point' => $rr,
-
-                    ]
-
-                );
-                $rr = $total_point_quiz + $r;
-            }
-
-
-            $questionss = $options->mapWithKeys(function ($option) {
-                return [
-                    $option->question_id => [
-                        'option_id' => $option->id,
-                        'points' => $option->points,
-                    ]
-
-                ];
-            })->toArray();
-            $result->questionss()->sync($questionss);
-
-            return redirect()->route('client.results.show', $resultid->id);
-        }
+         
 
         return redirect()->route('client.results.show', $result->id);
     }

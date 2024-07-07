@@ -308,10 +308,9 @@
                 ->update(['idlesson' => $vedios->id]);
             ?>
         }, 0);
-
+        
     }
     window.onclick=  function{
-        <?php dd('dd');?>
 
     }
   
