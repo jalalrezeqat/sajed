@@ -218,11 +218,20 @@
                         @endif
                         <div class="btn-show  marginr5 mt-5 ">
                             <br>
-                            <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lesson[$playback]->id) }}">
+                            <?php if(  $playback < count($lesson)-1) :   ?>
+                           
+                                <button class="btn btn-info" onclick="playback()"> <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lesson[$playback+1]->id) }}"> g </a>
+                              </button>
+                         
+                            <?php else :?>   
+                         <a href="{{ url('/') }}">
                                 <button class="btn btn-info" onclick="playback()">تم انهاء
                                     المشاهدة</button>
                             </a>
-                            <?php dd($lesson[$playback+]->id); ?>
+                          <?php endif?>
+
+
+                         
                         </div>
                         <div class="row mt-5  ">
                             <div class="col marginr5 ">
@@ -299,10 +308,38 @@
                 ->update(['idlesson' => $vedios->id]);
             ?>
         }, 0);
-    }
-
-    function playback() {
-        alert("Hello! I am an alert box!!");
 
     }
+    window.onclick=  function{
+        <?php dd('dd');?>
+
+    }
+  
 </script>
+<!-- <script>
+  onClick =   function playback() {
+//<?php 
+ //     use App\Models\playback;
+   //  $find= DB::table('playbacks')
+   //  ->where('idcoures', '=', $b->id)
+ //     ->where('idofstudant', '=', Auth::user()->id)
+  //     ->where('idlesson', '=', $vedios->id)->first();
+       
+ //           if($find->idlesson == $vedios->id)
+     //   {
+    //        DB::table('playbacks')
+   ///              ->where('idcoures', '=', $b->id)
+   //               ->where('idofstudant', '=', Auth::user()->id)
+    //               ->where('idlesson', '=', $vedios->id)
+     //              ->update(['idlesson' => $vedios->id]);
+     //   }
+  //      }else{
+    ///        $student = new playback();
+     //              $student->idofstudant = Auth::user()->id;
+           //        $student->idlesson = $vedios->id;
+        ///        $student->idcoures = $b->id;
+    //     ///          $student->save();
+  //      }
+ ///     ?>
+    }
+</script> -->

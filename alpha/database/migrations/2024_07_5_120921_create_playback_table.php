@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('playback', function (Blueprint $table) {
+        Schema::create('playbacks', function (Blueprint $table) {
             $table->id();
-            $table->string('nameofstudant')->nullable();
+            $table->string('idofstudant')->nullable();
             $table->string('idlesson')->nullable();
-            $table->string('nameofcourse')->nullable();
+            $table->string('idcoures')->nullable();
             $table->timestamps();
         });
     }

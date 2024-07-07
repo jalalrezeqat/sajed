@@ -374,11 +374,6 @@
                                                             style="border: none;background-color:#f8fafc
                                                              ">{{ $lessons->name }}</button></a>
                                                     <?php $insid1 = 1; ?>
-                                                    <?php
-                                                    $path = 'img/vedio/' . $lessons->vedio;
-                                                    $file = $id3->analyze($path);
-                                                    ?>
-                                                    <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
                                                 @endif
                                                 @if ($auth != 0)
                                                     <i style="font-size:24px;color:" class="fa">&#xf144;</i>

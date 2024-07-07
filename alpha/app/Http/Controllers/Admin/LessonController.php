@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Controller;
 use App\Models\lesson;
+use App\Models\playback;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\chabter;
@@ -12,6 +14,7 @@ use App\Models\courses;
 use Illuminate\Support\Facades\File;
 use Owenoj\LaravelGetId3\GetId3;
 use Illuminate\Support\Facades\Storage;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 
 
@@ -56,8 +59,9 @@ class LessonController extends Controller
      */
     public function store(Request $request, $id)
     {
-
+        $statement  = DB::select("SHOW TABLE STATUS LIKE 'lessons'");
         $student = new lesson();
+       
         $student->name = $request->input('name');
         $student->chabters = $request->input('chabters');
         $student->iframe = $request->input('iframe');
@@ -65,6 +69,10 @@ class LessonController extends Controller
         // $courses = DB::table('chabters')->where('id', '=', $request->input('chabters'))->get();
         $courses = chabter::find($request->input('chabters'));
         $student->course = $courses->course;
+        $nextUserId = IdGenerator::generate(['table' => 'lessons','field'=>'id', 'length' => 6, 'prefix' =>$courses->course.$request->input('chabters')]);
+        
+
+        $student->id = $nextUserId;
         if ($request->hasfile('vedio')) {
 
             $file = $request->file('vedio');

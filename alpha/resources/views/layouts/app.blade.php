@@ -673,4 +673,5 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         if (ev.target.tagName == "A")
             ev.target.className = "done"
     }
+    
 </script>
