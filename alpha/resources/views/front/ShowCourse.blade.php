@@ -11,7 +11,7 @@
     <br>
     <br>
     <br>
-    @windowWidthBetween(0, 1028)
+    @if($agent->isMobile()||$agent->isTablet())
     <br><br>
     <div class="col-sm-8">
         <div>
@@ -209,7 +209,7 @@
                 </div>
                 @foreach ($vedio as $vedios)
                 @endforeach
-                @windowWidthGreaterThan(1028)
+                @if($agent->isDesktop())
 
                 <div class="col-sm-8">
                     <div>

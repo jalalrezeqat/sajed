@@ -1,4 +1,4 @@
-.modal-content,
+.modal-content-login,
 .modal-backdrop {
   opacity: 0;
   position: fixed;
@@ -10,15 +10,15 @@
   transition: all 0.3s ease-in-out;
 }
  
-.modal-content {
+.modal-content-login {
   top: 0;
   bottom: 0;
   margin: auto;
   left: 0;
   right: 0;
-  height: 65%;
+  height: 70%;
   overflow: hidden;
-  max-height: 98%;
+  max-height:80%;
   width: 70%;
   max-width: 90%;
   border-radius: 20px;
@@ -45,7 +45,7 @@
     opacity: 0;
   }
  
-  .modal-content {
+  .modal-content-login {
     top: 0;
     left: 0;
     height: 100vh;
@@ -79,7 +79,7 @@ padding: 10px;
   transform: scale(1);
 }
  
-#modal-toggle:checked ~ .modal-content {
+#modal-toggle:checked ~ .modal-content-login {
   opacity: 1;
   background-color: #fff;
   overflow-y: auto;

@@ -25,6 +25,7 @@ class User extends Authenticatable
         'branch',
         'Governorate',
         'user_img',
+        'polices',
         'email_verified_at',
         'password',
         'password_verified_at'

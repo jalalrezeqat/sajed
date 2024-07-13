@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\ValidationException1;
+
 
 
 class LoginRequest extends FormRequest
@@ -43,10 +45,15 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'email' => ['يرجى التاكد من المعلومات المدخلة '],
+                'password' => ['!يرجى التاكد من المعلومات المدخلة '],
+             ]);
+             throw $error;
 
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+            // throw ValidationException::withMessages([
+            //     'email' => trans('auth.failed'),
+            // ]);
         }
 
         RateLimiter::clear($this->throttleKey());
@@ -67,7 +74,7 @@ class LoginRequest extends FormRequest
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
-        throw ValidationException::withMessages([
+        throw ValidationException1::withMessages1([
             'email' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),

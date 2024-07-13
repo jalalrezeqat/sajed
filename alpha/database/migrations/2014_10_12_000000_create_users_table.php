@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('branch');
             $table->string('Governorate');
+            $table->string('polices');
             $table->string('user_img')->nullable();
             $table->string('stutes')->nullable();
             $table->string('id_teacher')->nullable();

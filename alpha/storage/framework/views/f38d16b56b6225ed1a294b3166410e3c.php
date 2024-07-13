@@ -12,10 +12,10 @@
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-      @foreach ($courses as $coursess)
-          <meta name="{{ $coursess->name }}" content="{{ url('coursesditels' . '/' . $coursess->id) }}" />
-      @endforeach
-      @vite(['resources/css/mediaipad.css'])
+      <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <meta name="<?php echo e($coursess->name); ?>" content="<?php echo e(url('coursesditels' . '/' . $coursess->id)); ?>" />
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css']); ?>
       <style>
           /* #ac-wrapper {
 
@@ -86,9 +86,24 @@
           }
       </style>
   </head>
-  <livewire:breakpoints />
-  @extends('layouts.app')
-  @section('content')
+  <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('breakpoints', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-596003789-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+  
+  <?php $__env->startSection('content'); ?>
       <section class="homepage">
           <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
               <div id="popup">
@@ -105,7 +120,7 @@
           </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
-                    @if($agent->isDesktop())
+                    <?php if($agent->isDesktop()): ?>
 
                   <div class="col float-right ring">
                       <div>
@@ -125,7 +140,7 @@
                           <div class="row dir " style="margin-top:50px">
                               <div class="col">
 
-                                  <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                                  <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
                                       </button></a>
                               </div>
                               <div class="col">
@@ -142,15 +157,15 @@
                       </div>
                   </div>
                   <div class="col  float-left">
-                      @foreach ($slider as $slider)
-                          <img id="img-about" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
+                      <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <img id="img-about" class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                               alt="">
-                      @endforeach
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
               </div>
           </div>
-          @endif
-@if($agent->isTablet())
+          <?php endif; ?>
+<?php if($agent->isTablet()): ?>
           <div class="col float-right ring">
               <div>
 
@@ -167,7 +182,7 @@
               <div>
                   <div class="row dir " style="margin-top:20px">
                       <div class="col">
-                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                          <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
                               </button></a>
                       </div>
                       <div class="col">
@@ -181,19 +196,19 @@
               </div>
           </div>
           <div class="col  float-left">
-              @foreach ($slider as $slider)
-                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
-              @endforeach
+              <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <img class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
           </div>
           </div>
-          @endif
-           @if($agent->isMobile()
-           )
+          <?php endif; ?>
+           <?php if($agent->isMobile()
+           ): ?>
           <div class="col ">
-              @foreach ($slider as $slider)
-                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
-              @endforeach
+              <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <img class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
           <div class="col float-right ring">
               <div>
@@ -209,7 +224,7 @@
               <div>
                   <div class="row dir " style="margin-top:20px">
                       <div class="col">
-                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                          <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
                               </button></a>
                       </div>
                       <div class="col">
@@ -226,44 +241,44 @@
 
           </div>
           </div>
-          @endif
+          <?php endif; ?>
       </section>
-      @if (Auth::user())
+      <?php if(Auth::user()): ?>
           <?php $course = DB::table('codecards')
               ->where('user_id', '=', Auth::user()->id)
               ->get();
           ?>
           <section>
               <div class="  " id="">
-                  {{-- <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p> --}}
+                  
 
                   <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                                                                                @foreach ($course as $coursess)
-    @foreach ($coursename as $coursenames)
-    @if ($coursenames->id == $coursess->courses)
+                                                                                <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php if($coursenames->id == $coursess->courses): ?>
     <div class="col colcard">
                                                                                                 <div class="card-home card  " id="card-profile">
-                                                                                                    <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
+                                                                                                    <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>" class="card-img-top-profile"
                                                                                                         alt="...">
                                                                                                     <div class="card-body">
-                                                                                                        @foreach ($lessonid as $lessonids)
-    @if ($coursenames->id == $lessonids->nameofcourse)
+                                                                                                        <?php $__currentLoopData = $lessonid; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonids): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php if($coursenames->id == $lessonids->nameofcourse): ?>
     <p class="card-title-home font14px "><a
-                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
-                                                                                                                        class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                                                                                                        href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson)); ?>"
+                                                                                                                        class="card-title-home text-center"><?php echo e($coursenames->name); ?></a>
                                                                                                                 </p>
-@else
+<?php else: ?>
     <p class="card-title-home font14px "><a
-                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                                                                                        class="card-title-home ">{{ $coursenames->name }}</a></p>
-    @endif
-    @endforeach
+                                                                                                                        href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
+                                                                                                                        class="card-title-home "><?php echo e($coursenames->name); ?></a></p>
+    <?php endif; ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
-    @endif
-    @endforeach
-    @endforeach
+    <?php endif; ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                             </div> -->
 
                   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -272,9 +287,9 @@
 
                           <div class="carousel-item active">
                               <div class="card-wrapper container-sm d-flex  row-cols-md-3 justify-content-around">
-                                  @foreach ($course as $coursess)
-                                      @foreach ($coursename as $coursenames)
-                                          @if ($coursenames->id == $coursess->courses)
+                                  <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($coursenames->id == $coursess->courses): ?>
                                               <div class="card  " style="width: 18rem;">
                                                   <img src="https://source.unsplash.com/collection/190727/1600x900"
                                                       class="card-img-top" alt="...">
@@ -283,9 +298,9 @@
 
                                                   </div>
                                               </div>
-                                          @endif
-                                      @endforeach
-                                  @endforeach
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               </div>
                           </div>
 
@@ -306,10 +321,10 @@
 
               </div>
           </section>
-      @endif
-      {{-- end slider home --}}
+      <?php endif; ?>
+      
 
-      {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
+      
       <section class="mt100px">
           <div class="contener  ">
               <div class="m-1">
@@ -317,36 +332,36 @@
                   <p class="text-center font18px mt"style="">اختر دورات التوجيهي التي تناسبك وتساعدك على زيادة معدلك
                   </p>
               </div>
-              {{-- card course --}}
+              
               <div class=" card-box-home  card-w  mtb00px  ">
                   <div class="row row-cols-1  card-w dir ovarflow  row-cols-md-3 ">
-                      @foreach ($courses as $courses)
+                      <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $courses): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <div class="col colcard ">
                               <div class="card-home card card-home " id="card-home">
-                                  <img src="{{ asset('img/courses/' . $courses->img_name) }}" class="card-img-top-home"
+                                  <img src="<?php echo e(asset('img/courses/' . $courses->img_name)); ?>" class="card-img-top-home"
                                       alt="...">
                                   <div class="card-body">
-                                      <p class="card-title-home font18px margin-b4">{{ $courses->name }}</p>
-                                      <p class=" font18px ">{{ $courses->summary }}</p>
+                                      <p class="card-title-home font18px margin-b4"><?php echo e($courses->name); ?></p>
+                                      <p class=" font18px "><?php echo e($courses->summary); ?></p>
                                       <a class="card-button font14px margin-t4"
-                                          href="{{ url('coursesditels' . '/' . $courses->id) }}">
+                                          href="<?php echo e(url('coursesditels' . '/' . $courses->id)); ?>">
                                           قراءة المزيد ></a>
-                                      <label class="but-card font14px margin-t4 ">{{ $courses->price }}₪ </label>
+                                      <label class="but-card font14px margin-t4 "><?php echo e($courses->price); ?>₪ </label>
                                   </div>
                               </div>
                           </div>
-                      @endforeach
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                   </div>
                   <div class="card-btn-allcourse ">
-                      <a href="{{ url('/courses') }} "><button class="button1 ">جميع الدورات
+                      <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">جميع الدورات
                           </button></a>
                   </div>
               </div>
           </div>
           </div>
       </section>
-      {{-- end card course --}}
+      
 
       <section class="mt100px">
 
@@ -356,20 +371,20 @@
                   الوطن!
               </p>
           </div>
-          @if($agent->isDesktop()||$agent->isTablet()
-          )
+          <?php if($agent->isDesktop()||$agent->isTablet()
+          ): ?>
 
-          {{-- slide teacher --}}
+          
           <div id="carousel" class="carousel shadow-lg slider-tet slide">
-              <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
+              <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher1" alt="">
 
               <div class="carousel-inner">
-                  @foreach ($sliderteacher as $key => $sliderteachers)
-                      <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                  <?php $__currentLoopData = $sliderteacher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
                           <img class="d-block d-block   img-slider-teacher"
-                              src="{{ asset('img/slider/' . $sliderteachers->img) }}" alt="صورة معلومات عن المعلم">
+                              src="<?php echo e(asset('img/slider/' . $sliderteachers->img)); ?>" alt="صورة معلومات عن المعلم">
                       </div>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -379,15 +394,30 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
               </button>
-              <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher2" alt="">
+              <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher2" alt="">
           </div>
 
 
-          @endif
+          <?php endif; ?>
                             
-          @if($agent->isMobile()
-          )
-          <livewire:breakpoints />
+          <?php if($agent->isMobile()
+          ): ?>
+          <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('breakpoints', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-596003789-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
 
 
           <style>
@@ -433,13 +463,13 @@
 
                       <div id="carouselExample" class="carousel  shadow-sm  slide">
                           <div class="carousel-inner">
-                              @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                  <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                              <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
                                       <img class="d-block d-block   img-slider-teacher"
-                                          src="{{ asset('img/sliderphone/' . $sliderteachermobs->img) }}"
-                                          alt="{{ $sliderteachermobs->id }}">
+                                          src="<?php echo e(asset('img/sliderphone/' . $sliderteachermobs->img)); ?>"
+                                          alt="<?php echo e($sliderteachermobs->id); ?>">
                                   </div>
-                              @endforeach
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                           </div>
                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                               data-bs-slide="prev">
@@ -452,83 +482,58 @@
                               <span class="visually-hidden">Next</span>
                           </button>
                            <ol class="carousel-indicators">
-                            @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
+                            <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li data-target="#carouselExample" class="<?php echo e($key == 0 ? 'active' : ''); ?>"
                                     data-slide-to="0">
                                 </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ol> 
            </div>
 
           </div>
           </div>
           </div>
-          @endif  
+          <?php endif; ?>  
 
-          {{-- <div id="carouselExample" class="carousel slide d-flex" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
-                                    data-slide-to="0">
-                                </li>
-                            @endforeach
-                        </ol>
-                        <div class="carousel-item active">
-                            <div class="card-0 ">
-                                <div class="card-body text-center ">
-                                    <div class="carousel-inner">
-                                        @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                                <img class="d-block d-block   img-slider-teacher"
-                                                    src="{{ asset('img/sliderphone/' . $sliderteachermobs->img) }}"
-                                                    alt="{{ $sliderteachermobs->id }}">
-                                            </div>
-                                        @endforeach
-                                    </div>h
-                                </div>
-                            </div>
-                        </div>
-                    </div>  --}}
+          
       </section>
-      {{-- end slide teacher --}}
-      {{-- qustion  --}}
+      
+      
       <section class="mt100px">
           <div class=" m-3 dir mtb00px mt100px card-text-home">
               <h2 class="card-text-home font48px ">الاسئلة الشائعة</h2>
-              @foreach ($CommonQuestions as $question)
+              <?php $__currentLoopData = $CommonQuestions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <div class="qustion1">
                       <p>
                           <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
-                              <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
+                              <i data-bs-toggle="collapse" data-bs-target="#collapse<?php echo e($question->id); ?>qu"
                                   aria-expanded="false" aria-controls="collapseExample"
                                   class="fa colorg fa-plus font-xs"></i>
                               <button type="button" data-bs-toggle="collapse"
-                                  data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
+                                  data-bs-target="#collapse<?php echo e($question->id); ?>qu" aria-expanded="false"
                                   aria-controls="collapseExample"
-                                  class="btn qustion-text font18px">{{ $question->question }}</button>
+                                  class="btn qustion-text font18px"><?php echo e($question->question); ?></button>
                       </p>
-                      <div class="collapse " id="collapse{{ $question->id }}qu">
+                      <div class="collapse " id="collapse<?php echo e($question->id); ?>qu">
                           <div class="  qustion-box card-body">
-                              <p style="font-size: 87.5%">{{ $question->question_text }}</p>
-                              {{-- <p style="font-size: 87.5%">
-                               
-                              </p> --}}
+                              <p style="font-size: 87.5%"><?php echo e($question->question_text); ?></p>
+                              
                           </div>
                       </div>
                   </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
           </div>
       </section>
-      {{-- end qustion --}}
+      
       <a href="https://www.google.com/" target="_blank" class="float">
           <i class="fa fa-whatsapp  my-float fa-2x"></i>
       </a>
 
-      {{--  --}}
+      
 
-      {{--  --}}
-  @endsection
+      
+  <?php $__env->stopSection(); ?>
   <?php $c = 'show'; ?>
   <script>
       function changeIcon(anchor) {
@@ -583,3 +588,5 @@
           if (e.target.id == 'ac-wrapper') document.getElementById('ac-wrapper').style.display = 'none';
       }
   </script>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/welcome.blade.php ENDPATH**/ ?>

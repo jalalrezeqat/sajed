@@ -21,6 +21,7 @@ use App\Http\Requests\StoreTestRequest;
 use App\Models\Result;
 use App\Models\Option;
 use App\Models\playback;
+use Jenssegers\Agent\Agent;
 
 
 
@@ -32,10 +33,11 @@ class CoursesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {$agent = new Agent();
+
         $branch = DB::table('branches')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
-        return view('courses', compact('branch', 'slider'));
+        return view('courses', compact('branch', 'slider','agent'));
     }
 
     public function indexcourse(Request $request, $id)
@@ -106,14 +108,15 @@ class CoursesController extends Controller
             // $duration_seconds = $file['playtime_string'];
             // dd($content);
         }
+        $agent = new Agent();
 
-
-        return view('front.DitalesCourse', compact('branch', 'id3', 'vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
+        return view('front.DitalesCourse', compact('branch', 'id3', 'agent','vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
     }
 
 
     public function showcourse(Request $request, $id, $vidoe)
     {
+        $agent = new Agent();
         $quiz = DB::table('categories')->get();
         $user = 'notauth';
         $code = '';
@@ -168,7 +171,7 @@ class CoursesController extends Controller
                     $id3 = new \getID3;
 
 
-                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
+                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'agent','mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
                 }
             }
         }

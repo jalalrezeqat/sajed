@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <?php
 
 $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
@@ -19,13 +19,13 @@ $agent = new Agent();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    @foreach ($iconfav as $iconfavs)
-        <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
-    @endforeach
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-    <title>{{ config('app.name', 'ALPHA') }}</title>
+    <title><?php echo e(config('app.name', 'ALPHA')); ?></title>
 
     <!-- Fonts -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
@@ -35,9 +35,9 @@ $agent = new Agent();
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{--  --}}
+    
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css'])
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css']); ?>
 
 
 
@@ -64,17 +64,17 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
     <div id="app">
 
-        {{-- @if($agent->isDesktop() ) --}}
+        
         <div class="nav-background">
 
             <nav class="navbar navbar-home navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
 
-                    @foreach ($headericon as $headericons)
-                        <a class="navbar-brand" style="margin-right: 15vw" href="{{ url('/') }}"
+                    <?php $__currentLoopData = $headericon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $headericons): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a class="navbar-brand" style="margin-right: 15vw" href="<?php echo e(url('/')); ?>"
                             aria-label="Read more about Seminole tax hike"><img
-                                src="{{ asset('img/Favoriteicon/' . $headericons->img) }}" alt=""></a>
-                    @endforeach
+                                src="<?php echo e(asset('img/Favoriteicon/' . $headericons->img)); ?>" alt=""></a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -83,27 +83,27 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav links justify-content-center navbar-collapse mb-2 mb-lg-0">
                             <li class="nav-item-home">
-                                <a id="home" class="nav-link reghover {{ $stylehome }} active " tabindex="1"
-                                    aria-current="page" href="{{ url('/') }}">الرئيسية</a>
+                                <a id="home" class="nav-link reghover <?php echo e($stylehome); ?> active " tabindex="1"
+                                    aria-current="page" href="<?php echo e(url('/')); ?>">الرئيسية</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link  {{ $stylecour }} reghover active" href="{{ url('/courses') }}">
+                                <a class="nav-link  <?php echo e($stylecour); ?> reghover active" href="<?php echo e(url('/courses')); ?>">
 
                                     الدورات</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link {{ $styleabout }} reghover active "
-                                    href="{{ url('/about') }}">حول
+                                <a class="nav-link <?php echo e($styleabout); ?> reghover active "
+                                    href="<?php echo e(url('/about')); ?>">حول
                                     الفا</a>
 
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link {{ $stylecontactus }} reghover active"
-                                    href="{{ url('/Connectus') }}">اتصل
+                                <a class="nav-link <?php echo e($stylecontactus); ?> reghover active"
+                                    href="<?php echo e(url('/Connectus')); ?>">اتصل
                                     بنا</a>
                             </li>
-                            @guest
-                                @if (Route::has('login'))
+                            <?php if(auth()->guard()->guest()): ?>
+                                <?php if(Route::has('login')): ?>
                                     <li class="nav-item-home">
                                         <label class="btn-success  regester btn-lg reg " aria-current="page"
                                             for="modal-toggle-regester">تسجيل </label>
@@ -112,43 +112,46 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
 
                                     </li>
-                                @endif
+                                <?php endif; ?>
 
-                                @if (Route::has('register'))
+                                <?php if(Route::has('register')): ?>
                                     <li class="nav-item-home">
                                     <li> </li>
                                     </li>
-                                @endif
+                                <?php endif; ?>
                                 </li>
-                            @else
+                            <?php else: ?>
                                 <li class="nav-item-home dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        <?php echo e(Auth::user()->name); ?>
+
                                     </a>
 
                                     <div class="dropdown-menu dir dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        <a class="dropdown-item" href="<?php echo e(route('dashboard')); ?>">
 
-                                            {{ __(' الملف الشخصي') }}
+                                            <?php echo e(__(' الملف الشخصي')); ?>
+
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                             onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                                            {{ __('تسجيل الخروج') }}
+                                            <?php echo e(__('تسجيل الخروج')); ?>
+
                                         </a>
 
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                                             class="d-none">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                         </form>
 
                                     </div>
 
                                 </li>
-                            @endguest
+                            <?php endif; ?>
 
                         </ul>
 
@@ -156,114 +159,18 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 </div>
             </nav>
         </div>
-        {{-- @endif --}}
-        {{-- @if($agent->isMobile())
-        <nav class="navbar  navbar-expand-lg navbar-dark 
-                bg-dark border-bottom-0">
-            <!-- Navbar toggle button (hamburger icon) -->
-            <button class="navbar-toggler d-block d-md-none" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#sidebar" aria-controls="sidebar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            @foreach ($headericon as $headericons)
-                <a class="navbar-brand" href="{{ url('/') }}" aria-label="Read more about Seminole tax hike"><img
-                        src="{{ asset('img/Favoriteicon/' . $headericons->img) }}" alt=""></a>
-            @endforeach
-        </nav>
-
-        <div class="offcanvas offcanvas-start 
-                bg-light d-md-block" tabindex="-1" id="sidebar"
-            aria-labelledby="sidebarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-dark">ALPHA</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-                </button>
-            </div>
-            <div class="offcanvas-body ">
-                <ul class="nav flex-column ">
-                    <li class="nav-item">
-                        <a id="home" class="nav-link   text-dark  active " tabindex="1" aria-current="page"
-                            href="{{ url('/') }}">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link   text-dark  active" href="{{ url('/courses') }}">
-
-                            الدورات</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark  active " href="{{ url('/about') }}">حول
-                            الفا</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-dark  active" href="{{ url('/Connectus') }}">اتصل
-                            بنا</a>
-                    </li>
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <label class="nav-link text-dark  active " aria-current="page"
-                                    for="modal-toggle-regester">تسجيل
-                                </label>
-                                <label class="nav-link text-dark active " aria-current="page" for="modal-toggle">تسجيل
-                                    الدخول</label>
-                            </li>
-                        @endif
-                        @if (Route::has('register'))
-                            <li class="nav-item-home">
-                            <li> </li>
-                            </li>
-                        @endif
-                        </li>
-                    @else
-                        <li class="nav-item-home dropdown active">
-                            <a id="navbarDropdown" class="nav-link active dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dir dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('dashboard') }}">
-
-                                    {{ __(' الملف الشخصي') }}
-                                </a>
-
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                                    {{ __('تسجيل الخروج') }}
-                                </a>
-
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-
-                            </div>
-
-                        </li>
-                    @endguest
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-    </nav>
-
-
-    @endif --}}
-    {{--  --}}
+        
+        
+    
 
     <main class="">
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </main>
     </div>
 </body>
 
-{{-- foter --}}
+
 <!-- Remove the container if you want to extend the Footer to full width. -->
 
 <div class="footer   ">
@@ -278,10 +185,10 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
                     <div class="rounded-circle  d-flex align-items-center justify-content-center mb-4 mx-auto"
                         style="width: 150px; height: 150px;margin:auto">
-                        @foreach ($footericon as $footericons)
-                            <img src="{{ asset('img/Favoriteicon/' . $footericons->img) }}" alt=""
+                        <?php $__currentLoopData = $footericon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footericons): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <img src="<?php echo e(asset('img/Favoriteicon/' . $footericons->img)); ?>" alt=""
                                 loading="lazy" />
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </div>
                 </div>
@@ -290,19 +197,19 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 <!--Grid column-->
                 <div class="col-lg-3 ">
                     <ul class="list-unstyled  marginauto">
-                        @foreach ($socials as $socialss)
+                        <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socialss): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="mb-4">
 
                                 <p style="text-align: justify" class=" dir"> <img class="imgfooter"
-                                        src="{{ asset('img/socials/' . $socialss->img) }}"
-                                        alt="{{ $socialss->name }}">
+                                        src="<?php echo e(asset('img/socials/' . $socialss->img)); ?>"
+                                        alt="<?php echo e($socialss->name); ?>">
 
-                                    <a target="_blank" href="{{ $socialss->url }}"
-                                        class="text-white ">{{ $socialss->nameofpage }}</a>
+                                    <a target="_blank" href="<?php echo e($socialss->url); ?>"
+                                        class="text-white "><?php echo e($socialss->nameofpage); ?></a>
                                 </p>
 
                             </li>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </ul>
 
@@ -310,46 +217,46 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 <!--Grid column-->
 
                 <!--Grid column-->
-                @if($agent->isDesktop())
+                <?php if($agent->isDesktop()): ?>
 
                 <div class="col-lg-3 ">
 
                     <ul class="list-unstyled ">
                         <li class="mb-3">
-                            <a href="{{ url('/') }}" class="text-white"><i></i>الرئيسيّة</a>
+                            <a href="<?php echo e(url('/')); ?>" class="text-white"><i></i>الرئيسيّة</a>
                         </li>
                         <li class="mb-3">
-                            <a href="{{ url('/courses') }}" class="text-white "><i></i>الدورات</a>
+                            <a href="<?php echo e(url('/courses')); ?>" class="text-white "><i></i>الدورات</a>
                         </li>
                         <li class="mb-3">
-                            <a href="{{ url('/about') }} "class="text-white"><i></i>حول ألفا</a>
+                            <a href="<?php echo e(url('/about')); ?> "class="text-white"><i></i>حول ألفا</a>
                         </li>
                         <li class="mb-3">
-                            <a href="{{ url('/Connectus') }}" class="text-white"><i></i>اتصل بنا</a>
+                            <a href="<?php echo e(url('/Connectus')); ?>" class="text-white"><i></i>اتصل بنا</a>
                         </li>
                     </ul>
                 </div>
-                @endif
-                @if($agent->isMobile() ||
-                $agent->isTablet())
+                <?php endif; ?>
+                <?php if($agent->isMobile() ||
+                $agent->isTablet()): ?>
                 <div class="col-lg-3 ">
 
                     <ul class="mt-5 mb-5 ">
                         <a class="mb-3">
-                            <a href="{{ url('/') }}" class="text-white "><i></i>الرئيسيّة</a>
+                            <a href="<?php echo e(url('/')); ?>" class="text-white "><i></i>الرئيسيّة</a>
                         </a>
                         <a class="mb-3">
-                            <a href="{{ url('/courses') }}" class="text-white  mr-2"><i></i>الدورات</a>
+                            <a href="<?php echo e(url('/courses')); ?>" class="text-white  mr-2"><i></i>الدورات</a>
                         </a>
                         <a class="mb-3">
-                            <a href="{{ url('/about') }} "class="text-white mr-2"><i></i>حول ألفا</a>
+                            <a href="<?php echo e(url('/about')); ?> "class="text-white mr-2"><i></i>حول ألفا</a>
                         </a>
                         <a class="mb-3">
-                            <a href="{{ url('/Connectus') }}" class="text-white mr-2"><i></i>اتصل بنا</a>
+                            <a href="<?php echo e(url('/Connectus')); ?>" class="text-white mr-2"><i></i>اتصل بنا</a>
                         </a>
                     </ul>
                 </div>
-                @endif
+                <?php endif; ?>
                 <!--Grid column-->
 
                 <!--Grid column-->
@@ -361,15 +268,15 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                             </p>
                             <p class="text-white"><i class="fas fa-map-marker-alt pe-2"></i>للحصول على مُعدّل 99.7</p>
                         </li>
-                        @foreach ($connectwithus as $connectwithus)
+                        <?php $__currentLoopData = $connectwithus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $connectwithus): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li>
-                                <p class="text-white"><i class="fas"></i>{{ $connectwithus->email }}</p>
+                                <p class="text-white"><i class="fas"></i><?php echo e($connectwithus->email); ?></p>
                             </li>
                             <li>
 
-                                <p class="text-white" style="direction: ltr;">{{ $connectwithus->phone }}</p>
+                                <p class="text-white" style="direction: ltr;"><?php echo e($connectwithus->phone); ?></p>
                             </li>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                     </ul>
@@ -392,10 +299,10 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 <!-- Footer -->
 
 
-{{-- login --}}
 
-{{--  --}}
-{{--  --}}
+
+
+
 <section>
     <div class="rt-container">
         <div class="col-rt-12">
@@ -421,9 +328,9 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                         <div class="d-flex mb-5">
                                             <div class="justify-content-xl-center  ">
                                                 <div class="d-flex ">
-                                                    {{-- @foreach ($slider as $slider) --}}
+                                                    
                                                     <img class="img-fluid  p-2" src="img/login.png" alt="">
-                                                    {{-- @endforeach --}}
+                                                    
                                                     <div class="ml-auto p-2">
                                                     </div>
                                                 </div>
@@ -443,39 +350,41 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 <p class="mb-3 dir text-center font18px ">مرحباً بك في ألفا</p>
                                 <p class="dir text-center font14px ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7
                                 </p>
-                                @error('email')
-                                  @if( $message =='يرجى التاكد من المعلومات المدخلة ')
-                                  <div class="alert alert-danger">{{ $message }}</div>
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                  <?php if( $message =='يرجى التاكد من المعلومات المدخلة '): ?>
+                                  <div class="alert alert-danger"><?php echo e($message); ?></div>
                                     <script>
                                         $('#modal-toggle').click();
                                     </script>
-                                    @endif
-                                @enderror 
-                                {{-- @error('password')
-                                  @if( $message =='!يرجى التاكد من المعلومات المدخلة ')
-                                  <div class="alert alert-danger">{{ $message }}</div>
-                                    <script>
-                                        $('#modal-toggle').click();
-                                    </script>
-                                    @endif
-                                @enderror  --}}
-                                <form method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                  @if (session('status'))
+                                    <?php endif; ?>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?> 
+                                
+                                <form method="POST" action="<?php echo e(route('login')); ?>">
+                                    <?php echo csrf_field(); ?>
+                                  <?php if(session('status')): ?>
                                         <div class="alert alert-success" role="alert">
-                                            {{ session('status') }}
+                                            <?php echo e(session('status')); ?>
+
                                         </div>
-                                    @elseif (session('error'))
+                                    <?php elseif(session('error')): ?>
                                         <div class="alert alert-danger" role="alert">
-                                            {{ session('error') }}
+                                            <?php echo e(session('error')); ?>
+
                                         </div>
 
-                                    @endif 
+                                    <?php endif; ?> 
                                     <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                                         <div class="col-12 inpout-email">
                                             <input type="email" class="form-control" id="email" name="email"
                                                 value="" placeholder="الايميل" required>
-                                            {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
+                                            
 
                                         </div>
                                         <div class="col-12 inpout-email">
@@ -517,14 +426,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
 
 
-    {{-- regester --}}
+    
 
 
 
-    {{--  --}}
+    
 </section>
 
-{{--  --}}
+
 <section>
     <div class="rt-container">
         <div class="col-rt-12">
@@ -547,43 +456,48 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         </p>
                         <div class="row justify-content-around">
                             <div class="col-12 col-md-5">
-                                @error('password_verified_at')
-                                @if($message=='كلمة المرور غير متطابقة')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                <?php $__errorArgs = ['password_verified_at'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <?php if($message=='كلمة المرور غير متطابقة'): ?>
+                                    <div class="alert alert-danger"><?php echo e($message); ?></div>
                                   
                                     <script>
                                         $('#modal-toggle-regester').click();
                                     </script>
-                                    @endif
-                                @enderror
+                                    <?php endif; ?>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-12 col-md-5">
-                                @error('email')
-                                    @if( $message=='الايميل المدخل مستخدم ')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <?php if( $message=='الايميل المدخل مستخدم '): ?>
+                                    <div class="alert alert-danger"><?php echo e($message); ?></div>
 
                                     <script>
                                         $('#modal-toggle-regester').click();
                                     </script>
-                                    @endif
-                                @enderror
+                                    <?php endif; ?>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
 
                         <!--  regester  -->
-                        <form class="contectus-form dir" method="POST" action="{{ route('register') }}">
-                            @csrf
-                            {{-- @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @elseif (session('error'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ session('error') }}
-                                </div>
-
-                            @endif --}}
+                        <form class="contectus-form dir" method="POST" action="<?php echo e(route('register')); ?>">
+                            <?php echo csrf_field(); ?>
+                            
 
                             <div class="row gy-4 gy-xl-2 p-4 p-xl-5 d-flex justify-content-around">
 
@@ -648,7 +562,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <div class="input-group">
                                         <input name="password" type="password" required
-                                            class="form-control @error('new_password') is-invalid @enderror"
+                                            class="form-control <?php $__errorArgs = ['new_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                             id="newPasswordInput" placeholder="كلمة المرور ">
 
                                     </div>
@@ -686,33 +607,24 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         </div>
     </div>
     </div>
-    {{-- @if (1 == 1)
-        <script type="text/javascript">
-            $(function() {
-                $('#modal-toggle').modal('show');
-            });
-        </script>
-    @endif --}}
+    
     <!-- partial -->
 
 
-    {{-- @if (1 == 1)
-            <script>
-                $('#modal-toggle-regester').modal('show');
-            </script>
-        @endif --}}
+    
 
 
 
 
-    {{-- regester --}}
+    
 
 
 
-    {{--  --}}
+    
 </section>
-{{--  --}}
-@livewireScripts
+
+<?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
+
 
 
 </body>
@@ -750,3 +662,4 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         });
     });
 </script>
+<?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/layouts/app.blade.php ENDPATH**/ ?>

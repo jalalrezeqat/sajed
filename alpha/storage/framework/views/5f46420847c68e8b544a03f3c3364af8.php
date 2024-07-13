@@ -3,20 +3,35 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="description" content="تواصل مع فريق الدعم في منصة الفا التعليمية، وقدم ملاحظاتك وآرائك">
     <meta name="keywords" content="تواصل معنا الآن, منصة الفا التعليمية">
-    @foreach ($connectwithus as $connectwithus)
-        <meta name='og:phone_number' content='{{ $connectwithus->phone }}'>
-        <meta name='og:email' content='{{ $connectwithus->email }}'>
-    @endforeach
+    <?php $__currentLoopData = $connectwithus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $connectwithus): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <meta name='og:phone_number' content='<?php echo e($connectwithus->phone); ?>'>
+        <meta name='og:email' content='<?php echo e($connectwithus->email); ?>'>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 </head>
-@extends('layouts.app')
+
 <?php session('windowW'); ?>
-<livewire:breakpoints />
-@section('content')
+<?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('breakpoints', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-3955201851-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+<?php $__env->startSection('content'); ?>
     <!-- Contact 3 - Bootstrap Brain Component -->
     <section class="bg-light py-3 py-md-5 ff">
         <div class="container ">
@@ -31,39 +46,39 @@
                                         <p class="font18px">سنكونُ سعيدين في استقبال استفساراتكُم</p>
                                     </div>
                                 </div>
-                                @if($agent->isDesktop())
+                                <?php if($agent->isDesktop()): ?>
                                 <div class="col">
                                     <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
+                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <img class="contact-img d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                                                 class="d-block" alt="">
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
 
                                 </div>
-                                @endif
-                                @if($agent->isDesktop()||$agent->isTablet())
+                                <?php endif; ?>
+                                <?php if($agent->isDesktop()||$agent->isTablet()): ?>
                                 <div class="row">
                                     <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="img-about d-block" src="{{ asset('img/slider/' . $slider->img) }}"
+                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <img class="img-about d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                                                 class="d-block" alt="">
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
 
                                 </div>
-                                @endif
-                                @if($agent->isMobile())
+                                <?php endif; ?>
+                                <?php if($agent->isMobile()): ?>
                                 <div class="col">
                                     <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
+                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <img class="contact-img d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                                                 class="d-block" alt="">
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
                             </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
                 </div>
     </section>
@@ -71,8 +86,8 @@
     <div class="col-12 col-lg-5 ">
         <div class="bg-white border rounded shadow-sm overflow-hidden">
 
-            <form class="contectus-form dir" action="{{ url('Connectus') }}" method="POST">
-                @csrf
+            <form class="contectus-form dir" action="<?php echo e(url('Connectus')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
                 <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                     <div class="col-12 col-md-6">
                         <label for="fname" class="form-label">الاسم الاول <span class="text-danger"></span></label>
@@ -123,7 +138,7 @@
     </div>
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -132,46 +147,6 @@
 
 
 
-{{--  <form class="contectus-form" action="#!">
-            <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-              <div class="col-12 col-md-6">
-                  <label for="fname" class="form-label">الاسم الاول <span class="text-danger">*</span></label>
-                  <div class="input-group">
-                    <input type="fname" class="form-control" id="fname" name="fname" value="" required>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="lname" class="form-label">الاسم الاخير<span class="text-danger">*</label>
-                  <div class="input-group">
-                    <input type="lname" class="form-control" id="lname" name="lname" value="">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <label for="email" class="form-label">الايميل <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="email" name="email" value="" required>
-                </div>
-                <div class="col-12">
-                  <label for="pohne" class="form-label">رقم الهاتف <span class="text-danger">*</span></label>
-                  <input type="pohne" class="form-control" id="pohne" name="pohne" value="" required>
-                </div>
-                <div class="col-12 col-md-12">
-              
-                <div class="col-12">
-                  <label for="message" class="form-label">الرسالة <span class="text-danger">*</span></label>
-                  <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-                </div>
-              </div>
-              <div class="col-4">
-                  <div class="d-grid">
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="d-grid">
-                  </div>
-                </div>
-              <div class="col-4">
-                  <div class="">
-                    <button class="btn contectus-form-but btn-lg" type="submit">Submit</button>
-                  </div>
-                </div>
-          </form>  --}}
+
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/Connectus.blade.php ENDPATH**/ ?>

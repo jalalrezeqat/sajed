@@ -6,7 +6,7 @@ use App\Models\Connectus;
 use App\Http\Requests\ContectusFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Jenssegers\Agent\Agent;
 use Tanthammar\LivewireWindowSize\HasBreakpoints;
 
 class ConnectusController extends Controller
@@ -15,11 +15,11 @@ class ConnectusController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {$agent = new Agent();
         $connectwithus = DB::table('connect_with_us')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'اتصل بنا')->get();
         $connectus = DB::table('connect_with_us')->get();
-        return view('Connectus', compact('slider', 'connectus', 'connectwithus'));
+        return view('Connectus', compact('slider', 'connectus', 'connectwithus','agent'));
     }
 
     /**

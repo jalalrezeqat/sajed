@@ -6,6 +6,7 @@ use App\Models\about;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Tanthammar\LivewireWindowSize\HasBreakpoints;
+use Jenssegers\Agent\Agent;
 
 
 class AboutController extends Controller
@@ -15,11 +16,12 @@ class AboutController extends Controller
      */
     public function index()
     {
+        $agent = new Agent();
         $vision =  DB::table('abouts')->where('our_vision', '<>', '')->get();
         $mission = DB::table('abouts')->where('summernote', '<>', '')->get();
         $aboutalpha = DB::table('abouts')->where('aboutalpha', '<>', '')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'حول الفا')->get();
-        return view('about', compact('vision', 'mission', 'slider', 'aboutalpha'));
+        return view('about', compact('vision', 'mission', 'slider', 'aboutalpha','agent'));
     }
 
     /**
