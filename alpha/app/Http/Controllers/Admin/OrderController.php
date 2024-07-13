@@ -45,7 +45,8 @@ class OrderController extends Controller
             $student->email = Auth::user()->email;
         }
         $student->save();
-        return redirect()->back();
+        $dd = 1;
+        return back()->with("message65", "شكرا لطلبك من الفا سيصلك الطلب خلال 24 ساعة");
     }
 
     /**

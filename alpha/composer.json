@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "owen-oj/laravel-getid3": "^2.3",
+        "tanthammar/laravel-window-size": "^2.2",
         "tanthammar/livewire-window-size": "^3.1"
     },
     "require-dev": {

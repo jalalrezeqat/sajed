@@ -86,7 +86,7 @@
           }
       </style>
   </head>
-
+  <livewire:breakpoints />
   @extends('layouts.app')
   @section('content')
       <section class="homepage">
@@ -120,6 +120,7 @@
                               تحلم به وعلى ايدي امهر الاساتذة.</p>
 
                       </div>
+
                       <div>
                           <div class="row dir " style="margin-top:50px">
                               <div class="col">
@@ -188,7 +189,7 @@
           </div>
           </div>
           @endif
-          @windowWidthLessThan(481)
+          {{-- @windowWidthLessThan(481)
           <div class="col ">
               @foreach ($slider as $slider)
                   <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
@@ -225,7 +226,7 @@
 
           </div>
           </div>
-          @endif
+          @endif --}}
       </section>
       @if (Auth::user())
           <?php $course = DB::table('codecards')
@@ -234,36 +235,36 @@
           ?>
           <section>
               <div class="  " id="">
-                  <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p>
+                  {{-- <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p> --}}
 
                   <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                        @foreach ($course as $coursess)
+                                                                                @foreach ($course as $coursess)
     @foreach ($coursename as $coursenames)
     @if ($coursenames->id == $coursess->courses)
     <div class="col colcard">
-                                        <div class="card-home card  " id="card-profile">
-                                            <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
-                                                alt="...">
-                                            <div class="card-body">
-                                                @foreach ($lessonid as $lessonids)
+                                                                                                <div class="card-home card  " id="card-profile">
+                                                                                                    <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
+                                                                                                        alt="...">
+                                                                                                    <div class="card-body">
+                                                                                                        @foreach ($lessonid as $lessonids)
     @if ($coursenames->id == $lessonids->nameofcourse)
     <p class="card-title-home font14px "><a
-                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
-                                                                class="card-title-home text-center">{{ $coursenames->name }}</a>
-                                                        </p>
+                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
+                                                                                                                        class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                                                                                                </p>
 @else
     <p class="card-title-home font14px "><a
-                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                                class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                                                                                        class="card-title-home ">{{ $coursenames->name }}</a></p>
     @endif
     @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
     @endif
     @endforeach
     @endforeach
-                    </div> -->
+                                                                            </div> -->
 
                   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
 
@@ -383,8 +384,10 @@
 
 
           @endif
-          {{--  --}}
+          {{--                     
           @windowWidthLessThan(480)
+          <livewire:breakpoints />
+
 
           <style>
               .img-1 {
@@ -454,12 +457,12 @@
                                 </li>
                             @endforeach
                         </ol> --}}
-                      </div>
+          {{-- </div>
 
-                  </div>
-              </div>
           </div>
-          @endif
+          </div>
+          </div>
+          @endif  --}}
 
           {{-- <div id="carouselExample" class="carousel slide d-flex" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -565,6 +568,8 @@
           }
       }
       var c = <?php echo json_encode($c); ?>;
+
+
 
       //   window.onload = function() {
       //       setTimeout(function() {

@@ -11,7 +11,7 @@
     <br>
     <br>
     <br>
-    @windowWidthLessThan(481)
+    @windowWidthBetween(0, 1028)
     <br><br>
     <div class="col-sm-8">
         <div>
@@ -58,11 +58,12 @@
                             @endif
 
                         </div>
+
                         @foreach ($chbter as $chbters)
                             <?php
                             $countoflesson = 0;
-                            
                             $count = 0;
+                            $endleeson = 1;
                             foreach ($lesson as $lessons) {
                                 if ($lessons->chabters == $chbters->id) {
                                     $countoflesson++;
@@ -73,6 +74,15 @@
                             ?>
                             @foreach ($vedio as $vedioss)
                             @endforeach
+                            @foreach ($vedioend as $vedioends)
+                                @if ($vedioends->idlesson == $lessons->id)
+                                    <?php $endleeson = 0;
+                                    
+                                    // dd($vedioends->idlesson . '/' . $lessons->id);
+                                    
+                                    ?>
+                                @endif
+                            @endforeach
                             @if ($vedioss->chabters == $chbters->id)
                                 <div class="boxcolabssshow shadoplay">
                                     <div class="">
@@ -82,9 +92,8 @@
                                                 aria-controls="collapseExample"></button>
                                             <button type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#collapse{{ $chbters->id }}" aria-expanded="false"
-                                                aria-controls="collapseExample"
-                                                class="btn qustion-text "style="font-size:14px;">
-                                                <p class="buttonshow ">{{ $chbters->name }} </p>
+                                                aria-controls="collapseExample" class="btn qustion-text  ">
+                                                <p class="buttonshow font18px ">{{ $chbters->name }} </p>
                                             </button>
                                         </div>
                                     </div>
@@ -98,9 +107,8 @@
                                                 aria-controls="collapseExample"></button>
                                             <button type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#collapse{{ $chbters->id }}" aria-expanded="false"
-                                                aria-controls="collapseExample"
-                                                class="btn qustion-text "style="font-size:14px;">
-                                                <p class="buttonshow ">{{ $chbters->name }} </p>
+                                                aria-controls="collapseExample" class="btn qustion-text font18px ">
+                                                <p class="buttonshow font18px ">{{ $chbters->name }} </p>
                                             </button>
                                         </div>
                                     </div>
@@ -114,6 +122,7 @@
                                     $day = date('d');
                                     $year = date('Y');
                                     $today = $year . '-' . $month . '-' . $day;
+                                    $noplay = 1;
                                     
                                     ?>
                                     <?php
@@ -134,6 +143,7 @@
                                                             href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}">{{ $lessons->name }}</a>
 
                                                         <?php
+                                                        $num = 1;
                                                         
                                                         $playback = $key;
                                                         ?>
@@ -145,11 +155,23 @@
                                             <div>
                                                 <div class="card card-body" id="">
                                                     <div class="ditelsco">
-
-
-                                                        <i style="font-size:14px;color:#27AC1F" class="fa">&#xf144;</i>
-                                                        <a class="text-dark "
-                                                            href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}">{{ $lessons->name }}</a>
+                                                        @foreach ($vedioend as $vedioends)
+                                                            @if ($vedioends->idlesson == $lessons->id)
+                                                                <?php $noplay = 0; ?>
+                                                            @endif
+                                                        @endforeach
+                                                        @if ($noplay == 0)
+                                                            <i style="font-size:14px;color:black"
+                                                                class="fa">&#xf144;</i>
+                                                            <a class="text-dark font14px"
+                                                                href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}">{{ $lessons->name }}</a>
+                                                        @endif
+                                                        @if ($noplay != 0)
+                                                            <i style="font-size:14px;color:#27AC1F"
+                                                                class="fa">&#xf144;</i>
+                                                            <a class="text-dark font14px"
+                                                                href="{{ url('courseshow' . '/' . $b->id . '/' . $lessons->id) }}">{{ $lessons->name }}</a>
+                                                        @endif
                                                         {{-- <?php
                                                         $path = 'img/vedio/' . $lessons->vedio;
                                                         $file = $id3->analyze($path);
@@ -187,7 +209,7 @@
                 </div>
                 @foreach ($vedio as $vedios)
                 @endforeach
-                @windowWidthGreaterThan(481)
+                @windowWidthGreaterThan(1028)
 
                 <div class="col-sm-8">
                     <div>
@@ -218,20 +240,24 @@
                         @endif
                         <div class="btn-show  marginr5 mt-5 ">
                             <br>
-                            <?php if(  $playback < count($lesson)-1) :   ?>
-                           
-                                <button class="btn btn-info" onclick="playback()"> <a href="{{ url('courseshow' . '/' . $b->id . '/' . $lesson[$playback+1]->id) }}"> g </a>
-                              </button>
-                         
-                            <?php else :?>   
-                         <a href="{{ url('/') }}">
-                                <button class="btn btn-info" onclick="playback()">تم انهاء
+                            <?php 
+                            $num=0;
+                             if(  $playback < count($lesson)-1) :   ?>
+
+                            <a
+                                href="{{ url('endles' . '/' . $b->id . '/' . $lesson[$playback]->id . '/' . $lesson[$playback + 1]->id) }}">
+                                <button class="btn btn-info">تم انهاء
+                                    المشاهدة</button></a>
+
+                            <?php else :?>
+                            <a href=" {{ url('endles' . '/' . $b->id . '/' . $lesson[$playback]->id . '/' . $num) }}">
+                                <button class="btn btn-info">تم انهاء
                                     المشاهدة</button>
                             </a>
-                          <?php endif?>
+                            <?php endif?>
 
 
-                         
+
                         </div>
                         <div class="row mt-5  ">
                             <div class="col marginr5 ">
@@ -258,6 +284,7 @@
                             @endif
                         </div>
 
+
                         <form action="{{ url('markofcourse' . '/' . $b->id) }}" method="POST">
                             @csrf
                             <div class="row dir">
@@ -267,13 +294,14 @@
                                             في الوصول إليه : </p>
                                         <input type="text" class="inpoutcours" name="mark" required
                                             maxlength="2">
-                                        <button class=" butcoresscore  col-lg-3" style="    margin-right: 2%;">ادخال
+                                        <button class=" butcoresscore  " style="    margin-right: 2%;">ادخال
                                         </button>
                                     </div>
                                 </div>
                         </form>
                     </div>
                     <div>
+
 
                         <p class="font18px marginr5">بعض النصائح المُقدّمة من ألفا لزيادة التركيز أثناء التعلّم:</p>
                         <p class="font14px marginr5">
@@ -290,11 +318,77 @@
 
 
 
+
+
+                    <script>
+                        function playback() {
+
+                        };
+                        var userid = $(e.relatedTarget).data('userid');
+                        var u_id = document.getElementById('hdn_user_id').value = userid;
+
+                        $.ajax({ //create an ajax request to load page.php
+                            type: "GET",
+                            url: "ShowCourse.blade.php",
+
+                            data: "varabletophp=" + u_id, //Here is the value you wish to pass in to php page        
+                            dataType: "html", //expect html to be returned                
+                            success: function(response) {
+
+                                alert(response);
+                            }
+
+                        });
+
+                        <?php
+                        
+                        // $cookie = $_GET['name'];
+                        // dd($cookie);
+                        
+                        use Illuminate\Support\Facades\DB;
+                        use Illuminate\Support\Facades\Auth;
+                        
+                        use App\Models\playback;
+                        use App\Models\play;
+                        
+                        $find = DB::table('playbacks')
+                            ->where('idcoures', '=', $b->id)
+                            ->where('idofstudant', '=', Auth::user()->id)
+                            ->where('idlesson', '=', $vedios->id)
+                            ->first();
+                        
+                        DB::table('playbacks')
+                            ->where('idcoures', '=', $b->id)
+                            ->where('idofstudant', '=', Auth::user()->id)
+                            ->where('idlesson', '=', $vedios->id)
+                            ->update(['idlesson' => $vedios->id]);
+                        
+                        $find1 = DB::table('plays')
+                            ->where('idcoures', '=', $b->id)
+                            ->where('idofstudant', '=', Auth::user()->id)
+                            ->first();
+                        
+                        if ($find1 == null) {
+                            $student = new play();
+                            $student->idofstudant = Auth::user()->id;
+                            $student->idlesson = $vedios->id;
+                            $student->idcoures = $b->id;
+                            $student->save();
+                        } else {
+                            DB::table('plays')
+                                ->where('idcoures', '=', $b->id)
+                                ->where('idofstudant', '=', Auth::user()->id)
+                                ->update(['idlesson' => $vedios->id]);
+                        }
+                        ?>
+                    </script>
+
                 </div>
             </div>
 
         </div>
     </div>
+
     {{--  --}}
 @endsection
 
@@ -306,39 +400,19 @@
                 ->where('nameofcourse', '=', $b->id)
                 ->where('nameofstudant', '=', Auth::user()->id)
                 ->update(['idlesson' => $vedios->id]);
+            
             ?>
         }, 0);
-        
-    }
-    window.onclick=  function{
+
+    };
+    window.onclick = function {
+
+    };
+
+    function myFunction() {
 
     }
-  
 </script>
-<!-- <script>
-  onClick =   function playback() {
-//<?php 
- //     use App\Models\playback;
-   //  $find= DB::table('playbacks')
-   //  ->where('idcoures', '=', $b->id)
- //     ->where('idofstudant', '=', Auth::user()->id)
-  //     ->where('idlesson', '=', $vedios->id)->first();
-       
- //           if($find->idlesson == $vedios->id)
-     //   {
-    //        DB::table('playbacks')
-   ///              ->where('idcoures', '=', $b->id)
-   //               ->where('idofstudant', '=', Auth::user()->id)
-    //               ->where('idlesson', '=', $vedios->id)
-     //              ->update(['idlesson' => $vedios->id]);
-     //   }
-  //      }else{
-    ///        $student = new playback();
-     //              $student->idofstudant = Auth::user()->id;
-           //        $student->idlesson = $vedios->id;
-        ///        $student->idcoures = $b->id;
-    //     ///          $student->save();
-  //      }
- ///     ?>
-    }
-</script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

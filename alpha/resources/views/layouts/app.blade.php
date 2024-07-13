@@ -211,7 +211,6 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                     الدخول</label>
                             </li>
                         @endif
-
                         @if (Route::has('register'))
                             <li class="nav-item-home">
                             <li> </li>
@@ -219,8 +218,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         @endif
                         </li>
                     @else
-                        <li class="nav-item-home dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <li class="nav-item-home dropdown active">
+                            <a id="navbarDropdown" class="nav-link active dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -292,7 +291,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
                 <!--Grid column-->
                 <div class="col-lg-3 ">
-                    <ul class="list-unstyled  marginauto" style="margin: auto">
+                    <ul class="list-unstyled  marginauto">
                         @foreach ($socials as $socialss)
                             <li class="mb-4">
 
@@ -313,6 +312,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 <!--Grid column-->
 
                 <!--Grid column-->
+                @windowWidthGreaterThan(1028)
+
                 <div class="col-lg-3 ">
 
                     <ul class="list-unstyled ">
@@ -330,12 +331,32 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         </li>
                     </ul>
                 </div>
+                @endif
+                @windowWidthLessThan(1028)
+                <div class="col-lg-3 ">
+
+                    <ul class="mt-5 mb-5 ">
+                        <a class="mb-3">
+                            <a href="{{ url('/') }}" class="text-white "><i></i>الرئيسيّة</a>
+                        </a>
+                        <a class="mb-3">
+                            <a href="{{ url('/courses') }}" class="text-white  mr-2"><i></i>الدورات</a>
+                        </a>
+                        <a class="mb-3">
+                            <a href="{{ url('/about') }} "class="text-white mr-2"><i></i>حول ألفا</a>
+                        </a>
+                        <a class="mb-3">
+                            <a href="{{ url('/Connectus') }}" class="text-white mr-2"><i></i>اتصل بنا</a>
+                        </a>
+                    </ul>
+                </div>
+                @endif
                 <!--Grid column-->
 
                 <!--Grid column-->
                 <div class="col-lg-3 ">
 
-                    <ul class="list-unstyled">
+                    <ul class="">
                         <li>
                             <p class="text-white"><i class="fas fa-map-marker-alt  pe-2"></i>تواصل معنا وابدأ رحلتـك
                             </p>
@@ -423,16 +444,35 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 <p class="mb-3 dir text-center ">مرحباً بك في ألفا</p>
                                 <p class="dir text-center ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7
                                 </p>
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <script>
+                                        $('#modal-toggle').click();
+                                    </script>
+                                @enderror
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+                                    @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                    @elseif (session('error'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ session('error') }}
+                                        </div>
+
+                                    @endif
                                     <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                                         <div class="col-12 inpout-email">
                                             <input type="email" class="form-control" id="email" name="email"
                                                 value="" placeholder="الايميل" required>
+                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
                                         </div>
                                         <div class="col-12 inpout-email">
                                             <input type="password" class="form-control" id="password"
                                                 name="password" value="" placeholder="كلمة المرور" required>
+
                                         </div>
                                         <div class="col-12 inpout-email">
                                             <button type="submit" class="btn-login form-control">تسجيل
@@ -496,16 +536,22 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         <p class="mb-3 dir text-center ">أنشئ حسابك وتابع دروسك بشكل إلكترونيّ وبجودة
                             عالية
                         </p>
-
                         <div class="row justify-content-around">
                             <div class="col-12 col-md-5">
                                 @error('password_verified_at')
                                     <div class="alert alert-danger">{{ $message }}</div>
+                                    <script>
+                                        $('#modal-toggle-regester').click();
+                                    </script>
                                 @enderror
                             </div>
                             <div class="col-12 col-md-5">
+
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
+                                    <script>
+                                        $('#modal-toggle-regester').click();
+                                    </script>
                                 @enderror
                             </div>
                         </div>
@@ -514,7 +560,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         <!--  regester  -->
                         <form class="contectus-form dir" method="POST" action="{{ route('register') }}">
                             @csrf
-                            @if (session('status'))
+                            {{-- @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
                                 </div>
@@ -522,7 +568,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 <div class="alert alert-danger" role="alert">
                                     {{ session('error') }}
                                 </div>
-                            @endif
+
+                            @endif --}}
 
                             <div class="row gy-4 gy-xl-2 p-4 p-xl-5 d-flex justify-content-around">
 
@@ -570,14 +617,16 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <div class="input-group">
                                         <input type="email" class="form-control" placeholder="الايميل"
-                                            id="email" name="email" required value="">
+                                            id="email1" name="email1" required
+                                            value="
+                                            ">
                                     </div>
 
                                 </div>
                                 <div class="col-12 col-md-5">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="رقم الهاتف"
+                                        <input type="number" class="form-control" placeholder="رقم الهاتف"
                                             id="phone" name="phone" required value="">
                                     </div>
                                 </div>
@@ -588,9 +637,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                         <input name="password" type="password" required
                                             class="form-control @error('new_password') is-invalid @enderror"
                                             id="newPasswordInput" placeholder="كلمة المرور ">
-                                        @error('password')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5">
@@ -618,12 +665,12 @@ if ($_SERVER['REQUEST_URI'] == '/') {
     </div>
     </div>
     {{-- @if (1 == 1)
-            <script type="text/javascript">
-                $(function() {
-                    $('#modal-toggle').modal('show');
-                });
-            </script>
-        @endif --}}
+        <script type="text/javascript">
+            $(function() {
+                $('#modal-toggle').modal('show');
+            });
+        </script>
+    @endif --}}
     <!-- partial -->
 
 
@@ -645,11 +692,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 {{--  --}}
 @livewireScripts
 
-{{-- @if (!Auth::user())
-        <script>
-            $('#modal-toggle-regester').click();
-        </script>
-    @endif --}}
+
 </body>
 
 
@@ -673,5 +716,15 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         if (ev.target.tagName == "A")
             ev.target.className = "done"
     }
-    
+    jQuery(function($) {
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+
+        $(window).resize(function() {
+            if (windowWidth != $(window).width() || windowHeight != $(window).height()) {
+                location.reload();
+                return;
+            }
+        });
+    });
 </script>

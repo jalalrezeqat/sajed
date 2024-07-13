@@ -87,12 +87,14 @@
         </div>
         @endif
         </div>
+
     </section>
+
     {{-- end slider about --}}
     <!--  -->
 
     <section style="margin-top: 30px; ">
-        <div class="slider-cource dir ">
+        <div class="slider-aboutalpha dir ">
             <div>
                 <h1 class=" text-bold font32px"> <img style="margin-left:3%" src="img/aboutv.png" alt="">رؤيتنا :
                 </h1>
@@ -100,37 +102,22 @@
                     <p class="vision font18px">{{ $vision->our_vision }}</p>
             </div>
             @endforeach
-            <div class="">
-                <h1 class="text-bold font32px"><img style="margin-left:3%" src="img/aboutm.png" alt="">مهمتنا :</h1>
-                <div class="mission">
-                    <p class="font18px">تتمحور مهامنا في منصّة ألفا حول: </p>
-                    @foreach ($mission as $mission)
-                        <?php
-                        echo $mission->summernote;
-                        ?>
-                    @endforeach
-                </div>
-            </div>
         </div>
 
     </section>
-
-    </html>
+    <div class="slider-aboutalpha dir">
+        <h1 class="text-bold font32px"><img style="margin-left:3%" src="img/aboutm.png" alt="">مهمتنا :</h1>
+        <div class="mission">
+            <p class="font18px">تتمحور مهامنا في منصّة ألفا حول: </p>
+            @foreach ($mission as $mission)
+                <?php
+                echo $mission->summernote;
+                ?>
+            @endforeach
+        </div>
+    </div>
 @endsection
-
-{{-- 
-      <div id="carouselExampleSlidesOnly" class="carousel slider-cource  slide" data-ride="carousel">
-      <div class="carousel-inner">
-        @foreach ($slider as $slider)
-        <div class="carousel-item active">
-          <img class="d-block   w-100" src="{{asset('img/slider/'.$slider->img)}}" alt="First slide">
-        </div>
-        @endforeach
-        <div class="carousel-item">
-          <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
-        </div>
-      </div>
-    </div> --}}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{{-- --}}

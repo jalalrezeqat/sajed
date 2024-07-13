@@ -13,10 +13,7 @@ body {
 .mtb00px {
     margin-bottom: 100px;
 }
-.marginauto {
-    margin-left: 50%;
-    margin-right: 50%;
-}
+
 .dir {
     direction: rtl;
 }
@@ -376,6 +373,12 @@ body {
     margin-bottom: 4%;
     margin-top: 4%;
 }
+.slider-aboutalpha {
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 4%;
+    margin-top: 4%;
+}
 .colcard {
     margin-bottom: 6%;
 }
@@ -455,6 +458,7 @@ body {
 }
 .qustion-text {
     font-weight: bolder;
+    color: black;
 }
 .qustion-box {
     background-color: #27ac1f1a;
@@ -469,7 +473,6 @@ body {
     background-color: #12181e;
     direction: rtl;
     width: 100%;
-    margin-top: 20vw;
 }
 .special {
     background-color: red;
@@ -580,8 +583,8 @@ body {
 .img-dashbord {
     float: right;
     margin-top: 2%;
-    width: 214px;
-    height: 220px;
+    width: 15vw;
+    height: 15vw;
     border-radius: 50%;
     border: 5px solid #88ab8e;
 }
@@ -654,6 +657,9 @@ body {
 }
 .qustion1 {
     margin-right: 8% !important;
+}
+.qustion1 a:hover {
+    color: #000;
 }
 .contectus-form {
     float: right;
@@ -888,6 +894,12 @@ th {
     color: white;
 }
 
+.nametetcher {
+    color: #27ac1f;
+    text-align: center;
+    margin-top: 1%;
+    margin-left: -15%;
+}
 .column2 {
     width: 20%;
     position: relative;
@@ -902,7 +914,7 @@ th {
 }
 .navbarcourse li {
     margin-left: 90px;
-    margin-right: 80px;
+    margin-right: 90px;
 }
 .select1 select option {
     background: rgba(100, 100, 100, 0.3);
@@ -998,7 +1010,7 @@ th {
     float: left;
 }
 .dandermasseg {
-    margin-right: 30%;
+    margin-top: -5%;
 }
 .sidbarshowcourse {
     border: 1px solid #000;
@@ -1088,10 +1100,11 @@ th {
 .mindet {
     float: left;
 }
-/* .tabel-profile {
-    border: 2px solid saddlebrown;
+.tabel-profile {
+    border: 1px solid black;
     border-radius: 10px;
 }
+/* 
 .tabel-profile,
 th,
 tr {

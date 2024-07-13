@@ -20,6 +20,7 @@ use App\Models\markcourse;
 use App\Http\Requests\StoreTestRequest;
 use App\Models\Result;
 use App\Models\Option;
+use App\Models\playback;
 
 
 
@@ -79,11 +80,12 @@ class CoursesController extends Controller
         // $branch =branch::find($branchid);
         $b = courses::find($id);
         $vedio = null;
+
         $chbter = DB::table('chabters')->where('course', '=', $b->id)->get();
         $coursces = DB::table('courses')->where('branche', '=', $br)->get();
         $chbter1 = DB::table('lessons')->where('course', '=', $b->name)->get();
         $questionscours = DB::table('questionscours')->where('course', '=', $b->id)->get();
-        $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio')->where('course', '=', $b->id)->get();
+        $lesson =  DB::table('lessons')->select('id', 'name', 'chabters', 'vedio', 'iframe')->where('course', '=', $b->id)->get();
         $teatcher = DB::table('teachers')->where('id', '=', $b->teacher_name)->get();
         $quiz = DB::table('categories')->get();
         foreach ($lesson as $lessons) {
@@ -149,6 +151,8 @@ class CoursesController extends Controller
                     $chabtercount = $chbter->count();
                     $lessoncount = $lesson->count();
                     $vedio = DB::table('lessons')->where('id', '=', $vidoe)->get();
+                    $vedioend = DB::table('playbacks')->get();
+
                     // foreach ($vedio as $vedios) {
                     //     if ('img/vedio/' . $vedios->vedio != Null) {
 
@@ -164,11 +168,38 @@ class CoursesController extends Controller
                     $id3 = new \getID3;
 
 
-                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code'));
+                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
                 }
             }
         }
         return redirect()->back()->with('message4', 'يرجى التسجيل في الدورة');
+    }
+    public function endles(Request $request, $b, $vidoe, $idnew)
+    {
+        $find = DB::table('playbacks')
+            ->where('idcoures', '=', $b)
+            ->where('idofstudant', '=', Auth::user()->id)
+            ->where('idlesson', '=', $vidoe)
+            ->first();
+
+        if ($find == null) {
+            $student = new playback();
+            $student->idofstudant = Auth::user()->id;
+            $student->idlesson = $vidoe;
+            $student->idcoures = $b;
+            $student->save();
+        } else {
+            DB::table('playbacks')
+                ->where('idcoures', '=', $b)
+                ->where('idofstudant', '=', Auth::user()->id)
+                ->where('idlesson', '=', $vidoe)
+                ->update(['idlesson' => $vidoe]);
+        }
+        if ($idnew != 0) {
+            return redirect('/courseshow' . '/' . $b . '/' . $idnew);
+        } else {
+            return redirect('/');
+        }
     }
     public function download($id)
     {
@@ -267,7 +298,7 @@ class CoursesController extends Controller
             $quiz = DB::table('categories')->find($id);
             $user = Auth::user()->id;
             $code = DB::table('codecards')->get();
-            $results= DB::table('results')->get();
+            $results = DB::table('results')->get();
             foreach ($code as $codes) {
                 if ($codes->user_id == $user & $codes->courses == $course->id & $codes->courses == $quiz->courses) {
                     $categories = Category::with(['categoryQuestions' => function ($query) {
@@ -279,7 +310,7 @@ class CoursesController extends Controller
                         ->whereHas('categoryQuestions')
                         ->get();
 
-                    return view('front.quiz', compact('categories', 'quiz','results'));
+                    return view('front.quiz', compact('categories', 'quiz', 'results'));
                 }
             }
             return redirect()->back();
@@ -290,38 +321,38 @@ class CoursesController extends Controller
         $user = Auth::user()->id;
         $quiz = DB::table('categories')->find($id);
         $result = DB::table('results')->where('user_id', '=', $user)->where('namequiz', '=', $quiz->id)->first();
-            $questions_op = DB::table('questions')->where('category_id', '=', $quiz->id)->first();
-            $option_total_point = DB::table('options')->where('question_id', '=', $questions_op->id)->get();
+        $questions_op = DB::table('questions')->where('category_id', '=', $quiz->id)->first();
+        $option_total_point = DB::table('options')->where('question_id', '=', $questions_op->id)->get();
 
 
-            $options = Option::find(array_values($request->input('questions')));
-            foreach ($option_total_point as $option_total_point) {
-                $total_point_quiz  = $option_total_point->points;
-                $r = $option_total_point->points;
-                $r = $total_point_quiz + $r;
-            }
-                $result = auth()->user()->userResults()->create([
-                    'total_points' => $options->sum('points'),
-                    'user' => Auth::user()->name,
-                    'courses' =>  $quiz->courses,
-                    'namequiz' => $quiz->id,
-                    'option_total_point' => $r,
-                ]);
-            
+        $options = Option::find(array_values($request->input('questions')));
+        foreach ($option_total_point as $option_total_point) {
+            $total_point_quiz  = $option_total_point->points;
+            $r = $option_total_point->points;
+            $r = $total_point_quiz + $r;
+        }
+        $result = auth()->user()->userResults()->create([
+            'total_points' => $options->sum('points'),
+            'user' => Auth::user()->name,
+            'courses' =>  $quiz->courses,
+            'namequiz' => $quiz->id,
+            'option_total_point' => $r,
+        ]);
 
 
-            $questions = $options->mapWithKeys(function ($option) {
-                return [
-                    $option->question_id => [
-                        'option_id' => $option->id,
-                        'points' => $option->points
-                    ]
 
-                ];
-            })->toArray();
+        $questions = $options->mapWithKeys(function ($option) {
+            return [
+                $option->question_id => [
+                    'option_id' => $option->id,
+                    'points' => $option->points
+                ]
 
-            $result->questions()->sync($questions);
-         
+            ];
+        })->toArray();
+
+        $result->questions()->sync($questions);
+
 
         return redirect()->route('client.results.show', $result->id);
     }

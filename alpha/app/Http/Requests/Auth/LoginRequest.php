@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+
 class LoginRequest extends FormRequest
 {
     /**
@@ -40,15 +41,12 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
         if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
-            $error1 = \Illuminate\Validation\ValidationException::withMessages([
-                'field_name_1' => ['Validation Message #1'],
-                'field_name_2' => ['Validation Message #2'],
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
             ]);
-            throw $error1;
         }
 
         RateLimiter::clear($this->throttleKey());

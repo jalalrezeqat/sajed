@@ -1,8 +1,10 @@
 @extends('layouts.app')
-@vite(['resources/css/vedio.css', 'resources/css/order.css'])
+@vite(['resources/css/vedio.css', 'resources/css/order.css', 'resources/css/massage.css'])
+
 @section('content')
     <?php session('windowW'); ?>
     <livewire:breakpoints />
+
     <section>
 
         <div class="namecourse  float-right mb-2">
@@ -13,9 +15,10 @@
 
         <br>
         <br>
-        @if (session('message4'))
-            <div class="alert dandermasseg dir  col-lg-4 text-success">{{ session('message4') }}</div>
-        @endif
+
+
+
+
         <div class="box-ditalescourse" id="box-ditalescourse">
             @windowWidthGreaterThan(481)
 
@@ -28,8 +31,8 @@
                     <div id="mr2">
                         <div class="row coursename mt-5 ">
 
-                            <p class="user_name h3 font48px"> {{ $b->name }}</p>
-                            <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
+                            <p class="user_name h3 font481px"> {{ $b->name }}</p>
+                            <p class="user_name h3 font481px">{{ $b->branche }} - {{ $b->chabters }} </p>
                         </div>
                         <div class="row coursedetales mt-5">
                             <p class="mt-3  col-lg-4 font14px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
@@ -45,10 +48,12 @@
                                 </span> عدد دروس الدورة :
                                 {{ $lessoncount }} درساً مسجلاً</p>
                         </div>
+                        @windowWidthGreaterThan(1028)
+
                         <div class="row coursedetales mt-5">
                             <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                     aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                            <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 25px;"> أدخل كود البطاقة
+                            <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 90px;"> أدخل كود البطاقة
                                 وابدأ
                                 بالتّعلّم</p>
                         </div>
@@ -57,22 +62,26 @@
                             <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
                                 {{ $b->price }} ₪
                             </p>
-                            <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
-                                placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
-                            @error('error')
-                                <span class="text-danger dandermasseg inputorder col-lg-4">{{ $message }}</span>
-                            @enderror
-                            <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
-                        </div>
-                        @if (session('message'))
-                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message') }}</div>
-                        @endif
-                        @if (session('message1'))
-                            <div class="alert dandermasseg  col-lg-4 text-success">{{ session('message1') }}</div>
-                        @endif
-                        @if (session('message3'))
-                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
-                        @endif
+                            @endif
+                            @windowWidthBetween(480, 1028)
+                            <div class="row coursedetales mt-5">
+
+                                <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
+                                        aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
+                                <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
+                                    {{ $b->price }} ₪
+                                </p>
+                                <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 0px;"> أدخل كود البطاقة
+                                    وابدأ
+                                    بالتّعلّم</p>
+                                @endif
+
+                                <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
+                                    placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
+
+                                <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
+                            </div>
+
                 </form>
                 <br>
                 <br>
@@ -82,6 +91,7 @@
             <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
 
         </div>
+
         @endif
         @windowWidthLessThan(480)
         <div class="row mobiw">
@@ -126,20 +136,10 @@
                                 بالتّعلّم</p>
                             <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
                                 placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
-                            @error('error')
-                                <span class="text-danger dandermasseg inputorder col-lg-4">{{ $message }}</span>
-                            @enderror
+
                             <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
                         </div>
-                        @if (session('message'))
-                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message') }}</div>
-                        @endif
-                        @if (session('message1'))
-                            <div class="alert dandermasseg  col-lg-4 text-success">{{ session('message1') }}</div>
-                        @endif
-                        @if (session('message3'))
-                            <div class="alert dandermasseg  col-lg-4 text-danger">{{ session('message3') }}</div>
-                        @endif
+
                 </form>
 
             </div>
@@ -155,11 +155,11 @@
     <section>
 
         {{-- navbar  --}}
-        <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light">
+        <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light mt-5">
 
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-                <ul class="navbar-nav mr-auto">
+            <div class=" navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav  mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#about">حول الدورة </a>
                     </li>
@@ -232,7 +232,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-8 ">
+            <div class="col-8 det-cour " style="">
                 <p class="">
                     <?php
                     echo $teatchers->summernote;
@@ -264,7 +264,10 @@
       </div> --}}
     {{-- end --}}
 
+
     {{-- leeson --}}
+
+
     <section class="mt100px">
         <div class="ditelspage" id="how">
             <h3 class="dir mb-5 font24px">ماذا سأتعلم؟</h3>
@@ -416,11 +419,11 @@
                                                         class="font14px" disabled
                                                         style="border: none;background-color:#f8fafc
                                        ">{{ $lessons->name }}</button></a>
-                                                <?php
+                                                {{-- <?php
                                                 $path = 'img/vedio/' . $lessons->vedio;
                                                 $file = $id3->analyze($path);
                                                 ?>
-                                                <p class="mindet font14px"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                                <p class="mindet font14px"><?php echo $file['playtime_string']; ?> دقيقة</p> --}}
                                             @endif
 
                                             <?php endif; ?>
@@ -500,6 +503,7 @@
                         for="modal-toggle-order"> اطلب بطاقتك </label>
                 </button>
 
+
             </div>
         </div>
     </section>
@@ -557,16 +561,23 @@
 
                     <div class="col-12 dir" style="margin: auto;">
 
-                        <div class="vidio " style="height: 95%;width: 95%;margin: auto;">
-                            {{-- <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline poster=""> --}}
-                            <iframe
-                                src="https://player.vdocipher.com/v2/?otp=20160313versASE323hAHjGMnNOolu6wfPnPV1o2l77msDeVKWpj14pg7OYqCCCE&playbackInfo=eyJ2aWRlb0lkIjoiNDIwMDNlMWFkM2ViNDM5NGI1N2FmZjc0ODc0MWNmNmMifQ=="
-                                style="border:0;height:360px;width:640px;max-width:100%" allowFullScreen="true"
-                                allow="encrypted-media"></iframe>
-                            {{--  --}}
-                            <!-- Caption files -->
-                            <!-- Fallback for browsers that don't support the <video> element -->
-                            {{-- </video> --}}
+                        <div class="vidio " style="height: 80%;width: 80%;margin: auto;">
+                            @foreach ($lesson as $iframe)
+                                @if (($lesson[0]->vedio != null) & ($lesson[0]->iframe == null))
+                                    <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline
+                                        poster="">
+                                        <source src="{{ asset('img/vedio/' . $lesson[0]->vedio) }}" type="video/mp4"
+                                            size="576">
+                                        <source src="{{ asset('img/vedio/' . $lesson[0]->vedio) }}" type="video/mp4"
+                                            size="720">
+                                        <source src="{{ asset('img/vedio/' . $lesson[0]->vedio) }}" type="video/mp4"
+                                            size="1080">
+                                    @else
+                                        <iframe src="{{ $lesson[0]->iframe }}" frameborder="0"
+                                            style="border:0;height:400px;width:880px;max-width:100%"
+                                            allowFullScreen="true" allow="encrypted-media"></iframe>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -774,58 +785,74 @@
                                     </div>
                                 </div>
                             </div>
+
                             {{--  --}}
-                            <script>
-                                function changeIcon(anchor) {
-                                    var icon = anchor.querySelector("i");
-                                    icon.classList.toggle('fa-plus');
-                                    icon.classList.toggle('fa-minus');
+                            <div class="rt-container">
+                                <div class="col-rt-12">
+                                    <div class="Scriptcontent">
 
-                                    anchor.querySelector("span").textContent = icon.classList.contains('fa-plus') ? "Read more" : "Read less";
-
-                                }
-                            </script>
-                        @endsection
-
-                        @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/regestar.css'])
+                                        {{--  --}}
 
 
-                        {{--  <ul class="navbar-nav mr-auto">
-    & $codes->endcode >= $today
-      <li class="nav-item active">
-        <a class="nav-link" href="#">حول الدورة </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">مدرّس الدورة</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ماذا سأتعلم؟ </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">أسئلة شائعة  </a>
-      </li>
-     
-    
-    </ul>
+                                        {{--  --}}
+                                        <div class="rt-container">
+                                            <div class="col-rt-12">
+                                                <div class="Scriptcontent">
 
+                                                    {{--  --}}
 
-     @foreach ($chbter as $chbter)
-    <div class="qustion1">   
-<p>
-  <button class="btn  qustion" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample"></button>
-  <button type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$chbter->id}}" aria-expanded="false" aria-controls="collapseExample" class="btn qustion-text ">  {{$chbter->name}} </button>
-</p>
-<div class="collapse " id="collapse{{$chbter->id}}">
-  <div class="  qustion-box card-body">
-    
-   @foreach ($lesson as $lessons)
-   @if ($lessons->chabters == $chbter->name)
-   {{$lessons->name}}
-   @endif
-   @endforeach
-  </div>
-</div>
-</div>
+                                                    <!-- Login Form Popup HTML -->
 
-@endforeach
-   --}}
+                                                    <input id="modal-toggle-massage" type="checkbox">
+                                                    <label class="modal-backdrop" for="modal-toggle-massage"></label>
+                                                    <div class="modal-content-massage">
+                                                        <label class="modal-close-btn" for="modal-toggle-massage">
+                                                            <svg width="30" height="30">
+                                                                <line x1="5" y1="5" x2="20"
+                                                                    y2="20" />
+                                                                <line x1="20" y1="5" x2="5"
+                                                                    y2="20" />
+                                                            </svg>
+                                                        </label>
+                                                        @if (session('message'))
+                                                            <div class="alert dandermasseg font18px  text-danger">
+                                                                {{ session('message') }}</div>
+                                                        @endif
+                                                        @if (session('message1'))
+                                                            <div class="alert dandermasseg font18px text-success">
+                                                                {{ session('message1') }}</div>
+                                                        @endif
+                                                        @if (session('message3'))
+                                                            <div class="alert dandermasseg font18px  text-danger">
+                                                                {{ session('message3') }}</div>
+                                                        @endif
+                                                        @if (session('message65'))
+                                                            <div class="alert dandermasseg font18px  text-success">
+                                                                {{ session('message65') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{--  --}}
+                                        @if (session('message65') || session('message1') || session('message3') || session('message'))
+                                            <script>
+                                                $('#modal-toggle-massage').click();
+                                            </script>
+                                        @endif
+                                        <script>
+                                            function changeIcon(anchor) {
+                                                var icon = anchor.querySelector("i");
+                                                icon.classList.toggle('fa-plus');
+                                                icon.classList.toggle('fa-minus');
+
+                                                anchor.querySelector("span").textContent = icon.classList.contains('fa-plus') ? "Read more" : "Read less";
+
+                                            }
+                                        </script>
+                                    @endsection
+                                    <script></script>
+                                    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/regestar.css'])
+                                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

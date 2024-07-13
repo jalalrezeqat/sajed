@@ -61,7 +61,7 @@ class LessonController extends Controller
     {
         $statement  = DB::select("SHOW TABLE STATUS LIKE 'lessons'");
         $student = new lesson();
-       
+
         $student->name = $request->input('name');
         $student->chabters = $request->input('chabters');
         $student->iframe = $request->input('iframe');
@@ -69,8 +69,8 @@ class LessonController extends Controller
         // $courses = DB::table('chabters')->where('id', '=', $request->input('chabters'))->get();
         $courses = chabter::find($request->input('chabters'));
         $student->course = $courses->course;
-        $nextUserId = IdGenerator::generate(['table' => 'lessons','field'=>'id', 'length' => 6, 'prefix' =>$courses->course.$request->input('chabters')]);
-        
+        $nextUserId = IdGenerator::generate(['table' => 'lessons', 'field' => 'id', 'length' => 6, 'prefix' => $courses->course . $request->input('chabters')]);
+
 
         $student->id = $nextUserId;
         if ($request->hasfile('vedio')) {

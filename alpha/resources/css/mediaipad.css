@@ -9,8 +9,6 @@
     }
     .buttonshow {
         font-size: 75%;
-        height: 50%;
-        width: 90%;
     }
     #countleeson {
         font-size: 62.5%;
@@ -20,9 +18,22 @@
         width: 90%;
         margin: auto;
     }
+    .marginauto {
+        margin-left: 32%;
+        margin-right: 32%;
+    }
     .ovarflow {
         overflow-y: visible;
         margin-top: 12%;
+    }
+    .mr-2 {
+        margin-right: 6%;
+    }
+    #shapetetcher3 {
+        width: 30px;
+        margin-top: -50px;
+        float: left;
+        margin-left: 5%;
     }
     .btn-allcourse {
         background-color: #27ac1f;
@@ -121,6 +132,11 @@
         font-weight: 700;
     }
 
+    .font481px {
+        font-size: 3vw;
+        font-weight: 700;
+    }
+
     .font14px {
         font-size: 1.3vw;
         font-weight: 500;
@@ -161,9 +177,17 @@
     }
     .imgditels {
         width: 30vw;
-        height: 60vw;
+        height: 50vw;
         position: absolute;
         bottom: 0px;
+        margin-left: 8vw;
+    }
+    .navbarcourse {
+        width: 90%;
+    }
+    .navbarcourse li {
+        margin-left: 90px;
+        margin-right: 90px;
     }
     .contectusdet {
         float: right;
@@ -216,15 +240,19 @@
     }
 
     .imgtatecher {
-        margin-right: 5%;
+        margin: auto;
         margin-top: 2%;
         width: 150.23px;
         height: 150.23px;
     }
     .nametetcher {
         color: #27ac1f;
-        margin-right: 9%;
+        text-align: center;
+        margin: auto;
         margin-top: 1%;
+    }
+    .det-cour {
+        margin-right: 10vw;
     }
     .qustion-box {
         background-color: #27ac1f1a;

@@ -208,11 +208,10 @@
         background-color: #27ac1f;
     }
     .imgditels {
-        width: 70vw;
-        height: 68vw;
+        width: 90vw;
+        height: 87vw;
         position: absolute;
         bottom: 0px;
-        margin-left: 444px;
     }
 
     .column2 {
@@ -271,6 +270,13 @@
         margin-top: 5vw;
         margin-bottom: 2vw;
     }
+    .marginauto {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .mr-2 {
+        margin-right: 6%;
+    }
     .box-ditalescourse {
         width: 100%;
         display: inline-flex;
@@ -279,7 +285,7 @@
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         margin: auto;
-        height: 220vw;
+        height: 240vw;
 
         /* margin-bottom: 1%; */
     }

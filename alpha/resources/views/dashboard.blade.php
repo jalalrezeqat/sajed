@@ -61,23 +61,27 @@
             @foreach ($course as $courses)
                 @foreach ($coursename as $coursenames)
                     @if ($coursenames->id == $courses->courses)
+                        <?php $auth = 1; ?>
+
                         <div class="col colcard">
                             <div class="card-home card  " id="card-profile">
                                 <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
                                     alt="...">
                                 <div class="card-body">
                                     @foreach ($lessonid as $lessonids)
-                                        @if ($coursenames->id == $lessonids->nameofcourse)
+                                        @if ($coursenames->id == $lessonids->idcoures)
                                             <p class="card-title-home font14px "><a
                                                     href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
                                                     class="card-title-home text-center">{{ $coursenames->name }}</a>
                                             </p>
-                                        @else
-                                            <p class="card-title-home font14px "><a
-                                                    href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                    class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                            <?php $auth = 0; ?>
                                         @endif
                                     @endforeach
+                                    @if ($auth == 1)
+                                        <p class="card-title-home font14px "><a
+                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -93,10 +97,12 @@
                 <thead>
 
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody style="border: 1px solid green;">
+                    <tr style="border: 1px solid
+                    green;border-bottom: 0px ;width:400px">
                         @foreach ($course as $courses)
-                            <th rowspan="2">
+                            <th rowspan="2"
+                                style="border: 1px solid black; border-bottom: 0px ; border-right: 0; ;width:230px;">
                                 @foreach ($coursename as $coursenames)
                                     @if ($coursenames->id == $courses->courses)
                                         {{ $coursenames->name }}
@@ -105,18 +111,35 @@
 
 
                             </th>
-                            @foreach ($quizreselt as $quizreselts)
-                                @if ($quizreselts->courses == $courses->courses)
-                                    <td>{{ $quizreselts->namequiz }} </td>
+                            @foreach ($quiz as $quizs)
+                                @if ($quizs->courses == $courses->courses)
+                                    <td class="font14px"
+                                        style="border: 1px solid black;  border-bottom: 0px ;width:120px;text-align: center;font-size:14px;    font-weight: bolder;
+
+">
+                                        {{ $quizs->name }}
+                                    </td>
                                 @endif
                             @endforeach
                     </tr>
-                    <tr>
-                        @foreach ($quizreselt as $quizreselts)
-                            @if ($quizreselts->courses == $courses->courses)
-                                <td> {{ $quizreselts->total_points }}/ {{ $quizreselts->option_total_point }}</td>
-                            @endif
+                    <tr style="border: 1px solid black;border-top: 0px  ;border-left: 1px solid black;width:40px
+">
+                        @foreach ($quiz as $quizs)
+                            @foreach ($quizreselt as $quizreselts)
+                                @if ($quizs->id == $quizreselts->namequiz)
+                                    <td class="font14px"
+                                        style="border: 1px solid black; border-top: 0px;width:120px;margin:auto   ; text-align: center;color:#27AC1F; font-size:14px;   font-weight: bolder;">
+                                        @if ($quizreselts->courses == $courses->courses)
+                                            {{ $quizreselts->total_points }}
+                                        @else
+                                            ??
+                                        @endif
+                                        /20
+                                    </td>
+                                @endif
+                            @endforeach
                         @endforeach
+
                     </tr>
                     @endforeach
 
@@ -125,6 +148,7 @@
         </div>
 
     </div>
+    <br><br>
 @endsection
 
 {{--  @foreach ($course as $courses)  
