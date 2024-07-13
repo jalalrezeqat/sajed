@@ -42,10 +42,26 @@
                             <a href="{{ route('admin.courses.destroy', $courses->id) }}"
                                 onclick="return confirm(' هل انت متاكد سيتم الحدف') "
                                 class="btn btn-danger editdelete">حذف</a>
-                            <select name="" class="btn btn-secondary editdelete" id="">
-                                <option class="btn btn-success editdelete" value="">مفعل</option>
-                                <option class="btn btn-danger " value="">غير مفعل</option>
-                            </select>
+                                @if ($courses->status ==1)
+                                <a href="{{ route('admin.courses.off', $courses->id) }}"
+                                    onclick="return confirm(' هل انت متاكد سيتم الغاء تفعل الدورة ') "
+                                    class="btn btn-success editdelete"> مفعل</a>
+                                @endif
+                                @if ($courses->status ==0)
+                                <a href="{{ route('admin.courses.on', $courses->id) }}"
+                                    onclick="return confirm(' هل انت متاكد سيتم  تفعل الدورة ') "
+                                    class="btn btn-danger editdelete">غير مفعل</a>
+                                @endif
+                                    @if ($courses->fav ==1)
+                                    <a href="{{ route('admin.courses.notfav', $courses->id) }}"
+                                        onclick="return confirm(' هل انت متاكد سيتم الغاء اضافة للمفضلة ') "
+                                        class="btn btn-success editdelete"> مفضلة</a>
+                                    @endif
+                                    @if ($courses->fav ==0)
+                                    <a href="{{ route('admin.courses.fav', $courses->id) }}"
+                                        onclick="return confirm(' هل انت متاكد سيتم اضافة للمفضلة ') "
+                                        class="btn btn-danger editdelete"> غير مفضلة</a>
+                                    @endif
                         </td>
 
                     </tr>

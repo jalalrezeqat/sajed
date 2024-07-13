@@ -201,4 +201,40 @@ class CoursesController extends Controller
 
         return  redirect()->back();
     }
+    public function oncoures(int $courses_id)
+    {
+        $post = courses::find($courses_id);
+        $chabterDb = DB::table('courses');
+        $sliderdelete = $chabterDb->where('id', $courses_id);
+        $sliderdelete->update(['status'=>'1']);
+        return  redirect()->back();
+
+    }
+    public function offcoures(int $courses_id)
+    {
+        $post = courses::find($courses_id);
+        $chabterDb = DB::table('courses');
+        $sliderdelete = $chabterDb->where('id', $courses_id);
+        $sliderdelete->update(['status'=>'0']);
+        return  redirect()->back();
+
+    }
+    public function fav(int $courses_id)
+    {
+        $post = courses::find($courses_id);
+        $chabterDb = DB::table('courses');
+        $sliderdelete = $chabterDb->where('id', $courses_id);
+        $sliderdelete->update(['fav'=>'1']);
+        return  redirect()->back();
+
+    }
+    public function notfav(int $courses_id)
+    {
+        $post = courses::find($courses_id);
+        $chabterDb = DB::table('courses');
+        $sliderdelete = $chabterDb->where('id', $courses_id);
+        $sliderdelete->update(['fav'=>'0']);
+        return  redirect()->back();
+
+    }
 }

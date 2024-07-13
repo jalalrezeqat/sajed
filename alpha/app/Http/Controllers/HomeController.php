@@ -33,7 +33,7 @@ class HomeController extends Controller
     {$agent = new Agent();
         $coursename = DB::table('courses')->get();
         $lessonid  = DB::table('markcourses')->get();
-        $courses = DB::table('courses')->get();
+        $courses = DB::table('courses')->where('status','=','1')->where('fav','=','1')->get();
         $branch = DB::table('branches')->pluck('id');
         // $courscesdet=DB::table('courses')->where('branche','=' ,$branch )->get();
         $CommonQuestions =  DB::table('common_questions')->get();

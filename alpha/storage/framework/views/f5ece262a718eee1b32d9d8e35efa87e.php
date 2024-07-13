@@ -34,7 +34,7 @@ if (isset($__slots)) unset($__slots);
 
 
         <div class="box-ditalescourse" id="box-ditalescourse">
-            <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 481)): ?>
+            <?php if($agent->isDesktop()||$agent->isTablet()): ?>
 
             <div class="column1">
 
@@ -63,7 +63,7 @@ if (isset($__slots)) unset($__slots);
                                 </span> عدد دروس الدورة :
                                 <?php echo e($lessoncount); ?> درساً مسجلاً</p>
                         </div>
-                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
+                        <?php if($agent->isDesktop()): ?>
 
                         <div class="row coursedetales mt-5">
                             <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
@@ -78,7 +78,8 @@ if (isset($__slots)) unset($__slots);
                                 <?php echo e($b->price); ?> ₪
                             </p>
                             <?php endif; ?>
-                            <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
+                            <?php if($agent->isTablet()
+                            ): ?>
                             <div class="row coursedetales mt-5">
 
                                 <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
@@ -115,7 +116,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <?php endif; ?>
-        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
+        <?php if($agent->isMobile()): ?>
         <div class="row mobiw">
 
             <div class="col-12">
@@ -230,7 +231,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="col-2"></div>
                     <div class="col-2">
                         <div class="row" style="--bs-gutter-x:0">
-                            <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
+                            <?php if($agent->isDesktop()): ?>
 
                             <?php $__currentLoopData = $teatcher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teatchers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <img class="imgtatecher " src="<?php echo e(asset('/img/teacher/' . $teatchers->img)); ?>"
@@ -241,7 +242,7 @@ unset($__errorArgs, $__bag); ?>
                             <p class="nametetcher" style="color: #27AC1F;margin-right:15%;"><?php echo e($teatchers->name); ?></p>
                         </div>
                         <?php endif; ?>
-                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
+                        <?php if($agent->isTablet()): ?>
                         <?php $__currentLoopData = $teatcher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teatchers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <img class="imgtatecher " src="<?php echo e(asset('/img/teacher/' . $teatchers->img)); ?>"
                                 alt="">
@@ -251,7 +252,7 @@ unset($__errorArgs, $__bag); ?>
                         <p class="nametetcher"><?php echo e($teatchers->name); ?></p>
                     </div>
                     <?php endif; ?>
-                    <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
+                    <?php if($agent->isMobile()): ?>
 
                     <?php $__currentLoopData = $teatcher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teatchers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <img class="imgtatecher " src="<?php echo e(asset('/img/teacher/' . $teatchers->img)); ?>" alt="">
@@ -423,11 +424,7 @@ unset($__errorArgs, $__bag); ?>
                                        "><label
                                                             class=" " aria-current="page" for="modal-toggle-vedio">
                                                             <?php echo e($lessons->name); ?> </label></button></a>
-                                                <?php
-                                                $path = 'img/vedio/' . $lessons->vedio;
-                                                $file = $id3->analyze($path);
-                                                ?>
-                                                <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                               
                                             <?php endif; ?>
                                             <?php if($key > 0): ?>
                                                 <i style="font-size:24px;color:" class="fa">&#xf144;</i>

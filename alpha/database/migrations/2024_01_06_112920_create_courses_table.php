@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('teacher_name');
             $table->string('chabters');
             $table->string('status');
+            $table->string('fav');
             $table->timestamps();
         });
     }

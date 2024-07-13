@@ -63,7 +63,7 @@
                                 {{ $b->price }} ₪
                             </p>
                             @endif
-                            @if($agent->isTablet();
+                            @if($agent->isTablet()
                             )
                             <div class="row coursedetales mt-5">
 
@@ -408,11 +408,7 @@
                                        "><label
                                                             class=" " aria-current="page" for="modal-toggle-vedio">
                                                             {{ $lessons->name }} </label></button></a>
-                                                <?php
-                                                $path = 'img/vedio/' . $lessons->vedio;
-                                                $file = $id3->analyze($path);
-                                                ?>
-                                                <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+                                               
                                             @endif
                                             @if ($key > 0)
                                                 <i style="font-size:24px;color:" class="fa">&#xf144;</i>

@@ -154,7 +154,8 @@ return [
     | request to your application. Feel free to add your own services to
     | this array to grant expanded functionality to your applications.
     |
-    */
+    */    'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*

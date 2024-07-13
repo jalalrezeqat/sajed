@@ -112,6 +112,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::put('/ConnectWithUs/update/{id}', [App\Http\Controllers\Admin\ConnectWithUsController::class, 'update'])->name('ConnectWithUs.update');
         //courses 
         Route::get('/courses', [App\Http\Controllers\Admin\CoursesController::class, 'index'])->name('courses');
+        Route::get('/courses/{courses_id}/on', [App\Http\Controllers\Admin\CoursesController::class, 'oncoures'])->name('courses.on');
+        Route::get('/courses/{courses_id}/off', [App\Http\Controllers\Admin\CoursesController::class, 'offcoures'])->name('courses.off');
+        Route::get('/courses/{courses_id}/fav', [App\Http\Controllers\Admin\CoursesController::class, 'fav'])->name('courses.fav');
+        Route::get('/courses/{courses_id}/notfav', [App\Http\Controllers\Admin\CoursesController::class, 'notfav'])->name('courses.notfav');
+
         Route::get('/courses/{courses}/edit', [App\Http\Controllers\Admin\CoursesController::class, 'updateviwe'])->name('courses.edit');
         Route::put('/courses/update/{id}', [App\Http\Controllers\Admin\CoursesController::class, 'update'])->name('courses.update');
         Route::get('/courses/add', [App\Http\Controllers\Admin\CoursesController::class, 'viweaddcourses'])->name('courses.viweaddcourses');
