@@ -70,17 +70,16 @@
                                 <div class="card-body">
                                     @foreach ($lessonid as $lessonids)
                                         @if ($coursenames->id == $lessonids->idcoures)
-                                            <p class="card-title-home font14px "><a
+                                            <p class="card-title-home font18px "><a
                                                     href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
-                                                    class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                                    class="card-title-home  text-center">{{ $coursenames->name }}</a>
                                             </p>
                                             <?php $auth = 0; ?>
                                         @endif
                                     @endforeach
                                     @if ($auth == 1)
-                                        <p class="card-title-home font14px "><a
-                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                        <a class="nav-link" href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                            class="card-title-home ">{{ $coursenames->name }}</a>
                                     @endif
                                 </div>
                             </div>

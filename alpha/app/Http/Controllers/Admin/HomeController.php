@@ -176,4 +176,24 @@ class HomeController extends Controller
         }
         return view('admin.layouts.chart.countstudant', compact('coures', 'code', 'code1'));
     }
+
+    public function codesarch(Request $request)
+    {
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $coures = DB::table('codecards')->get();
+        $user
+            = DB::table('users')->get();
+        foreach ($coures as $couress) {
+            // $code = DB::table('codecards')->where('user_id', '!=', null)->get();
+            // $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+            $code
+                = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('startcode', '>', $start)
+                ->where('startcode', '<', $end)->get();
+        }
+        $courses = DB::table('courses')->get();
+
+        return view('admin.layouts.chart.codeserch', compact('coures', 'code',  'start', 'end', 'courses', 'user'));
+    }
 }

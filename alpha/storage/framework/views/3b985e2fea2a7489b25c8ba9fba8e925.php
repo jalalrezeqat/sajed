@@ -21,7 +21,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('breakpoints', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-3955201851-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-3683151335-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -47,36 +47,39 @@ if (isset($__slots)) unset($__slots);
                                     </div>
                                 </div>
                                 <?php if($agent->isDesktop()): ?>
-                                <div class="col">
-                                    <div class=" contact-img">
-                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <img class="contact-img d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
-                                                class="d-block" alt="">
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </div>
+                                    <div class="col">
+                                        <div class=" contact-img">
+                                            <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <img class="contact-img d-block"
+                                                    src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" class="d-block"
+                                                    alt="">
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </div>
 
-                                </div>
+                                    </div>
                                 <?php endif; ?>
-                                <?php if($agent->isDesktop()||$agent->isTablet()): ?>
-                                <div class="row">
-                                    <div class=" contact-img">
-                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <img class="img-about d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
-                                                class="d-block" alt="">
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </div>
+                                <?php if($agent->isTablet()): ?>
+                                    <div class="row">
+                                        <div class=" contact-img">
+                                            <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <img class="img-about d-block"
+                                                    src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" class="d-block"
+                                                    alt="">
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </div>
 
-                                </div>
+                                    </div>
                                 <?php endif; ?>
                                 <?php if($agent->isMobile()): ?>
-                                <div class="col">
-                                    <div class=" contact-img">
-                                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <img class="contact-img d-block" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
-                                                class="d-block" alt="">
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="col">
+                                        <div class=" contact-img">
+                                            <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <img class="contact-img d-block"
+                                                    src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" class="d-block"
+                                                    alt="">
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                             <?php endif; ?>
                         </div>
@@ -149,4 +152,4 @@ if (isset($__slots)) unset($__slots);
 
 
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/Connectus.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/Connectus.blade.php ENDPATH**/ ?>

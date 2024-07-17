@@ -16,7 +16,10 @@ class CodecardController extends Controller
     public function index()
     {
         $code = DB::table('codecards')->get();
-        return view('admin.layouts.courses.genaratcode.codeindex', compact('code'));
+        $courses = DB::table('courses')->get();
+        $user
+            = DB::table('users')->get();
+        return view('admin.layouts.courses.genaratcode.codeindex', compact('code', 'courses', 'user'));
     }
 
     /**

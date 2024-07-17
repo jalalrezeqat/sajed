@@ -8,6 +8,7 @@ $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
 $connectwithus = DB::table('connect_with_us')->get();
+$branche = DB::table('branches')->get();
 use Jenssegers\Agent\Agent;
 $agent = new Agent();
 ?>
@@ -64,7 +65,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
     <div id="app">
 
-        {{-- @if($agent->isDesktop() ) --}}
+        {{-- @if ($agent->isDesktop()) --}}
         <div class="nav-background">
 
             <nav class="navbar navbar-home navbar-expand-lg navbar-dark">
@@ -157,7 +158,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
             </nav>
         </div>
         {{-- @endif --}}
-        {{-- @if($agent->isMobile())
+        {{-- @if ($agent->isMobile())
         <nav class="navbar  navbar-expand-lg navbar-dark 
                 bg-dark border-bottom-0">
             <!-- Navbar toggle button (hamburger icon) -->
@@ -254,12 +255,12 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
 
     @endif --}}
-    {{--  --}}
+        {{--  --}}
 
-    <main class="">
+        <main class="">
 
-        @yield('content')
-    </main>
+            @yield('content')
+        </main>
     </div>
 </body>
 
@@ -310,8 +311,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 <!--Grid column-->
 
                 <!--Grid column-->
-                @if($agent->isDesktop())
-
+                @windowWidthGreaterThan(1029)
                 <div class="col-lg-3 ">
 
                     <ul class="list-unstyled ">
@@ -330,8 +330,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     </ul>
                 </div>
                 @endif
-                @if($agent->isMobile() ||
-                $agent->isTablet())
+                @windowWidthBetween(0, 1028)
                 <div class="col-lg-3 ">
 
                     <ul class="mt-5 mb-5 ">
@@ -444,15 +443,15 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 <p class="dir text-center font14px ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7
                                 </p>
                                 @error('email')
-                                  @if( $message =='يرجى التاكد من المعلومات المدخلة ')
-                                  <div class="alert alert-danger">{{ $message }}</div>
-                                    <script>
-                                        $('#modal-toggle').click();
-                                    </script>
+                                    @if ($message == 'يرجى التاكد من المعلومات المدخلة ')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <script>
+                                            $('#modal-toggle').click();
+                                        </script>
                                     @endif
-                                @enderror 
+                                @enderror
                                 {{-- @error('password')
-                                  @if( $message =='!يرجى التاكد من المعلومات المدخلة ')
+                                  @if ($message == '!يرجى التاكد من المعلومات المدخلة ')
                                   <div class="alert alert-danger">{{ $message }}</div>
                                     <script>
                                         $('#modal-toggle').click();
@@ -461,7 +460,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 @enderror  --}}
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
-                                  @if (session('status'))
+                                    @if (session('status'))
                                         <div class="alert alert-success" role="alert">
                                             {{ session('status') }}
                                         </div>
@@ -469,8 +468,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                         <div class="alert alert-danger" role="alert">
                                             {{ session('error') }}
                                         </div>
-
-                                    @endif 
+                                    @endif
                                     <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                                         <div class="col-12 inpout-email">
                                             <input type="email" class="form-control" id="email" name="email"
@@ -548,23 +546,23 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                         <div class="row justify-content-around">
                             <div class="col-12 col-md-5">
                                 @error('password_verified_at')
-                                @if($message=='كلمة المرور غير متطابقة')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                  
-                                    <script>
-                                        $('#modal-toggle-regester').click();
-                                    </script>
+                                    @if ($message == 'كلمة المرور غير متطابقة')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+
+                                        <script>
+                                            $('#modal-toggle-regester').click();
+                                        </script>
                                     @endif
                                 @enderror
                             </div>
                             <div class="col-12 col-md-5">
                                 @error('email')
-                                    @if( $message=='الايميل المدخل مستخدم ')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @if ($message == 'الايميل المدخل مستخدم ')
+                                        <div class="alert alert-danger">{{ $message }}</div>
 
-                                    <script>
-                                        $('#modal-toggle-regester').click();
-                                    </script>
+                                        <script>
+                                            $('#modal-toggle-regester').click();
+                                        </script>
                                     @endif
                                 @enderror
                             </div>
@@ -600,17 +598,99 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                     <label for="fname" class="form-label"> <span
                                             class="text-danger"></span></label>
                                     <div class="input-group">
-                                        <input type="fname" class="form-control" placeholder="المحافظة"
-                                            id="Governorate" name="Governorate" value="" required>
+
+                                        <select class="form-control  " name="Governorate" id="Governorate">
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="الخليل" required>
+                                                الخليل
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="القدس" required>
+                                                القدس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="اريحا" required>
+                                                اريحا
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="رام الله والبيرة" required>
+                                                رام الله والبيرة
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="بيت لحم" required>
+                                                بيت لحم
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="طوباس" required>
+                                                طوباس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="جنين" required>
+                                                جنين
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="نابلس" required>
+                                                نابلس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="قلقيلة" required>
+                                                قلقيلة
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="سلفيت" required>
+                                                سلفيت
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="طولكرم" required>
+                                                طولكرم
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="قطاع غزة" required>
+                                                قطاع غزة
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
+                                {{-- 
+                                 <input type="fname" class="form-control" placeholder="المحافظة"
+                                            id="Governorate" name="Governorate" value="" required>
+                                <div class="col-12 col-md-8 select1">
+                                        <label for="email" class="form-label"> <span
+                                                class="text-danger"></span></label>
+                                        <select class="form-control  " name="course" id="course">
+                                            <option placeholder=" " id="course" name="course" value="الخليل"
+                                                required>
+                                                الخليل
+                                            </option>
+                                        </select>
+                                    </div> --}}
                                 <div class="col-12 col-md-5 float-reg dir ">
                                     <label for="fname" class="form-label"> <span
                                             class="text-danger"></span></label>
                                     <div class="input-group  form-control dir ">
                                         <label for="" class="form-check-label" for="inlineCheckbox1">الفرع
                                             :</label>
-                                        <div class="form-check form-check-inline">
+                                        @foreach ($branche as $branches)
+                                            {{-- <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="branch"
+                                                    id="branch1" value="{{ $branches->name }}">
+                                                <label class="form-check-label1"
+                                                    for="inlineRadio1">{{ $branches->name }}</label>
+                                            </div> --}}
+                                            <div class="form-check "
+                                                style="text-align: right;position: inherit;  direction: rtl;
+    unicode-bidi: bidi-override;">
+                                                <input
+                                                    className="form-check-input appearance-none rounded-full h-7 w-7 border-4 border-[#5F6368] bg-[#C4C4C4] hover:shadow-lg hover:shadow-[#5F6368] hover:border-[#3B52B5] checked:bg-[#7EABFF] checked:border-[#3B52B5] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-5 cursor-pointer"
+                                                    type="radio" name="branch" id="branch"
+                                                    value="{{ $branches->name }}">
+                                                <label class="form-check-label" for="option-">
+                                                    {{ $branches->name }} </label>
+
+                                            </div>
+                                        @endforeach
+
+                                        {{-- <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="branch"
                                                 id="branch1" value="ادبي">
                                             <label class="form-check-label1" for="inlineRadio1">ادبي</label>
@@ -624,15 +704,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                             <input class="form-check-input" type="radio" name="branch"
                                                 id="branch3" value="صناعي">
                                             <label class="form-check-label3" for="inlineRadio1">صناعي</label>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <div class="input-group">
                                         <input type="email" class="form-control" placeholder="الايميل"
-                                            id="email" name="email" required
-                                            value=" ">
+                                            id="email" name="email" required value=" ">
                                     </div>
 
                                 </div>
@@ -664,12 +743,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 </div>
                                 <div class="col-12 col-md-12 d-flex but-regester justify-content-center">
                                     <input type="checkbox" name="polices" value="accept" required>
-                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على سياسة الشروط والاحكام والخصوصية</label><br>
-                                  
+                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على سياسة
+                                        الشروط والاحكام والخصوصية</label><br>
+
                                 </div>
                                 <div class="col-12 col-md-12 d-flex justify-content-center">
-                                    <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة الشروط والاحكام والخصوصية قبل التسجيل</p><br>
-                                  
+                                    <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة الشروط
+                                        والاحكام والخصوصية قبل التسجيل</p><br>
+
                                 </div>
                                 <div class="col-12 col-md-4 d-flex  justify-content-center">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>

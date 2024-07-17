@@ -177,4 +177,4 @@
 
 
 
-<?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/admin/auth/login.blade.php ENDPATH**/ ?>
+<?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/admin/auth/login.blade.php ENDPATH**/ ?>

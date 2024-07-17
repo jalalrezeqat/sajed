@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      */
     public function index()
@@ -19,7 +19,7 @@ class OrderController extends Controller
         $order = DB::table('orders')->get();
         $coureses = DB::table('courses')->get();
 
-        return view('admin.layouts.courses.order', compact('order'));
+        return view('admin.layouts.courses.order', compact('order', 'coureses'));
     }
 
     /**
@@ -46,7 +46,7 @@ class OrderController extends Controller
         }
         $student->save();
         $dd = 1;
-        return back()->with("message65", "شكرا لطلبك من الفا سيصلك الطلب خلال 24 ساعة");
+        return back()->with("message65", "شكرا على ثقتك بالفا سيصل طلبك في اقرب وقت ممكن");
     }
 
     /**
@@ -76,8 +76,12 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(order $order)
+    public function destroy(int $order_id)
     {
-        //
+        $connectusDb = DB::table('orders');
+        $connectusdelete = $connectusDb->where('id', $order_id);
+        $connectusdelete->delete();
+
+        return  redirect()->back();
     }
 }

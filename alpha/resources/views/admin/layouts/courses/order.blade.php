@@ -32,8 +32,19 @@
                         <td class="">{{ $orders->phone }} </td>
                         <td class="">{{ $orders->gavarment }} </td>
                         <td class="">{{ $orders->addres }} </td>
-                        <td class="">{{ $orders->course }} </td>
+                        <td class="">
+                            @foreach ($coureses as $couresess)
+                                @if ($orders->course == $couresess->id)
+                                    {{ $couresess->name }}
+                                @endif
+                            @endforeach
+                        </td>
+
                         <td class="">{{ $orders->created_at }} </td>
+                        <td></td>
+                        <td><a href="{{ route('admin.order.destroy', $orders->id) }}"
+                                onclick="return confirm(' هل انت متاكد سيتم الحدف') "
+                                class="btn btn-danger editdelete">حذف</a></td>
 
 
 

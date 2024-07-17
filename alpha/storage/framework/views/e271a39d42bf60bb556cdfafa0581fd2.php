@@ -23,7 +23,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('breakpoints', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-2423951439-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-2457590730-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -55,11 +55,11 @@ if (isset($__slots)) unset($__slots);
 
       <div class="d-flex justify-content-center mt-5 dir">
           <div id="butcour">
-              <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?>" class="btn btnfcous ">الفصل الاول </a>
+              <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?>" class="btn btnfcou ">الفصل الاول </a>
 
           </div>
           <div class="mr-5">
-              <a href="<?php echo e(route('front.FrontCourcse1', $branch->id)); ?>" class="btn btnfcou">الفصل الثاني</a>
+              <a href="<?php echo e(route('front.FrontCourcse1', $branch->id)); ?>" class="btn btnfcous">الفصل الثاني</a>
           </div>
       </div>
 
@@ -94,4 +94,4 @@ if (isset($__slots)) unset($__slots);
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/front/FrontSecCourcse.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/front/FrontCourcse.blade.php ENDPATH**/ ?>

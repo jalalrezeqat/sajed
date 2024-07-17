@@ -104,6 +104,10 @@ if (isset($__slots)) unset($__slots);
 ?>
   
   <?php $__env->startSection('content'); ?>
+      <?php
+      
+      ?>
+
       <section class="homepage">
           <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
               <div id="popup">
@@ -120,8 +124,7 @@ if (isset($__slots)) unset($__slots);
           </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
-                  <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1024)): ?>
-
+                  <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1029)): ?>
                   <div class="col float-right ring">
                       <div>
 
@@ -129,7 +132,8 @@ if (isset($__slots)) unset($__slots);
                       </div>
                       <div>
                           <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
-">نحن نقدم لك كافة دورات مرحلة
+">نحن نقدم لك كافة دورات
+                              مرحلة
                               التوجيهي التي تحتاجها
                               للحـصـول عـلى مـعـدل
                               تحلم به وعلى ايدي امهر الاساتذة.</p>
@@ -158,15 +162,15 @@ if (isset($__slots)) unset($__slots);
                   </div>
                   <div class="col  float-left">
                       <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          <img id="img-about" class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
+                          <img id="" class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                               alt="">
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
               </div>
           </div>
           <?php endif; ?>
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
 
+          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 481, 1028)): ?>
           <div class="col float-right ring">
               <div>
 
@@ -204,7 +208,44 @@ if (isset($__slots)) unset($__slots);
           </div>
           </div>
           <?php endif; ?>
-          
+          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
+          <div class="col ">
+              <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <img class="img-home" src="<?php echo e(asset('img/slider/' . $sliders->img)); ?>" alt="">
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </div>
+          <div class="col float-right ring">
+              <div>
+
+                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
+              </div>
+              <div>
+                  <p class="font18px">نحن نقدم لك كافة دورات مرحلة
+                      التوجيهي التي تحتاجها
+                      للحـصـول عـلى مـعـدل
+                      تحلم به وعلى ايدي امهر الاساتذة.</p>
+              </div>
+              <div>
+                  <div class="row dir " style="margin-top:20px">
+                      <div class="col">
+                          <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                              </button></a>
+                      </div>
+                      <div class="col">
+                          <div class="row">
+                              <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
+                                  <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
+                                      أكثر</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          </div>
+          </div>
+          <?php endif; ?>
       </section>
       <?php if(Auth::user()): ?>
           <?php $course = DB::table('codecards')
@@ -216,33 +257,33 @@ if (isset($__slots)) unset($__slots);
                   
 
                   <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                                                                                <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                                                                                                                                        <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <?php if($coursenames->id == $coursess->courses): ?>
     <div class="col colcard">
-                                                                                                <div class="card-home card  " id="card-profile">
-                                                                                                    <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>" class="card-img-top-profile"
-                                                                                                        alt="...">
-                                                                                                    <div class="card-body">
-                                                                                                        <?php $__currentLoopData = $lessonid; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonids): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                                                                                                                                                        <div class="card-home card  " id="card-profile">
+                                                                                                                                                                                                                            <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>" class="card-img-top-profile"
+                                                                                                                                                                                                                                alt="...">
+                                                                                                                                                                                                                            <div class="card-body">
+                                                                                                                                                                                                                                <?php $__currentLoopData = $lessonid; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonids): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <?php if($coursenames->id == $lessonids->nameofcourse): ?>
     <p class="card-title-home font14px "><a
-                                                                                                                        href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson)); ?>"
-                                                                                                                        class="card-title-home text-center"><?php echo e($coursenames->name); ?></a>
-                                                                                                                </p>
+                                                                                                                                                                                                                                                href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson)); ?>"
+                                                                                                                                                                                                                                                class="card-title-home text-center"><?php echo e($coursenames->name); ?></a>
+                                                                                                                                                                                                                                        </p>
 <?php else: ?>
     <p class="card-title-home font14px "><a
-                                                                                                                        href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
-                                                                                                                        class="card-title-home "><?php echo e($coursenames->name); ?></a></p>
+                                                                                                                                                                                                                                                href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
+                                                                                                                                                                                                                                                class="card-title-home "><?php echo e($coursenames->name); ?></a></p>
     <?php endif; ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                    </div>
     <?php endif; ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            </div> -->
+                                                                                                                                                                                                    </div> -->
 
                   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
 
@@ -334,9 +375,7 @@ if (isset($__slots)) unset($__slots);
                   الوطن!
               </p>
           </div>
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 482)): ?>
-
-
+          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 481)): ?>
           
           <div id="carousel" class="carousel shadow-lg slider-tet slide">
               <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher1" alt="">
@@ -359,11 +398,101 @@ if (isset($__slots)) unset($__slots);
               </button>
               <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher2" alt="">
           </div>
-
-
           <?php endif; ?>
-          
-          
+
+          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
+          <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('breakpoints', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-776431003-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+
+
+          <style>
+              .img-1 {
+                  position: relative;
+                  width: 200px;
+                  height: auto;
+                  border-radius: 50%;
+                  top: -127px !important;
+                  /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+              }
+
+              .carousel-indicators li {
+                  cursor: pointer;
+                  border-radius: 50% !important;
+                  width: 10px;
+                  height: 10px;
+                  opacity: 0.5;
+                  margin: 0 15px 18px 15px;
+                  color: #27AC1F;
+                  background-color: #27AC1F !important;
+                  bottom: -30px;
+                  position: relative
+              }
+
+              .carousel-indicators li::marker {
+                  visibility: hidden;
+                  color: #cd1e27;
+                  font-size: 0px
+              }
+
+              #carouselExample {
+                  box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
+              }
+
+              .carousel-inner {
+                  border-radius: 15px !important
+              }
+          </style>
+          <div class="container px-2 px-md-4 py-5 mx-auto ">
+              <div class="row d-flex justify-content-center ">
+                  <div class="col-lg-5 col-md-7 col-sm-9 ">
+
+                      <div id="carouselExample" class="carousel  shadow-sm  slide">
+                          <div class="carousel-inner">
+                              <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                                      <img class="d-block d-block   img-slider-teacher"
+                                          src="<?php echo e(asset('img/sliderphone/' . $sliderteachermobs->img)); ?>"
+                                          alt="<?php echo e($sliderteachermobs->id); ?>">
+                                  </div>
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                              data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                              data-bs-slide="next">
+                              <span class="carousel-control-next-icon"></span>
+                              <span class="visually-hidden">Next</span>
+                          </button>
+                          <ol class="carousel-indicators">
+                              <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <li data-target="#carouselExample" class="<?php echo e($key == 0 ? 'active' : ''); ?>"
+                                      data-slide-to="0">
+                                  </li>
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                          </ol>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <?php endif; ?>
 
           
       </section>

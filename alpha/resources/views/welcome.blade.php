@@ -89,6 +89,10 @@
   <livewire:breakpoints />
   @extends('layouts.app')
   @section('content')
+      <?php
+      
+      ?>
+
       <section class="homepage">
           <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
               <div id="popup">
@@ -105,8 +109,7 @@
           </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
-                    @if($agent->isDesktop())
-
+                  @windowWidthGreaterThan(1029)
                   <div class="col float-right ring">
                       <div>
 
@@ -114,7 +117,8 @@
                       </div>
                       <div>
                           <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
-">نحن نقدم لك كافة دورات مرحلة
+">نحن نقدم لك كافة دورات
+                              مرحلة
                               التوجيهي التي تحتاجها
                               للحـصـول عـلى مـعـدل
                               تحلم به وعلى ايدي امهر الاساتذة.</p>
@@ -143,14 +147,15 @@
                   </div>
                   <div class="col  float-left">
                       @foreach ($slider as $slider)
-                          <img id="img-about" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
+                          <img id="" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
                               alt="">
                       @endforeach
                   </div>
               </div>
           </div>
           @endif
-@if($agent->isTablet())
+
+          @windowWidthBetween(481, 1028)
           <div class="col float-right ring">
               <div>
 
@@ -188,11 +193,10 @@
           </div>
           </div>
           @endif
-           @if($agent->isMobile()
-           )
+          @windowWidthLessThan(480)
           <div class="col ">
-              @foreach ($slider as $slider)
-                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+              @foreach ($slider as $sliders)
+                  <img class="img-home" src="{{ asset('img/slider/' . $sliders->img) }}" alt="">
               @endforeach
           </div>
           <div class="col float-right ring">
@@ -238,33 +242,33 @@
                   {{-- <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p> --}}
 
                   <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                                                                                @foreach ($course as $coursess)
+                                                                                                                                                                                                        @foreach ($course as $coursess)
     @foreach ($coursename as $coursenames)
     @if ($coursenames->id == $coursess->courses)
     <div class="col colcard">
-                                                                                                <div class="card-home card  " id="card-profile">
-                                                                                                    <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
-                                                                                                        alt="...">
-                                                                                                    <div class="card-body">
-                                                                                                        @foreach ($lessonid as $lessonids)
+                                                                                                                                                                                                                        <div class="card-home card  " id="card-profile">
+                                                                                                                                                                                                                            <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
+                                                                                                                                                                                                                                alt="...">
+                                                                                                                                                                                                                            <div class="card-body">
+                                                                                                                                                                                                                                @foreach ($lessonid as $lessonids)
     @if ($coursenames->id == $lessonids->nameofcourse)
     <p class="card-title-home font14px "><a
-                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
-                                                                                                                        class="card-title-home text-center">{{ $coursenames->name }}</a>
-                                                                                                                </p>
+                                                                                                                                                                                                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
+                                                                                                                                                                                                                                                class="card-title-home text-center">{{ $coursenames->name }}</a>
+                                                                                                                                                                                                                                        </p>
 @else
     <p class="card-title-home font14px "><a
-                                                                                                                        href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                                                                                        class="card-title-home ">{{ $coursenames->name }}</a></p>
+                                                                                                                                                                                                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                                                                                                                                                                                                                class="card-title-home ">{{ $coursenames->name }}</a></p>
     @endif
     @endforeach
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                    </div>
     @endif
     @endforeach
     @endforeach
-                                                                            </div> -->
+                                                                                                                                                                                                    </div> -->
 
                   <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
 
@@ -356,9 +360,7 @@
                   الوطن!
               </p>
           </div>
-          @if($agent->isDesktop()||$agent->isTablet()
-          )
-
+          @windowWidthGreaterThan(481)
           {{-- slide teacher --}}
           <div id="carousel" class="carousel shadow-lg slider-tet slide">
               <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
@@ -381,12 +383,9 @@
               </button>
               <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher2" alt="">
           </div>
-
-
           @endif
-                            
-          @if($agent->isMobile()
-          )
+
+          @windowWidthLessThan(480)
           <livewire:breakpoints />
 
 
@@ -451,19 +450,19 @@
                               <span class="carousel-control-next-icon"></span>
                               <span class="visually-hidden">Next</span>
                           </button>
-                           <ol class="carousel-indicators">
-                            @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
-                                    data-slide-to="0">
-                                </li>
-                            @endforeach
-                        </ol> 
-           </div>
+                          <ol class="carousel-indicators">
+                              @foreach ($sliderteachermob as $key => $sliderteachermobs)
+                                  <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
+                                      data-slide-to="0">
+                                  </li>
+                              @endforeach
+                          </ol>
+                      </div>
 
+                  </div>
+              </div>
           </div>
-          </div>
-          </div>
-          @endif  
+          @endif
 
           {{-- <div id="carouselExample" class="carousel slide d-flex" data-ride="carousel">
                         <ol class="carousel-indicators">

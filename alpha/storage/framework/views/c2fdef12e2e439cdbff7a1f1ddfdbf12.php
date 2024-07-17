@@ -236,4 +236,4 @@
 
 
 
-<?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/admin/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/admin/layouts/app.blade.php ENDPATH**/ ?>

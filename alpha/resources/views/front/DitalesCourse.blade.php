@@ -18,9 +18,27 @@
 
 
 
+        <script>
+            (function() {
 
+                var viewportWidth = $(window).width();
+
+
+
+                if (viewportWidth > 1400) {
+
+                    $('#wrapper').load('/ajax/largeScreen.php');
+
+                } else {
+
+                    $('#wrapper').load('/ajax/smallScreen.php');
+
+                }
+
+            }());
+        </script>
         <div class="box-ditalescourse" id="box-ditalescourse">
-            @if($agent->isDesktop()||$agent->isTablet())
+            @windowWidthGreaterThan(481)
 
             <div class="column1">
 
@@ -35,44 +53,44 @@
                             <p class="user_name h3 font481px">{{ $b->branche }} - {{ $b->chabters }} </p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <p class="mt-3  col-lg-4 font14px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
-                                        style="font-size:14px;color:#F8F8F8"></i>
+                            <p class="mt-3  col-lg-4 font18px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
+                                        style="font-size:18px;color:#F8F8F8"></i>
                                 </span> مدرس الدورة :
                                 @foreach ($teatcher as $teatchers)
                                     {{ $teatchers->name }}
                             </p>
                             @endforeach
 
-                            <p class="mt-3  col-lg-5 font14px" style="color: #F8F8F8"> <span><i class="fa fa-list"
-                                        style="font-size:14px;"></i>
+                            <p class="mt-3  col-lg-5 font18px" style="color: white"> <span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
                                 </span> عدد دروس الدورة :
                                 {{ $lessoncount }} درساً مسجلاً</p>
                         </div>
-                        @if($agent->isDesktop())
+                        @windowWidthGreaterThan(1029)
 
                         <div class="row coursedetales mt-5">
                             <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                     aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                            <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 90px;"> أدخل كود البطاقة
+                            <p class=" inpoutlabel mr-3 col-lg-5" style="color: white;"> أدخل كود البطاقة
                                 وابدأ
                                 بالتّعلّم</p>
                         </div>
                         <div class="row coursedetales">
 
-                            <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
+                            <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
                                 {{ $b->price }} ₪
                             </p>
                             @endif
-                            @if($agent->isTablet()
-                            )
+                            @windowWidthBetween(600, 1028)
                             <div class="row coursedetales mt-5">
 
                                 <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                         aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                                <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
+                                <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
                                     {{ $b->price }} ₪
                                 </p>
-                                <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 0px;"> أدخل كود البطاقة
+                                <p class=" inpoutlabel mr-3 col-lg-5" style="color:white ;margin-right: 0px;"> أدخل كود
+                                    البطاقة
                                     وابدأ
                                     بالتّعلّم</p>
                                 @endif
@@ -94,7 +112,7 @@
         </div>
 
         @endif
-        @if($agent->isMobile())
+        @windowWidthLessThan(480)
         <div class="row mobiw">
 
             <div class="col-12">
@@ -156,6 +174,8 @@
     <section>
 
         {{-- navbar  --}}
+        @windowWidthGreaterThan(1028)
+
         <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light mt-5">
 
 
@@ -178,6 +198,7 @@
                 </ul>
             </div>
         </nav>
+        @endif
     </section>
     <section class="mt100px">
         {{-- course about --}}
@@ -201,7 +222,7 @@
                     <div class="col-2"></div>
                     <div class="col-2">
                         <div class="row" style="--bs-gutter-x:0">
-                            @if($agent->isDesktop())
+                            @windowWidthGreaterThan(1028)
 
                             @foreach ($teatcher as $teatchers)
                                 <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
@@ -212,7 +233,7 @@
                             <p class="nametetcher" style="color: #27AC1F;margin-right:15%;">{{ $teatchers->name }}</p>
                         </div>
                         @endif
-                        @if($agent->isTablet())
+                        @windowWidthBetween(600, 1028)
                         @foreach ($teatcher as $teatchers)
                             <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
                                 alt="">
@@ -222,7 +243,7 @@
                         <p class="nametetcher">{{ $teatchers->name }}</p>
                     </div>
                     @endif
-                    @if($agent->isMobile())
+                    @windowWidthLessThan(480)
 
                     @foreach ($teatcher as $teatchers)
                         <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}" alt="">
@@ -408,7 +429,7 @@
                                        "><label
                                                             class=" " aria-current="page" for="modal-toggle-vedio">
                                                             {{ $lessons->name }} </label></button></a>
-                                               
+
                                             @endif
                                             @if ($key > 0)
                                                 <i style="font-size:24px;color:" class="fa">&#xf144;</i>
@@ -547,7 +568,7 @@
 
                 <input id="modal-toggle-vedio" type="checkbox">
                 <label class="modal-backdrop" data-bs-backdrop="static" tabindex="-1" for="modal-toggle-vedio"></label>
-                <div class="modal-content">
+                <div class="modal-content-vedio">
                     <label class="modal-close-btn" for="modal-toggle-vedio">
                         <svg width="30" height="30">
                             <line x1="5" y1="5" x2="20" y2="20" />
@@ -569,12 +590,13 @@
                                             size="720">
                                         <source src="{{ asset('img/vedio/' . $lesson[0]->vedio) }}" type="video/mp4"
                                             size="1080">
-                                    @else
-                                        <iframe src="{{ $lesson[0]->iframe }}" frameborder="0"
-                                            style="border:0;height:400px;width:880px;max-width:100%"
-                                            allowFullScreen="true" allow="encrypted-media"></iframe>
                                 @endif
                             @endforeach
+                            @if (($lesson[0]->vedio != null) & ($lesson[0]->iframe != null))
+                                <iframe src="{{ $lesson[0]->iframe }}" frameborder="0"
+                                    style="border:0;height:400px;width:880px;max-width:100%" allowFullScreen="true"
+                                    allow="encrypted-media"></iframe>
+                            @endif
                         </div>
                     </div>
                 </div>

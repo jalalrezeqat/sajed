@@ -39,7 +39,6 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-  <?php session('windowW'); ?>
   <?php $__env->startSection('content'); ?>
       
       <section class="">
@@ -55,7 +54,7 @@ if (isset($__slots)) unset($__slots);
               </div>
           </div>
           
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 480)): ?>
+          <?php if($agent->isDesktop()||$agent->isTablet()): ?>
 
           <div class="mt">
               <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
@@ -68,7 +67,8 @@ if (isset($__slots)) unset($__slots);
       <section class="mt100px">
           <div class="row row-cols-1  card-course dir ovarflow  row-cols-md-3 ">
               <?php $__currentLoopData = $branch; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
+                 <?php if($agent->isDesktop()): ?>
+
 
                   <div class="col colcard">
                       <div class="card-home card card-home " id="card-home-coures">
@@ -89,7 +89,7 @@ if (isset($__slots)) unset($__slots);
                   </div>
                   
               <?php endif; ?>
-              <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
+              <?php if($agent->isTablet()): ?>
 
               <div class="col colcard">
                   <div class="card-home card card-home " id="card-home-coures">
@@ -109,7 +109,8 @@ if (isset($__slots)) unset($__slots);
                   </div>
               </div>
               <?php endif; ?>
-              <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 481)): ?>
+              <?php if($agent->isMobile()
+              ): ?>
 
               <div class="col colcard">
                   <div class="card-home card  " id="card-home-coures">

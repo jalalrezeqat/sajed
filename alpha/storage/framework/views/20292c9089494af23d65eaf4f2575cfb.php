@@ -69,17 +69,16 @@
                                 <div class="card-body">
                                     <?php $__currentLoopData = $lessonid; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonids): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php if($coursenames->id == $lessonids->idcoures): ?>
-                                            <p class="card-title-home font14px "><a
+                                            <p class="card-title-home font18px "><a
                                                     href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson)); ?>"
-                                                    class="card-title-home text-center"><?php echo e($coursenames->name); ?></a>
+                                                    class="card-title-home  text-center"><?php echo e($coursenames->name); ?></a>
                                             </p>
                                             <?php $auth = 0; ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php if($auth == 1): ?>
-                                        <p class="card-title-home font14px "><a
-                                                href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
-                                                class="card-title-home "><?php echo e($coursenames->name); ?></a></p>
+                                        <a class="nav-link" href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
+                                            class="card-title-home "><?php echo e($coursenames->name); ?></a>
                                     <?php endif; ?>
                                 </div>
                             </div>

@@ -1,34 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar">
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
-<?php session('windowW'); ?>
 <?php
-use Tanthammar\LivewireWindowSize\HasBreakpoints;
 
 $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
 $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
 $connectwithus = DB::table('connect_with_us')->get();
-
+$branche = DB::table('branches')->get();
+use Jenssegers\Agent\Agent;
+$agent = new Agent();
 ?>
 
-<?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('breakpoints', []);
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-1126335231-0', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
 
 <head>
     <meta name="viewport">
@@ -81,14 +65,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
     <div id="app">
 
-        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 481)): ?>
+        
         <div class="nav-background">
 
             <nav class="navbar navbar-home navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
 
                     <?php $__currentLoopData = $headericon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $headericons): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <a class="navbar-brand" href="<?php echo e(url('/')); ?>"
+                        <a class="navbar-brand" style="margin-right: 15vw" href="<?php echo e(url('/')); ?>"
                             aria-label="Read more about Seminole tax hike"><img
                                 src="<?php echo e(asset('img/Favoriteicon/' . $headericons->img)); ?>" alt=""></a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -176,113 +160,14 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 </div>
             </nav>
         </div>
-        <?php endif; ?>
-        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
-        <nav class="navbar  navbar-expand-lg navbar-dark 
-                bg-dark border-bottom-0">
-            <!-- Navbar toggle button (hamburger icon) -->
-            <button class="navbar-toggler d-block d-md-none" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#sidebar" aria-controls="sidebar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <?php $__currentLoopData = $headericon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $headericons): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a class="navbar-brand" href="<?php echo e(url('/')); ?>" aria-label="Read more about Seminole tax hike"><img
-                        src="<?php echo e(asset('img/Favoriteicon/' . $headericons->img)); ?>" alt=""></a>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </nav>
+        
+        
+        
 
-        <div class="offcanvas offcanvas-start 
-                bg-light d-md-block" tabindex="-1" id="sidebar"
-            aria-labelledby="sidebarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-dark">ALPHA</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-                </button>
-            </div>
-            <div class="offcanvas-body ">
-                <ul class="nav flex-column ">
-                    <li class="nav-item">
-                        <a id="home" class="nav-link   text-dark  active " tabindex="1" aria-current="page"
-                            href="<?php echo e(url('/')); ?>">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link   text-dark  active" href="<?php echo e(url('/courses')); ?>">
+        <main class="">
 
-                            الدورات</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark  active " href="<?php echo e(url('/about')); ?>">حول
-                            الفا</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-dark  active" href="<?php echo e(url('/Connectus')); ?>">اتصل
-                            بنا</a>
-                    </li>
-                    <?php if(auth()->guard()->guest()): ?>
-                        <?php if(Route::has('login')): ?>
-                            <li class="nav-item">
-                                <label class="nav-link text-dark  active " aria-current="page"
-                                    for="modal-toggle-regester">تسجيل
-                                </label>
-                                <label class="nav-link text-dark active " aria-current="page" for="modal-toggle">تسجيل
-                                    الدخول</label>
-                            </li>
-                        <?php endif; ?>
-                        <?php if(Route::has('register')): ?>
-                            <li class="nav-item-home">
-                            <li> </li>
-                            </li>
-                        <?php endif; ?>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item-home dropdown active">
-                            <a id="navbarDropdown" class="nav-link active dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <?php echo e(Auth::user()->name); ?>
-
-                            </a>
-
-                            <div class="dropdown-menu dir dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?php echo e(route('dashboard')); ?>">
-
-                                    <?php echo e(__(' الملف الشخصي')); ?>
-
-                                </a>
-
-                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
-                                    onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                                    <?php echo e(__('تسجيل الخروج')); ?>
-
-                                </a>
-
-
-                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
-                                    <?php echo csrf_field(); ?>
-                                </form>
-
-                            </div>
-
-                        </li>
-                    <?php endif; ?>
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-    </nav>
-
-
-    <?php endif; ?>
-    
-
-    <main class="">
-
-        <?php echo $__env->yieldContent('content'); ?>
-    </main>
+            <?php echo $__env->yieldContent('content'); ?>
+        </main>
     </div>
 </body>
 
@@ -333,8 +218,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
-
+                <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1029)): ?>
                 <div class="col-lg-3 ">
 
                     <ul class="list-unstyled ">
@@ -353,7 +237,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     </ul>
                 </div>
                 <?php endif; ?>
-                <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 1028)): ?>
+                <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 0, 1028)): ?>
                 <div class="col-lg-3 ">
 
                     <ul class="mt-5 mb-5 ">
@@ -427,7 +311,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 
                 <input id="modal-toggle" type="checkbox">
                 <label class="modal-backdrop" for="modal-toggle"></label>
-                <div class="modal-content">
+                <div class="modal-content-login">
                     <label class="modal-close-btn" for="modal-toggle">
                         <svg width="30" height="30">
                             <line x1="5" y1="5" x2="20" y2="20" />
@@ -462,22 +346,25 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 </div>
                             </div>
                             <div class="col-12 col-lg-5 dir">
-                                <p class="mb-3 dir text-center ">مرحباً بك في ألفا</p>
-                                <p class="dir text-center ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7
+                                <p class="mb-3 dir text-center font18px ">مرحباً بك في ألفا</p>
+                                <p class="dir text-center font14px ">أنتَ الآن أحد المشاركين في رحلة الـ 99.7
                                 </p>
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <div class="alert alert-danger"><?php echo e($message); ?></div>
-                                    <script>
-                                        $('#modal-toggle').click();
-                                    </script>
+                                    <?php if($message == 'يرجى التاكد من المعلومات المدخلة '): ?>
+                                        <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                        <script>
+                                            $('#modal-toggle').click();
+                                        </script>
+                                    <?php endif; ?>
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                
                                 <form method="POST" action="<?php echo e(route('login')); ?>">
                                     <?php echo csrf_field(); ?>
                                     <?php if(session('status')): ?>
@@ -490,32 +377,12 @@ unset($__errorArgs, $__bag); ?>
                                             <?php echo e(session('error')); ?>
 
                                         </div>
-
                                     <?php endif; ?>
                                     <div class="row gy-4 gy-xl-2 p-4 p-xl-5">
                                         <div class="col-12 inpout-email">
                                             <input type="email" class="form-control" id="email" name="email"
                                                 value="" placeholder="الايميل" required>
-                                            <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['messages' => $errors->get('email'),'class' => 'mt-2']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('input-error'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('email')),'class' => 'mt-2']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
-<?php endif; ?>
+                                            
 
                                         </div>
                                         <div class="col-12 inpout-email">
@@ -532,9 +399,9 @@ unset($__errorArgs, $__bag); ?>
                                             <label class="nav-link active regester-model col-6" id=""
                                                 aria-current="page" for="modal-toggle-regester">انشاءحساب
                                             </label>
-                                            <a class="reg-login  col-6" href="">هل نسيت كلمة
-                                                المرور
-                                                ؟ </a>
+                                            <label class="nav-link active regester-model col-6" id=""
+                                                aria-current="page" for="modal-toggle-regester">هل نسيت كلمة المرور
+                                            </label>
 
 
 
@@ -592,26 +459,31 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <div class="alert alert-danger"><?php echo e($message); ?></div>
-                                    <script>
-                                        $('#modal-toggle-regester').click();
-                                    </script>
+                                    <?php if($message == 'كلمة المرور غير متطابقة'): ?>
+                                        <div class="alert alert-danger"><?php echo e($message); ?></div>
+
+                                        <script>
+                                            $('#modal-toggle-regester').click();
+                                        </script>
+                                    <?php endif; ?>
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-12 col-md-5">
-
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <div class="alert alert-danger"><?php echo e($message); ?></div>
-                                    <script>
-                                        $('#modal-toggle-regester').click();
-                                    </script>
+                                    <?php if($message == 'الايميل المدخل مستخدم '): ?>
+                                        <div class="alert alert-danger"><?php echo e($message); ?></div>
+
+                                        <script>
+                                            $('#modal-toggle-regester').click();
+                                        </script>
+                                    <?php endif; ?>
                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -640,40 +512,89 @@ unset($__errorArgs, $__bag); ?>
                                     <label for="fname" class="form-label"> <span
                                             class="text-danger"></span></label>
                                     <div class="input-group">
-                                        <input type="fname" class="form-control" placeholder="المحافظة"
-                                            id="Governorate" name="Governorate" value="" required>
+
+                                        <select class="form-control  " name="Governorate" id="Governorate">
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="الخليل" required>
+                                                الخليل
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="القدس" required>
+                                                القدس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="اريحا" required>
+                                                اريحا
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="رام الله والبيرة" required>
+                                                رام الله والبيرة
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="بيت لحم" required>
+                                                بيت لحم
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="طوباس" required>
+                                                طوباس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="جنين" required>
+                                                جنين
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="نابلس" required>
+                                                نابلس
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="قلقيلة" required>
+                                                قلقيلة
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="سلفيت" required>
+                                                سلفيت
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="طولكرم" required>
+                                                طولكرم
+                                            </option>
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="قطاع غزة" required>
+                                                قطاع غزة
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-12 col-md-5 float-reg dir ">
                                     <label for="fname" class="form-label"> <span
                                             class="text-danger"></span></label>
                                     <div class="input-group  form-control dir ">
                                         <label for="" class="form-check-label" for="inlineCheckbox1">الفرع
                                             :</label>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="branch"
-                                                id="branch1" value="ادبي">
-                                            <label class="form-check-label1" for="inlineRadio1">ادبي</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="branch"
-                                                id="branch2" value="علمي">
-                                            <label class="form-check-label2" for="inlineRadio1">علمي</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="branch"
-                                                id="branch3" value="صناعي">
-                                            <label class="form-check-label3" for="inlineRadio1">صناعي</label>
-                                        </div>
+                                        <?php $__currentLoopData = $branche; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branches): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            
+                                            <div class="form-check "
+                                                style="text-align: right;position: inherit;  direction: rtl;
+    unicode-bidi: bidi-override;">
+                                                <input
+                                                    className="form-check-input appearance-none rounded-full h-7 w-7 border-4 border-[#5F6368] bg-[#C4C4C4] hover:shadow-lg hover:shadow-[#5F6368] hover:border-[#3B52B5] checked:bg-[#7EABFF] checked:border-[#3B52B5] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-5 cursor-pointer"
+                                                    type="radio" name="branch" id="branch"
+                                                    value="<?php echo e($branches->name); ?>">
+                                                <label class="form-check-label" for="option-">
+                                                    <?php echo e($branches->name); ?> </label>
+
+                                            </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                        
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <div class="input-group">
                                         <input type="email" class="form-control" placeholder="الايميل"
-                                            id="email1" name="email1" required
-                                            value="
-                                            ">
+                                            id="email" name="email" required value=" ">
                                     </div>
 
                                 </div>
@@ -710,7 +631,18 @@ unset($__errorArgs, $__bag); ?>"
 
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 d-flex but-regester justify-content-center">
+                                <div class="col-12 col-md-12 d-flex but-regester justify-content-center">
+                                    <input type="checkbox" name="polices" value="accept" required>
+                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على سياسة
+                                        الشروط والاحكام والخصوصية</label><br>
+
+                                </div>
+                                <div class="col-12 col-md-12 d-flex justify-content-center">
+                                    <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة الشروط
+                                        والاحكام والخصوصية قبل التسجيل</p><br>
+
+                                </div>
+                                <div class="col-12 col-md-4 d-flex  justify-content-center">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
                                     <button type="submit" class="btn contectus-form-but ">إنشاء
                                         الحساب</button>

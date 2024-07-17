@@ -19,24 +19,59 @@
     <section>
         <div class="slider dir " style=" margin-top: 70px;">
             <div class="row">
-                @if($agent->isDesktop()||$agent->isTablet())
+                @if ($agent->isDesktop() || $agent->isTablet())
+                    <div class="col ring">
+                        <div>
+
+                            <p class="font48px">حول منصّة ألفا التعليميّة</p>
+                            @foreach ($aboutalpha as $aboutalphas)
+                                <p class="font18px  aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
+                            @endforeach
+                        </div>
+
+                        <div>
+                            <div class="row dir " style="margin-top:10%">
+                                <div class="col">
+                                    <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font24px"
+                                                style="color:#27AC1F"></i>
+                                            <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                    </div>
+            </div>
+            @endif
+            @if ($agent->isMobile())
+                <div class="col">
+                    @foreach ($slider as $slider)
+                        <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                    @endforeach
+                </div>
                 <div class="col ring">
                     <div>
 
-                        <p class="font48px">حول منصّة ألفا التعليميّة</p>
+                        <p class="font48px" style="text-align: center">حول منصّة ألفا التعليميّة</p>
                         @foreach ($aboutalpha as $aboutalphas)
-                            <p class="font18px  aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
+                            <p class="font18px aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
                         @endforeach
-                    </div>
 
+                    </div>
                     <div>
-                        <div class="row dir " style="margin-top:10%">
+                        <div class="row dir " style="margin-top:50px">
                             <div class="col">
                                 <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
                             </div>
                             <div class="col">
-                                <div class="row">
-                                    <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font24px"
+                                <div class="row" style="margin:auto">
+                                    <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
                                             style="color:#27AC1F"></i>
                                         <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                                     </div>
@@ -45,43 +80,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    @foreach ($slider as $slider)
-                        <img class=" img-about2 img-about1" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
-                    @endforeach
-                </div>
-            </div>
-            @endif
-            @if($agent->isMobile())
-            <div class="col">
-                @foreach ($slider as $slider)
-                    <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
-                @endforeach
-            </div>
-            <div class="col ring">
-                <div>
-
-                    <p class="font48px" style="text-align: center">حول منصّة ألفا التعليميّة</p>
-                    @foreach ($aboutalpha as $aboutalphas)
-                        <p class="font18px aboutalpha">{{ $aboutalphas->aboutalpha }}</p>
-                    @endforeach
-
-                </div>
-                <div>
-                    <div class="row dir " style="margin-top:50px">
-                        <div class="col">
-                            <a href="{{ url('/courses') }}"><button class="btnhome btn">ابدأ الآن</button></a>
-                        </div>
-                        <div class="col">
-                            <div class="row" style="margin:auto">
-                                <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
-                                    <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         @endif

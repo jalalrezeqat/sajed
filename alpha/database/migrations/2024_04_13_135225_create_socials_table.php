@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['facebook', 'instagram', 'whatsapp', 'youtube'])->nullable();
+            $table->string('name')->nullable();
             $table->string('nameofpage')->nullable();
             $table->string('img')->nullable();
             $table->string('url')->nullable();

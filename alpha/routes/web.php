@@ -213,11 +213,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashbord/sudant', [App\Http\Controllers\Admin\HomeController::class, 'studantdetales'])->name('dashbord.studant');
         Route::post('/dashbord/sudant/serach', [App\Http\Controllers\Admin\HomeController::class, 'studantserch'])->name('dashbord.serchstudant');
         Route::get('/dashbord/coures', [App\Http\Controllers\Admin\HomeController::class, 'couresstauet'])->name('dashbord.coures');
-        Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
         Route::get('/dashbord/count/studant', [App\Http\Controllers\Admin\HomeController::class, 'countstudant'])->name('dashbord.countstudant');
+        Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'codesarch'])->name('dashbord.codesarch');
+        Route::post('/dashbord/coures/serach1', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
+
 
         //order
         Route::get('/order', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order');
+        Route::get('/order/{order_id}/delete', [App\Http\Controllers\Admin\OrderController::class, 'destroy'])->name('order.destroy');
 
 
         // results

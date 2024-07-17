@@ -31,37 +31,40 @@
                                         <p class="font18px">سنكونُ سعيدين في استقبال استفساراتكُم</p>
                                     </div>
                                 </div>
-                                @if($agent->isDesktop())
-                                <div class="col">
-                                    <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
-                                                class="d-block" alt="">
-                                        @endforeach
-                                    </div>
+                                @if ($agent->isDesktop())
+                                    <div class="col">
+                                        <div class=" contact-img">
+                                            @foreach ($slider as $slider)
+                                                <img class="contact-img d-block"
+                                                    src="{{ asset('img/slider/' . $slider->img) }}" class="d-block"
+                                                    alt="">
+                                            @endforeach
+                                        </div>
 
-                                </div>
-                                @endif
-                                @if($agent->isDesktop()||$agent->isTablet())
-                                <div class="row">
-                                    <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="img-about d-block" src="{{ asset('img/slider/' . $slider->img) }}"
-                                                class="d-block" alt="">
-                                        @endforeach
                                     </div>
+                                @endif
+                                @if ($agent->isTablet())
+                                    <div class="row">
+                                        <div class=" contact-img">
+                                            @foreach ($slider as $slider)
+                                                <img class="img-about d-block"
+                                                    src="{{ asset('img/slider/' . $slider->img) }}" class="d-block"
+                                                    alt="">
+                                            @endforeach
+                                        </div>
 
-                                </div>
-                                @endif
-                                @if($agent->isMobile())
-                                <div class="col">
-                                    <div class=" contact-img">
-                                        @foreach ($slider as $slider)
-                                            <img class="contact-img d-block" src="{{ asset('img/slider/' . $slider->img) }}"
-                                                class="d-block" alt="">
-                                        @endforeach
                                     </div>
-                                </div>
+                                @endif
+                                @if ($agent->isMobile())
+                                    <div class="col">
+                                        <div class=" contact-img">
+                                            @foreach ($slider as $slider)
+                                                <img class="contact-img d-block"
+                                                    src="{{ asset('img/slider/' . $slider->img) }}" class="d-block"
+                                                    alt="">
+                                            @endforeach
+                                        </div>
+                                    </div>
                             </div>
                             @endif
                         </div>

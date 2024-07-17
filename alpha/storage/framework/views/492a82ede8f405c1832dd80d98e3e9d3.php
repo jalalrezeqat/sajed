@@ -32,7 +32,25 @@ if (isset($__slots)) unset($__slots);
 
 
 
+        <script>
+            (function() {
 
+                var viewportWidth = $(window).width();
+
+
+
+                if (viewportWidth > 1400) {
+
+                    $('#wrapper').load('/ajax/largeScreen.php');
+
+                } else {
+
+                    $('#wrapper').load('/ajax/smallScreen.php');
+
+                }
+
+            }());
+        </script>
         <div class="box-ditalescourse" id="box-ditalescourse">
             <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 481)): ?>
 
@@ -49,8 +67,8 @@ if (isset($__slots)) unset($__slots);
                             <p class="user_name h3 font481px"><?php echo e($b->branche); ?> - <?php echo e($b->chabters); ?> </p>
                         </div>
                         <div class="row coursedetales mt-5">
-                            <p class="mt-3  col-lg-4 font14px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
-                                        style="font-size:14px;color:#F8F8F8"></i>
+                            <p class="mt-3  col-lg-4 font18px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
+                                        style="font-size:18px;color:#F8F8F8"></i>
                                 </span> مدرس الدورة :
                                 <?php $__currentLoopData = $teatcher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teatchers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php echo e($teatchers->name); ?>
@@ -58,35 +76,36 @@ if (isset($__slots)) unset($__slots);
                             </p>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                            <p class="mt-3  col-lg-5 font14px" style="color: #F8F8F8"> <span><i class="fa fa-list"
-                                        style="font-size:14px;"></i>
+                            <p class="mt-3  col-lg-5 font18px" style="color: white"> <span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
                                 </span> عدد دروس الدورة :
                                 <?php echo e($lessoncount); ?> درساً مسجلاً</p>
                         </div>
-                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
+                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1029)): ?>
 
                         <div class="row coursedetales mt-5">
                             <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                     aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                            <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 90px;"> أدخل كود البطاقة
+                            <p class=" inpoutlabel mr-3 col-lg-5" style="color: white;"> أدخل كود البطاقة
                                 وابدأ
                                 بالتّعلّم</p>
                         </div>
                         <div class="row coursedetales">
 
-                            <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
+                            <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
                                 <?php echo e($b->price); ?> ₪
                             </p>
                             <?php endif; ?>
-                            <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
+                            <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 600, 1028)): ?>
                             <div class="row coursedetales mt-5">
 
                                 <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
                                         aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                                <p class="mt-3 font14px col-lg-3" style="color: #85FE78; "> السعر :
+                                <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
                                     <?php echo e($b->price); ?> ₪
                                 </p>
-                                <p class=" mr-3 col-lg-5" style="color: #F8F8F8;margin-right: 0px;"> أدخل كود البطاقة
+                                <p class=" inpoutlabel mr-3 col-lg-5" style="color:white ;margin-right: 0px;"> أدخل كود
+                                    البطاقة
                                     وابدأ
                                     بالتّعلّم</p>
                                 <?php endif; ?>
@@ -185,6 +204,8 @@ unset($__errorArgs, $__bag); ?>
     <section>
 
         
+        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1028)): ?>
+
         <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light mt-5">
 
 
@@ -207,6 +228,7 @@ unset($__errorArgs, $__bag); ?>
                 </ul>
             </div>
         </nav>
+        <?php endif; ?>
     </section>
     <section class="mt100px">
         
@@ -241,7 +263,7 @@ unset($__errorArgs, $__bag); ?>
                             <p class="nametetcher" style="color: #27AC1F;margin-right:15%;"><?php echo e($teatchers->name); ?></p>
                         </div>
                         <?php endif; ?>
-                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 480, 1028)): ?>
+                        <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 600, 1028)): ?>
                         <?php $__currentLoopData = $teatcher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teatchers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <img class="imgtatecher " src="<?php echo e(asset('/img/teacher/' . $teatchers->img)); ?>"
                                 alt="">
@@ -423,11 +445,7 @@ unset($__errorArgs, $__bag); ?>
                                        "><label
                                                             class=" " aria-current="page" for="modal-toggle-vedio">
                                                             <?php echo e($lessons->name); ?> </label></button></a>
-                                                <?php
-                                                $path = 'img/vedio/' . $lessons->vedio;
-                                                $file = $id3->analyze($path);
-                                                ?>
-                                                <p class="mindet"><?php echo $file['playtime_string']; ?> دقيقة</p>
+
                                             <?php endif; ?>
                                             <?php if($key > 0): ?>
                                                 <i style="font-size:24px;color:" class="fa">&#xf144;</i>
@@ -559,7 +577,7 @@ unset($__errorArgs, $__bag); ?>
 
                 <input id="modal-toggle-vedio" type="checkbox">
                 <label class="modal-backdrop" data-bs-backdrop="static" tabindex="-1" for="modal-toggle-vedio"></label>
-                <div class="modal-content">
+                <div class="modal-content-vedio">
                     <label class="modal-close-btn" for="modal-toggle-vedio">
                         <svg width="30" height="30">
                             <line x1="5" y1="5" x2="20" y2="20" />
@@ -581,12 +599,13 @@ unset($__errorArgs, $__bag); ?>
                                             size="720">
                                         <source src="<?php echo e(asset('img/vedio/' . $lesson[0]->vedio)); ?>" type="video/mp4"
                                             size="1080">
-                                    <?php else: ?>
-                                        <iframe src="<?php echo e($lesson[0]->iframe); ?>" frameborder="0"
-                                            style="border:0;height:400px;width:880px;max-width:100%"
-                                            allowFullScreen="true" allow="encrypted-media"></iframe>
                                 <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php if(($lesson[0]->vedio != null) & ($lesson[0]->iframe != null)): ?>
+                                <iframe src="<?php echo e($lesson[0]->iframe); ?>" frameborder="0"
+                                    style="border:0;height:400px;width:880px;max-width:100%" allowFullScreen="true"
+                                    allow="encrypted-media"></iframe>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

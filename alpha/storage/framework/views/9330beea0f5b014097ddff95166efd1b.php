@@ -18,7 +18,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('breakpoints', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-2256302229-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-2129509054-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -34,24 +34,59 @@ if (isset($__slots)) unset($__slots);
     <section>
         <div class="slider dir " style=" margin-top: 70px;">
             <div class="row">
-                <?php if($agent->isDesktop()||$agent->isTablet()): ?>
+                <?php if($agent->isDesktop() || $agent->isTablet()): ?>
+                    <div class="col ring">
+                        <div>
+
+                            <p class="font48px">حول منصّة ألفا التعليميّة</p>
+                            <?php $__currentLoopData = $aboutalpha; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aboutalphas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <p class="font18px  aboutalpha"><?php echo e($aboutalphas->aboutalpha); ?></p>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+
+                        <div>
+                            <div class="row dir " style="margin-top:10%">
+                                <div class="col">
+                                    <a href="<?php echo e(url('/courses')); ?>"><button class="btnhome btn">ابدأ الآن</button></a>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font24px"
+                                                style="color:#27AC1F"></i>
+                                            <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                    </div>
+            </div>
+            <?php endif; ?>
+            <?php if($agent->isMobile()): ?>
+                <div class="col">
+                    <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <img class="img-about" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
                 <div class="col ring">
                     <div>
 
-                        <p class="font48px">حول منصّة ألفا التعليميّة</p>
+                        <p class="font48px" style="text-align: center">حول منصّة ألفا التعليميّة</p>
                         <?php $__currentLoopData = $aboutalpha; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aboutalphas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <p class="font18px  aboutalpha"><?php echo e($aboutalphas->aboutalpha); ?></p>
+                            <p class="font18px aboutalpha"><?php echo e($aboutalphas->aboutalpha); ?></p>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
 
+                    </div>
                     <div>
-                        <div class="row dir " style="margin-top:10%">
+                        <div class="row dir " style="margin-top:50px">
                             <div class="col">
                                 <a href="<?php echo e(url('/courses')); ?>"><button class="btnhome btn">ابدأ الآن</button></a>
                             </div>
                             <div class="col">
-                                <div class="row">
-                                    <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font24px"
+                                <div class="row" style="margin:auto">
+                                    <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
                                             style="color:#27AC1F"></i>
                                         <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                                     </div>
@@ -60,43 +95,6 @@ if (isset($__slots)) unset($__slots);
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <img class=" img-about2 img-about1" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
-            <?php endif; ?>
-            <?php if($agent->isMobile()): ?>
-            <div class="col">
-                <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <img class="img-about" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
-            <div class="col ring">
-                <div>
-
-                    <p class="font48px" style="text-align: center">حول منصّة ألفا التعليميّة</p>
-                    <?php $__currentLoopData = $aboutalpha; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aboutalphas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <p class="font18px aboutalpha"><?php echo e($aboutalphas->aboutalpha); ?></p>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                </div>
-                <div>
-                    <div class="row dir " style="margin-top:50px">
-                        <div class="col">
-                            <a href="<?php echo e(url('/courses')); ?>"><button class="btnhome btn">ابدأ الآن</button></a>
-                        </div>
-                        <div class="col">
-                            <div class="row" style="margin:auto">
-                                <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
-                                    <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <?php endif; ?>
@@ -136,4 +134,4 @@ if (isset($__slots)) unset($__slots);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sajed\alpha\resources\views/about.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/about.blade.php ENDPATH**/ ?>
