@@ -35,20 +35,18 @@
         <table class=" table-admin-connectus  ">
             <thead class="thead-green-connectus">
                 <tr class="">
-                    <th scope="col ">#</th>
                     <th scope="col ">الاسم</th>
                     <th scope="col"> الايمل</th>
                     <th scope="col"> الهاتف </th>
                     <th scope="col"> الفرع </th>
                     <th scope="col"> المحافظة </th>
-                    <th scope="col"> عدد الدورات التي يشترك فيها </th>
-
+                    <th scope="col"> الدورات التي يشترك فيها </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td class=""><?php echo e($users->id); ?> </td>
                         <td class="tdnamecontectus"><?php echo e($users->name); ?> </td>
                         <td class=""><?php echo e($users->email); ?> </td>
                         <td class=""><?php echo e($users->phone); ?> </td>
@@ -67,7 +65,9 @@
                         <?php $c = 0; ?>
 
                         <td class=""><?php echo $count; ?> </td>
-
+                        <td> <a href="<?php echo e(route('admin.usereditpasseord.edit', $users->id)); ?>"
+                                class="btn btn-dark editdelete">تعديل
+                        </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>

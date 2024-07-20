@@ -84,8 +84,9 @@ if (isset($__slots)) unset($__slots);
                         <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1029)): ?>
 
                         <div class="row coursedetales mt-5">
-                            <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
-                                    aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
+                            <button type="" class=" btncouresdetales  col-lg-6"><label class=""
+                                    class="font14px " aria-current="page" for="modal-toggle-order"> اطلب بطاقتك
+                                </label></button>
                             <p class=" inpoutlabel mr-3 col-lg-5" style="color: white;"> أدخل كود البطاقة
                                 وابدأ
                                 بالتّعلّم</p>

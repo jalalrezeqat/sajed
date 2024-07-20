@@ -28,7 +28,10 @@ class ProfileController extends Controller
         $lessonid  = DB::table('plays')->get();
         $quizreselt = DB::table('results')->where('user_id', '=', Auth::user()->id)->get();
         $quiz = DB::table('categories')->get();
-        return view('dashboard', compact('quizreselt', 'course', 'coursename', 'lessonid', 'quiz'));
+        $lessons = DB::table('lessons')->get();
+        $prog = DB::table('playbacks')->where('idofstudant', '=', Auth::user()->id)->get();
+
+        return view('dashboard', compact('quizreselt', 'prog', 'lessons', 'course', 'coursename', 'lessonid', 'quiz'));
     }
     public function edit(Request $request): View
     {

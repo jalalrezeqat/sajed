@@ -54,11 +54,10 @@ if (isset($__slots)) unset($__slots);
               </div>
           </div>
           
-          <?php if($agent->isDesktop()||$agent->isTablet()): ?>
-
-          <div class="mt">
-              <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
-          </div>
+          <?php if($agent->isDesktop() || $agent->isTablet()): ?>
+              <div class="mt">
+                  <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
+              </div>
           <?php endif; ?>
           
 
@@ -67,69 +66,64 @@ if (isset($__slots)) unset($__slots);
       <section class="mt100px">
           <div class="row row-cols-1  card-course dir ovarflow  row-cols-md-3 ">
               <?php $__currentLoopData = $branch; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                 <?php if($agent->isDesktop()): ?>
+                  <?php if($agent->isDesktop()): ?>
+                      <div class="col colcard">
+                          <div class="card-home card card-home " id="card-home-coures">
+                              <img class="card-img-top-cource" src="<?php echo e(asset('img/branch/' . $branch->img)); ?>"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
+                                  <p class=" font14px "><?php echo e($branch->summary); ?></p>
 
+                              </div>
+                              <div class="card-button-courses">
 
-                  <div class="col colcard">
-                      <div class="card-home card card-home " id="card-home-coures">
-                          <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+                                  <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
+                                          الدورات </button></a>
 
-                          <div class="card-body">
-                              <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
-                              <p class=" font14px "><?php echo e($branch->summary); ?></p>
-
+                              </div>
                           </div>
-                          <div class="card-button-courses">
+                      </div>
+                      
+                  <?php endif; ?>
+                  <?php if($agent->isTablet()): ?>
+                      <div class="col colcard">
+                          <div class="card-home card card-home " id="card-home-coures">
+                              <img class="card-img-top-cource" src="<?php echo e(asset('img/branch/' . $branch->img)); ?>"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
+                                  <p class=" font14px "><?php echo e($branch->summary); ?></p>
 
-                              <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
-                                      الدورات </button></a>
+                              </div>
+                              <div class="card-button-courses">
 
+                                  <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
+                                          الدورات </button></a>
+
+                              </div>
                           </div>
                       </div>
-                  </div>
-                  
-              <?php endif; ?>
-              <?php if($agent->isTablet()): ?>
+                  <?php endif; ?>
+                  <?php if($agent->isMobile()): ?>
+                      <div class="col colcard">
+                          <div class="card-home card  " id="card-home-coures">
+                              <img class="card-img-top-cource" src="<?php echo e(asset('img/branch/' . $branch->img)); ?>"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
+                                  <p class=" font18px "><?php echo e($branch->summary); ?></p>
 
-              <div class="col colcard">
-                  <div class="card-home card card-home " id="card-home-coures">
-                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+                              </div>
+                              <div class="card-button-courses">
 
-                      <div class="card-body">
-                          <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
-                          <p class=" font14px "><?php echo e($branch->summary); ?></p>
+                                  <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
+                                          الدورات </button></a>
 
+                              </div>
+                          </div>
                       </div>
-                      <div class="card-button-courses">
-
-                          <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
-                                  الدورات </button></a>
-
-                      </div>
-                  </div>
-              </div>
-              <?php endif; ?>
-              <?php if($agent->isMobile()
-              ): ?>
-
-              <div class="col colcard">
-                  <div class="card-home card  " id="card-home-coures">
-                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
-
-                      <div class="card-body">
-                          <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
-                          <p class=" font18px "><?php echo e($branch->summary); ?></p>
-
-                      </div>
-                      <div class="card-button-courses">
-
-                          <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
-                                  الدورات </button></a>
-
-                      </div>
-                  </div>
-              </div>
-              <?php endif; ?>
+                  <?php endif; ?>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
           </div>

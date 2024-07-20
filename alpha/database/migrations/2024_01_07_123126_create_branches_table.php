@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('summary');
             $table->string('satus')->nullable();
+            $table->string('img')->nullable();
+
 
 
             $table->timestamps();

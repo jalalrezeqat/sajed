@@ -237,79 +237,42 @@
               ->where('user_id', '=', Auth::user()->id)
               ->get();
           ?>
-          <section>
-              <div class="  " id="">
-                  {{-- <p class="mb-5 dir text-center font20px">الدورات المسجل بها</p> --}}
+          <div class="dir profile-coures " id="">
+              <p class="mb-5">الدورات المسجل بها</p>
 
-                  <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                                                                                                                                                                                                        @foreach ($course as $coursess)
-    @foreach ($coursename as $coursenames)
-    @if ($coursenames->id == $coursess->courses)
-    <div class="col colcard">
-                                                                                                                                                                                                                        <div class="card-home card  " id="card-profile">
-                                                                                                                                                                                                                            <img src="{{ asset('img/courses/' . $coursenames->img_name) }}" class="card-img-top-profile"
-                                                                                                                                                                                                                                alt="...">
-                                                                                                                                                                                                                            <div class="card-body">
-                                                                                                                                                                                                                                @foreach ($lessonid as $lessonids)
-    @if ($coursenames->id == $lessonids->nameofcourse)
-    <p class="card-title-home font14px "><a
-                                                                                                                                                                                                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
-                                                                                                                                                                                                                                                class="card-title-home text-center">{{ $coursenames->name }}</a>
-                                                                                                                                                                                                                                        </p>
-@else
-    <p class="card-title-home font14px "><a
-                                                                                                                                                                                                                                                href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                                                                                                                                                                                                                class="card-title-home ">{{ $coursenames->name }}</a></p>
-    @endif
-    @endforeach
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                    </div>
-    @endif
-    @endforeach
-    @endforeach
-                                                                                                                                                                                                    </div> -->
+              <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
+                  @foreach ($course as $coursess)
+                      @foreach ($coursename as $coursenames)
+                          @if ($coursenames->id == $coursess->courses)
+                              <?php $auth = 1; ?>
 
-                  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-
-                      <div class="carousel-inner">
-
-                          <div class="carousel-item active">
-                              <div class="card-wrapper container-sm d-flex  row-cols-md-3 justify-content-around">
-                                  @foreach ($course as $coursess)
-                                      @foreach ($coursename as $coursenames)
-                                          @if ($coursenames->id == $coursess->courses)
-                                              <div class="card  " style="width: 18rem;">
-                                                  <img src="https://source.unsplash.com/collection/190727/1600x900"
-                                                      class="card-img-top" alt="...">
-                                                  <div class="card-body">
-                                                      <h5 class="card-title">Card title</h5>
-
-                                                  </div>
-                                              </div>
+                              <div class="col colcard">
+                                  <div class="card-home card  " id="card-profile">
+                                      <img src="{{ asset('img/courses/' . $coursenames->img_name) }}"
+                                          class="card-img-top-profile" alt="...">
+                                      <div class="card-body">
+                                          @foreach ($lessonidds as $lessonidsa)
+                                              @if ($coursenames->id == $lessonidsa->idcoures)
+                                                  <p class="card-title-home font18px "><a
+                                                          href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson) }}"
+                                                          class="card-title-home  text-center">{{ $coursenames->name }}</a>
+                                                  </p>
+                                                  <?php $auth = 0; ?>
+                                              @endif
+                                          @endforeach
+                                          @if ($auth == 1)
+                                              <a class="nav-link"
+                                                  href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                  class="card-title-home ">{{ $coursenames->name }}</a>
                                           @endif
-                                      @endforeach
-                                  @endforeach
+                                      </div>
+                                  </div>
                               </div>
-                          </div>
-
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                              data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                              data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                          </button>
-                      </div>
-                  </div>
+                          @endif
+                      @endforeach
+                  @endforeach
               </div>
-              </div>
-
-              </div>
-          </section>
+          </div>
       @endif
       {{-- end slider home --}}
 

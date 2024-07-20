@@ -61,6 +61,9 @@ if (isset($__slots)) unset($__slots);
                         </div>
                     </div>
                     <div class="col">
+                        <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <img class="img-about" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
             </div>
             <?php endif; ?>

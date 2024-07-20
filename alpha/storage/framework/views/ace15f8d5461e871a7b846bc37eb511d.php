@@ -8,9 +8,12 @@ $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
 $connectwithus = DB::table('connect_with_us')->get();
+$police = DB::table('policies')->get();
 $branche = DB::table('branches')->get();
 use Jenssegers\Agent\Agent;
 $agent = new Agent();
+$slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->get();
+
 ?>
 
 
@@ -38,7 +41,7 @@ $agent = new Agent();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- Scripts -->
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css']); ?>
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/polices.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css']); ?>
 
 
 
@@ -328,7 +331,11 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                             <div class="justify-content-xl-center  ">
                                                 <div class="d-flex ">
                                                     
-                                                    <img class="img-fluid  p-2" src="img/login.png" alt="">
+                                                    <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <img id="" class="img-fluid  p-2"
+                                                            src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
+                                                            alt="">
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     
                                                     <div class="ml-auto p-2">
                                                     </div>
@@ -566,28 +573,27 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 
-                                <div class="col-12 col-md-5 float-reg dir ">
+                                
+                                
+                                
+                                
+                                
+                                
+
+                                
+                                
+                                <div class="col-12 col-md-5">
                                     <label for="fname" class="form-label"> <span
                                             class="text-danger"></span></label>
-                                    <div class="input-group  form-control dir ">
-                                        <label for="" class="form-check-label" for="inlineCheckbox1">الفرع
-                                            :</label>
-                                        <?php $__currentLoopData = $branche; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branches): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            
-                                            <div class="form-check "
-                                                style="text-align: right;position: inherit;  direction: rtl;
-    unicode-bidi: bidi-override;">
-                                                <input
-                                                    className="form-check-input appearance-none rounded-full h-7 w-7 border-4 border-[#5F6368] bg-[#C4C4C4] hover:shadow-lg hover:shadow-[#5F6368] hover:border-[#3B52B5] checked:bg-[#7EABFF] checked:border-[#3B52B5] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-5 cursor-pointer"
-                                                    type="radio" name="branch" id="branch"
-                                                    value="<?php echo e($branches->name); ?>">
-                                                <label class="form-check-label" for="option-">
-                                                    <?php echo e($branches->name); ?> </label>
+                                    <div class="input-group">
+                                        <select class="form-control  " name="Governorate" id="Governorate">
+                                            <?php $__currentLoopData = $branche; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branches): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option placeholder=" " id="Governorate" name="Governorate"
+                                                    value="<?php echo e($branches->name); ?> " required>
+                                                    <?php echo e($branches->name); ?> </option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                            </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                        
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5">
@@ -633,14 +639,20 @@ unset($__errorArgs, $__bag); ?>"
                                 </div>
                                 <div class="col-12 col-md-12 d-flex but-regester justify-content-center">
                                     <input type="checkbox" name="polices" value="accept" required>
-                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على سياسة
+                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على
+                                        سياسة
                                         الشروط والاحكام والخصوصية</label><br>
 
                                 </div>
-                                <div class="col-12 col-md-12 d-flex justify-content-center">
-                                    <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة الشروط
-                                        والاحكام والخصوصية قبل التسجيل</p><br>
 
+                                <div class="col-12 col-md-12 d-flex justify-content-center">
+
+                                    <label class=" col-12" id="" aria-current="page"
+                                        for="modal-toggle-polices">
+                                        <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة
+                                            الشروط
+                                            والاحكام والخصوصية قبل التسجيل</p><br>
+                                    </label>
                                 </div>
                                 <div class="col-12 col-md-4 d-flex  justify-content-center">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
@@ -662,6 +674,48 @@ unset($__errorArgs, $__bag); ?>"
 
 
     
+
+
+
+
+    
+
+
+
+    
+</section>
+<section>
+    <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+
+                <!-- Login Form Popup HTML -->
+
+                <input id="modal-toggle-polices" type="checkbox">
+                <label class="modal-backdrop" for="modal-toggle-polices"></label>
+                <div class="modal-content-polices">
+                    <label class="modal-close-btn" for="modal-toggle-polices">
+                        <svg width="30" height="30">
+                            <line x1="5" y1="5" x2="20" y2="20" />
+                            <line x1="20" y1="5" x2="5" y2="20" />
+                        </svg>
+                    </label>
+                    <div class="dir">
+                        <?php $__currentLoopData = $police; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $policies): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php
+                            echo $policies->summernote;
+                            ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- partial -->
+
+
+
 
 
 

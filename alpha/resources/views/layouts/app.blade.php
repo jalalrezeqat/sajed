@@ -8,9 +8,12 @@ $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
 $connectwithus = DB::table('connect_with_us')->get();
+$police = DB::table('policies')->get();
 $branche = DB::table('branches')->get();
 use Jenssegers\Agent\Agent;
 $agent = new Agent();
+$slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->get();
+
 ?>
 
 
@@ -38,7 +41,7 @@ $agent = new Agent();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{--  --}}
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/polices.css', 'resources/css/vedio.css', 'resources/css/regestar.css', 'resources/css/order.css', 'resources/css/midia.css', 'resources/css/mediaipad.css'])
 
 
 
@@ -421,7 +424,11 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                             <div class="justify-content-xl-center  ">
                                                 <div class="d-flex ">
                                                     {{-- @foreach ($slider as $slider) --}}
-                                                    <img class="img-fluid  p-2" src="img/login.png" alt="">
+                                                    @foreach ($slider as $slider)
+                                                        <img id="" class="img-fluid  p-2"
+                                                            src="{{ asset('img/slider/' . $slider->img) }}"
+                                                            alt="">
+                                                    @endforeach
                                                     {{-- @endforeach --}}
                                                     <div class="ml-auto p-2">
                                                     </div>
@@ -664,20 +671,20 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                             </option>
                                         </select>
                                     </div> --}}
-                                <div class="col-12 col-md-5 float-reg dir ">
+                                {{-- <div class="col-12 col-md-5 float-reg dir ">
                                     <label for="fname" class="form-label"> <span
-                                            class="text-danger"></span></label>
-                                    <div class="input-group  form-control dir ">
+                                            class="text-danger"></span></label> --}}
+                                {{-- <div class="input-group  form-control dir ">
                                         <label for="" class="form-check-label" for="inlineCheckbox1">الفرع
-                                            :</label>
-                                        @foreach ($branche as $branches)
-                                            {{-- <div class="form-check form-check-inline">
+                                            :</label> --}}
+                                {{-- @foreach ($branche as $branches) --}}
+                                {{-- <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="branch"
                                                     id="branch1" value="{{ $branches->name }}">
                                                 <label class="form-check-label1"
                                                     for="inlineRadio1">{{ $branches->name }}</label>
                                             </div> --}}
-                                            <div class="form-check "
+                                {{-- <div class="form-check "
                                                 style="text-align: right;position: inherit;  direction: rtl;
     unicode-bidi: bidi-override;">
                                                 <input
@@ -687,10 +694,16 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                                 <label class="form-check-label" for="option-">
                                                     {{ $branches->name }} </label>
 
-                                            </div>
-                                        @endforeach
+                                            </div> --}}
+                                {{-- <select class="form-control  " name="Governorate" id="Governorate">
+                                            <option placeholder=" " id="Governorate" name="Governorate"
+                                                value="{{ $branches->name }}" required>
+                                                {{ $branches->name }}
+                                            </option>
+                                        </select>
+                                    @endforeach --}}
 
-                                        {{-- <div class="form-check form-check-inline">
+                                {{-- <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="branch"
                                                 id="branch1" value="ادبي">
                                             <label class="form-check-label1" for="inlineRadio1">ادبي</label>
@@ -705,6 +718,20 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                                 id="branch3" value="صناعي">
                                             <label class="form-check-label3" for="inlineRadio1">صناعي</label>
                                         </div> --}}
+                                {{-- </div>
+                            </div> --}}
+                                <div class="col-12 col-md-5">
+                                    <label for="fname" class="form-label"> <span
+                                            class="text-danger"></span></label>
+                                    <div class="input-group">
+                                        <select class="form-control  " name="Governorate" id="Governorate">
+                                            @foreach ($branche as $branches)
+                                                <option placeholder=" " id="Governorate" name="Governorate"
+                                                    value="{{ $branches->name }} " required>
+                                                    {{ $branches->name }} </option>
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-5">
@@ -743,14 +770,20 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                 </div>
                                 <div class="col-12 col-md-12 d-flex but-regester justify-content-center">
                                     <input type="checkbox" name="polices" value="accept" required>
-                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على سياسة
+                                    <label class="font18px " style="margin-right: 2%" for="vehicle1"> اوافق على
+                                        سياسة
                                         الشروط والاحكام والخصوصية</label><br>
 
                                 </div>
-                                <div class="col-12 col-md-12 d-flex justify-content-center">
-                                    <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة الشروط
-                                        والاحكام والخصوصية قبل التسجيل</p><br>
 
+                                <div class="col-12 col-md-12 d-flex justify-content-center">
+
+                                    <label class=" col-12" id="" aria-current="page"
+                                        for="modal-toggle-polices">
+                                        <p class="font14px" style="color: green" for="vehicle1">يجب قراءة سياسة
+                                            الشروط
+                                            والاحكام والخصوصية قبل التسجيل</p><br>
+                                    </label>
                                 </div>
                                 <div class="col-12 col-md-4 d-flex  justify-content-center">
                                     <label for="lname" class="form-label"> <span class="text-danger"></label>
@@ -782,6 +815,48 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                 $('#modal-toggle-regester').modal('show');
             </script>
         @endif --}}
+
+
+
+
+    {{-- regester --}}
+
+
+
+    {{--  --}}
+</section>
+<section>
+    <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+
+                <!-- Login Form Popup HTML -->
+
+                <input id="modal-toggle-polices" type="checkbox">
+                <label class="modal-backdrop" for="modal-toggle-polices"></label>
+                <div class="modal-content-polices">
+                    <label class="modal-close-btn" for="modal-toggle-polices">
+                        <svg width="30" height="30">
+                            <line x1="5" y1="5" x2="20" y2="20" />
+                            <line x1="20" y1="5" x2="5" y2="20" />
+                        </svg>
+                    </label>
+                    <div class="dir">
+                        @foreach ($police as $policies)
+                            <?php
+                            echo $policies->summernote;
+                            ?>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- partial -->
+
+
+
 
 
 

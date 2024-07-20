@@ -1,11 +1,10 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class=" table-responsive">
+    <div class="table-responsive">
 
         <table class=" table-admin-connectus  ">
             <thead class="thead-green-connectus">
                 <tr class="">
-                    <th scope="col ">#</th>
                     <th scope="col ">الاسم</th>
                     <th scope="col"> الايمل</th>
                     <th scope="col"> الهاتف </th>
@@ -26,7 +25,6 @@
             <tbody>
                 @foreach ($order as $orders)
                     <tr>
-                        <td class="">{{ $orders->id }} </td>
                         <td class="tdnamecontectus">{{ $orders->name }} </td>
                         <td class="">{{ $orders->email }} </td>
                         <td class="">{{ $orders->phone }} </td>
@@ -41,14 +39,12 @@
                         </td>
 
                         <td class="">{{ $orders->created_at }} </td>
-                        <td></td>
+                        <td><a href="{{ route('admin.order.destroy', $orders->id) }}"
+                                onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">تم
+                                الطلب</a></td>
                         <td><a href="{{ route('admin.order.destroy', $orders->id) }}"
                                 onclick="return confirm(' هل انت متاكد سيتم الحدف') "
                                 class="btn btn-danger editdelete">حذف</a></td>
-
-
-
-
 
                     </tr>
                 @endforeach

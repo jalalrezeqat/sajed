@@ -26,11 +26,18 @@
     </div>
 
     <?php $count = 0; ?>
-    @foreach ($code as $codes)
-        @foreach ($user as $users)
-            @if ($codes->user_id == $users->id)
-                <p>{{ $codes->user_id }} | {{ $users->name }} \+
-                </p>
+    @foreach ($user as $key1 => $users)
+        @foreach ($code as $key => $codes)
+            @if ($users->id == $codes->user_id)
+                @if ($user[$key1]->id == $user[$key1]->id)
+                    <p>{{ $codes->user_id }} |
+                        {{ $key }}
+                        {{ $key }}
+
+                        {{ $users->name }}
+                        \+
+                    </p>
+                @endif
             @endif
         @endforeach
     @endforeach
@@ -53,7 +60,7 @@
             </thead>
             <tbody>
                 @foreach ($code as $codes)
-                    @foreach ($user as $users)
+                    @foreach ($user as $key1 => $users)
                         @if ($codes->user_id == $users->id)
                             <tr>
                                 <td class="">{{ $users->id }} </td>

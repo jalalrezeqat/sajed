@@ -310,6 +310,7 @@ body {
     font-size: 1.25vw;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+
 .button2 {
     background-color: #27ac1f;
     border-radius: 70px;
@@ -713,7 +714,7 @@ body {
 /* dashbord admin */
 /* connectus */
 .table-admin-connectus {
-    width: 90%;
+    width: 99%;
     margin-top: 5%;
 }
 .thead-green-connectus {
@@ -733,7 +734,7 @@ th {
 }
 .tdnamecontectus {
     font-weight: bold;
-    width: 18%;
+    width: 16%;
 }
 
 /* end connectus */
@@ -862,6 +863,14 @@ th {
     color: white;
     background-color: #27ac1f;
 }
+.btncouresdetales:hover {
+    width: 8vw;
+    height: 2.5vw;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #13c0b7;
+}
 .btncouresdetaless {
     margin: auto;
     margin-top: 5%;
@@ -871,6 +880,18 @@ th {
     border: none;
     color: white;
     background-color: #27ac1f;
+    margin: auto;
+    margin-left: 10vw;
+}
+.btncouresdetaless:hover {
+    margin: auto;
+    margin-top: 5%;
+    width: 140px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #13c0b7;
     margin: auto;
     margin-left: 10vw;
 }

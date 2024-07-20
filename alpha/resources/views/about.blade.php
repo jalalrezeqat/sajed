@@ -46,6 +46,9 @@
                         </div>
                     </div>
                     <div class="col">
+                        @foreach ($slider as $slider)
+                            <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
+                        @endforeach
                     </div>
             </div>
             @endif

@@ -39,11 +39,10 @@
               </div>
           </div>
           {{-- end slider home --}}
-          @if($agent->isDesktop()||$agent->isTablet())
-
-          <div class="mt">
-              <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
-          </div>
+          @if ($agent->isDesktop() || $agent->isTablet())
+              <div class="mt">
+                  <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
+              </div>
           @endif
           {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
 
@@ -52,27 +51,25 @@
       <section class="mt100px">
           <div class="row row-cols-1  card-course dir ovarflow  row-cols-md-3 ">
               @foreach ($branch as $branch)
-                 @if($agent->isDesktop())
+                  @if ($agent->isDesktop())
+                      <div class="col colcard">
+                          <div class="card-home card card-home " id="card-home-coures">
+                              <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                                  <p class=" font14px ">{{ $branch->summary }}</p>
 
+                              </div>
+                              <div class="card-button-courses">
 
-                  <div class="col colcard">
-                      <div class="card-home card card-home " id="card-home-coures">
-                          <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+                                  <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
+                                          الدورات </button></a>
 
-                          <div class="card-body">
-                              <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
-                              <p class=" font14px ">{{ $branch->summary }}</p>
-
-                          </div>
-                          <div class="card-button-courses">
-
-                              <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
-                                      الدورات </button></a>
-
+                              </div>
                           </div>
                       </div>
-                  </div>
-                  {{-- <div class="col  ">
+                      {{-- <div class="col  ">
                       <div class="card "id="card-home">
                           <img src="img/card-img.png" class="card-img-top-cource" alt="...">
                           <div class="card-body">
@@ -88,48 +85,45 @@
                           </div>
                       </div>
                   </div> --}}
-              @endif
-              @if($agent->isTablet())
+                  @endif
+                  @if ($agent->isTablet())
+                      <div class="col colcard">
+                          <div class="card-home card card-home " id="card-home-coures">
+                              <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                                  <p class=" font14px ">{{ $branch->summary }}</p>
 
-              <div class="col colcard">
-                  <div class="card-home card card-home " id="card-home-coures">
-                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
+                              </div>
+                              <div class="card-button-courses">
 
-                      <div class="card-body">
-                          <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
-                          <p class=" font14px ">{{ $branch->summary }}</p>
+                                  <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
+                                          الدورات </button></a>
 
+                              </div>
+                          </div>
                       </div>
-                      <div class="card-button-courses">
+                  @endif
+                  @if ($agent->isMobile())
+                      <div class="col colcard">
+                          <div class="card-home card  " id="card-home-coures">
+                              <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
+                                  alt="">
+                              <div class="card-body">
+                                  <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
+                                  <p class=" font18px ">{{ $branch->summary }}</p>
 
-                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
-                                  الدورات </button></a>
+                              </div>
+                              <div class="card-button-courses">
 
+                                  <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
+                                          الدورات </button></a>
+
+                              </div>
+                          </div>
                       </div>
-                  </div>
-              </div>
-              @endif
-              @if($agent->isMobile()
-              )
-
-              <div class="col colcard">
-                  <div class="card-home card  " id="card-home-coures">
-                      <img src="img/card-img.png" class="card-img-top-cource" alt="...">
-
-                      <div class="card-body">
-                          <p class="card-title-home font18px margin-b4">{{ $branch->name }}</p>
-                          <p class=" font18px ">{{ $branch->summary }}</p>
-
-                      </div>
-                      <div class="card-button-courses">
-
-                          <a href="{{ route('front.FrontCourcse', $branch->id) }} "><button class="button2">تفقد
-                                  الدورات </button></a>
-
-                      </div>
-                  </div>
-              </div>
-              @endif
+                  @endif
               @endforeach
 
           </div>

@@ -38,6 +38,7 @@
                             <a class="link-edit" href="<?php echo e(route('profile.edit', Auth::user()->id)); ?>">تعديل الملف
                                 الشّخصي</a>
                         </li>
+
                         <li class="mb-2">
                             <p> <img src="img/address-dashbord.png" alt=""> المحافظة :
                                 <?php echo e(Auth::user()->Governorate); ?></p>

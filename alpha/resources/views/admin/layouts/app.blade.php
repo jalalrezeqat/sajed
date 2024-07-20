@@ -180,11 +180,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.order') }}">
-                            <span class="menu-title font-weight-bold mb-2">طلبات البطاقات</span>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.about') }}">
                             <span class="menu-title font-weight-bold mb-2">حول المنصة</span>

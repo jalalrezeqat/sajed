@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Visitor;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 use App\Http\Controllers;
 
@@ -99,26 +100,14 @@ class HomeController extends Controller
         // $student->name = $request->input('studant');
         if ($studant == '1') {
             $count = 0;
-            // foreach ($code as $codes) {
-            //     foreach ($user as $users) {
+            foreach ($user as $users) {
 
-            //         $user = DB::table('users')
-            //             ->where('id', '=', $codes->user_id)
-            //             ->get();
+                foreach ($code as $codes) {
 
-            //         $count = $usercount + $count;
-            //     }
-
-
-
-            // foreach ($code as $codes) {
-            // foreach ($user as $users) {
-
-            // $user = DB::table('users')->where('id', '=', $codes->user_id)->get();
-            // $usercount =
-            // DB::table('users')->where('id', '=', $codes->user_id)->count();
-            // }
-            // }
+                    $user1 = DB::table('users')->where('id', '=', $codes->user_id)->get();
+                    $usercount = DB::table('users')->where('id', '=', $codes->user_id)->count();
+                }
+            }
             $msg = 'عدد الطلاب المشتركين : ';
         } elseif ($studant == '2') {
             foreach ($code as $codes) {
@@ -130,7 +119,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('admin.layouts.chart.studantserch', compact('user', 'code',  'msg'));
+        return view('admin.layouts.chart.studantserch', compact('user', 'user1', 'code',  'msg'));
     }
 
     public function couresstauet()
@@ -195,5 +184,34 @@ class HomeController extends Controller
         $courses = DB::table('courses')->get();
 
         return view('admin.layouts.chart.codeserch', compact('coures', 'code',  'start', 'end', 'courses', 'user'));
+    }
+
+    public function editpassword(Request $request, $id)
+
+    {
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        return view('admin.layouts.chart.editpassword', compact('user'));
+    }
+    public function changePasswordSave(Request $request)
+    {
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        // if (!Hash::check($request->old_password, auth()->user()->password)) {
+        //     return back()->with("error", "!كلمة المرور القديمة خاطئة ");
+        // }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "تم تغير كلمة المرور");
     }
 }

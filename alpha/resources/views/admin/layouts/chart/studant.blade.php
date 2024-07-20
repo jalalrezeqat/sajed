@@ -36,20 +36,18 @@
         <table class=" table-admin-connectus  ">
             <thead class="thead-green-connectus">
                 <tr class="">
-                    <th scope="col ">#</th>
                     <th scope="col ">الاسم</th>
                     <th scope="col"> الايمل</th>
                     <th scope="col"> الهاتف </th>
                     <th scope="col"> الفرع </th>
                     <th scope="col"> المحافظة </th>
-                    <th scope="col"> عدد الدورات التي يشترك فيها </th>
-
+                    <th scope="col"> الدورات التي يشترك فيها </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($user as $users)
                     <tr>
-                        <td class="">{{ $users->id }} </td>
                         <td class="tdnamecontectus">{{ $users->name }} </td>
                         <td class="">{{ $users->email }} </td>
                         <td class="">{{ $users->phone }} </td>
@@ -68,7 +66,9 @@
                         <?php $c = 0; ?>
 
                         <td class=""><?php echo $count; ?> </td>
-
+                        <td> <a href="{{ route('admin.usereditpasseord.edit', $users->id) }}"
+                                class="btn btn-dark editdelete">تعديل
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

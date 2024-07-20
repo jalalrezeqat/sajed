@@ -252,79 +252,42 @@ if (isset($__slots)) unset($__slots);
               ->where('user_id', '=', Auth::user()->id)
               ->get();
           ?>
-          <section>
-              <div class="  " id="">
-                  
+          <div class="dir profile-coures " id="">
+              <p class="mb-5">الدورات المسجل بها</p>
 
-                  <!-- <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                                                                                                                                                                                                        <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <?php if($coursenames->id == $coursess->courses): ?>
-    <div class="col colcard">
-                                                                                                                                                                                                                        <div class="card-home card  " id="card-profile">
-                                                                                                                                                                                                                            <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>" class="card-img-top-profile"
-                                                                                                                                                                                                                                alt="...">
-                                                                                                                                                                                                                            <div class="card-body">
-                                                                                                                                                                                                                                <?php $__currentLoopData = $lessonid; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonids): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <?php if($coursenames->id == $lessonids->nameofcourse): ?>
-    <p class="card-title-home font14px "><a
-                                                                                                                                                                                                                                                href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson)); ?>"
-                                                                                                                                                                                                                                                class="card-title-home text-center"><?php echo e($coursenames->name); ?></a>
-                                                                                                                                                                                                                                        </p>
-<?php else: ?>
-    <p class="card-title-home font14px "><a
-                                                                                                                                                                                                                                                href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
-                                                                                                                                                                                                                                                class="card-title-home "><?php echo e($coursenames->name); ?></a></p>
-    <?php endif; ?>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                    </div>
-    <?php endif; ?>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                                                                                                                                                    </div> -->
+              <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
+                  <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <?php if($coursenames->id == $coursess->courses): ?>
+                              <?php $auth = 1; ?>
 
-                  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-
-                      <div class="carousel-inner">
-
-                          <div class="carousel-item active">
-                              <div class="card-wrapper container-sm d-flex  row-cols-md-3 justify-content-around">
-                                  <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                      <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                          <?php if($coursenames->id == $coursess->courses): ?>
-                                              <div class="card  " style="width: 18rem;">
-                                                  <img src="https://source.unsplash.com/collection/190727/1600x900"
-                                                      class="card-img-top" alt="...">
-                                                  <div class="card-body">
-                                                      <h5 class="card-title">Card title</h5>
-
-                                                  </div>
-                                              </div>
+                              <div class="col colcard">
+                                  <div class="card-home card  " id="card-profile">
+                                      <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>"
+                                          class="card-img-top-profile" alt="...">
+                                      <div class="card-body">
+                                          <?php $__currentLoopData = $lessonidds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonidsa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                              <?php if($coursenames->id == $lessonidsa->idcoures): ?>
+                                                  <p class="card-title-home font18px "><a
+                                                          href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson)); ?>"
+                                                          class="card-title-home  text-center"><?php echo e($coursenames->name); ?></a>
+                                                  </p>
+                                                  <?php $auth = 0; ?>
+                                              <?php endif; ?>
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($auth == 1): ?>
+                                              <a class="nav-link"
+                                                  href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
+                                                  class="card-title-home "><?php echo e($coursenames->name); ?></a>
                                           <?php endif; ?>
-                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                      </div>
+                                  </div>
                               </div>
-                          </div>
-
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                              data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                              data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                          </button>
-                      </div>
-                  </div>
+                          <?php endif; ?>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
-              </div>
-
-              </div>
-          </section>
+          </div>
       <?php endif; ?>
       
 

@@ -39,6 +39,7 @@
                             <a class="link-edit" href="{{ route('profile.edit', Auth::user()->id) }}">تعديل الملف
                                 الشّخصي</a>
                         </li>
+
                         <li class="mb-2">
                             <p> <img src="img/address-dashbord.png" alt=""> المحافظة :
                                 {{ Auth::user()->Governorate }}</p>

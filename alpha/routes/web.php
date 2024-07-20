@@ -216,6 +216,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashbord/count/studant', [App\Http\Controllers\Admin\HomeController::class, 'countstudant'])->name('dashbord.countstudant');
         Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'codesarch'])->name('dashbord.codesarch');
         Route::post('/dashbord/coures/serach1', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
+        Route::get('/dashbord/user/edit/{id}', [App\Http\Controllers\Admin\HomeController::class, 'editpassword'])->name('usereditpasseord.edit');
+        Route::put('admin/password/update', [App\Http\Controllers\Admin\HomeController::class, 'changePasswordSave'])->name('postChangePassworduser');
 
 
         //order
