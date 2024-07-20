@@ -34,7 +34,7 @@ class HomeController extends Controller
         $agent = new Agent();
         $lessonidds  = DB::table('plays')->get();
 
-        $coursename = DB::table('courses')->get();
+        $coursename = DB::table('courses')->where('status','=','1')->get();
         $lessonid  = DB::table('markcourses')->get();
         $courses = DB::table('courses')->where('status', '=', '1')->where('fav', '=', '1')->get();
         $branch = DB::table('branches')->pluck('id');

@@ -125,7 +125,7 @@ class CoursesController extends Controller
             $user = Auth::user()->id;
             $code = DB::table('codecards')->get();
             foreach ($code as $codes) {
-                if ($codes->user_id == $user & $codes->courses == $b->id || $codes->user_id == $user & $codes->courses == 'جميع الدورات') {
+                if ($codes->user_id == $user & $codes->courses == $b->id || $codes->user_id == $user & $codes->courses == 'جميع الدورات' ) {
                     $branch = DB::table('branches')->pluck('name');
                     foreach ($branch as $branchs) {
                         $i = 0;
@@ -142,11 +142,12 @@ class CoursesController extends Controller
                         //     $student->save();
                         // }
                     }
+
                     $i = 0;
                     // $branch =branch::find($branchid);
                     $b = courses::find($id);
                     $chbter = DB::table('chabters')->where('course', '=', $b->id)->get();
-                    $coursces = DB::table('courses')->where('branche', '=', $br)->get();
+                    $coursces = DB::table('courses')->where('branche', '=', $br)->first();
                     $chbter1 = DB::table('lessons')->where('course', '=', $b->id)->get();
                     $questionscours = DB::table('questionscours')->where('course', '=', $b->name)->get();
                     $lesson =  DB::table('lessons')->where('course', '=', $b->id)->get();
@@ -170,9 +171,12 @@ class CoursesController extends Controller
                     // }
                     $id3 = new \getID3;
 
-
+                    if($coursces->status ==1){
                     return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'agent','mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
-                }
+                        }else{
+                            return redirect('/');
+                        }
+            }
             }
         }
         return redirect()->back()->with('message4', 'يرجى التسجيل في الدورة');

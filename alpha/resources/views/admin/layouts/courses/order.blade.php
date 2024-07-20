@@ -39,9 +39,21 @@
                         </td>
 
                         <td class="">{{ $orders->created_at }} </td>
-                        <td><a href="{{ route('admin.order.destroy', $orders->id) }}"
-                                onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">تم
-                                الطلب</a></td>
+                        <td>
+                            @if ($orders->stetus == 1)
+                            <a href="{{ route('admin.order.todelevary', $orders->id) }}"
+                                onclick="return confirm(' هل انت متاكد سيتم تحويل الطلب الى التوصيل') " class="btn btn-secondary editdelete">تم
+                                الطلب</a>
+                            @endif
+                            @if ($orders->stetus == 2)
+                            <a href="{{ route('admin.order.tosucsses', $orders->id) }}"
+                                onclick="return confirm(' هل انت متاكد سيتم تحويل الطلب الى تم الاستلام ') " class="btn btn-info editdelete">تم
+                                الارسال الى التوصيل</a>
+                            @endif
+                            @if ($orders->stetus == 3)
+                           <p class="btn btn-success editdelete">تم الاستلام</p>
+                            @endif
+                           </td>
                         <td><a href="{{ route('admin.order.destroy', $orders->id) }}"
                                 onclick="return confirm(' هل انت متاكد سيتم الحدف') "
                                 class="btn btn-danger editdelete">حذف</a></td>

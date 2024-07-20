@@ -15,7 +15,7 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-5 ">
+                <div class="col-lg-5  " >
 
                     <ul class="list-unstyled user_name">
                         <li class="mb-2">
@@ -56,7 +56,7 @@
         </div>
     </div>
     <div class="dir profile-coures " id="">
-        <p class="mb-5">الدورات المسجل بها</p>
+        <p class="mb-5 font18px">الدورات المسجل بها</p>
 
         <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
             @foreach ($course as $courses)
@@ -71,7 +71,7 @@
                                 <div class="card-body">
                                     @foreach ($lessonid as $lessonids)
                                         @if ($coursenames->id == $lessonids->idcoures)
-                                            <p class="card-title-home font18px "><a
+                                            <p class="card-title-home font14px "><a
                                                     href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonids->idlesson) }}"
                                                     class="card-title-home  text-center">{{ $coursenames->name }}</a>
                                             </p>
@@ -79,8 +79,9 @@
                                         @endif
                                     @endforeach
                                     @if ($auth == 1)
+                                    <p class="card-title-home font14px ">
                                         <a class="nav-link" href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                            class="card-title-home ">{{ $coursenames->name }}</a>
+                                            class="card-title-home  text-center">{{ $coursenames->name }}</a></p>
                                     @endif
                                 </div>
                             </div>
@@ -91,7 +92,7 @@
         </div>
     </div>
     <div class="dir profile-coures " id="cc">
-        <p class="mb-5">علامات الامتحانات</p>
+        <p class="mb-5 font18px">علامات الامتحانات</p>
         <div>
             <table class="tabel-profile">
                 <thead>

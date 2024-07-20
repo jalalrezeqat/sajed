@@ -7,6 +7,8 @@ $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
 $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
+$socialswah = DB::table('socials')->where('name','=','whatsapp')->first();
+
 $connectwithus = DB::table('connect_with_us')->get();
 $police = DB::table('policies')->get();
 $branche = DB::table('branches')->get();
@@ -15,7 +17,75 @@ $agent = new Agent();
 $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->get();
 
 ?>
+ <style>
+    /* #ac-wrapper {
 
+        width: 100%;
+        height: 100%;
+        background: url("images/pop-bg.png") repeat top left transparent;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, .5);
+
+    }
+
+    .toolbarLB {
+        text-align: right;
+        padding: 10px;
+
+    }
+
+    .closeLB {
+        color: #27AC1F;
+        cursor: pointer;
+
+    }
+*/
+    /* #popup {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border-radius: 18px;
+        -moz-border-radius: 18px;
+        -webkit-border-radius: 18px;
+        height: 361px;
+        margin: 5% auto;
+        position: relative;
+        width: 597px;
+    } */
+
+    /* .lightbox.closed {
+        display: none;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    } */
+
+
+
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #12181e;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+    }
+
+    .my-float {
+        margin-top: 22px;
+    }
+</style>
 
 <head>
     <meta name="viewport">
@@ -389,7 +459,9 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         <!-- Copyright -->
     </footer>
 </div>
-
+<a href="{{$socialswah->url}}" target="_blank" class="float">
+    <i class="fa fa-whatsapp  my-float fa-2x"></i>
+</a>
 <!-- End of .container -->
 <!-- Footer -->
 

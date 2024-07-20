@@ -223,7 +223,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         //order
         Route::get('/order', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order');
         Route::get('/order/{order_id}/delete', [App\Http\Controllers\Admin\OrderController::class, 'destroy'])->name('order.destroy');
+        Route::get('/order/{order_id}/todelevary', [App\Http\Controllers\Admin\OrderController::class, 'todelevary'])->name('order.todelevary');
+        Route::get('/order/{order_id}/tosucsses', [App\Http\Controllers\Admin\OrderController::class, 'tosucsses'])->name('order.tosucsses');
 
+        
 
         // results
 

@@ -41,6 +41,8 @@ class OrderController extends Controller
         $student->gavarment = $request->input('gavarment');
         $student->addres = $request->input('addres');
         $student->phone = $request->input('phone');
+        $student->stetus = '1';
+
         if (Auth::user()) {
             $student->email = Auth::user()->email;
         }
@@ -72,7 +74,25 @@ class OrderController extends Controller
     {
         //
     }
+    public function todelevary(int $order_id)
+    {
+        $post = order::find($order_id);
+        $chabterDb = DB::table('orders');
+        $sliderdelete = $chabterDb->where('id', $order_id);
+        $sliderdelete->update(['stetus'=>'2']);
+        return  redirect()->back();
 
+    }
+    public function tosucsses(int $order_id)
+    {
+        $post = order::find($order_id);
+        $chabterDb = DB::table('orders');
+        $sliderdelete = $chabterDb->where('id', $order_id);
+        $sliderdelete->update(['stetus'=>'3']);
+        return  redirect()->back();
+
+    }
+    
     /**
      * Remove the specified resource from storage.
      */

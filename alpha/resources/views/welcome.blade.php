@@ -16,75 +16,7 @@
           <meta name="{{ $coursess->name }}" content="{{ url('coursesditels' . '/' . $coursess->id) }}" />
       @endforeach
       @vite(['resources/css/mediaipad.css'])
-      <style>
-          /* #ac-wrapper {
-
-              width: 100%;
-              height: 100%;
-              background: url("images/pop-bg.png") repeat top left transparent;
-              position: fixed;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: rgba(0, 0, 0, .5);
-
-          }
-
-          .toolbarLB {
-              text-align: right;
-              padding: 10px;
-
-          }
-
-          .closeLB {
-              color: #27AC1F;
-              cursor: pointer;
-
-          }
-*/
-          /* #popup {
-              background: none repeat scroll 0 0 #FFFFFF;
-              border-radius: 18px;
-              -moz-border-radius: 18px;
-              -webkit-border-radius: 18px;
-              height: 361px;
-              margin: 5% auto;
-              position: relative;
-              width: 597px;
-          } */
-
-          /* .lightbox.closed {
-              display: none;
-          }
-
-          * {
-              padding: 0;
-              margin: 0;
-          } */
-
-
-
-          .float {
-              position: fixed;
-              width: 60px;
-              height: 60px;
-              bottom: 40px;
-              right: 40px;
-              background-color: #12181e;
-              color: #FFF;
-              border-radius: 50px;
-              text-align: center;
-              box-shadow: 2px 2px 3px #999;
-          }
-
-          .my-float {
-              margin-top: 22px;
-          }
-      </style>
+     
   </head>
   <livewire:breakpoints />
   @extends('layouts.app')
@@ -232,15 +164,19 @@
           </div>
           @endif
       </section>
+    
       @if (Auth::user())
           <?php $course = DB::table('codecards')
               ->where('user_id', '=', Auth::user()->id)
               ->get();
           ?>
+  @foreach ($coursename as $coursesss)
+  @endforeach
+      
           <div class="dir profile-coures " id="">
-              <p class="mb-5">الدورات المسجل بها</p>
+              <p class="mb-5 font18px">الدورات المسجل بها</p>
 
-              <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
+              <div class="row row-cols-1 mt-5  card-w dir   row-cols-md-3 ">
                   @foreach ($course as $coursess)
                       @foreach ($coursename as $coursenames)
                           @if ($coursenames->id == $coursess->courses)
@@ -253,7 +189,7 @@
                                       <div class="card-body">
                                           @foreach ($lessonidds as $lessonidsa)
                                               @if ($coursenames->id == $lessonidsa->idcoures)
-                                                  <p class="card-title-home font18px "><a
+                                                  <p class="card-title-home font14px "><a
                                                           href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson) }}"
                                                           class="card-title-home  text-center">{{ $coursenames->name }}</a>
                                                   </p>
@@ -261,9 +197,10 @@
                                               @endif
                                           @endforeach
                                           @if ($auth == 1)
+                                          <p class="card-title-home font14px ">
                                               <a class="nav-link"
                                                   href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                  class="card-title-home ">{{ $coursenames->name }}</a>
+                                                  class="card-title-home ">{{ $coursenames->name }}</a></p>
                                           @endif
                                       </div>
                                   </div>
@@ -274,6 +211,7 @@
               </div>
           </div>
       @endif
+
       {{-- end slider home --}}
 
       {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
@@ -454,42 +392,38 @@
       </section>
       {{-- end slide teacher --}}
       {{-- qustion  --}}
-      <section class="mt100px">
-          <div class=" m-3 dir mtb00px mt100px card-text-home">
-              <h2 class="card-text-home font48px ">الاسئلة الشائعة</h2>
-              @foreach ($CommonQuestions as $question)
-                  <div class="qustion1">
-                      <p>
-                          <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
-                              <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
-                                  aria-expanded="false" aria-controls="collapseExample"
-                                  class="fa colorg fa-plus font-xs"></i>
-                              <button type="button" data-bs-toggle="collapse"
-                                  data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
-                                  aria-controls="collapseExample"
-                                  class="btn qustion-text font18px">{{ $question->question }}</button>
-                      </p>
-                      <div class="collapse " id="collapse{{ $question->id }}qu">
-                          <div class="  qustion-box card-body">
-                              <p style="font-size: 87.5%">{{ $question->question_text }}</p>
-                              {{-- <p style="font-size: 87.5%">
-                               
-                              </p> --}}
-                          </div>
-                      </div>
-                  </div>
-              @endforeach
-
-          </div>
-      </section>
+    
       {{-- end qustion --}}
-      <a href="https://www.google.com/" target="_blank" class="float">
-          <i class="fa fa-whatsapp  my-float fa-2x"></i>
-      </a>
 
       {{--  --}}
 
       {{--  --}}
+      <section class="mt100px">
+        <div class=" m-3 dir mtb00px mt100px card-text-home">
+            <h2 class="card-text-home font48px ">الاسئلة الشائعة</h2>
+            @foreach ($CommonQuestions as $question)
+                <div class="qustion1">
+                    <p>
+                        <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
+                            <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
+                                aria-expanded="false" aria-controls="collapseExample"
+                                class="fa colorg fa-plus font-xs"></i>
+                            <button type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
+                                aria-controls="collapseExample"
+                                class="btn qustion-text font18px">{{ $question->question }}</button></a>
+                    </p>
+                    <div class="collapse " id="collapse{{ $question->id }}qu">
+                        <div class="  qustion-box card-body">
+                            <p style="font-size: 87.5%">{{ $question->question_text }}</p>                           
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+        
+    </section>
   @endsection
   <?php $c = 'show'; ?>
   <script>

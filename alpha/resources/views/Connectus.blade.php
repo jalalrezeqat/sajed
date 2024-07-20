@@ -21,7 +21,7 @@
     <section class="bg-light py-3 py-md-5 ff">
         <div class="container ">
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-md-center">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-5">
                     <section>
                         <div class="slider dir " style=" margin-top: 70px;">
                             <div class="row">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 @if ($agent->isDesktop())
-                                    <div class="col">
+                                    <div class="col ">
                                         <div class=" contact-img">
                                             @foreach ($slider as $slider)
                                                 <img class="contact-img d-block"
@@ -71,8 +71,8 @@
                 </div>
     </section>
     </div>
-    <div class="col-12 col-lg-5 ">
-        <div class="bg-white border rounded shadow-sm overflow-hidden">
+    <div class="col-12 col-lg-6 ">
+        <div class="bg-white border rounded  shadow-sm overflow-hidden">
 
             <form class="contectus-form dir" action="{{ url('Connectus') }}" method="POST">
                 @csrf

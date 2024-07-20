@@ -551,8 +551,8 @@ body {
 }
 
 .contact-img {
-    width: 30vw;
-    height: 28vw;
+    width: 25vw;
+    height: 23vw;
 }
 #navmob {
     width: 20%;
@@ -587,17 +587,19 @@ body {
 }
 .img-dashbord {
     float: right;
-    margin-top: 2%;
+    margin-top: 1%;
     width: 15vw;
     height: 15vw;
     border-radius: 50%;
+    margin-left: 4vw;
     border: 5px solid #88ab8e;
 }
 
 .user_name {
     color: #85fe78;
     float: right;
-    margin-top: 2%;
+    margin-top: 3vw;
+    margin-right: 5vw;
 }
 .price-order {
     color: #27ac1f;
@@ -610,7 +612,7 @@ body {
 .information-dashbord {
     color: white;
     display: inline-block;
-    margin-top: 2%;
+    margin-top: 3vw;
 }
 .link-edit {
     display: inline-block;
