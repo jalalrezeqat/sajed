@@ -1,4 +1,24 @@
 <?php $__env->startSection('content'); ?>
+    <br><br>
+    <form action="<?php echo e(route('admin.dashbord.orderserch')); ?>" method="POST">
+        <?php echo csrf_field(); ?>
+
+        <div class="row">
+            <div class="form-grou col-3">
+                <label for="inputtitelmistion"> من تاريخ</label>
+                <input type="date" name="start" class="form-control" required>
+            </div>
+            <div class="form-grou col-3">
+                <label for="inputtitelmistion">الى تاريخ </label>
+                <input type="date" name="end" class="form-control" required>
+            </div>
+            <div class="  col-3">
+                <label for="inputtitelmistion"></label>
+                <button type="submit" class="btn btn-info  form-control">بحث</button>
+            </div>
+        </div>
+    </form>
+
     <div class="table-responsive">
 
         <table class=" table-admin-connectus  ">
@@ -12,7 +32,9 @@
                     <th scope="col">الدورة </th>
                     <th scope="col">تاريخ الطلب </th>
                     <th scope="col">الحالة</th>
-                    <th scope="col">حذف</th>
+                    <?php if(Auth::guard('admin')->user()->stutes == 0): ?>
+                        <th scope="col">حذف</th>
+                    <?php endif; ?>
 
 
 
@@ -39,12 +61,31 @@
                         </td>
 
                         <td class=""><?php echo e($orders->created_at); ?> </td>
-                        <td><a href="<?php echo e(route('admin.order.destroy', $orders->id)); ?>"
-                                onclick="return confirm(' هل انت متاكد سيتم الحدف') " class="btn btn-danger editdelete">تم
-                                الطلب</a></td>
-                        <td><a href="<?php echo e(route('admin.order.destroy', $orders->id)); ?>"
-                                onclick="return confirm(' هل انت متاكد سيتم الحدف') "
-                                class="btn btn-danger editdelete">حذف</a></td>
+                        <td>
+                            <?php if($orders->stetus == 1): ?>
+                                <a href="<?php echo e(route('admin.order.todelevary', $orders->id)); ?>"
+                                    onclick="return confirm(' هل انت متاكد سيتم تحويل الطلب الى التوصيل') "
+                                    class="btn btn-secondary editdelete">تم
+                                    الطلب</a>
+                            <?php endif; ?>
+                            <?php if($orders->stetus == 2): ?>
+                                <a href="<?php echo e(route('admin.order.tosucsses', $orders->id)); ?>"
+                                    onclick="return confirm(' هل انت متاكد سيتم تحويل الطلب الى تم الاستلام ') "
+                                    class="btn btn-info editdelete">تم
+                                    الارسال الى التوصيل</a>
+                            <?php endif; ?>
+                            <?php if($orders->stetus == 3): ?>
+                                <a href="<?php echo e(route('admin.order.toorder', $orders->id)); ?>"
+                                    onclick="return confirm(' هل انت متاكد سيتم تحويل الطلب الى تم الطلب ') "
+                                    class="btn btn-success editdelete">تم
+                                    الاستلام </a>
+                            <?php endif; ?>
+                        </td>
+                        <?php if(Auth::guard('admin')->user()->stutes == 0): ?>
+                            <td><a href="<?php echo e(route('admin.order.destroy', $orders->id)); ?>"
+                                    onclick="return confirm(' هل انت متاكد سيتم الحدف') "
+                                    class="btn btn-danger editdelete">حذف</a></td>
+                        <?php endif; ?>
 
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

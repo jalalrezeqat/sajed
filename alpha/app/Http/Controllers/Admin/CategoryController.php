@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\CategoryRequest;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\courses;
 
 class CategoryController extends Controller
@@ -17,17 +19,25 @@ class CategoryController extends Controller
     public function index(): View
     {
         $categories = Category::all();
+
         $courses = DB::table('courses')->get();
         $chabters = DB::table('chabters')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.categories.index', compact('categories', 'courses', 'chabters'));
+            return view('admin.categories.index', compact('categories', 'courses', 'chabters'));
+        } else
+            return redirect()->back();
     }
 
     public function create(): View
     {
         $courses = DB::table('courses')->get();
         $chabters = DB::table('chabters')->get();
-        return view('admin.categories.create', compact('courses', 'chabters'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.categories.create', compact('courses', 'chabters'));
+        } else
+            return redirect()->back();
     }
 
     public function store(CategoryRequest $request): RedirectResponse
@@ -42,14 +52,22 @@ class CategoryController extends Controller
 
     public function show(Category $category): View
     {
-        return view('admin.categories.show', compact('category'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.categories.show', compact('category'));
+        } else
+            return redirect()->back();
     }
 
     public function edit(Category $category): View
     {
         $courses = DB::table('courses')->get();
         $chabters = DB::table('chabters')->get();
-        return view('admin.categories.edit', compact('category', 'courses', 'chabters'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.categories.edit', compact('category', 'courses', 'chabters'));
+        } else
+            return redirect()->back();
     }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse

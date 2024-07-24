@@ -25,7 +25,6 @@
         </form>
     </div>
 
-    <?php $count = 0; ?>
     @foreach ($user as $key1 => $users)
         @foreach ($code as $key => $codes)
             @if ($users->id == $codes->user_id)
@@ -43,7 +42,7 @@
     @endforeach
 
     <div>
-        <h2>{{ $msg }} {{ $count }}</h2>
+        <h2>{{ $msg }} {{ $count }} {{ $count }}</h2>
     </div>
     <div class=" table-responsive">
 

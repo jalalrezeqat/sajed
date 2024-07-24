@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/password/update', [ProfileController::class, 'changePasswordSave'])->name('postChangePassword');
     Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/dashbord/coures/serach1', [ProfileController::class, 'couresserch'])->name('dashbord.serchscoures1');
 });
 //Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
 // Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
@@ -34,12 +37,27 @@ Route::middleware('auth')->group(function () {
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth')->group(function () {
         //Login Route
+
         Route::get('/login', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'store'])->name('adminlogin');
     });
-
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard/profile/{id}', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('dashboard.profile');
+        Route::put('/profile/update/{id}', [App\Http\Controllers\Admin\HomeController::class, 'update'])->name('profile.update');
+        Route::get('/profile/password', [App\Http\Controllers\Admin\HomeController::class, 'passwordChange'])->name('password');
+        Route::put('/password/update', [App\Http\Controllers\Admin\HomeController::class, 'changePasswordSave1'])->name('postChangePasswordadmin');
+        Route::put('/password/admin/update/{id}', [App\Http\Controllers\Admin\HomeController::class, 'postChangePasswordadminrouel'])->name('postChangePasswordadminrouel');
+
+
+        Route::put('admin/password/update/{id}', [App\Http\Controllers\Admin\HomeController::class, 'changePasswordSave2'])->name('postChangePassworduses');
+        //admin rouel
+        Route::get('/dashboard/admin/add', [App\Http\Controllers\Admin\HomeController::class, 'addAdmin'])->name('addAdmin');
+        Route::get('/dashboard/admin/addstore', [App\Http\Controllers\Admin\HomeController::class, 'addAdminStore'])->name('addAdminStore');
+        Route::post('/admin/dashbord/addadmin', [App\Http\Controllers\Admin\HomeController::class, 'addAdminPost'])->name('addAdminPost');
+        Route::get('/admin/{admin_id}/delete', [App\Http\Controllers\Admin\HomeController::class, 'destroyadmin'])->name('useradmin.destroy');
+        Route::get('/dashbord/admin/edit/{id}', [App\Http\Controllers\Admin\HomeController::class, 'editpasswordadmin'])->name('admineditpassword.edit');
+
         //admin connectu
         Route::get('/Connectus', [App\Http\Controllers\Admin\ConnectusController::class, 'index'])->name('Connectus');
         Route::get('/Connectus/{Connectus_id}/delete', [App\Http\Controllers\Admin\ConnectusController::class, 'destroy'])->name('Connectus.destroy');
@@ -217,7 +235,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('/dashbord/coures/serach', [App\Http\Controllers\Admin\HomeController::class, 'codesarch'])->name('dashbord.codesarch');
         Route::post('/dashbord/coures/serach1', [App\Http\Controllers\Admin\HomeController::class, 'couresserch'])->name('dashbord.serchscoures');
         Route::get('/dashbord/user/edit/{id}', [App\Http\Controllers\Admin\HomeController::class, 'editpassword'])->name('usereditpasseord.edit');
-        Route::put('admin/password/update', [App\Http\Controllers\Admin\HomeController::class, 'changePasswordSave'])->name('postChangePassworduser');
+        Route::post('/dashbord/order/serach', [App\Http\Controllers\Admin\HomeController::class, 'orderserch'])->name('dashbord.orderserch');
 
 
         //order
@@ -225,8 +243,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/order/{order_id}/delete', [App\Http\Controllers\Admin\OrderController::class, 'destroy'])->name('order.destroy');
         Route::get('/order/{order_id}/todelevary', [App\Http\Controllers\Admin\OrderController::class, 'todelevary'])->name('order.todelevary');
         Route::get('/order/{order_id}/tosucsses', [App\Http\Controllers\Admin\OrderController::class, 'tosucsses'])->name('order.tosucsses');
+        Route::get('/order/{order_id}/toorder', [App\Http\Controllers\Admin\OrderController::class, 'toorder'])->name('order.toorder');
 
-        
+
 
         // results
 

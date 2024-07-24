@@ -50,9 +50,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'branch' => $request->branch,
-            'polices'=> $request->polices,
+            'polices' => $request->polices,
             'Governorate' => $request->Governorate,
             'password' => Hash::make($request->password),
+            'stutes' => '0',
             'password_verified_at' => Hash::make($request->passwpassword_verified_atord),
 
 

@@ -19,8 +19,11 @@ class CommonQuestionsController extends Controller
     public function index()
     {
         $question =  DB::table('common_questions')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.layouts.CommonQuestions.CommonQuestions', compact('question'));
+            return view('admin.layouts.CommonQuestions.CommonQuestions', compact('question'));
+        } else
+            return redirect()->back();
     }
 
     public function destroy(int $questions_id)
@@ -33,8 +36,13 @@ class CommonQuestionsController extends Controller
     }
     public function addquestions()
     {
-        return view('admin.layouts.CommonQuestions.addCommonQuestions');
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.CommonQuestions.addCommonQuestions');
+        } else
+            return redirect()->back();
     }
+
 
     public function store(Request $request)
     {
@@ -47,7 +55,11 @@ class CommonQuestionsController extends Controller
     }
     public function edit(CommonQuestions $question)
     {
-        return view('admin.layouts.CommonQuestions.edit', compact('question'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.CommonQuestions.edit', compact('question'));
+        } else
+            return redirect()->back();
     }
 
     public function update(Request $request, $id)

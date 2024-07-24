@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
+<?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+$width = '<script>document.write(screen.width); </script>';
+
+?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +11,12 @@
     <meta name="description"
         content="منصة الفا التعليمية هي منصة الكترونية فلسطينية تقدم دورات تعليمية لمرحلة التوجيهي على المنهاج الفلسطيني وتهدف لتوفير الجهد والوقت على الطلبة
 ">
-    <meta name="keywords" content="حول منصفة الفا التعليمية ,  دورات تعليمية, توجيهي">
 
+    <meta name="keywords" content="حول منصفة الفا التعليمية ,  دورات تعليمية, توجيهي">
+    <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </head>
 
 <?php session('windowW'); ?>
@@ -34,7 +42,7 @@ if (isset($__slots)) unset($__slots);
     <section>
         <div class="slider dir " style=" margin-top: 70px;">
             <div class="row">
-                <?php if($agent->isDesktop() || $agent->isTablet()): ?>
+                <?php if($width > 480): ?>
                     <div class="col ring">
                         <div>
 
@@ -67,7 +75,7 @@ if (isset($__slots)) unset($__slots);
                     </div>
             </div>
             <?php endif; ?>
-            <?php if($agent->isMobile()): ?>
+            <?php if($width < 481): ?>
                 <div class="col">
                     <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <img class="img-about" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">

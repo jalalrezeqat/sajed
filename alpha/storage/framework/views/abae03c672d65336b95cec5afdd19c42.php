@@ -1,5 +1,7 @@
   <!DOCTYPE html>
   <html lang="ar">
+  <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+  ?>
 
   <head>
       <meta name="description"
@@ -15,7 +17,10 @@
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+      <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+          <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css']); ?>
 
       <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css']); ?>

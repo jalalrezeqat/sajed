@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\policies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PoliciesController extends Controller
 {
@@ -16,7 +17,11 @@ class PoliciesController extends Controller
     public function index()
     {
         $policies = DB::table('policies')->get();
-        return view('admin.layouts.policies.index', compact('policies'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.policies.index', compact('policies'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -24,7 +29,11 @@ class PoliciesController extends Controller
      */
     public function create()
     {
-        return view('admin.layouts.policies.create');
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.policies.create');
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -51,7 +60,11 @@ class PoliciesController extends Controller
      */
     public function edit(policies $policies)
     {
-        return view('admin.layouts.policies.edit', compact('policies'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.policies.edit', compact('policies'));
+        } else
+            return redirect()->back();
     }
 
     /**

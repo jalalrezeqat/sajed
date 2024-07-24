@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
+<?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+$width = '<script>document.write(screen.width); </script>';
+
+?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +14,10 @@
         <meta name='og:phone_number' content='<?php echo e($connectwithus->phone); ?>'>
         <meta name='og:email' content='<?php echo e($connectwithus->email); ?>'>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+    <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 </head>
 
@@ -36,7 +43,7 @@ if (isset($__slots)) unset($__slots);
     <section class="bg-light py-3 py-md-5 ff">
         <div class="container ">
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-md-center">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-5">
                     <section>
                         <div class="slider dir " style=" margin-top: 70px;">
                             <div class="row">
@@ -46,8 +53,8 @@ if (isset($__slots)) unset($__slots);
                                         <p class="font18px">سنكونُ سعيدين في استقبال استفساراتكُم</p>
                                     </div>
                                 </div>
-                                <?php if($agent->isDesktop()): ?>
-                                    <div class="col">
+                                <?php if($width > 1028): ?>
+                                    <div class="col ">
                                         <div class=" contact-img">
                                             <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <img class="contact-img d-block"
@@ -58,7 +65,7 @@ if (isset($__slots)) unset($__slots);
 
                                     </div>
                                 <?php endif; ?>
-                                <?php if($agent->isTablet()): ?>
+                                <?php if(($width > 480) & ($width < 1028)): ?>
                                     <div class="row">
                                         <div class=" contact-img">
                                             <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -70,7 +77,7 @@ if (isset($__slots)) unset($__slots);
 
                                     </div>
                                 <?php endif; ?>
-                                <?php if($agent->isMobile()): ?>
+                                <?php if($width < 481): ?>
                                     <div class="col">
                                         <div class=" contact-img">
                                             <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -86,8 +93,8 @@ if (isset($__slots)) unset($__slots);
                 </div>
     </section>
     </div>
-    <div class="col-12 col-lg-5 ">
-        <div class="bg-white border rounded shadow-sm overflow-hidden">
+    <div class="col-12 col-lg-6 ">
+        <div class="bg-white border rounded  shadow-sm overflow-hidden">
 
             <form class="contectus-form dir" action="<?php echo e(url('Connectus')); ?>" method="POST">
                 <?php echo csrf_field(); ?>

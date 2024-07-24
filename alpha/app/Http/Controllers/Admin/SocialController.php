@@ -7,6 +7,7 @@ use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class SocialController extends Controller
 {
@@ -16,7 +17,11 @@ class SocialController extends Controller
     public function index()
     {
         $social = DB::table('socials')->get();
-        return view('admin.layouts.Social.social', compact('social'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.Social.social', compact('social'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -47,7 +52,11 @@ class SocialController extends Controller
      */
     public function edit(Social $socials)
     {
-        return view('admin.layouts.Social.edit', compact('socials'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.Social.edit', compact('socials'));
+        } else
+            return redirect()->back();
     }
 
     /**

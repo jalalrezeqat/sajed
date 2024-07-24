@@ -21,7 +21,11 @@ class BranchController extends Controller
    public function index()
    {
       $branch =  DB::table('branches')->get();
-      return view('admin.layouts.branch.branch', compact('branch'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.branch.branch', compact('branch'));
+      } else
+         return redirect()->back();
    }
 
    public function destroy(int $branch_id)
@@ -34,7 +38,11 @@ class BranchController extends Controller
    }
    public function addbranch()
    {
-      return view('admin.layouts.branch.addbranch');
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.branch.addbranch');
+      } else
+         return redirect()->back();
    }
 
    public function store(Request $request)
@@ -52,7 +60,7 @@ class BranchController extends Controller
          $extenstion = $file->getClientOriginalExtension();
          $filename = time() . '.' . $extenstion;
          $file->move('img/branch/', $filename);
-         $data->img_name = $filename;
+         $data->img = $filename;
       }
       $data->save();
 
@@ -61,7 +69,11 @@ class BranchController extends Controller
    }
    public function edit(branch $branch)
    {
-      return view('admin.layouts.branch.edit', compact('branch'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.branch.edit', compact('branch'));
+      } else
+         return redirect()->back();
    }
 
    public function update(Request $request, $id)
@@ -89,7 +101,11 @@ class BranchController extends Controller
    }
    public function editvistion(branch $about)
    {
-      return view('admin.layouts.about.editvistion', compact('about'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.editvistion', compact('about'));
+      } else
+         return redirect()->back();
    }
 
    public function updatevistion(Request $request, $id)

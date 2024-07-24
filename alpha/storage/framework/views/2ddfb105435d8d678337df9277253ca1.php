@@ -35,7 +35,9 @@
                     <th scope="col"> اسم الطالب</th>
                     <th scope="col"> تاريخ البداية</th>
                     <th scope="col"> تاريخ النهاية</th>
-                    <th scope="col"></th>
+                    <?php if(Auth::guard('admin')->user()->stutes == 0): ?>
+                        <th scope="col"></th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -61,15 +63,16 @@
                         </td>
                         <td class=""><?php echo e($code->startcode); ?> </td>
                         <td class=""><?php echo e($code->endcode); ?> </td>
-
-                        <td class="">
-                            <a href="<?php echo e(route('admin.codegenaret.edit', $code->id)); ?>" class="btn btn-dark editdelete">تعديل
-                            </a>
-                            <a href="<?php echo e(route('admin.codegenaret.destroy', $code->id)); ?>"
-                                onclick="return confirm(' هل انت متاكد سيتم الحدف') "
-                                class="btn btn-danger editdelete">حذف</a>
-                        </td>
-
+                        <?php if(Auth::guard('admin')->user()->stutes == 0): ?>
+                            <td class="">
+                                <a href="<?php echo e(route('admin.codegenaret.edit', $code->id)); ?>"
+                                    class="btn btn-dark editdelete">تعديل
+                                </a>
+                                <a href="<?php echo e(route('admin.codegenaret.destroy', $code->id)); ?>"
+                                    onclick="return confirm(' هل انت متاكد سيتم الحدف') "
+                                    class="btn btn-danger editdelete">حذف</a>
+                            </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>

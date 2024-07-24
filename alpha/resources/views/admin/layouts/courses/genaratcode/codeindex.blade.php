@@ -36,7 +36,9 @@
                     <th scope="col"> اسم الطالب</th>
                     <th scope="col"> تاريخ البداية</th>
                     <th scope="col"> تاريخ النهاية</th>
-                    <th scope="col"></th>
+                    @if (Auth::guard('admin')->user()->stutes == 0)
+                        <th scope="col"></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -60,15 +62,16 @@
                         </td>
                         <td class="">{{ $code->startcode }} </td>
                         <td class="">{{ $code->endcode }} </td>
-
-                        <td class="">
-                            <a href="{{ route('admin.codegenaret.edit', $code->id) }}" class="btn btn-dark editdelete">تعديل
-                            </a>
-                            <a href="{{ route('admin.codegenaret.destroy', $code->id) }}"
-                                onclick="return confirm(' هل انت متاكد سيتم الحدف') "
-                                class="btn btn-danger editdelete">حذف</a>
-                        </td>
-
+                        @if (Auth::guard('admin')->user()->stutes == 0)
+                            <td class="">
+                                <a href="{{ route('admin.codegenaret.edit', $code->id) }}"
+                                    class="btn btn-dark editdelete">تعديل
+                                </a>
+                                <a href="{{ route('admin.codegenaret.destroy', $code->id) }}"
+                                    onclick="return confirm(' هل انت متاكد سيتم الحدف') "
+                                    class="btn btn-danger editdelete">حذف</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

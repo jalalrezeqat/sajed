@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
+<?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+$width = '<script>document.write(screen.width); </script>';
+
+?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +14,10 @@
         <meta name='og:phone_number' content='{{ $connectwithus->phone }}'>
         <meta name='og:email' content='{{ $connectwithus->email }}'>
     @endforeach
-
+    @foreach ($iconfav as $iconfavs)
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+    @endforeach
 
 </head>
 @extends('layouts.app')
@@ -31,7 +38,7 @@
                                         <p class="font18px">سنكونُ سعيدين في استقبال استفساراتكُم</p>
                                     </div>
                                 </div>
-                                @if ($agent->isDesktop())
+                                @if ($width > 1028)
                                     <div class="col ">
                                         <div class=" contact-img">
                                             @foreach ($slider as $slider)
@@ -43,7 +50,7 @@
 
                                     </div>
                                 @endif
-                                @if ($agent->isTablet())
+                                @if (($width > 480) & ($width < 1028))
                                     <div class="row">
                                         <div class=" contact-img">
                                             @foreach ($slider as $slider)
@@ -55,7 +62,7 @@
 
                                     </div>
                                 @endif
-                                @if ($agent->isMobile())
+                                @if ($width < 481)
                                     <div class="col">
                                         <div class=" contact-img">
                                             @foreach ($slider as $slider)

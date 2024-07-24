@@ -1,22 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <br><br>
-    <div class="formaddm">
-        <form action="<?php echo e(route('admin.dashbord.serchstudant')); ?>" method="POST">
-            <?php echo csrf_field(); ?>
-
-            <div class="row">
-                <div class="form-grou col-8">
-                    <select class="form-control" name="studant" id="courses">
-                        <option value="1">الطلاب المشتركين</option>
-                        <option value="2">الطلاب الغير مشتركين</option>
-                    </select>
-                </div>
-                <div class="  col-3">
-                    <button type="submit" class="btn btn-info">بحث</button>
-                </div>
-            </div>
-        </form>
-    </div>
+    
     <div>
         <h2><?php echo e($msg); ?><?php echo e($usercount); ?></h2>
     </div>

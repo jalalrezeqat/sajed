@@ -25,7 +25,8 @@
         </div>
     </form>
 
-
+    <p class="font18px mt-5 " style="color:blue">عدد الاكواد : {{ $codecount }}
+    </p>
     <div class=" table-responsive">
 
         <table class=" table-admin-connectus  ">

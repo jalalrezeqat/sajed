@@ -9,6 +9,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Models\courses;
 use App\Models\lesson;
+use Illuminate\Support\Facades\Auth;
+
 
 class ChabterController extends Controller
 {
@@ -28,7 +30,11 @@ class ChabterController extends Controller
 
         $courses = DB::table('courses')->where('id', '=', $course)->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.updatechabterviwe', compact('chabters', 'courses', 'course'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.updatechabterviwe', compact('chabters', 'courses', 'course'));
+        } else
+            return redirect()->back();
     }
 
     /**

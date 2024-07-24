@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\courses;
 use Illuminate\Support\Facades\File;
 use App\Models\questionscours;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionscoursController extends Controller
 {
@@ -19,7 +20,11 @@ class QuestionscoursController extends Controller
     {
 
         $courses = DB::table('courses')->get();
-        return view('admin.layouts.courses.questions.questionscours', compact('courses'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.questions.questionscours', compact('courses'));
+        } else
+            return redirect()->back();
     }
 
     public function questionscoursadd(Request $request)
@@ -28,7 +33,11 @@ class QuestionscoursController extends Controller
         $chabterid = $request->id;
         $courses = DB::table('courses')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.questions.questionscoursadd', compact('courses', 'teacher', 'chabterid'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.questions.questionscoursadd', compact('courses', 'teacher', 'chabterid'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -67,7 +76,11 @@ class QuestionscoursController extends Controller
         $questionscours = DB::table('questionscours')->where('course', '=', $courses->id)->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.questions.questioncviwe', compact('branch', 'questionscours', 'courses'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.questions.questioncviwe', compact('branch', 'questionscours', 'courses'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -77,7 +90,11 @@ class QuestionscoursController extends Controller
     {
         // $chabterid = $request->id;
         $courses = DB::table('courses')->get();
-        return view('admin.layouts.courses.questions.edit', compact('questionscours', 'courses'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.questions.edit', compact('questionscours', 'courses'));
+        } else
+            return redirect()->back();
     }
 
     /**

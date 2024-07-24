@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="/img/fiveicon.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <title>{{ config('app.name', 'Admin Panel ALPHA') }}</title>
+    <title>{{ 'Admin Panel ALPHA' }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -20,9 +20,16 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script type="text/javascript" src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
     <script type="text/javascript" src="https://cdn.bitmovin.com/analytics/web/beta/2/bitmovinanalytics.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
     @vite(['resources/admin/assets/vendors/mdi/css/materialdesignicons.min.css', 'resources/admin/assets/vendors/css/vendor.bundle.base.css', 'resources/admin/assets/css/style.css', 'resources/admin/assets/images/favicon.ico', 'resources/css/custom.css'])
-
+    <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+    $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
+    
+    ?>
+    @foreach ($iconfav as $iconfavs)
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+    @endforeach
 </head>
 
 <body class="dir">
@@ -31,8 +38,12 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="{{ route('admin.dashboard') }}"><img src="/img/fiveicon.png"
-                        alt="logo" /></a>
+                @foreach ($iconfav as $iconfavs)
+                    <a class="navbar-brand brand-logo" href="{{ route('admin.dashboard') }}"><img
+                            style="height: 50px;width:50px" src="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}"
+                            alt="">
+                    </a>
+                @endforeach
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -51,12 +62,15 @@
                             aria-labelledby="profileDropdown">
                             <form method="get" class="dropdown-item" action="">
                                 @csrf
-                                <button class="dropdown-item text-primary">الملف الشخصي </button>
+                                <a href="{{ url('admin/dashboard/profile', Auth::guard('admin')->user()->id) }}"
+                                    class="nav-link text-primary">الملف
+                                    الشخصي</a>
+
                             </form>
                             <div class="dropdown-divider"></div>
                             <form method="POST" class="dropdown-item" action="{{ route('admin.logout') }}">
                                 @csrf
-                                <button class="dropdown-item text-primary">تسجيل الخروج</button>
+                                <button class="btn text-primary nav-link ">تسجيل الخروج</button>
                             </form>
                         </div>
                     </li>
@@ -78,6 +92,7 @@
                                 <span class="font-weight-bold mb-2">{{ Auth::guard('admin')->user()->name }}</span>
                             </div>
                         </a>
+                        @if (Auth::guard('admin')->user()->stutes == 0)
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">
@@ -133,6 +148,11 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.addAdmin') }}">
+                            <span class="menu-title font-weight-bold mb-2">اضافة مسؤول </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#Favoriteicon" aria-expanded="false"
                             aria-controls="ui-basic">
                             <span class="menu-title">حول الموقع</span>
@@ -172,11 +192,11 @@
                                     </a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.dashbord.coures') }}">الدورات</a></li>
-                                <li class="nav-item"> <a class="nav-link"
+                                {{-- <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.dashbord.countstudant') }}"> عدد الدورات التي يشترك فيها
                                         كل
                                         طالب
-                                    </a></li>
+                                    </a></li> --}}
                             </ul>
                         </div>
                     </li>
@@ -196,7 +216,26 @@
                             <span class="menu-title font-weight-bold mb-2">اتصل بنا</span>
                         </a>
                     </li>
-
+                    @endif
+                    @if (Auth::guard('admin')->user()->stutes == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                                <span class="menu-title font-weight-bold mb-2">لوحة التحكم</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.codegenaret') }}">انشاء
+                                كود </a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.order') }}">
+                                <span class="menu-title font-weight-bold mb-2">طلبات البطاقات</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.Connectus') }}">
+                                <span class="menu-title font-weight-bold mb-2">اتصل بنا</span>
+                            </a>
+                        </li>
+                    @endif
 
 
                 </ul>

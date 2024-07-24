@@ -6,7 +6,8 @@
                     class="btn btn-back-user btn-lg btn-success">رجوع</button></a>
 
             <div class="form-edit-user-profile">
-                <form action="<?php echo e(route('admin.postChangePassworduser')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('admin.postChangePassworduses', $user->id)); ?>" method="POST"
+                    enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
 

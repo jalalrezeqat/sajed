@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\OptionRequest;
 use App\Models\Question;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 class OptionController extends Controller
 {
 
@@ -18,22 +20,29 @@ class OptionController extends Controller
         // $options = Option::all();
         $questionsid = $request->id;
         $questions = Question::find($id);
-        $options =Option::where('question_id', '=', $questions->id)->get();
-        return view('admin.options.index', compact('options','questionsid','questions'));
+        $options = Option::where('question_id', '=', $questions->id)->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.options.index', compact('options', 'questionsid', 'questions'));
+        } else
+            return redirect()->back();
     }
 
     public function create(Request $request, $id): View
     {
-        $questions = Question::where('id','=',$id)->pluck('question_text', 'id');
+        $questions = Question::where('id', '=', $id)->pluck('question_text', 'id');
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.options.create', compact('questions','id'));
+            return view('admin.options.create', compact('questions', 'id'));
+        } else
+            return redirect()->back();
     }
 
-    public function store(OptionRequest $request ,$id): RedirectResponse
+    public function store(OptionRequest $request, $id): RedirectResponse
     {
         Option::create($request->validated());
 
-        return redirect()->route('admin.options.index',$id)->with([
+        return redirect()->route('admin.options.index', $id)->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'
         ]);
@@ -41,21 +50,28 @@ class OptionController extends Controller
 
     public function show(Option $option): View
     {
-        return view('admin.options.show', compact('option'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.options.show', compact('option'));
+        } else
+            return redirect()->back();
     }
 
-    public function edit(Option $option ,$id): View
+    public function edit(Option $option, $id): View
     {
-        $questions = Question::where('id','=',$id)->pluck('question_text', 'id');
+        $questions = Question::where('id', '=', $id)->pluck('question_text', 'id');
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.options.edit', compact('option', 'questions','id'));
+            return view('admin.options.edit', compact('option', 'questions', 'id'));
+        } else
+            return redirect()->back();
     }
 
-    public function update(OptionRequest $request, Option $option ,$questionsid): RedirectResponse
+    public function update(OptionRequest $request, Option $option, $questionsid): RedirectResponse
     {
         $option->update($request->validated());
 
-        return redirect()->route('admin.options.index',$questionsid)->with([
+        return redirect()->route('admin.options.index', $questionsid)->with([
             'message' => 'successfully updated !',
             'alert-type' => 'info'
         ]);
@@ -63,7 +79,7 @@ class OptionController extends Controller
 
     public function destroy(Option $option): RedirectResponse
     {
-        
+
         $option->delete();
 
         return back()->with([

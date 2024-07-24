@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\courses;
 use Illuminate\Support\Facades\File;
 use Owenoj\LaravelGetId3\GetId3;
+use Illuminate\Support\Facades\Auth;
 
 
 class CoursesController extends Controller
@@ -21,7 +22,11 @@ class CoursesController extends Controller
 
         $courses = DB::table('courses')->get();
         $teatcher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.courses', compact('courses', 'teatcher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.courses', compact('courses', 'teatcher'));
+        } else
+            return redirect()->back();
     }
 
     public function viweaddcourses(Request $request)
@@ -30,7 +35,11 @@ class CoursesController extends Controller
 
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.viweaddcourses', compact('branch', 'teacher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.viweaddcourses', compact('branch', 'teacher'));
+        } else
+            return redirect()->back();
     }
 
     public function courseschabtar(Request $request)
@@ -42,7 +51,11 @@ class CoursesController extends Controller
         $chabter = DB::table('chabters')->where('course', '=', $courses->id)->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.courseschabtar', compact('branch', 'chabter', 'courses'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.courseschabtar', compact('branch', 'chabter', 'courses'));
+        } else
+            return redirect()->back();
     }
     public function courseschabtaradd(Request $request)
 
@@ -50,7 +63,11 @@ class CoursesController extends Controller
         $chabterid = $request->id;
         $courses = DB::table('courses')->where('id', '=', $chabterid)->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.courseschabtaradd', compact('courses', 'teacher', 'chabterid'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.courseschabtaradd', compact('courses', 'teacher', 'chabterid'));
+        } else
+            return redirect()->back();
     }
 
     public function destroychabtar(int $chabter_id)
@@ -140,7 +157,13 @@ class CoursesController extends Controller
         //    $course=DB::table('courses')->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.updateviwe', compact('branch', 'teacher', 'courses'));
+        if (
+            Auth::guard('admin')->user()->stutes == 0
+        ) {
+
+            return view('admin.layouts.courses.courses.updateviwe', compact('branch', 'teacher', 'courses'));
+        } else
+            return redirect()->back();
     }
     public function update(Request $request, $id)
     {
@@ -206,35 +229,31 @@ class CoursesController extends Controller
         $post = courses::find($courses_id);
         $chabterDb = DB::table('courses');
         $sliderdelete = $chabterDb->where('id', $courses_id);
-        $sliderdelete->update(['status'=>'1']);
+        $sliderdelete->update(['status' => '1']);
         return  redirect()->back();
-
     }
     public function offcoures(int $courses_id)
     {
         $post = courses::find($courses_id);
         $chabterDb = DB::table('courses');
         $sliderdelete = $chabterDb->where('id', $courses_id);
-        $sliderdelete->update(['status'=>'0']);
+        $sliderdelete->update(['status' => '0']);
         return  redirect()->back();
-
     }
     public function fav(int $courses_id)
     {
         $post = courses::find($courses_id);
         $chabterDb = DB::table('courses');
         $sliderdelete = $chabterDb->where('id', $courses_id);
-        $sliderdelete->update(['fav'=>'1']);
+        $sliderdelete->update(['fav' => '1']);
         return  redirect()->back();
-
     }
     public function notfav(int $courses_id)
     {
         $post = courses::find($courses_id);
         $chabterDb = DB::table('courses');
         $sliderdelete = $chabterDb->where('id', $courses_id);
-        $sliderdelete->update(['fav'=>'0']);
+        $sliderdelete->update(['fav' => '0']);
         return  redirect()->back();
-
     }
 }

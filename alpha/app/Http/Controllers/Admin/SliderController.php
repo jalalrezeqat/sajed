@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\input;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -19,23 +20,37 @@ class SliderController extends Controller
     public function index()
     {
         $slider =  DB::table('sliders')->where('page', '<>', 'المعلم')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.layouts.slider.slider', compact('slider'));
+            return view('admin.layouts.slider.slider', compact('slider'));
+        } else
+            return redirect()->back();
     }
 
     public function indexteacher()
     {
         $teacher = DB::table('sliders')->where('page', '=', 'المعلم')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.layouts.slider.sliderteacher', compact('teacher'));
+            return view('admin.layouts.slider.sliderteacher', compact('teacher'));
+        } else
+            return redirect()->back();
     }
     public function addslider()
     {
-        return view('admin.layouts.slider.addslider');
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.slider.addslider');
+        } else
+            return redirect()->back();
     }
     public function addsliderteacher()
     {
-        return view('admin.layouts.slider.addsliderteacher');
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.slider.addsliderteacher');
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -109,13 +124,21 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('admin.layouts.slider.edit', compact('slider'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.slider.edit', compact('slider'));
+        } else
+            return redirect()->back();
     }
 
 
     public function editteacher(Slider $slider)
     {
-        return view('admin.layouts.slider.editteacher', compact('slider'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.slider.editteacher', compact('slider'));
+        } else
+            return redirect()->back();
     }
     /**
      * Update the specified resource in storage.

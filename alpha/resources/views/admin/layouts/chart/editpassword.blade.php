@@ -6,7 +6,8 @@
                     class="btn btn-back-user btn-lg btn-success">رجوع</button></a>
 
             <div class="form-edit-user-profile">
-                <form action="{{ route('admin.postChangePassworduser') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.postChangePassworduses', $user->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

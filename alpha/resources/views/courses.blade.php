@@ -1,5 +1,9 @@
   <!DOCTYPE html>
   <html lang="ar">
+  <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+  $width = '<script>document.write(screen.width); </script>';
+  
+  ?>
 
   <head>
       <meta name="description"
@@ -15,7 +19,10 @@
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+      @foreach ($iconfav as $iconfavs)
+          <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+          <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+      @endforeach
       @vite(['resources/css/mediaipad.css'])
 
       @vite(['resources/css/mediaipad.css'])
@@ -39,7 +46,7 @@
               </div>
           </div>
           {{-- end slider home --}}
-          @if ($agent->isDesktop() || $agent->isTablet())
+          @if ($width > 480)
               <div class="mt">
                   <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
               </div>
@@ -51,7 +58,7 @@
       <section class="mt100px">
           <div class="row row-cols-1  card-course dir ovarflow  row-cols-md-3 ">
               @foreach ($branch as $branch)
-                  @if ($agent->isDesktop())
+                  @if ($width > 1028)
                       <div class="col colcard">
                           <div class="card-home card card-home " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
@@ -86,7 +93,7 @@
                       </div>
                   </div> --}}
                   @endif
-                  @if ($agent->isTablet())
+                  @if (($width > 480) & ($width < 1028))
                       <div class="col colcard">
                           <div class="card-home card card-home " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
@@ -105,7 +112,7 @@
                           </div>
                       </div>
                   @endif
-                  @if ($agent->isMobile())
+                  @if ($width < 481)
                       <div class="col colcard">
                           <div class="card-home card  " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"

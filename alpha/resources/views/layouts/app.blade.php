@@ -7,7 +7,7 @@ $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
 $headericon = DB::table('favoriteicons')->where('name', '=', 'header')->get();
 $footericon = DB::table('favoriteicons')->where('name', '=', 'footer')->get();
 $socials = DB::table('socials')->where('status', '=', '1')->get();
-$socialswah = DB::table('socials')->where('name','=','whatsapp')->first();
+$socialswah = DB::table('socials')->where('name', '=', 'whatsapp')->first();
 
 $connectwithus = DB::table('connect_with_us')->get();
 $police = DB::table('policies')->get();
@@ -17,7 +17,7 @@ $agent = new Agent();
 $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->get();
 
 ?>
- <style>
+<style>
     /* #ac-wrapper {
 
         width: 100%;
@@ -459,7 +459,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         <!-- Copyright -->
     </footer>
 </div>
-<a href="{{$socialswah->url}}" target="_blank" class="float">
+<a href="{{ $socialswah->url }}" target="_blank" class="float">
     <i class="fa fa-whatsapp  my-float fa-2x"></i>
 </a>
 <!-- End of .container -->

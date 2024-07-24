@@ -8,6 +8,7 @@ use App\Models\ConnectWithUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class ConnectWithUsController extends Controller
 {
@@ -17,7 +18,11 @@ class ConnectWithUsController extends Controller
     public function index()
     {
         $connectwithus = DB::table('connect_with_us')->get();
-        return view('admin.layouts.ConnectWithUs.ConnectWithUs', compact('connectwithus'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.ConnectWithUs.ConnectWithUs', compact('connectwithus'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -49,7 +54,11 @@ class ConnectWithUsController extends Controller
      */
     public function edit(ConnectWithUs $connectWithUs)
     {
-        return view('admin.layouts.ConnectWithUs.edit', compact('connectWithUs'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.ConnectWithUs.edit', compact('connectWithUs'));
+        } else
+            return redirect()->back();
     }
 
     /**

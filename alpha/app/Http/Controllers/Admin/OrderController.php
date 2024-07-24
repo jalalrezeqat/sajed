@@ -79,20 +79,26 @@ class OrderController extends Controller
         $post = order::find($order_id);
         $chabterDb = DB::table('orders');
         $sliderdelete = $chabterDb->where('id', $order_id);
-        $sliderdelete->update(['stetus'=>'2']);
+        $sliderdelete->update(['stetus' => '2']);
         return  redirect()->back();
-
     }
     public function tosucsses(int $order_id)
     {
         $post = order::find($order_id);
         $chabterDb = DB::table('orders');
         $sliderdelete = $chabterDb->where('id', $order_id);
-        $sliderdelete->update(['stetus'=>'3']);
+        $sliderdelete->update(['stetus' => '3']);
         return  redirect()->back();
-
     }
-    
+    public function toorder(int $order_id)
+    {
+        $post = order::find($order_id);
+        $chabterDb = DB::table('orders');
+        $sliderdelete = $chabterDb->where('id', $order_id);
+        $sliderdelete->update(['stetus' => '1']);
+        return  redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      */

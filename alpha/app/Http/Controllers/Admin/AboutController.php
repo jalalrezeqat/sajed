@@ -21,8 +21,13 @@ class AboutController extends Controller
       $aboutalph  = DB::table('abouts')->where('aboutalpha', '<>', '')->get();
       $vision =  DB::table('abouts')->where('our_vision', '<>', '')->get();
       $mission = DB::table('abouts')->where('summernote', '<>', '')->get();
-      return view('admin.layouts.about.about', compact('vision', 'aboutalph', 'mission'));
+      if (Auth::guard('admin')->user()->stutes != 0) {
+
+         return redirect()->back();
+      } else
+         return view('admin.layouts.about.about', compact('vision', 'aboutalph', 'mission'));
    }
+
 
    public function destroy(int $about_id)
    {
@@ -34,7 +39,11 @@ class AboutController extends Controller
    }
    public function addmission()
    {
-      return view('admin.layouts.about.addmission');
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.addmission');
+      } else
+         return redirect()->back();
    }
 
    public function store(Request $request)
@@ -52,17 +61,25 @@ class AboutController extends Controller
       $data = new about();
       $input = $request->all();
       $data->fill($input)->save();
-      dd( $data->fill($input)->save());
+      dd($data->fill($input)->save());
       return  redirect()->route('admin.about');
    }
    public function edit(about $about)
    {
-      return view('admin.layouts.about.edit', compact('about'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.edit', compact('about'));
+      } else
+         return redirect()->back();
    }
 
    public function aboutalphaedit(about $aboutalpha)
    {
-      return view('admin.layouts.about.aboutalphaesit', compact('aboutalpha'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.aboutalphaesit', compact('aboutalpha'));
+      } else
+         return redirect()->back();
    }
    public function update(Request $request, $id)
    {
@@ -75,16 +92,28 @@ class AboutController extends Controller
    }
    public function editvistion(about $about)
    {
-      return view('admin.layouts.about.editvistion', compact('about'));
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.editvistion', compact('about'));
+      } else
+         return redirect()->back();
    }
 
    public function aboutalpha()
    {
-      return view('admin.layouts.about.aboutalpha');
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.aboutalpha');
+      } else
+         return redirect()->back();
    }
    public function addvistion()
    {
-      return view('admin.layouts.about.vistionadd');
+      if (Auth::guard('admin')->user()->stutes == 0) {
+
+         return view('admin.layouts.about.vistionadd');
+      } else
+         return redirect()->back();
    }
    public function updatevistion(Request $request, $id)
    {

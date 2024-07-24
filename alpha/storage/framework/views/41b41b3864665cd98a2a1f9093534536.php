@@ -24,7 +24,6 @@
         </form>
     </div>
 
-    <?php $count = 0; ?>
     <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key1 => $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php $__currentLoopData = $code; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $codes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php if($users->id == $codes->user_id): ?>
@@ -45,7 +44,7 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
     <div>
-        <h2><?php echo e($msg); ?> <?php echo e($count); ?></h2>
+        <h2><?php echo e($msg); ?> <?php echo e($count); ?> <?php echo e($count); ?></h2>
     </div>
     <div class=" table-responsive">
 

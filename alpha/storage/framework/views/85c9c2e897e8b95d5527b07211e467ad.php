@@ -1,5 +1,9 @@
   <!DOCTYPE html>
   <html lang="ar">
+  <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+  $width = '<script>document.write(screen.width); </script>';
+  
+  ?>
 
   <head>
       <meta name="viewport" content="width=device-width">
@@ -16,75 +20,10 @@
           <meta name="<?php echo e($coursess->name); ?>" content="<?php echo e(url('coursesditels' . '/' . $coursess->id)); ?>" />
       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css']); ?>
-      <style>
-          /* #ac-wrapper {
-
-              width: 100%;
-              height: 100%;
-              background: url("images/pop-bg.png") repeat top left transparent;
-              position: fixed;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: rgba(0, 0, 0, .5);
-
-          }
-
-          .toolbarLB {
-              text-align: right;
-              padding: 10px;
-
-          }
-
-          .closeLB {
-              color: #27AC1F;
-              cursor: pointer;
-
-          }
-*/
-          /* #popup {
-              background: none repeat scroll 0 0 #FFFFFF;
-              border-radius: 18px;
-              -moz-border-radius: 18px;
-              -webkit-border-radius: 18px;
-              height: 361px;
-              margin: 5% auto;
-              position: relative;
-              width: 597px;
-          } */
-
-          /* .lightbox.closed {
-              display: none;
-          }
-
-          * {
-              padding: 0;
-              margin: 0;
-          } */
-
-
-
-          .float {
-              position: fixed;
-              width: 60px;
-              height: 60px;
-              bottom: 40px;
-              right: 40px;
-              background-color: #12181e;
-              color: #FFF;
-              border-radius: 50px;
-              text-align: center;
-              box-shadow: 2px 2px 3px #999;
-          }
-
-          .my-float {
-              margin-top: 22px;
-          }
-      </style>
+      <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+          <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </head>
   <?php
 $__split = function ($name, $params = []) {
@@ -124,171 +63,182 @@ if (isset($__slots)) unset($__slots);
           </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
-                  <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 1029)): ?>
-                  <div class="col float-right ring">
-                      <div>
 
-                          <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
-                      </div>
-                      <div>
-                          <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
+                  <?php if($width > 1029): ?>
+                      <div class="col float-right ring">
+                          <div>
+
+                              <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
+                          </div>
+                          <div>
+                              <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات
-                              مرحلة
-                              التوجيهي التي تحتاجها
-                              للحـصـول عـلى مـعـدل
-                              تحلم به وعلى ايدي امهر الاساتذة.</p>
+                                  مرحلة
+                                  التوجيهي التي تحتاجها
+                                  للحـصـول عـلى مـعـدل
+                                  تحلم به وعلى ايدي امهر الاساتذة.</p>
 
-                      </div>
+                          </div>
 
-                      <div>
-                          <div class="row dir " style="margin-top:50px">
-                              <div class="col">
+                          <div>
+                              <div class="row dir " style="margin-top:50px">
+                                  <div class="col">
 
-                                  <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
-                                      </button></a>
-                              </div>
-                              <div class="col">
-                                  <div class="row">
-                                      <div class="col-sm-3"> <i class="fa fa-play-circle-o"
-                                              style="font-size:48px;color:#27AC1F"></i>
-                                      </div>
-                                      <div class="col-sm-9 mt">
-                                          <p style="font-size: 20px;color:#27AC1F; font-weight:700;">تعرّف أكثر</p>
+                                      <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                                          </button></a>
+                                  </div>
+                                  <div class="col">
+                                      <div class="row">
+                                          <div class="col-sm-3"> <i class="fa fa-play-circle-o"
+                                                  style="font-size:48px;color:#27AC1F"></i>
+                                          </div>
+                                          <div class="col-sm-9 mt">
+                                              <p style="font-size: 20px;color:#27AC1F; font-weight:700;">تعرّف أكثر</p>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="col  float-left">
-                      <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          <img id="" class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
-                              alt="">
-                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                  </div>
+                      <div class="col  float-left">
+                          <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <img id="" class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
+                                  alt="">
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      </div>
               </div>
           </div>
           <?php endif; ?>
 
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthBetween', 481, 1028)): ?>
-          <div class="col float-right ring">
-              <div>
+          <?php if(($width > 481) & ($width < 1028)): ?>
+              <div class="col float-right ring">
+                  <div>
 
-                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
-                      مكان</p>
-              </div>
-              <div>
-                  <p class="font18px" style="margin-top:20px;    font-weight:700 ;
+                      <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
+                          مكان</p>
+                  </div>
+                  <div>
+                      <p class="font18px" style="margin-top:20px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات مرحلة
-                      التوجيهي التي تحتاجها
-                      للحـصـول عـلى مـعـدل
-                      تحلم به وعلى ايدي امهر الاساتذة.</p>
-              </div>
-              <div>
-                  <div class="row dir " style="margin-top:20px">
-                      <div class="col">
-                          <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
-                              </button></a>
-                      </div>
-                      <div class="col">
-                          <div class="row">
-                              <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
-                                  <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
-                              </div>
-                          </div>
-                      </div>
+                          التوجيهي التي تحتاجها
+                          للحـصـول عـلى مـعـدل
+                          تحلم به وعلى ايدي امهر الاساتذة.</p>
                   </div>
-              </div>
-          </div>
-          <div class="col  float-left">
-              <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <img class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </div>
-          </div>
-          </div>
-          <?php endif; ?>
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
-          <div class="col ">
-              <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <img class="img-home" src="<?php echo e(asset('img/slider/' . $sliders->img)); ?>" alt="">
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </div>
-          <div class="col float-right ring">
-              <div>
-
-                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
-              </div>
-              <div>
-                  <p class="font18px">نحن نقدم لك كافة دورات مرحلة
-                      التوجيهي التي تحتاجها
-                      للحـصـول عـلى مـعـدل
-                      تحلم به وعلى ايدي امهر الاساتذة.</p>
-              </div>
-              <div>
-                  <div class="row dir " style="margin-top:20px">
-                      <div class="col">
-                          <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
-                              </button></a>
-                      </div>
-                      <div class="col">
-                          <div class="row">
-                              <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
-                                  <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
-                                      أكثر</span>
-                              </div>
+                  <div>
+                      <div class="row dir " style="margin-top:20px">
+                          <div class="col">
+                              <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                                  </button></a>
                           </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          </div>
-          </div>
-          <?php endif; ?>
-      </section>
-      <?php if(Auth::user()): ?>
-          <?php $course = DB::table('codecards')
-              ->where('user_id', '=', Auth::user()->id)
-              ->get();
-          ?>
-          <div class="dir profile-coures " id="">
-              <p class="mb-5">الدورات المسجل بها</p>
-
-              <div class="row row-cols-1  card-w dir   row-cols-md-3 ">
-                  <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          <?php if($coursenames->id == $coursess->courses): ?>
-                              <?php $auth = 1; ?>
-
-                              <div class="col colcard">
-                                  <div class="card-home card  " id="card-profile">
-                                      <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>"
-                                          class="card-img-top-profile" alt="...">
-                                      <div class="card-body">
-                                          <?php $__currentLoopData = $lessonidds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonidsa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                              <?php if($coursenames->id == $lessonidsa->idcoures): ?>
-                                                  <p class="card-title-home font18px "><a
-                                                          href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson)); ?>"
-                                                          class="card-title-home  text-center"><?php echo e($coursenames->name); ?></a>
-                                                  </p>
-                                                  <?php $auth = 0; ?>
-                                              <?php endif; ?>
-                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                          <?php if($auth == 1): ?>
-                                              <a class="nav-link"
-                                                  href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
-                                                  class="card-title-home "><?php echo e($coursenames->name); ?></a>
-                                          <?php endif; ?>
-                                      </div>
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
+                                      <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                                   </div>
                               </div>
-                          <?php endif; ?>
-                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col  float-left">
+                  <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <img class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
-          </div>
+              </div>
+              </div>
+          <?php endif; ?>
+          <?php if($width < 480): ?>
+              <div class="col ">
+                  <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <img class="img-home" src="<?php echo e(asset('img/slider/' . $sliders->img)); ?>" alt="">
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              </div>
+              <div class="col float-right ring">
+                  <div>
+
+                      <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
+                  </div>
+                  <div>
+                      <p class="font18px">نحن نقدم لك كافة دورات مرحلة
+                          التوجيهي التي تحتاجها
+                          للحـصـول عـلى مـعـدل
+                          تحلم به وعلى ايدي امهر الاساتذة.</p>
+                  </div>
+                  <div>
+                      <div class="row dir " style="margin-top:20px">
+                          <div class="col">
+                              <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                                  </button></a>
+                          </div>
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
+                                          style="color:#27AC1F"></i>
+                                      <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
+                                          أكثر</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              </div>
+              </div>
+          <?php endif; ?>
+      </section>
+
+      <?php if(Auth::user()): ?>
+          <?php if(Auth::user()->stutes != 1): ?>
+              <?php $course = DB::table('codecards')
+                  ->where('user_id', '=', Auth::user()->id)
+                  ->get();
+              ?>
+              <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursesss): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+              <div class="dir profile-coures " id="">
+                  <p class="mb-5 font18px">الدورات المسجل بها</p>
+
+                  <div class="row row-cols-1 mt-5  card-w dir   row-cols-md-3 ">
+                      <?php $__currentLoopData = $course; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <?php $__currentLoopData = $coursename; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursenames): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <?php if($coursenames->id == $coursess->courses): ?>
+                                  <?php $auth = 1; ?>
+
+                                  <div class="col colcard">
+                                      <div class="card-home card  " id="card-profile">
+                                          <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>"
+                                              class="card-img-top-profile" alt="...">
+                                          <div class="card-body">
+                                              <?php $__currentLoopData = $lessonidds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonidsa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                  <?php if($coursenames->id == $lessonidsa->idcoures): ?>
+                                                      <p class="card-title-home font14px "><a
+                                                              href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson)); ?>"
+                                                              class="card-title-home  text-center"><?php echo e($coursenames->name); ?></a>
+                                                      </p>
+                                                      <?php $auth = 0; ?>
+                                                  <?php endif; ?>
+                                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                              <?php if($auth == 1): ?>
+                                                  <p class="card-title-home font14px ">
+                                                      <a class="nav-link"
+                                                          href="<?php echo e(url('courseshow' . '/' . $coursenames->id . '/1')); ?>"
+                                                          class="card-title-home "><?php echo e($coursenames->name); ?></a>
+                                                  </p>
+                                              <?php endif; ?>
+                                          </div>
+                                      </div>
+                                  </div>
+                              <?php endif; ?>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  </div>
+              </div>
+          <?php endif; ?>
       <?php endif; ?>
+
       
 
       
@@ -338,33 +288,33 @@ if (isset($__slots)) unset($__slots);
                   الوطن!
               </p>
           </div>
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthGreaterThan', 481)): ?>
-          
-          <div id="carousel" class="carousel shadow-lg slider-tet slide">
-              <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher1" alt="">
+          <?php if($width > 481): ?>
+              
+              <div id="carousel" class="carousel shadow-lg slider-tet slide">
+                  <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher1" alt="">
 
-              <div class="carousel-inner">
-                  <?php $__currentLoopData = $sliderteacher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
-                          <img class="d-block d-block   img-slider-teacher"
-                              src="<?php echo e(asset('img/slider/' . $sliderteachers->img)); ?>" alt="صورة معلومات عن المعلم">
-                      </div>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <div class="carousel-inner">
+                      <?php $__currentLoopData = $sliderteacher; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachers): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                              <img class="d-block d-block   img-slider-teacher"
+                                  src="<?php echo e(asset('img/slider/' . $sliderteachers->img)); ?>" alt="صورة معلومات عن المعلم">
+                          </div>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+                  <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher2" alt="">
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-              </button>
-              <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher2" alt="">
-          </div>
           <?php endif; ?>
 
-          <?php if (\Illuminate\Support\Facades\Blade::check('windowWidthLessThan', 480)): ?>
-          <?php
+          <?php if($width < 480): ?>
+              <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
@@ -382,84 +332,90 @@ if (isset($__slots)) unset($__slots);
 ?>
 
 
-          <style>
-              .img-1 {
-                  position: relative;
-                  width: 200px;
-                  height: auto;
-                  border-radius: 50%;
-                  top: -127px !important;
-                  /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
-              }
+              <style>
+                  .img-1 {
+                      position: relative;
+                      width: 200px;
+                      height: auto;
+                      border-radius: 50%;
+                      top: -127px !important;
+                      /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+                  }
 
-              .carousel-indicators li {
-                  cursor: pointer;
-                  border-radius: 50% !important;
-                  width: 10px;
-                  height: 10px;
-                  opacity: 0.5;
-                  margin: 0 15px 18px 15px;
-                  color: #27AC1F;
-                  background-color: #27AC1F !important;
-                  bottom: -30px;
-                  position: relative
-              }
+                  .carousel-indicators li {
+                      cursor: pointer;
+                      border-radius: 50% !important;
+                      width: 10px;
+                      height: 10px;
+                      opacity: 0.5;
+                      margin: 0 15px 18px 15px;
+                      color: #27AC1F;
+                      background-color: #27AC1F !important;
+                      bottom: -30px;
+                      position: relative
+                  }
 
-              .carousel-indicators li::marker {
-                  visibility: hidden;
-                  color: #cd1e27;
-                  font-size: 0px
-              }
+                  .carousel-indicators li::marker {
+                      visibility: hidden;
+                      color: #cd1e27;
+                      font-size: 0px
+                  }
 
-              #carouselExample {
-                  box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
-              }
+                  #carouselExample {
+                      box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
+                  }
 
-              .carousel-inner {
-                  border-radius: 15px !important
-              }
-          </style>
-          <div class="container px-2 px-md-4 py-5 mx-auto ">
-              <div class="row d-flex justify-content-center ">
-                  <div class="col-lg-5 col-md-7 col-sm-9 ">
+                  .carousel-inner {
+                      border-radius: 15px !important
+                  }
+              </style>
+              <div class="container px-2 px-md-4 py-5 mx-auto ">
+                  <div class="row d-flex justify-content-center ">
+                      <div class="col-lg-5 col-md-7 col-sm-9 ">
 
-                      <div id="carouselExample" class="carousel  shadow-sm  slide">
-                          <div class="carousel-inner">
-                              <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                  <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
-                                      <img class="d-block d-block   img-slider-teacher"
-                                          src="<?php echo e(asset('img/sliderphone/' . $sliderteachermobs->img)); ?>"
-                                          alt="<?php echo e($sliderteachermobs->id); ?>">
-                                  </div>
-                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                          <div id="carouselExample" class="carousel  shadow-sm  slide">
+                              <div class="carousel-inner">
+                                  <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
+                                          <img class="d-block d-block   img-slider-teacher"
+                                              src="<?php echo e(asset('img/sliderphone/' . $sliderteachermobs->img)); ?>"
+                                              alt="<?php echo e($sliderteachermobs->id); ?>">
+                                      </div>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                              </div>
+                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                  data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                  data-bs-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                  <span class="visually-hidden">Next</span>
+                              </button>
+                              <ol class="carousel-indicators">
+                                  <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <li data-target="#carouselExample" class="<?php echo e($key == 0 ? 'active' : ''); ?>"
+                                          data-slide-to="0">
+                                      </li>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                              </ol>
                           </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                              data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                              data-bs-slide="next">
-                              <span class="carousel-control-next-icon"></span>
-                              <span class="visually-hidden">Next</span>
-                          </button>
-                          <ol class="carousel-indicators">
-                              <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                  <li data-target="#carouselExample" class="<?php echo e($key == 0 ? 'active' : ''); ?>"
-                                      data-slide-to="0">
-                                  </li>
-                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                          </ol>
-                      </div>
 
+                      </div>
                   </div>
               </div>
-          </div>
           <?php endif; ?>
 
           
       </section>
       
+      
+
+      
+
+      
+
       
       <section class="mt100px">
           <div class=" m-3 dir mtb00px mt100px card-text-home">
@@ -474,27 +430,19 @@ if (isset($__slots)) unset($__slots);
                               <button type="button" data-bs-toggle="collapse"
                                   data-bs-target="#collapse<?php echo e($question->id); ?>qu" aria-expanded="false"
                                   aria-controls="collapseExample"
-                                  class="btn qustion-text font18px"><?php echo e($question->question); ?></button>
+                                  class="btn qustion-text font18px"><?php echo e($question->question); ?></button></a>
                       </p>
                       <div class="collapse " id="collapse<?php echo e($question->id); ?>qu">
                           <div class="  qustion-box card-body">
                               <p style="font-size: 87.5%"><?php echo e($question->question_text); ?></p>
-                              
                           </div>
                       </div>
                   </div>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
           </div>
+
       </section>
-      
-      <a href="https://www.google.com/" target="_blank" class="float">
-          <i class="fa fa-whatsapp  my-float fa-2x"></i>
-      </a>
-
-      
-
-      
   <?php $__env->stopSection(); ?>
   <?php $c = 'show'; ?>
   <script>

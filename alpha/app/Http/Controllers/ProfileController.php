@@ -24,14 +24,23 @@ class ProfileController extends Controller
     public function index(): View
     {
         $course = DB::table('codecards')->where('user_id', '=', Auth::user()->id)->get();
-        $coursename = DB::table('courses')->get();
+        $coursename = DB::table('courses')->where('status', '=', '1')->get();
         $lessonid  = DB::table('plays')->get();
         $quizreselt = DB::table('results')->where('user_id', '=', Auth::user()->id)->get();
         $quiz = DB::table('categories')->get();
         $lessons = DB::table('lessons')->get();
         $prog = DB::table('playbacks')->where('idofstudant', '=', Auth::user()->id)->get();
-
-        return view('dashboard', compact('quizreselt', 'prog', 'lessons', 'course', 'coursename', 'lessonid', 'quiz'));
+        $coures = DB::table('courses')->where('teacher_name', '=', Auth::user()->id_teacher)->get();
+        $code = DB::table('codecards')->where('user_id', '!=', null)->get();
+        $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+        foreach ($coures as $couress) {
+            $code = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+            $code
+                = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('courses', '=', $couress->id)->get();
+        }
+        return view('dashboard', compact('coures', 'code', 'code1', 'quizreselt', 'prog', 'lessons', 'course', 'coursename', 'lessonid', 'quiz'));
     }
     public function edit(Request $request): View
     {
@@ -39,7 +48,21 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
+    public function couresserch(Request $request)
+    {
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $coures = DB::table('courses')->where('teacher_name', '=', Auth::user()->id_teacher)->get();
 
+        foreach ($coures as $couress) {
+            // $code = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+            $code = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('courses', '=', $couress->id)->where('startcode', '>', $start)
+                ->where('startcode', '<', $end)->get();
+        }
+        return view('profile.couresserch', compact('coures', 'code', 'code1', 'start', 'end'));
+    }
     /**
      * Update the user's profile information.
      */

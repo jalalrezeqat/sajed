@@ -8,8 +8,7 @@ use App\Models\teachers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Models\user;
-
-
+use Illuminate\Support\Facades\Auth;
 
 
 class TeacherController extends Controller
@@ -20,18 +19,30 @@ class TeacherController extends Controller
     public function index()
     {
         $tetcher =  DB::table('teachers')->get();
-        return view('admin.layouts.courses.teacher.teacher', compact('tetcher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.teacher.teacher', compact('tetcher'));
+        } else
+            return redirect()->back();
     }
     public function indexdashbord()
     {
         $tetcher =  DB::table('users')->where('stutes', '=', '1')->get();
-        return view('admin.layouts.courses.teacher.teacherdashbord', compact('tetcher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.teacher.teacherdashbord', compact('tetcher'));
+        } else
+            return redirect()->back();
     }
 
     public function viweaddteacher()
 
     {
-        return view('admin.layouts.courses.teacher.viweaddteacher');
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.teacher.viweaddteacher');
+        } else
+            return redirect()->back();
     }
     /**
      * Show the form for creating a new resource.
@@ -39,7 +50,11 @@ class TeacherController extends Controller
     public function create()
     {
         $tetcher =  DB::table('teachers')->get();
-        return view('admin.layouts.courses.teacher.teaherdashbordadd', compact('tetcher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.teacher.teaherdashbordadd', compact('tetcher'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -151,7 +166,11 @@ class TeacherController extends Controller
      */
     public function edit(teachers $teacher)
     {
-        return view('admin.layouts.courses.teacher.edit', compact('teacher'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.teacher.edit', compact('teacher'));
+        } else
+            return redirect()->back();
     }
 
     /**

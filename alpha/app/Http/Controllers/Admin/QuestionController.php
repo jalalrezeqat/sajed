@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\QuestionRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class QuestionController extends Controller
@@ -20,21 +21,28 @@ class QuestionController extends Controller
         // $questions = Question::all();
         $chabterid = $request->id;
         $Category = Category::find($category_id);
-        $questions =Question::where('category_id', '=', $Category->id)->get();
-        return view('admin.questions.index', compact('questions','Category','category_id'));
+        $questions = Question::where('category_id', '=', $Category->id)->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.questions.index', compact('questions', 'Category', 'category_id'));
+        } else
+            return redirect()->back();
     }
 
     public function create($category_id): View
     {
-        $categories = Category::where('id','=',$category_id)->pluck('name', 'id');
+        $categories = Category::where('id', '=', $category_id)->pluck('name', 'id');
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.questions.create', compact('categories','category_id'));
+            return view('admin.questions.create', compact('categories', 'category_id'));
+        } else
+            return redirect()->back();
     }
 
-    public function store(QuestionRequest $request ,$category_id): RedirectResponse
+    public function store(QuestionRequest $request, $category_id): RedirectResponse
     {
         Question::create($request->validated());
-        return redirect()->route('admin.questions.index',compact('category_id'))->with([
+        return redirect()->route('admin.questions.index', compact('category_id'))->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'
         ]);
@@ -42,21 +50,28 @@ class QuestionController extends Controller
 
     public function show(Question $question): View
     {
-        return view('admin.questions.show', compact('question'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.questions.show', compact('question'));
+        } else
+            return redirect()->back();
     }
 
-    public function edit(Question $question ,$category_id): View
+    public function edit(Question $question, $category_id): View
     {
-        $categories = Category::where('id','=',$category_id)->pluck('name', 'id');
+        $categories = Category::where('id', '=', $category_id)->pluck('name', 'id');
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.questions.edit', compact('question', 'categories','category_id'));
+            return view('admin.questions.edit', compact('question', 'categories', 'category_id'));
+        } else
+            return redirect()->back();
     }
 
-    public function update(QuestionRequest $request, Question $question ,$category_id): RedirectResponse
+    public function update(QuestionRequest $request, Question $question, $category_id): RedirectResponse
     {
         $question->update($request->validated());
 
-        return redirect()->route('admin.questions.index',$category_id)->with([
+        return redirect()->route('admin.questions.index', $category_id)->with([
             'message' => 'successfully updated !',
             'alert-type' => 'info'
         ]);
@@ -65,7 +80,7 @@ class QuestionController extends Controller
     public function destroy(Question $question): RedirectResponse
     {
         $question->delete();
-        return redirect()->back()->with('message','Task is completely deleted');
+        return redirect()->back()->with('message', 'Task is completely deleted');
         // $question->delete();
 
         // return back()->with([

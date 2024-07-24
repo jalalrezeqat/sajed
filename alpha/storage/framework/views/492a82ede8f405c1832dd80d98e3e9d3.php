@@ -548,7 +548,7 @@ unset($__errorArgs, $__bag); ?>
                             <button type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse<?php echo e($questionscourss->id); ?>qu" aria-expanded="false"
                                 aria-controls="collapseExample"
-                                class="btn qustion-text font18px"><?php echo e($questionscourss->question); ?></button>
+                                class="btn qustion-text font18px"><?php echo e($questionscourss->question); ?></button></a>
                     </p>
                     <div class="collapse " id="collapse<?php echo e($questionscourss->id); ?>qu">
                         <div class="  qustion-box card-body">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Controller;
 use App\Models\lesson;
 use App\Models\playback;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,11 @@ class LessonController extends Controller
         $chabter = chabter::find($id);
 
         $lesson = DB::table('lessons')->where('chabters', '=', $chabter->id)->where('course', '=', $chabter->course)->get();
-        return view('admin.layouts.courses.courses.lesson', compact('lesson', 'chabterid', 'chabter'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.lesson', compact('lesson', 'chabterid', 'chabter'));
+        } else
+            return redirect()->back();
     }
     public function lessonadd(Request $request, $id)
     {
@@ -38,8 +43,13 @@ class LessonController extends Controller
         $chabterid = chabter::find($id);
         // dd($chabterid);
         // $chabter=DB::table('chabters')->get();
-        return view('admin.layouts.courses.courses.lessonadd', compact('chabter', 'chabterid'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.lessonadd', compact('chabter', 'chabterid'));
+        } else
+            return redirect()->back();
     }
+
     public function back()
     {
         $chabter = DB::table('chabters')->get();
@@ -103,7 +113,11 @@ class LessonController extends Controller
         // $chabter=DB::table('chabters')->where('course','=' ,$courses->name )->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        return view('admin.layouts.courses.courses.viwelesson', compact('branch', 'chabter', 'courses'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.viwelesson', compact('branch', 'chabter', 'courses'));
+        } else
+            return redirect()->back();
     }
 
     /**
@@ -120,7 +134,11 @@ class LessonController extends Controller
     public function edit(lesson $lesson)
     {
         $chabter = DB::table('chabters')->where('id', '=', $lesson->chabters)->get();
-        return view('admin.layouts.courses.courses.lessonedit', compact('lesson', 'chabter'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.courses.courses.lessonedit', compact('lesson', 'chabter'));
+        } else
+            return redirect()->back();
     }
 
     /**

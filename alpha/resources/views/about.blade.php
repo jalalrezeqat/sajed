@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
+<?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+$width = '<script>document.write(screen.width); </script>';
+
+?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +11,12 @@
     <meta name="description"
         content="منصة الفا التعليمية هي منصة الكترونية فلسطينية تقدم دورات تعليمية لمرحلة التوجيهي على المنهاج الفلسطيني وتهدف لتوفير الجهد والوقت على الطلبة
 ">
-    <meta name="keywords" content="حول منصفة الفا التعليمية ,  دورات تعليمية, توجيهي">
 
+    <meta name="keywords" content="حول منصفة الفا التعليمية ,  دورات تعليمية, توجيهي">
+    @foreach ($iconfav as $iconfavs)
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+    @endforeach
 </head>
 @extends('layouts.app')
 <?php session('windowW'); ?>
@@ -19,7 +27,7 @@
     <section>
         <div class="slider dir " style=" margin-top: 70px;">
             <div class="row">
-                @if ($agent->isDesktop() || $agent->isTablet())
+                @if ($width > 480)
                     <div class="col ring">
                         <div>
 
@@ -52,7 +60,7 @@
                     </div>
             </div>
             @endif
-            @if ($agent->isMobile())
+            @if ($width < 481)
                 <div class="col">
                     @foreach ($slider as $slider)
                         <img class="img-about" src="{{ asset('img/slider/' . $slider->img) }}" alt="">

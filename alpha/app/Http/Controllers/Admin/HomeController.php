@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Visitor;
 use App\Models\User;
+use App\Models\Admin;
+
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Controllers;
@@ -75,7 +77,7 @@ class HomeController extends Controller
 
         $numberofvisit = DB::table(config('session.table'))->count();
         $sumstudantinsubs = DB::table('codecards')->where('user_id', '!=', null)->count();
-        $user = DB::table('users')->where('stutes', '=', null)->count();
+        $user = DB::table('users')->where('stutes', '!=', 1)->count();
         return view('admin.layouts.dashboard', compact('sumstudantinsubs', 'user', 'countonline', 'data', 'data1'));
     }
 
@@ -86,8 +88,11 @@ class HomeController extends Controller
         $usercount = DB::table('users')->where('id_teacher', '=', Null)->count();
         $msg = ' عدد الطلاب المسجلين في المنصة   : ';
         $code  = DB::table('codecards')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.layouts.chart.studant', compact('user', 'usercount', 'msg', 'code'));
+            return view('admin.layouts.chart.studant', compact('user', 'usercount', 'msg', 'code'));
+        } else
+            return redirect()->back();
     }
     public function studantserch(Request $request)
 
@@ -118,8 +123,11 @@ class HomeController extends Controller
                 }
             }
         }
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
-        return view('admin.layouts.chart.studantserch', compact('user', 'user1', 'code',  'msg'));
+            return view('admin.layouts.chart.studantserch', compact('user', 'user1', 'code',  'msg'));
+        } else
+            return redirect()->back();
     }
 
     public function couresstauet()
@@ -133,7 +141,11 @@ class HomeController extends Controller
                 = DB::table('codecards')->where('user_id', '!=', null)
                 ->where('courses', '=', $couress->id)->get();
         }
-        return view('admin.layouts.chart.couresstut', compact('coures', 'code', 'code1'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.couresstut', compact('coures', 'code', 'code1'));
+        } else
+            return redirect()->back();
     }
     public function couresserch(Request $request)
     {
@@ -149,7 +161,11 @@ class HomeController extends Controller
                 ->where('courses', '=', $couress->id)->where('startcode', '>', $start)
                 ->where('startcode', '<', $end)->get();
         }
-        return view('admin.layouts.chart.couresserch', compact('coures', 'code', 'code1', 'start', 'end'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.couresserch', compact('coures', 'code', 'code1', 'start', 'end'));
+        } else
+            return redirect()->back();
     }
 
     public function countstudant()
@@ -163,7 +179,11 @@ class HomeController extends Controller
                 = DB::table('codecards')->where('user_id', '!=', null)
                 ->where('courses', '=', $couress->id)->get();
         }
-        return view('admin.layouts.chart.countstudant', compact('coures', 'code', 'code1'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.countstudant', compact('coures', 'code', 'code1'));
+        } else
+            return redirect()->back();
     }
 
     public function codesarch(Request $request)
@@ -180,25 +200,34 @@ class HomeController extends Controller
                 = DB::table('codecards')->where('user_id', '!=', null)
                 ->where('startcode', '>', $start)
                 ->where('startcode', '<', $end)->get();
+            $codecount
+                = DB::table('codecards')->where('user_id', '!=', null)
+                ->where('startcode', '>', $start)
+                ->where('startcode', '<', $end)->count();
         }
         $courses = DB::table('courses')->get();
 
-        return view('admin.layouts.chart.codeserch', compact('coures', 'code',  'start', 'end', 'courses', 'user'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.codeserch', compact('coures', 'code', 'codecount', 'start', 'end', 'courses', 'user'));
+        } else
+            return redirect()->back();
     }
 
     public function editpassword(Request $request, $id)
 
     {
         $user = DB::table('users')->where('id', '=', $id)->first();
-        return view('admin.layouts.chart.editpassword', compact('user'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.editpassword', compact('user'));
+        } else
+            return redirect()->back();
     }
-    public function changePasswordSave(Request $request)
+    public function changePasswordSave2(Request $request, $id)
     {
         # Validation
-        $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|confirmed',
-        ]);
+        $user = DB::table('users')->where('id', '=', $id)->first();
 
 
         #Match The Old Password
@@ -208,10 +237,141 @@ class HomeController extends Controller
 
 
         #Update the new Password
-        User::whereId(auth()->user()->id)->update([
+        DB::table('users')->where('id', '=', $user->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
 
         return back()->with("status", "تم تغير كلمة المرور");
+    }
+    public function orderserch(Request $request)
+    {
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $coures = DB::table('orders')->get();
+        $coureses = DB::table('courses')->get();
+
+        foreach ($coures as $couress) {
+            $code = DB::table('codecards')->where('user_id', '!=', null)->get();
+            $code1 = DB::table('codecards')->where('user_id', '!=', null)->count();
+
+
+            $todaytimestamp = strtotime($start);
+            $starttimestamp = strtotime($end);
+            $order
+                = DB::table('orders')
+                ->whereBetween('orders.created_at', [
+                    date('Y-m-d 00:00:00', strtotime($start)),
+                    date('Y-m-d 23:59:59', strtotime($end)),
+                ])->get();
+        }
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('admin.layouts.chart.orderserch', compact('coures', 'coureses', 'code', 'order', 'code1', 'start', 'end'));
+        } else
+            return redirect()->back();
+    }
+    public function profile(Request $request, $id)
+    {
+        $admin = DB::table('admins')->where('id', '=', $id)->get();
+        return view('Admin.profile', compact('admin'));
+    }
+    public function update(Request $request, $id)
+    {
+
+        $post = Admin::find($id);
+        $post->name = $request->input('name');
+        $post->email = $request->input('email');
+        $post->save();
+
+        return  redirect()->route('admin.dashboard');
+    }
+    public function passwordChange()
+    {
+        return view('Admin.password');
+    }
+    public function changePasswordSave1(Request $request)
+    {
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if (!Hash::check($request->old_password, Auth::guard('admin')->user()->password)) {
+            return back()->with("error", "!كلمة المرور القديمة خاطئة ");
+        }
+
+
+        #Update the new Password
+        Admin::whereId(Auth::guard('admin')->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+        return back()->with("status", "تم تغير كلمة المرور ");
+    }
+    public function addAdmin(Request $request)
+    {
+        $admin = DB::table('admins')->get();
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('Admin.roule.addAdmin', compact('admin'));
+        } else
+            return redirect()->back();
+    }
+    public function addAdminStore(Request $request)
+    {
+        $admin = DB::table('admins')->get();
+
+        return view('Admin.roule.addAdminStor', compact('admin'));
+    }
+    public function addAdminPost(Request $request)
+    {
+        $admin = DB::table('admins')->get();
+        $user = Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'stutes' => $request->stutes,
+            'password_verified_at' => Hash::make($request->passwpassword_verified_atord),
+
+        ]);
+
+        return redirect()->route('admin.addAdmin');
+    }
+
+    public function destroyadmin(int $admin_id)
+    {
+        $connectusDb = DB::table('admins');
+        $connectusdelete = $connectusDb->where('id', $admin_id);
+        $connectusdelete->delete();
+
+        return  redirect()->back();
+    }
+    public function editpasswordadmin(Request $request, $id)
+
+    {
+        $user = DB::table('admins')->where('id', '=', $id)->first();
+        if (Auth::guard('admin')->user()->stutes == 0) {
+
+            return view('Admin.roule.editpassword', compact('user'));
+        } else
+            return redirect()->back();
+    }
+    public function postChangePasswordadminrouel(Request $request, $id)
+    {
+        # Validation
+
+
+
+        #Match The Old Password
+
+
+
+        #Update the new Password
+        Admin::whereId($id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+        return back()->with("status", "تم تغير كلمة المرور ");
     }
 }

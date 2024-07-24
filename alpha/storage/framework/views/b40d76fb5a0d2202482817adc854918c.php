@@ -4,7 +4,8 @@
             <?php echo e($b->name); ?> -
             <?php echo e($b->branche); ?> - <?php echo e($b->chabters); ?> </p>
     </div>
-
+    <?php $width = '<script>document.write(screen.width); </script>';
+    ?>
     <br>
     <br>
     <br>
@@ -84,14 +85,15 @@
                         <div class="boxcolabssshow shadoplay">
                             <div class="">
                                 <div class="chabternamecollabsshow ">
-                                    <button class="btn  qustion" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
-                                        aria-controls="collapseExample"></button>
-                                    <button type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
-                                        aria-controls="collapseExample" class="btn qustion-text  ">
-                                        <p class="buttonshow font18px "><?php echo e($chbters->name); ?> </p>
-                                    </button>
+                                    <a class="purple-head hover-black plusand-" onclick="changeIcon(this)" id="myBtn">
+                                        <i data-bs-toggle="collapse" data-bs-target="#collapse<?php echo e($chbters->id); ?>"
+                                            aria-expanded="false" aria-controls="collapseExample"
+                                            class="fa colorg fa-plus font-xs"></i>
+                                        <button type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
+                                            aria-controls="collapseExample" class="btn qustion-text  ">
+                                            <p class="buttonshow font18px "><?php echo e($chbters->name); ?> </p>
+                                        </button>
                                 </div>
                             </div>
                         </div>
@@ -99,14 +101,15 @@
                         <div class="boxcolabssshow ">
                             <div class="">
                                 <div class="chabternamecollabsshow ">
-                                    <button class="btn  qustion" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
-                                        aria-controls="collapseExample"></button>
-                                    <button type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
-                                        aria-controls="collapseExample" class="btn qustion-text font18px ">
-                                        <p class="buttonshow font18px "><?php echo e($chbters->name); ?> </p>
-                                    </button>
+                                    <a class="purple-head hover-black plusand-" onclick="changeIcon(this)" id="myBtn">
+                                        <i data-bs-toggle="collapse" data-bs-target="#collapse<?php echo e($chbters->id); ?>"
+                                            aria-expanded="false" aria-controls="collapseExample"
+                                            class="fa colorg fa-plus font-xs"></i>
+                                        <button type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse<?php echo e($chbters->id); ?>" aria-expanded="false"
+                                            aria-controls="collapseExample" class="btn qustion-text font18px ">
+                                            <p class="buttonshow font18px "><?php echo e($chbters->name); ?> </p>
+                                        </button>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +209,8 @@
                     <div class="vidio">
                         <?php $__currentLoopData = $vedio; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $vedios): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if(($vedios->vedio != null) & ($vedios->iframe == null)): ?>
-                                <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline poster="">
+                                <video controls style="--plyr-color-main: #1ac266; " crossorigin playsinline
+                                    poster="">
                                     <source src="<?php echo e(asset('img/vedio/' . $vedios->vedio)); ?>" type="video/mp4"
                                         size="576">
                                     <source src="<?php echo e(asset('img/vedio/' . $vedios->vedio)); ?>" type="video/mp4"
@@ -402,5 +406,15 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    function changeIcon(anchor) {
+        var icon = anchor.querySelector("i");
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+
+        anchor.querySelector("span").textContent = icon.classList.contains('fa-plus') ? "Read more" : "Read less";
+
+    }
+</script>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/front/ShowCourse.blade.php ENDPATH**/ ?>

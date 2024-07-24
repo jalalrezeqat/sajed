@@ -8,6 +8,7 @@ use App\Models\Favoriteicon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 
 class FavoriteiconController extends Controller
@@ -18,7 +19,10 @@ class FavoriteiconController extends Controller
     public function index()
     {
         $favoriteicons = DB::table('favoriteicons')->get();
-        return view('admin.layouts.favoriteicons.favoriteicons', compact('favoriteicons'));
+        if (Auth::guard('admin')->user()->stutes == 0) {
+            return view('admin.layouts.favoriteicons.favoriteicons', compact('favoriteicons'));
+        } else
+            return redirect()->back();
     }
 
 

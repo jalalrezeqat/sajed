@@ -1,5 +1,9 @@
   <!DOCTYPE html>
   <html lang="ar">
+  <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+  $width = '<script>document.write(screen.width); </script>';
+  
+  ?>
 
   <head>
       <meta name="viewport" content="width=device-width">
@@ -16,7 +20,10 @@
           <meta name="{{ $coursess->name }}" content="{{ url('coursesditels' . '/' . $coursess->id) }}" />
       @endforeach
       @vite(['resources/css/mediaipad.css'])
-     
+      @foreach ($iconfav as $iconfavs)
+          <link rel="icon" type="image/x-icon" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+          <link rel="stylesheet" type="text/css" href="{{ asset('img/Favoriteicon/' . $iconfavs->img) }}">
+      @endforeach
   </head>
   <livewire:breakpoints />
   @extends('layouts.app')
@@ -41,175 +48,180 @@
           </div>
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
-                  @windowWidthGreaterThan(1029)
-                  <div class="col float-right ring">
-                      <div>
 
-                          <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
-                      </div>
-                      <div>
-                          <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
+                  @if ($width > 1029)
+                      <div class="col float-right ring">
+                          <div>
+
+                              <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
+                          </div>
+                          <div>
+                              <p style="font-size: 1.23vw;margin-top:50px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات
-                              مرحلة
-                              التوجيهي التي تحتاجها
-                              للحـصـول عـلى مـعـدل
-                              تحلم به وعلى ايدي امهر الاساتذة.</p>
+                                  مرحلة
+                                  التوجيهي التي تحتاجها
+                                  للحـصـول عـلى مـعـدل
+                                  تحلم به وعلى ايدي امهر الاساتذة.</p>
 
-                      </div>
+                          </div>
 
-                      <div>
-                          <div class="row dir " style="margin-top:50px">
-                              <div class="col">
+                          <div>
+                              <div class="row dir " style="margin-top:50px">
+                                  <div class="col">
 
-                                  <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
-                                      </button></a>
-                              </div>
-                              <div class="col">
-                                  <div class="row">
-                                      <div class="col-sm-3"> <i class="fa fa-play-circle-o"
-                                              style="font-size:48px;color:#27AC1F"></i>
-                                      </div>
-                                      <div class="col-sm-9 mt">
-                                          <p style="font-size: 20px;color:#27AC1F; font-weight:700;">تعرّف أكثر</p>
+                                      <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                                          </button></a>
+                                  </div>
+                                  <div class="col">
+                                      <div class="row">
+                                          <div class="col-sm-3"> <i class="fa fa-play-circle-o"
+                                                  style="font-size:48px;color:#27AC1F"></i>
+                                          </div>
+                                          <div class="col-sm-9 mt">
+                                              <p style="font-size: 20px;color:#27AC1F; font-weight:700;">تعرّف أكثر</p>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="col  float-left">
-                      @foreach ($slider as $slider)
-                          <img id="" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
-                              alt="">
-                      @endforeach
-                  </div>
+                      <div class="col  float-left">
+                          @foreach ($slider as $slider)
+                              <img id="" class="img-home" src="{{ asset('img/slider/' . $slider->img) }}"
+                                  alt="">
+                          @endforeach
+                      </div>
               </div>
           </div>
           @endif
 
-          @windowWidthBetween(481, 1028)
-          <div class="col float-right ring">
-              <div>
+          @if (($width > 481) & ($width < 1028))
+              <div class="col float-right ring">
+                  <div>
 
-                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
-                      مكان</p>
-              </div>
-              <div>
-                  <p class="font18px" style="margin-top:20px;    font-weight:700 ;
+                      <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
+                          مكان</p>
+                  </div>
+                  <div>
+                      <p class="font18px" style="margin-top:20px;    font-weight:700 ;
 ">نحن نقدم لك كافة دورات مرحلة
-                      التوجيهي التي تحتاجها
-                      للحـصـول عـلى مـعـدل
-                      تحلم به وعلى ايدي امهر الاساتذة.</p>
-              </div>
-              <div>
-                  <div class="row dir " style="margin-top:20px">
-                      <div class="col">
-                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
-                              </button></a>
-                      </div>
-                      <div class="col">
-                          <div class="row">
-                              <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
-                                  <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
-                              </div>
-                          </div>
-                      </div>
+                          التوجيهي التي تحتاجها
+                          للحـصـول عـلى مـعـدل
+                          تحلم به وعلى ايدي امهر الاساتذة.</p>
                   </div>
-              </div>
-          </div>
-          <div class="col  float-left">
-              @foreach ($slider as $slider)
-                  <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
-              @endforeach
-          </div>
-          </div>
-          </div>
-          @endif
-          @windowWidthLessThan(480)
-          <div class="col ">
-              @foreach ($slider as $sliders)
-                  <img class="img-home" src="{{ asset('img/slider/' . $sliders->img) }}" alt="">
-              @endforeach
-          </div>
-          <div class="col float-right ring">
-              <div>
-
-                  <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
-              </div>
-              <div>
-                  <p class="font18px">نحن نقدم لك كافة دورات مرحلة
-                      التوجيهي التي تحتاجها
-                      للحـصـول عـلى مـعـدل
-                      تحلم به وعلى ايدي امهر الاساتذة.</p>
-              </div>
-              <div>
-                  <div class="row dir " style="margin-top:20px">
-                      <div class="col">
-                          <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
-                              </button></a>
-                      </div>
-                      <div class="col">
-                          <div class="row">
-                              <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px" style="color:#27AC1F"></i>
-                                  <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
-                                      أكثر</span>
-                              </div>
+                  <div>
+                      <div class="row dir " style="margin-top:20px">
+                          <div class="col">
+                              <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                                  </button></a>
                           </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          </div>
-          </div>
-          @endif
-      </section>
-    
-      @if (Auth::user())
-          <?php $course = DB::table('codecards')
-              ->where('user_id', '=', Auth::user()->id)
-              ->get();
-          ?>
-  @foreach ($coursename as $coursesss)
-  @endforeach
-      
-          <div class="dir profile-coures " id="">
-              <p class="mb-5 font18px">الدورات المسجل بها</p>
-
-              <div class="row row-cols-1 mt-5  card-w dir   row-cols-md-3 ">
-                  @foreach ($course as $coursess)
-                      @foreach ($coursename as $coursenames)
-                          @if ($coursenames->id == $coursess->courses)
-                              <?php $auth = 1; ?>
-
-                              <div class="col colcard">
-                                  <div class="card-home card  " id="card-profile">
-                                      <img src="{{ asset('img/courses/' . $coursenames->img_name) }}"
-                                          class="card-img-top-profile" alt="...">
-                                      <div class="card-body">
-                                          @foreach ($lessonidds as $lessonidsa)
-                                              @if ($coursenames->id == $lessonidsa->idcoures)
-                                                  <p class="card-title-home font14px "><a
-                                                          href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson) }}"
-                                                          class="card-title-home  text-center">{{ $coursenames->name }}</a>
-                                                  </p>
-                                                  <?php $auth = 0; ?>
-                                              @endif
-                                          @endforeach
-                                          @if ($auth == 1)
-                                          <p class="card-title-home font14px ">
-                                              <a class="nav-link"
-                                                  href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
-                                                  class="card-title-home ">{{ $coursenames->name }}</a></p>
-                                          @endif
-                                      </div>
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
+                                      <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
                                   </div>
                               </div>
-                          @endif
-                      @endforeach
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col  float-left">
+                  @foreach ($slider as $slider)
+                      <img class="img-home" src="{{ asset('img/slider/' . $slider->img) }}" alt="">
                   @endforeach
               </div>
-          </div>
+              </div>
+              </div>
+          @endif
+          @if ($width < 480)
+              <div class="col ">
+                  @foreach ($slider as $sliders)
+                      <img class="img-home" src="{{ asset('img/slider/' . $sliders->img) }}" alt="">
+                  @endforeach
+              </div>
+              <div class="col float-right ring">
+                  <div>
+
+                      <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي مكان</p>
+                  </div>
+                  <div>
+                      <p class="font18px">نحن نقدم لك كافة دورات مرحلة
+                          التوجيهي التي تحتاجها
+                          للحـصـول عـلى مـعـدل
+                          تحلم به وعلى ايدي امهر الاساتذة.</p>
+                  </div>
+                  <div>
+                      <div class="row dir " style="margin-top:20px">
+                          <div class="col">
+                              <a href="{{ url('/courses') }} "><button class="button1 ">ابدأ الآن
+                                  </button></a>
+                          </div>
+                          <div class="col">
+                              <div class="row">
+                                  <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
+                                          style="color:#27AC1F"></i>
+                                      <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
+                                          أكثر</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              </div>
+              </div>
+          @endif
+      </section>
+
+      @if (Auth::user())
+          @if (Auth::user()->stutes != 1)
+              <?php $course = DB::table('codecards')
+                  ->where('user_id', '=', Auth::user()->id)
+                  ->get();
+              ?>
+              @foreach ($coursename as $coursesss)
+              @endforeach
+
+              <div class="dir profile-coures " id="">
+                  <p class="mb-5 font18px">الدورات المسجل بها</p>
+
+                  <div class="row row-cols-1 mt-5  card-w dir   row-cols-md-3 ">
+                      @foreach ($course as $coursess)
+                          @foreach ($coursename as $coursenames)
+                              @if ($coursenames->id == $coursess->courses)
+                                  <?php $auth = 1; ?>
+
+                                  <div class="col colcard">
+                                      <div class="card-home card  " id="card-profile">
+                                          <img src="{{ asset('img/courses/' . $coursenames->img_name) }}"
+                                              class="card-img-top-profile" alt="...">
+                                          <div class="card-body">
+                                              @foreach ($lessonidds as $lessonidsa)
+                                                  @if ($coursenames->id == $lessonidsa->idcoures)
+                                                      <p class="card-title-home font14px "><a
+                                                              href="{{ url('courseshow' . '/' . $coursenames->id . '/' . $lessonidsa->idlesson) }}"
+                                                              class="card-title-home  text-center">{{ $coursenames->name }}</a>
+                                                      </p>
+                                                      <?php $auth = 0; ?>
+                                                  @endif
+                                              @endforeach
+                                              @if ($auth == 1)
+                                                  <p class="card-title-home font14px ">
+                                                      <a class="nav-link"
+                                                          href="{{ url('courseshow' . '/' . $coursenames->id . '/1') }}"
+                                                          class="card-title-home ">{{ $coursenames->name }}</a>
+                                                  </p>
+                                              @endif
+                                          </div>
+                                      </div>
+                                  </div>
+                              @endif
+                          @endforeach
+                      @endforeach
+                  </div>
+              </div>
+          @endif
       @endif
 
       {{-- end slider home --}}
@@ -261,108 +273,108 @@
                   الوطن!
               </p>
           </div>
-          @windowWidthGreaterThan(481)
-          {{-- slide teacher --}}
-          <div id="carousel" class="carousel shadow-lg slider-tet slide">
-              <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
+          @if ($width > 481)
+              {{-- slide teacher --}}
+              <div id="carousel" class="carousel shadow-lg slider-tet slide">
+                  <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher1" alt="">
 
-              <div class="carousel-inner">
-                  @foreach ($sliderteacher as $key => $sliderteachers)
-                      <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                          <img class="d-block d-block   img-slider-teacher"
-                              src="{{ asset('img/slider/' . $sliderteachers->img) }}" alt="صورة معلومات عن المعلم">
-                      </div>
-                  @endforeach
+                  <div class="carousel-inner">
+                      @foreach ($sliderteacher as $key => $sliderteachers)
+                          <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                              <img class="d-block d-block   img-slider-teacher"
+                                  src="{{ asset('img/slider/' . $sliderteachers->img) }}" alt="صورة معلومات عن المعلم">
+                          </div>
+                      @endforeach
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+                  <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher2" alt="">
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-              </button>
-              <img src="{{ asset('img/Vector.png') }}" id ="shapetetcher2" alt="">
-          </div>
           @endif
 
-          @windowWidthLessThan(480)
-          <livewire:breakpoints />
+          @if ($width < 480)
+              <livewire:breakpoints />
 
 
-          <style>
-              .img-1 {
-                  position: relative;
-                  width: 200px;
-                  height: auto;
-                  border-radius: 50%;
-                  top: -127px !important;
-                  /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
-              }
+              <style>
+                  .img-1 {
+                      position: relative;
+                      width: 200px;
+                      height: auto;
+                      border-radius: 50%;
+                      top: -127px !important;
+                      /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+                  }
 
-              .carousel-indicators li {
-                  cursor: pointer;
-                  border-radius: 50% !important;
-                  width: 10px;
-                  height: 10px;
-                  opacity: 0.5;
-                  margin: 0 15px 18px 15px;
-                  color: #27AC1F;
-                  background-color: #27AC1F !important;
-                  bottom: -30px;
-                  position: relative
-              }
+                  .carousel-indicators li {
+                      cursor: pointer;
+                      border-radius: 50% !important;
+                      width: 10px;
+                      height: 10px;
+                      opacity: 0.5;
+                      margin: 0 15px 18px 15px;
+                      color: #27AC1F;
+                      background-color: #27AC1F !important;
+                      bottom: -30px;
+                      position: relative
+                  }
 
-              .carousel-indicators li::marker {
-                  visibility: hidden;
-                  color: #cd1e27;
-                  font-size: 0px
-              }
+                  .carousel-indicators li::marker {
+                      visibility: hidden;
+                      color: #cd1e27;
+                      font-size: 0px
+                  }
 
-              #carouselExample {
-                  box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
-              }
+                  #carouselExample {
+                      box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
+                  }
 
-              .carousel-inner {
-                  border-radius: 15px !important
-              }
-          </style>
-          <div class="container px-2 px-md-4 py-5 mx-auto ">
-              <div class="row d-flex justify-content-center ">
-                  <div class="col-lg-5 col-md-7 col-sm-9 ">
+                  .carousel-inner {
+                      border-radius: 15px !important
+                  }
+              </style>
+              <div class="container px-2 px-md-4 py-5 mx-auto ">
+                  <div class="row d-flex justify-content-center ">
+                      <div class="col-lg-5 col-md-7 col-sm-9 ">
 
-                      <div id="carouselExample" class="carousel  shadow-sm  slide">
-                          <div class="carousel-inner">
-                              @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                  <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                      <img class="d-block d-block   img-slider-teacher"
-                                          src="{{ asset('img/sliderphone/' . $sliderteachermobs->img) }}"
-                                          alt="{{ $sliderteachermobs->id }}">
-                                  </div>
-                              @endforeach
+                          <div id="carouselExample" class="carousel  shadow-sm  slide">
+                              <div class="carousel-inner">
+                                  @foreach ($sliderteachermob as $key => $sliderteachermobs)
+                                      <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                          <img class="d-block d-block   img-slider-teacher"
+                                              src="{{ asset('img/sliderphone/' . $sliderteachermobs->img) }}"
+                                              alt="{{ $sliderteachermobs->id }}">
+                                      </div>
+                                  @endforeach
+                              </div>
+                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                  data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                  data-bs-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                  <span class="visually-hidden">Next</span>
+                              </button>
+                              <ol class="carousel-indicators">
+                                  @foreach ($sliderteachermob as $key => $sliderteachermobs)
+                                      <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
+                                          data-slide-to="0">
+                                      </li>
+                                  @endforeach
+                              </ol>
                           </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                              data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                              data-bs-slide="next">
-                              <span class="carousel-control-next-icon"></span>
-                              <span class="visually-hidden">Next</span>
-                          </button>
-                          <ol class="carousel-indicators">
-                              @foreach ($sliderteachermob as $key => $sliderteachermobs)
-                                  <li data-target="#carouselExample" class="{{ $key == 0 ? 'active' : '' }}"
-                                      data-slide-to="0">
-                                  </li>
-                              @endforeach
-                          </ol>
-                      </div>
 
+                      </div>
                   </div>
               </div>
-          </div>
           @endif
 
           {{-- <div id="carouselExample" class="carousel slide d-flex" data-ride="carousel">
@@ -392,38 +404,38 @@
       </section>
       {{-- end slide teacher --}}
       {{-- qustion  --}}
-    
+
       {{-- end qustion --}}
 
       {{--  --}}
 
       {{--  --}}
       <section class="mt100px">
-        <div class=" m-3 dir mtb00px mt100px card-text-home">
-            <h2 class="card-text-home font48px ">الاسئلة الشائعة</h2>
-            @foreach ($CommonQuestions as $question)
-                <div class="qustion1">
-                    <p>
-                        <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
-                            <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
-                                aria-expanded="false" aria-controls="collapseExample"
-                                class="fa colorg fa-plus font-xs"></i>
-                            <button type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
-                                aria-controls="collapseExample"
-                                class="btn qustion-text font18px">{{ $question->question }}</button></a>
-                    </p>
-                    <div class="collapse " id="collapse{{ $question->id }}qu">
-                        <div class="  qustion-box card-body">
-                            <p style="font-size: 87.5%">{{ $question->question_text }}</p>                           
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+          <div class=" m-3 dir mtb00px mt100px card-text-home">
+              <h2 class="card-text-home font48px ">الاسئلة الشائعة</h2>
+              @foreach ($CommonQuestions as $question)
+                  <div class="qustion1">
+                      <p>
+                          <a class="purple-head hover-black plusand-" onclick="changeIcon(this)">
+                              <i data-bs-toggle="collapse" data-bs-target="#collapse{{ $question->id }}qu"
+                                  aria-expanded="false" aria-controls="collapseExample"
+                                  class="fa colorg fa-plus font-xs"></i>
+                              <button type="button" data-bs-toggle="collapse"
+                                  data-bs-target="#collapse{{ $question->id }}qu" aria-expanded="false"
+                                  aria-controls="collapseExample"
+                                  class="btn qustion-text font18px">{{ $question->question }}</button></a>
+                      </p>
+                      <div class="collapse " id="collapse{{ $question->id }}qu">
+                          <div class="  qustion-box card-body">
+                              <p style="font-size: 87.5%">{{ $question->question_text }}</p>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
 
-        </div>
-        
-    </section>
+          </div>
+
+      </section>
   @endsection
   <?php $c = 'show'; ?>
   <script>

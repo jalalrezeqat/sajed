@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
     <br><br>
-    <div class="formaddm">
+    {{-- <div class="formaddm">
         <form action="{{ route('admin.dashbord.serchstudant') }}" method="POST">
             @csrf
 
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> --}}
     <div>
         <h2>{{ $msg }}{{ $usercount }}</h2>
     </div>
