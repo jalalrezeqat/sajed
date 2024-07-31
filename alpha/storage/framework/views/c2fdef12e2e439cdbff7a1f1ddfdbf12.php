@@ -175,6 +175,10 @@
                                         href="<?php echo e(route('admin.teacher.dashbord')); ?>">انشاء
                                         مدرس
                                     </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?php echo e(route('admin.aboutmore')); ?>">تعرف
+                                        اكثر
+
+                                    </a></li>
 
                             </ul>
                         </div>

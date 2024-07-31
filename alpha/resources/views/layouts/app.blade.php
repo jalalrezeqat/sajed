@@ -18,6 +18,12 @@ $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->g
 
 ?>
 <style>
+    body {
+        background-color: #f8f8f8;
+
+    }
+</style>
+<style>
     /* #ac-wrapper {
 
         width: 100%;
@@ -71,16 +77,18 @@ $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->g
 
     .float {
         position: fixed;
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         bottom: 40px;
         right: 40px;
-        background-color: #12181e;
-        color: #FFF;
+        background-color: #27ac1f;
+        color: #f8f8f8;
         border-radius: 50px;
         text-align: center;
         box-shadow: 2px 2px 3px #999;
     }
+
+
 
     .my-float {
         margin-top: 22px;
@@ -157,22 +165,23 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav links justify-content-center navbar-collapse mb-2 mb-lg-0">
                             <li class="nav-item-home">
-                                <a id="home" class="nav-link reghover {{ $stylehome }} active " tabindex="1"
-                                    aria-current="page" href="{{ url('/') }}">الرئيسية</a>
+                                <a id="home" class="nav-link reg1 reghover {{ $stylehome }} active "
+                                    tabindex="1" aria-current="page" href="{{ url('/') }}">الرئيسية</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link  {{ $stylecour }} reghover active" href="{{ url('/courses') }}">
+                                <a class="nav-link  {{ $stylecour }} reghover  reg1 active"
+                                    href="{{ url('/courses') }}">
 
                                     الدورات</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link {{ $styleabout }} reghover active "
+                                <a class="nav-link {{ $styleabout }} reghover  reg1 active "
                                     href="{{ url('/about') }}">حول
                                     الفا</a>
 
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link {{ $stylecontactus }} reghover active"
+                                <a class="nav-link {{ $stylecontactus }} reghover  reg1 active"
                                     href="{{ url('/Connectus') }}">اتصل
                                     بنا</a>
                             </li>
@@ -353,8 +362,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     <div class="rounded-circle  d-flex align-items-center justify-content-center mb-4 mx-auto"
                         style="width: 150px; height: 150px;margin:auto">
                         @foreach ($footericon as $footericons)
-                            <img src="{{ asset('img/Favoriteicon/' . $footericons->img) }}" alt=""
-                                loading="lazy" />
+                            <img style="width: 2vw;" src="{{ asset('img/Favoriteicon/' . $footericons->img) }}"
+                                alt="" loading="lazy" />
                         @endforeach
 
                     </div>
@@ -459,7 +468,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         <!-- Copyright -->
     </footer>
 </div>
-<a href="{{ $socialswah->url }}" target="_blank" class="float">
+<a href="{{ $socialswah->url }}" target="_blank" class="float text-white">
     <i class="fa fa-whatsapp  my-float fa-2x"></i>
 </a>
 <!-- End of .container -->
@@ -497,7 +506,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                                 <div class="d-flex ">
                                                     {{-- @foreach ($slider as $slider) --}}
                                                     @foreach ($slider as $slider)
-                                                        <img id="" class="img-fluid  p-2"
+                                                        <img id="" class="img-fluid img-login p-2"
                                                             src="{{ asset('img/slider/' . $slider->img) }}"
                                                             alt="">
                                                     @endforeach
@@ -924,21 +933,21 @@ if ($_SERVER['REQUEST_URI'] == '/') {
             </div>
         </div>
     </div>
-
-    <!-- partial -->
-
-
-
-
-
-
-
-    {{-- regester --}}
-
-
-
-    {{--  --}}
 </section>
+
+<!-- partial -->
+
+
+
+
+
+
+
+{{-- regester --}}
+
+
+
+{{--  --}}
 {{--  --}}
 @livewireScripts
 

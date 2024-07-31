@@ -1,5 +1,6 @@
 <?php echo app('Illuminate\Foundation\Vite')(['resources/css/vedio.css', 'resources/css/order.css', 'resources/css/massage.css']); ?>
-
+<?php $width = '<script>document.write(screen.width); </script>';
+?>
 <?php $__env->startSection('content'); ?>
     <?php session('windowW'); ?>
     <?php

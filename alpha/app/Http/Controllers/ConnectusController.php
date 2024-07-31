@@ -19,7 +19,8 @@ class ConnectusController extends Controller
     {
         $width = "<script>document.write(screen.width); </script>";
         if ($width > 500) {
-            print 'width is greater than 100';
+            print 'width is greater than 100  ';
+            echo $width;
         }
 
 

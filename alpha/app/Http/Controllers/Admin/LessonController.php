@@ -133,6 +133,7 @@ class LessonController extends Controller
      */
     public function edit(lesson $lesson)
     {
+
         $chabter = DB::table('chabters')->where('id', '=', $lesson->chabters)->get();
         if (Auth::guard('admin')->user()->stutes == 0) {
 
@@ -146,6 +147,7 @@ class LessonController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $post = lesson::find($id);
         $post->name = $request->input('name');
         $post->chabters = $request->input('chabters');

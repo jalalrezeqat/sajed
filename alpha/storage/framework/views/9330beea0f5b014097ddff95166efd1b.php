@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
 <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
-$width = '<script>document.write(screen.width); </script>';
 
 ?>
 
@@ -42,7 +41,7 @@ if (isset($__slots)) unset($__slots);
     <section>
         <div class="slider dir " style=" margin-top: 70px;">
             <div class="row">
-                <?php if($width > 480): ?>
+                <?php if($agent->isDesktop()): ?>
                     <div class="col ring">
                         <div>
 
@@ -53,20 +52,37 @@ if (isset($__slots)) unset($__slots);
                         </div>
 
                         <div>
-                            <div class="row dir " style="margin-top:10%">
+                            <div class="row dir " style="margin-top:50px">
                                 <div class="col">
-                                    <a href="<?php echo e(url('/courses')); ?>"><button class="btnhome btn">ابدأ الآن</button></a>
+
+                                    <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                                        </button></a>
                                 </div>
-                                <div class="col">
+                                <div class="col mt-2">
+
                                     <div class="row">
-                                        <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font24px"
-                                                style="color:#27AC1F"></i>
-                                            <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
+                                        <div style="display:inline">
+                                            <div style=" width: 50%;">
+                                                <label class="btncouresdetale "
+                                                    style="color:#27AC1F; font-weight:700;font-size:1.25vw;float:left;
+"
+                                                    aria-current="page" for="modal-toggle-vedio">
+                                                    تعرف اكثر
+                                                </label>
+
+                                            </div>
+                                            <div style=" ">
+                                                <label><img id="" style="width: 30px"
+                                                        src="<?php echo e(asset('img/alphaaboutmore.png')); ?>" alt=""></label>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                     <div class="col">
                         <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -75,7 +91,7 @@ if (isset($__slots)) unset($__slots);
                     </div>
             </div>
             <?php endif; ?>
-            <?php if($width < 481): ?>
+            <?php if($agent->isMobile()): ?>
                 <div class="col">
                     <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <img class="img-about" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
@@ -93,19 +109,36 @@ if (isset($__slots)) unset($__slots);
                     <div>
                         <div class="row dir " style="margin-top:50px">
                             <div class="col">
-                                <a href="<?php echo e(url('/courses')); ?>"><button class="btnhome btn">ابدأ الآن</button></a>
+
+                                <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
+                                    </button></a>
                             </div>
-                            <div class="col">
-                                <div class="row" style="margin:auto">
-                                    <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
-                                            style="color:#27AC1F"></i>
-                                        <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
+                            <div class="col mt-2">
+
+                                <div class="row">
+                                    <div style="display:inline">
+                                        <div style=" width: 80%;">
+                                            <label class="btncouresdetale "
+                                                style="color:#27AC1F; font-weight:700;font-size:4vw;float:left;
+"
+                                                aria-current="page" for="modal-toggle-vedio">
+                                                تعرف اكثر
+                                            </label>
+
+                                        </div>
+                                        <div style=" ">
+                                            <label><img id="" style="width: 30px"
+                                                    src="<?php echo e(asset('img/alphaaboutmore.png')); ?>" alt=""></label>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+        </div>
 
         </div>
         <?php endif; ?>
@@ -139,7 +172,40 @@ if (isset($__slots)) unset($__slots);
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
+    <section>
+        <div class="rt-container">
+            <div class="col-rt-12">
+                <div class="Scriptcontent">
+
+                    <!-- Login Form Popup HTML -->
+
+                    <input id="modal-toggle-vedio" type="checkbox">
+                    <label class="modal-backdrop" data-bs-backdrop="static" tabindex="-1" for="modal-toggle-vedio"></label>
+                    <div class="modal-content-vedio">
+                        <label class="modal-close-btn" for="modal-toggle-vedio">
+                            <svg width="30" height="30">
+                                <line x1="5" y1="5" x2="20" y2="20" />
+                                <line x1="20" y1="5" x2="5" y2="20" />
+                            </svg>
+                        </label>
+                        <!--  LOG IN  -->
+
+                        <div class="col-12 dir" style="margin: auto;">
+
+                            <div class="vidio " style="height: 50%;width: 80%;margin: auto;">
+                                <?php $__currentLoopData = $aboutmore; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aboutmores): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <video style="height: 50%;width: 80%;margin: auto;" controls autoplay
+                                        style="--plyr-color-main: #1ac266; " crossorigin playsinline poster="">
+                                        <source src="<?php echo e(asset('img/aboutmore/' . $aboutmores->vedio)); ?>" type="video/mp4"
+                                            size="576">
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                            </div>
+                        </div>
+                    </div>
+    </section>
 <?php $__env->stopSection(); ?>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

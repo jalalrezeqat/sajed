@@ -157,9 +157,7 @@ class CoursesController extends Controller
         //    $course=DB::table('courses')->get();
         $branch = DB::table('branches')->get();
         $teacher = DB::table('teachers')->get();
-        if (
-            Auth::guard('admin')->user()->stutes == 0
-        ) {
+        if (Auth::guard('admin')->user()->stutes == 0) {
 
             return view('admin.layouts.courses.courses.updateviwe', compact('branch', 'teacher', 'courses'));
         } else

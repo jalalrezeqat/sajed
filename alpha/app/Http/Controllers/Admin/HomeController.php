@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Visitor;
 use App\Models\User;
+use App\Models\aboutmore;
 use App\Models\Admin;
+use Illuminate\Support\Facades\File;
+
 
 use Illuminate\Support\Facades\Hash;
 
@@ -373,5 +376,70 @@ class HomeController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
         return back()->with("status", "تم تغير كلمة المرور ");
+    }
+
+    public function aboutmore(Request $request)
+    {
+        $admin = DB::table('aboutmore')->get();
+
+        return view('admin.layouts.about.aboutmore.aboutmore', compact('admin'));
+    }
+    public function aboutmoreadd(Request $request)
+    {
+        $admin = DB::table('aboutmore')->get();
+
+        return view('admin.layouts.about.aboutmore.add', compact('admin'));
+    }
+
+    public function aboutmorestore(Request $request)
+    {
+        $student = new aboutmore();
+
+
+        if ($request->hasfile('vedio')) {
+
+            $file = $request->file('vedio');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $file->move('img/aboutmore/', $filename);
+            $student->vedio = $filename;
+        }
+        $student->save();
+        return  redirect()->route('admin.aboutmore');
+    }
+
+    public function aboutmoreedit(Request $request, $id)
+    {
+        $admin = DB::table('aboutmore')->where('id', '=', $id)->first();
+
+        return view('admin.layouts.about.aboutmore.edit', compact('admin'));
+    }
+
+    public function aboutmoredestroy(int $aboutmore)
+    {
+        $connectusDb = DB::table('aboutmore');
+        $connectusdelete = $connectusDb->where('id', $aboutmore);
+        $connectusdelete->delete();
+
+        return  redirect()->back();
+    }
+    public function aboutmoreupdate(Request $request, $id)
+    {
+        $post = aboutmore::find($id);
+        if ($request->hasfile('vedio')) {
+
+            $distination = 'img/aboutmore/' . $post->vedio;
+            if (File::exists($distination)) {
+                File::delete($distination);
+            }
+            $file = $request->file('vedio');
+            $extintion = $file->getClientOriginalExtension();
+            $file_name = time() . '.' . $extintion;
+            $file->move('img/aboutmore/', $file_name);
+            $post->vedio     = $file_name;
+        }
+        $post->save();
+
+        return  redirect()->route('admin.aboutmore');
     }
 }

@@ -46,9 +46,10 @@
               </div>
           </div>
           {{-- end slider home --}}
-          @if ($width > 480)
+          @if ($agent->isDesktop() || $agent->isTablet())
               <div class="mt">
-                  <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
+                  <img src="img/course-c.png" style="padding-right: 30px;padding-left:30px"
+                      class="rounded mx-auto d-block img-fluid" alt="">
               </div>
           @endif
           {{-- <span  class="w-75 p-3 border slider d-flex card-bord  justify-content-around rounded p-3 mb-2  text-white "> --}}
@@ -58,9 +59,9 @@
       <section class="mt100px">
           <div class="row row-cols-1  card-course dir ovarflow  row-cols-md-3 ">
               @foreach ($branch as $branch)
-                  @if ($width > 1028)
+                  @if ($agent->isDesktop())
                       <div class="col colcard">
-                          <div class="card-home card card-home " id="card-home-coures">
+                          <div class=" card  " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
                                   alt="">
                               <div class="card-body">
@@ -93,7 +94,7 @@
                       </div>
                   </div> --}}
                   @endif
-                  @if (($width > 480) & ($width < 1028))
+                  {{-- @if ($agent->isTablet())
                       <div class="col colcard">
                           <div class="card-home card card-home " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"
@@ -111,8 +112,8 @@
                               </div>
                           </div>
                       </div>
-                  @endif
-                  @if ($width < 481)
+                  @endif --}}
+                  @if ($agent->isMobile())
                       <div class="col colcard">
                           <div class="card-home card  " id="card-home-coures">
                               <img class="card-img-top-cource" src="{{ asset('img/branch/' . $branch->img) }}"

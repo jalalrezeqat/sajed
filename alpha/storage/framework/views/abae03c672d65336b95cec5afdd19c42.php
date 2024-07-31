@@ -1,6 +1,8 @@
   <!DOCTYPE html>
   <html lang="ar">
   <?php $iconfav = DB::table('favoriteicons')->where('name', '=', 'icon')->get();
+  $width = '<script>document.write(screen.width); </script>';
+  
   ?>
 
   <head>
@@ -61,7 +63,8 @@ if (isset($__slots)) unset($__slots);
           
           <?php if($agent->isDesktop() || $agent->isTablet()): ?>
               <div class="mt">
-                  <img src="img/course-c.png" class="rounded mx-auto d-block img-fluid" alt="">
+                  <img src="img/course-c.png" style="padding-right: 30px;padding-left:30px"
+                      class="rounded mx-auto d-block img-fluid" alt="">
               </div>
           <?php endif; ?>
           
@@ -73,7 +76,7 @@ if (isset($__slots)) unset($__slots);
               <?php $__currentLoopData = $branch; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <?php if($agent->isDesktop()): ?>
                       <div class="col colcard">
-                          <div class="card-home card card-home " id="card-home-coures">
+                          <div class=" card  " id="card-home-coures">
                               <img class="card-img-top-cource" src="<?php echo e(asset('img/branch/' . $branch->img)); ?>"
                                   alt="">
                               <div class="card-body">
@@ -91,25 +94,7 @@ if (isset($__slots)) unset($__slots);
                       </div>
                       
                   <?php endif; ?>
-                  <?php if($agent->isTablet()): ?>
-                      <div class="col colcard">
-                          <div class="card-home card card-home " id="card-home-coures">
-                              <img class="card-img-top-cource" src="<?php echo e(asset('img/branch/' . $branch->img)); ?>"
-                                  alt="">
-                              <div class="card-body">
-                                  <p class="card-title-home font18px margin-b4"><?php echo e($branch->name); ?></p>
-                                  <p class=" font14px "><?php echo e($branch->summary); ?></p>
-
-                              </div>
-                              <div class="card-button-courses">
-
-                                  <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?> "><button class="button2">تفقد
-                                          الدورات </button></a>
-
-                              </div>
-                          </div>
-                      </div>
-                  <?php endif; ?>
+                  
                   <?php if($agent->isMobile()): ?>
                       <div class="col colcard">
                           <div class="card-home card  " id="card-home-coures">

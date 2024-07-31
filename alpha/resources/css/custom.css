@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;400&display=swap");
-
+@import "https://fonts.googleapis.com/css2?family=Cairo:wght@200;400&display=swap";
 body {
-    font-family: "Cairo", sans-serif;
+    font-family: Cairo, sans-serif;
     margin: auto;
+    background-color: #f8f8f8;
 }
 .imgfooter {
     margin-left: 5%;
@@ -13,7 +13,17 @@ body {
 .mtb00px {
     margin-bottom: 100px;
 }
-
+.is-mobile {
+    display: none;
+}
+@media (max-width: 480px) {
+    .is-default {
+        display: none;
+    }
+    .is-mobile {
+        display: block;
+    }
+}
 .dir {
     direction: rtl;
 }
@@ -21,7 +31,6 @@ body {
     color: #27ac1f;
     text-decoration: underline;
     font-size: 14px;
-    width: 108.17px;
     width: 230px;
     align-items: center;
     margin: auto;
@@ -40,7 +49,7 @@ body {
     width: 153.56px;
     height: 38px;
     background-color: #27ac1f;
-    color: white;
+    color: #fff;
     border-radius: 20px;
 }
 .margin-t4 {
@@ -50,10 +59,10 @@ body {
     margin-bottom: 10%;
 }
 .imgditels {
-    width: 28vw;
-    height: 32vw;
+    width: 28.8vw;
+    height: 36vw;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
 }
 #shapetetcher1 {
     width: 50px;
@@ -61,7 +70,6 @@ body {
     float: right;
     margin-right: 5%;
 }
-
 #shapetetcher2 {
     width: 50px;
     float: left;
@@ -79,12 +87,11 @@ body {
     float: right;
     margin-right: 5%;
 }
-
 .btnhome:hover {
     width: 153.56px;
     height: 38px;
     background-color: #27ac1f;
-    color: white;
+    color: #fff;
     border-radius: 20px;
 }
 .formlogin {
@@ -96,21 +103,13 @@ body {
     width: 60%;
     background-color: #27ac1f;
 }
-
 .nav-link {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
     text-align: center;
 }
-
-/* .navbar-nav a {
-    color: white;
-}
-.navbar-nav a:hover {
-    color: white;
-} */
 #login-nav {
-    color: white;
+    color: #fff;
     text-decoration: underline;
     font-size: 14px;
     width: 108.17px;
@@ -122,7 +121,7 @@ body {
 }
 .box {
     width: 90%;
-    background-color: aquamarine;
+    background-color: #7fffd4;
 }
 .slidetetcher {
     height: 500px;
@@ -134,12 +133,10 @@ body {
     direction: rtl;
     margin: auto;
 }
-
 .nav-item-home {
     margin: auto;
-    font-weight: bold;
+    font-weight: 700;
 }
-
 .mt {
     margin-top: 2% !important;
 }
@@ -153,17 +150,6 @@ body {
     width: 85%;
     margin: auto;
 }
-/* .card-bord
- {
-    /* border-radius:1%;
-    background-color:#E4E4E4;
-    overflow:auto;
-    margin: auto;
-    height: 40%;
-    width: 90%; */
-
-.btn-slider {
-}
 .card-bord-button {
     margin: auto;
     background-color: #27ac1f;
@@ -171,23 +157,20 @@ body {
 .card-img-top-home {
     padding: 5px;
     border-radius: 50%;
-    margin: auto;
+    margin: -10% auto auto;
     width: 25%;
-    margin-top: -10%;
 }
 .card-img-top-profile {
     padding: 5px;
     border-radius: 50%;
-    margin: auto;
+    margin: -7% auto auto;
     width: 15%;
-    margin-top: -7%;
 }
 .card-img-top-cource {
     padding: 5px;
     border-radius: 50%;
-    margin: auto;
+    margin: -10% auto auto;
     width: 20%;
-    margin-top: -10%;
 }
 .card-img-top-c {
     border-radius: 50%;
@@ -204,7 +187,6 @@ body {
     text-align: center;
     text-decoration: none;
 }
-
 .card-text-home {
     direction: rtl;
     margin-top: 2% !important;
@@ -218,11 +200,11 @@ body {
     background-color: #27ac1f;
     width: 150px;
     border-radius: 14px;
-    color: white;
+    color: #fff;
 }
 .btnfcou:hover {
     background-color: #27ac1f;
-    color: white;
+    color: #fff;
 }
 .btnfcous {
     width: 150px;
@@ -246,13 +228,10 @@ body {
     text-align: center;
     padding-bottom: 50px;
 }
-
 .img-slider-teacher {
     width: 80%;
     height: 25vw;
     margin: auto;
-    margin-right: auto;
-    margin-left: auto;
 }
 .slider-tet {
     width: 90%;
@@ -270,14 +249,12 @@ body {
     border: 3px solid #27ac1f;
     background-image: none;
 }
-
 .carousel-control-next-icon:after {
     content: "❯";
     font-size: 25px;
     color: #27ac1f;
     margin: auto;
 }
-
 .carousel-control-prev-icon:after {
     content: "❮";
     font-size: 25px;
@@ -288,51 +265,63 @@ body {
     background-color: #27ac1f;
     border-radius: 70px;
     border: none;
-    color: white;
-    padding: 0px;
+    color: #fff;
+    padding: 0;
     font-size: 1.25vw;
     text-align: center;
     width: 9.375vw;
     height: 2.604vw;
     font-weight: 700;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 .button1 {
     background-color: #27ac1f;
     border-radius: 70px;
     border: none;
     text-align: center;
-    color: white;
-    padding: 0px;
+    color: #fff;
+    padding: 0;
     width: 8.292vw;
     height: 3.083vw;
     margin-bottom: 20px;
     font-size: 1.25vw;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
-
+.button3 {
+    background-color: #f8f8f8;
+    border: 3px solid #27ac1f;
+    border-radius: 70px;
+    text-align: center;
+    align-items: center;
+    color: #27ac1f;
+    padding-top: 4px;
+    width: 8.292vw;
+    height: 3.083vw;
+    margin-bottom: 20px;
+    font-size: 1.25vw;
+    /* box-shadow: #00000026 1.95px 1.95px 2.6px; */
+}
 .button2 {
     background-color: #27ac1f;
     border-radius: 70px;
     border: none;
     text-align: center;
-    color: white;
-    padding: 0px;
+    color: #fff;
+    padding: 0;
     width: 10.292vw;
     height: 3.083vw;
     margin-bottom: 20px;
     font-size: 1.25vw;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 .regester {
     margin-top: 32%;
-    color: white;
+    color: #fff;
 }
 .homepage {
     padding-right: 8%;
 }
-.reg {
-    background-color: #27ac1f;
+.reg1 {
     border-radius: 13.52px;
     width: 125.75px;
     text-align: center;
@@ -340,6 +329,7 @@ body {
     font-size: 18px;
     padding: 5px;
 }
+.reg,
 .reghover:hover {
     background-color: #27ac1f;
     border-radius: 13.52px;
@@ -349,19 +339,15 @@ body {
     font-size: 18px;
     padding: 5px;
 }
-
 #card-home-coures {
-    margin-bottom: 25%;
     border-radius: 10.64px;
     background-color: #f8f8f8;
-    margin-top: -20%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
     width: 100%;
     max-width: 25vw;
     height: 100%;
     max-height: 27vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: -20% auto 25%;
 }
 .dropdown-menu a {
     text-align: center;
@@ -372,54 +358,43 @@ body {
     padding: auto;
 }
 .slider-cource {
-    width: 70vw;
-    height: 30vw;
-    margin: auto;
-    margin-bottom: 4%;
-    margin-top: 4%;
+    width: 100vw;
+    height: 35.33vw;
+    margin: 4% auto;
 }
 .slider-aboutalpha {
     width: 70vw;
-    margin: auto;
-    margin-bottom: 4%;
-    margin-top: 4%;
+    margin: 4% auto;
 }
 .colcard {
     margin-bottom: 6%;
 }
 #card-home {
-    margin-bottom: 25%;
     border-radius: 10.64px;
     background-color: #f8f8f8;
-    margin-top: -20%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
     width: 100%;
     max-width: 25vw;
     height: 100%;
     max-height: 22vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: -20% auto 25%;
 }
 #card-courseshow {
-    margin-bottom: 25%;
     border-radius: 10.64px;
     background-color: #f8f8f8;
-    margin-top: -20%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
     width: 100%;
     max-width: 300px;
     height: 100%;
     max-height: 200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: -20% auto 25%;
 }
 #card-profile {
-    margin-bottom: 25%;
     margin: 0;
     padding: 0;
     border-radius: 10.64px;
     background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 .profile-coures {
     width: 70%;
@@ -435,14 +410,7 @@ body {
 #mr2 {
     margin-right: 10%;
 }
-.contener {
-}
-.card-button {
-    background-color: #f8f8f8;
-    float: right;
-    border: none;
-    color: #27ac1f;
-}
+.card-button,
 .card-button:hover {
     background-color: #f8f8f8;
     float: right;
@@ -463,7 +431,7 @@ body {
 }
 .qustion-text {
     font-weight: bolder;
-    color: black;
+    color: #000;
 }
 .qustion-box {
     background-color: #27ac1f1a;
@@ -489,12 +457,9 @@ body {
 .collapse {
     margin: 3%;
 }
-
 .footer a:link {
     text-decoration: none;
 }
-/* courses */
-
 .imgcountactus {
     width: 100%;
 }
@@ -504,37 +469,24 @@ body {
 .card-button-courses {
     text-align: center;
 }
-/* .card-button-courses button
- {
-    background-color: #27AC1F;
-    color: white;
-    border-radius: 10px;
-    border: 0;
- } */
-
-/* end courses */
-/* contectus */
 .contectus-form {
     border-radius: 12.34px;
 }
-.contectus-form input {
-    border-radius: 12.34px;
-    background-color: #e4e4e4;
-}
+.contectus-form input,
 .contectus-form textarea {
     border-radius: 12.34px;
     background-color: #e4e4e4;
 }
 .contectus-form-but {
     width: 108.98px;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
     float: left;
     border-radius: 12.34px;
 }
 .detel-form-but {
     width: 80%;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
     float: left;
     border-radius: 12.34px;
@@ -549,7 +501,6 @@ body {
 #butcour {
     margin-left: 2%;
 }
-
 .contact-img {
     width: 25vw;
     height: 23vw;
@@ -564,10 +515,8 @@ body {
     font-size: 14.4px;
     grid-area: auto;
     line-height: 23.04px;
-    margin: 0px 0px 16px;
-    margin-top: -120px;
+    margin: -120px 0 16px;
 }
-/* dashbord */
 #user-dashbord {
     margin-right: 5%;
     margin-left: 15%;
@@ -578,12 +527,10 @@ body {
     direction: rtl;
     background-color: #12181e;
     border-radius: 20px;
-    margin: auto;
-    margin-bottom: 3%;
+    margin: auto auto 3%;
 }
 #box-dashbord div {
-    margin: auto;
-    margin-top: 2%;
+    margin: 2% auto auto;
 }
 .img-dashbord {
     float: right;
@@ -594,12 +541,11 @@ body {
     margin-left: 4vw;
     border: 5px solid #88ab8e;
 }
-
 .user_name {
     color: #85fe78;
     float: right;
     margin-top: 3vw;
-    margin-right: 5vw;
+    margin-right: 0vw;
 }
 .price-order {
     color: #27ac1f;
@@ -608,15 +554,14 @@ body {
     color: #27ac1f;
     text-decoration: underline;
 }
-
 .information-dashbord {
-    color: white;
+    color: #fff;
     display: inline-block;
     margin-top: 3vw;
 }
 .link-edit {
     display: inline-block;
-    color: white;
+    color: #fff;
     margin-bottom: 15%;
 }
 #information-dashbord1 {
@@ -628,9 +573,8 @@ body {
     margin-top: 2%;
 }
 .edit-dahbord a {
-    color: white;
+    color: #fff;
 }
-
 .edit-user-profile {
     width: 75%;
     margin: auto;
@@ -657,8 +601,6 @@ body {
     margin-top: 3%;
     margin-bottom: 3%;
 }
-/* end dashbord */
-/*contectus  */
 .parent {
     width: 80%;
 }
@@ -672,11 +614,8 @@ body {
     float: right;
     width: 100%;
 }
-/* about */
-.about-icon {
-}
 .text-bold {
-    font-weight: bold;
+    font-weight: 700;
 }
 .vision {
     margin-right: 5%;
@@ -689,9 +628,6 @@ body {
     width: 80%;
     margin-top: 10%;
 }
-/* .img-about1 {
-    margin-right: 30%;
-} */
 .img-home {
     width: 23.958vw;
     height: 26.083vw;
@@ -704,17 +640,10 @@ body {
     margin-right: 5%;
     margin-top: 5% !important;
 }
-
-/* end about */
-
-/* sliders */
 .img-slider {
     width: 90%;
     height: 20%;
 }
-/* end slider */
-/* dashbord admin */
-/* connectus */
 .table-admin-connectus {
     width: 99%;
     margin-top: 5%;
@@ -724,7 +653,7 @@ body {
 }
 .table-admin-connectus th {
     color: #f2f1eb;
-    font-weight: bold;
+    font-weight: 700;
 }
 .table-admin-connectus td,
 th {
@@ -735,26 +664,18 @@ th {
     max-width: 18%;
 }
 .tdnamecontectus {
-    font-weight: bold;
+    font-weight: 700;
     width: 16%;
 }
 .content-wrapper {
     background: #f2edf3;
     padding: 2.75rem 2.25rem;
     width: 100%;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 .stretch-card {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
     align-items: stretch;
-    -webkit-box-pack: stretch;
-    -ms-flex-pack: stretch;
     justify-content: stretch;
 }
 .stretch-card > .card {
@@ -762,54 +683,33 @@ th {
     min-width: 100%;
 }
 .bg-gradient-danger {
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        from(#ffbf96),
-        to(#fe7096)
-    ) !important;
     background: linear-gradient(to right, #ffbf96, #fe7096) !important;
 }
-/* end connectus */
-/* about */
-
 .btnaboutadd {
     margin-top: 5%;
-    font-weight: bold;
+    font-weight: 700;
     background-color: #88ab8e;
 }
-
 .formaddm {
     margin-top: 5%;
     width: 80%;
 }
-.formaddm input {
-    border: 3px solid #88ab8e;
-}
+.formaddm input,
 .formaddmtextarea {
     border: 3px solid #88ab8e;
 }
 .inputtitelmistion {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 40px;
 }
-
 .editvistion {
     padding: 10px;
     line-height: 58px;
 }
-
-/* end about */
 .editdelete {
-    margin: auto;
     margin: 4px;
     width: 100%;
 }
-
-/* end dashbord */
-
-/* front course */
 .namebranch {
     background: rgb(39, 172, 31, 0.3);
     width: 223.5px;
@@ -819,17 +719,16 @@ th {
     float: right;
     margin-top: 2%;
 }
-
 .namebranch-text {
     color: #000;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 5%;
 }
 .namebranchshow-text {
     color: #000;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 2%;
 }
 .namecourse {
@@ -850,9 +749,6 @@ th {
     float: right;
     margin-top: 2%;
 }
-/*  */
-
-/* ditaels courese */
 .box-ditalescourse {
     width: 100%;
     display: inline-flex;
@@ -861,15 +757,12 @@ th {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin: auto;
-    /* margin-bottom: 1%; */
 }
 .inpoutlabel {
     margin-right: 90px;
 }
-
 .box-ditalescourse .column1 {
     width: 80%;
-    /* margin-right: 5%; */
 }
 .columncourse1 {
     width: 75%;
@@ -877,24 +770,19 @@ th {
 .columncourse2 {
     width: 25%;
 }
-.coursedetales {
-    margin-right: 5%;
-}
-
+.coursedetales,
 .coursename {
     margin-right: 5%;
 }
 .namecours-detales {
-    /* margin-right: 15%; */
     font-size: 42px;
 }
-
 .btncouresdetales {
     width: 8vw;
     height: 2.5vw;
     border-radius: 10px;
     border: none;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
 }
 .btncouresdetales:hover {
@@ -902,35 +790,31 @@ th {
     height: 2.5vw;
     border-radius: 10px;
     border: none;
-    color: white;
-    background-color: #13c0b7;
+    color: #fff;
+    background-color: #212529;
 }
 .btncouresdetaless {
-    margin: auto;
-    margin-top: 5%;
     width: 140px;
     height: 38px;
     border-radius: 10px;
     border: none;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
     margin: auto;
     margin-left: 10vw;
 }
 .btncouresdetaless:hover {
-    margin: auto;
-    margin-top: 5%;
     width: 140px;
     height: 38px;
     border-radius: 10px;
     border: none;
-    color: white;
-    background-color: #13c0b7;
+    color: #fff;
+    background-color: #212529;
     margin: auto;
     margin-left: 10vw;
 }
 .btncouresdetale {
-    color: white;
+    color: #fff;
 }
 .namecource {
     width: 80%;
@@ -941,7 +825,7 @@ th {
     border-radius: 10px;
     background-color: #12181e;
     border: 1px solid white;
-    color: white;
+    color: #fff;
     margin-left: 2%;
 }
 .btnsubmitorder {
@@ -949,26 +833,24 @@ th {
     height: 2.5vw;
     border-radius: 10px;
     border: none;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
 }
 .nameteacher-detales p {
     font-size: 18px;
-    color: white;
+    color: #fff;
 }
-
 .nametetcher {
     color: #27ac1f;
     text-align: center;
     margin-top: 1%;
-    margin-left: -15%;
+    margin-left: -2%;
 }
 .column2 {
     width: 20%;
     position: relative;
     margin-left: 15%;
 }
-
 .styledetales {
     width: 80%;
 }
@@ -984,22 +866,18 @@ th {
     color: #fff;
 }
 .ditelspage {
-    margin: auto;
+    margin: auto auto 5%;
     width: 70%;
-    /* margin-right: 10%; */
-    margin-bottom: 5%;
 }
 .ditelspagetet {
-    margin: auto;
-    /* width: 70%; */
-    /* margin-right: 10%; */
-    margin-bottom: 5%;
+    margin: auto auto 5%;
 }
 .imgtatecher {
     float: right;
     margin-top: 2%;
     width: 150.23px;
     height: 150.23px;
+    border-radius: 50%;
 }
 .sdwd {
     margin-top: 3%;
@@ -1008,10 +886,7 @@ th {
     margin-right: 5%;
 }
 .ditelspageinsaid {
-    margin: auto;
-    /* width: 80%; */
-    margin-top: 2%;
-    /* margin-right: 3%; */
+    margin: 2% auto auto;
 }
 .boxditales {
     margin: auto;
@@ -1020,14 +895,11 @@ th {
     border: 0.61px solid #000;
 }
 .boxcolabss {
-    /* border-radius: 12.18px; */
     padding: 2%;
     margin-right: 0%;
-    /* border-top:  0.61px solid #000; */
     border-bottom: 0.61px solid #000;
 }
 .boxcolabssshow {
-    /* border-radius: 12.18px; */
     padding: 2%;
     margin-right: 0%;
     border-top: 0.61px solid #000;
@@ -1039,13 +911,11 @@ th {
 #collabs-box-inside {
     margin-left: 10%;
     width: 100%;
-    /* border-bottom:  0.61px solid #000;  */
 }
 .card-body {
     border-radius: 0%;
     margin: 0%;
 }
-
 .card {
     border-radius: 0%;
 }
@@ -1060,9 +930,7 @@ th {
     margin-left: 3%;
 }
 .firestrecord {
-    border-radius: 0%;
-    margin: 0%;
-    margin-right: 16%;
+    margin: 0% 16% 0% 0%;
     border-radius: 0%;
 }
 .chabternamecollabs {
@@ -1094,7 +962,6 @@ th {
     padding: 0;
     width: 40%;
 }
-
 .vidio {
     margin-left: 4%;
     margin-right: 4%;
@@ -1147,7 +1014,7 @@ th {
     height: 38px;
     border-radius: 10px;
     border: none;
-    color: white;
+    color: #fff;
     background-color: #27ac1f;
 }
 .inpoutcours {
@@ -1167,23 +1034,7 @@ th {
     border: 1px solid black;
     border-radius: 10px;
 }
-/* 
-.tabel-profile,
-th,
-tr {
+.font481px {
+    font-size: 3vw;
+    font-weight: 700;
 }
-#tabel-profile td {
-    border-right: 0.59px solid #000;
-    border-bottom: none;
-    border-radius: 10px;
-}
-#cc table {
-    margin-right: 5%;
-    border-radius: 10px;
-}
-#cc table,
-th,
-td {
-    border-radius: 10px;
-} */
-/*  */

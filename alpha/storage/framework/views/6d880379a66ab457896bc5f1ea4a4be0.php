@@ -23,7 +23,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('breakpoints', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-2457590730-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-113151577-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -50,19 +50,16 @@ if (isset($__slots)) unset($__slots);
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
       </div>
-      <?php if( $branch->name == 'الفرع العلمي	' )    ?>
-    <h1>dddddd</h1>
-      <? endif;?>
-
+      <h3 class="text-center font42px mt-3"> دورات التوجيهي </h3>
       <h3 class="text-center font42px font-weight-bold"> <?php echo e($branch->name); ?> </h3>
 
       <div class="d-flex justify-content-center mt-5 dir">
           <div id="butcour">
-              <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?>" class="btn btnfcou ">الفصل الاول </a>
+              <a href="<?php echo e(route('front.FrontCourcse', $branch->id)); ?>" class="btn btnfcous ">الفصل الاول </a>
 
           </div>
           <div class="mr-5">
-              <a href="<?php echo e(route('front.FrontCourcse1', $branch->id)); ?>" class="btn btnfcous">الفصل الثاني</a>
+              <a href="<?php echo e(route('front.FrontCourcse1', $branch->id)); ?>" class="btn btnfcou">الفصل الثاني</a>
           </div>
       </div>
 
@@ -78,7 +75,7 @@ if (isset($__slots)) unset($__slots);
                                   alt="...">
                               <div class="card-body">
                                   <p class="card-title-home font18px margin-b4"><?php echo e($coursces->name); ?></p>
-                                  <p class=" font14px "><?php echo e($coursces->summary); ?></p>
+                                  <p class=" font18px "><?php echo e($coursces->summary); ?></p>
                                   <a class="card-button font14px margin-t4"
                                       href="<?php echo e(url('coursesditels' . '/' . $coursces->id)); ?>">
                                       قراءة المزيد ></a>
@@ -97,4 +94,4 @@ if (isset($__slots)) unset($__slots);
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/front/FrontCourcse.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/front/FrontSecCourcse.blade.php ENDPATH**/ ?>

@@ -18,6 +18,12 @@ $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->g
 
 ?>
 <style>
+    body {
+        background-color: #f8f8f8;
+
+    }
+</style>
+<style>
     /* #ac-wrapper {
 
         width: 100%;
@@ -71,16 +77,18 @@ $slider = DB::table('sliders')->where('page', '=', 'تسجيل الدخول')->g
 
     .float {
         position: fixed;
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         bottom: 40px;
         right: 40px;
-        background-color: #12181e;
-        color: #FFF;
+        background-color: #27ac1f;
+        color: #f8f8f8;
         border-radius: 50px;
         text-align: center;
         box-shadow: 2px 2px 3px #999;
     }
+
+
 
     .my-float {
         margin-top: 22px;
@@ -157,22 +165,23 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav links justify-content-center navbar-collapse mb-2 mb-lg-0">
                             <li class="nav-item-home">
-                                <a id="home" class="nav-link reghover <?php echo e($stylehome); ?> active " tabindex="1"
-                                    aria-current="page" href="<?php echo e(url('/')); ?>">الرئيسية</a>
+                                <a id="home" class="nav-link reg1 reghover <?php echo e($stylehome); ?> active "
+                                    tabindex="1" aria-current="page" href="<?php echo e(url('/')); ?>">الرئيسية</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link  <?php echo e($stylecour); ?> reghover active" href="<?php echo e(url('/courses')); ?>">
+                                <a class="nav-link  <?php echo e($stylecour); ?> reghover  reg1 active"
+                                    href="<?php echo e(url('/courses')); ?>">
 
                                     الدورات</a>
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link <?php echo e($styleabout); ?> reghover active "
+                                <a class="nav-link <?php echo e($styleabout); ?> reghover  reg1 active "
                                     href="<?php echo e(url('/about')); ?>">حول
                                     الفا</a>
 
                             </li>
                             <li class="nav-item-home">
-                                <a class="nav-link <?php echo e($stylecontactus); ?> reghover active"
+                                <a class="nav-link <?php echo e($stylecontactus); ?> reghover  reg1 active"
                                     href="<?php echo e(url('/Connectus')); ?>">اتصل
                                     بنا</a>
                             </li>
@@ -260,8 +269,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                     <div class="rounded-circle  d-flex align-items-center justify-content-center mb-4 mx-auto"
                         style="width: 150px; height: 150px;margin:auto">
                         <?php $__currentLoopData = $footericon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footericons): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <img src="<?php echo e(asset('img/Favoriteicon/' . $footericons->img)); ?>" alt=""
-                                loading="lazy" />
+                            <img style="width: 2vw;" src="<?php echo e(asset('img/Favoriteicon/' . $footericons->img)); ?>"
+                                alt="" loading="lazy" />
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </div>
@@ -366,7 +375,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
         <!-- Copyright -->
     </footer>
 </div>
-<a href="<?php echo e($socialswah->url); ?>" target="_blank" class="float">
+<a href="<?php echo e($socialswah->url); ?>" target="_blank" class="float text-white">
     <i class="fa fa-whatsapp  my-float fa-2x"></i>
 </a>
 <!-- End of .container -->
@@ -404,7 +413,7 @@ if ($_SERVER['REQUEST_URI'] == '/') {
                                                 <div class="d-flex ">
                                                     
                                                     <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <img id="" class="img-fluid  p-2"
+                                                        <img id="" class="img-fluid img-login p-2"
                                                             src="<?php echo e(asset('img/slider/' . $slider->img)); ?>"
                                                             alt="">
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -783,21 +792,21 @@ unset($__errorArgs, $__bag); ?>"
             </div>
         </div>
     </div>
-
-    <!-- partial -->
-
-
-
-
-
-
-
-    
-
-
-
-    
 </section>
+
+<!-- partial -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
 

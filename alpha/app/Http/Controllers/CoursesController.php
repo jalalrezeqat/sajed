@@ -33,11 +33,12 @@ class CoursesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {$agent = new Agent();
+    {
+        $agent = new Agent();
 
         $branch = DB::table('branches')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
-        return view('courses', compact('branch', 'slider','agent'));
+        return view('courses', compact('branch', 'slider', 'agent'));
     }
 
     public function indexcourse(Request $request, $id)
@@ -46,7 +47,7 @@ class CoursesController extends Controller
         $branch = branch::find($id);
         $slider =  DB::table('sliders')->where('page', '=', 'الدورات')->get();
 
-        $coursces = DB::table('courses')->where('branche', '=', $branch->name)->where('chabters', '=', 'الفصل الاول')->get();
+        $coursces = DB::table('courses')->where('branche', '=', $branch->name)->where('chabters', '=', 'الفصل الاول')->where('status', '=', '1')->get();
 
         return view('front.FrontCourcse', compact('branch', 'coursces', 'slider'));
     }
@@ -110,7 +111,7 @@ class CoursesController extends Controller
         }
         $agent = new Agent();
 
-        return view('front.DitalesCourse', compact('branch', 'id3', 'agent','vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
+        return view('front.DitalesCourse', compact('branch', 'id3', 'agent', 'vedio', 'quiz', 'coursces', 'b', 'chbter', 'lesson', 'chbter1', 'chabtercount', 'lessoncount',  'teatcher', 'user', 'questionscours', 'code'));
     }
 
 
@@ -125,7 +126,7 @@ class CoursesController extends Controller
             $user = Auth::user()->id;
             $code = DB::table('codecards')->get();
             foreach ($code as $codes) {
-                if ($codes->user_id == $user & $codes->courses == $b->id || $codes->user_id == $user & $codes->courses == 'جميع الدورات' ) {
+                if ($codes->user_id == $user & $codes->courses == $b->id || $codes->user_id == $user & $codes->courses == 'جميع الدورات') {
                     $branch = DB::table('branches')->pluck('name');
                     foreach ($branch as $branchs) {
                         $i = 0;
@@ -171,12 +172,12 @@ class CoursesController extends Controller
                     // }
                     $id3 = new \getID3;
 
-                    if($coursces->status ==1){
-                    return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'agent','mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
-                        }else{
-                            return redirect('/');
-                        }
-            }
+                    if ($coursces->status == 1) {
+                        return view('front.ShowCourse', compact('branch', 'id3', 'quiz', 'agent', 'mark', 'coursces', 'b', 'chbter', 'vedio', 'lesson', 'chbter1', 'chabtercount', 'lessoncount', 'teatcher', 'user', 'questionscours',  'code', 'vedioend'));
+                    } else {
+                        return redirect('/');
+                    }
+                }
             }
         }
         return redirect()->back()->with('message4', 'يرجى التسجيل في الدورة');

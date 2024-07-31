@@ -39,74 +39,74 @@
             }());
         </script>
         <div class="box-ditalescourse" id="box-ditalescourse">
-            @if ($width > 481)
+            @windowWidthGreaterThan(481)
 
-                <div class="column1">
+            <div class="column1">
 
-                    <form action="{{ url('codesend/' . $user) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                <form action="{{ url('codesend/' . $user) }}" method="POST">
+                    @csrf
+                    @method('PUT')
 
-                        <div id="mr2">
-                            <div class="row coursename mt-5 ">
+                    <div id="mr2">
+                        <div class="row coursename mt-5 ">
 
-                                <p class="user_name h3 font481px"> {{ $b->name }}</p>
-                                <p class="user_name h3 font481px">{{ $b->branche }} - {{ $b->chabters }} </p>
-                            </div>
+                            <p class="user_name h3 font481px"> {{ $b->name }}</p>
+                            <p class="user_name h3 font481px">{{ $b->branche }} - {{ $b->chabters }} </p>
+                        </div>
+                        <div class="row coursedetales mt-5">
+                            <p class="mt-3  col-lg-4 font18px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
+                                        style="font-size:18px;color:#F8F8F8"></i>
+                                </span> مدرس الدورة :
+                                @foreach ($teatcher as $teatchers)
+                                    {{ $teatchers->name }}
+                            </p>
+                            @endforeach
+
+                            <p class="mt-3  col-lg-5 font18px" style="color: white"> <span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
+                                </span> عدد دروس الدورة :
+                                {{ $lessoncount }} درساً مسجلاً</p>
+                        </div>
+                        @windowWidthGreaterThan(1029)
+
+                        <div class="row coursedetales mt-5">
+                            <button type="" class=" btncouresdetales  col-lg-6"><label class=""
+                                    class="font14px " aria-current="page" for="modal-toggle-order"> اطلب بطاقتك
+                                </label></button>
+                            <p class=" inpoutlabel mr-3 col-lg-5" style="color: white;"> أدخل كود البطاقة
+                                وابدأ
+                                بالتّعلّم</p>
+                        </div>
+                        <div class="row coursedetales">
+
+                            <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
+                                {{ $b->price }} ₪
+                            </p>
+                            @endif
+                            @windowWidthBetween(600, 1028)
                             <div class="row coursedetales mt-5">
-                                <p class="mt-3  col-lg-4 font18px" style="color: #F8F8F8"> <span> <i class="fa  fa-user"
-                                            style="font-size:18px;color:#F8F8F8"></i>
-                                    </span> مدرس الدورة :
-                                    @foreach ($teatcher as $teatchers)
-                                        {{ $teatchers->name }}
+
+                                <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px "
+                                        aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
+                                <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
+                                    {{ $b->price }} ₪
                                 </p>
-            @endforeach
+                                <p class=" inpoutlabel mr-3 col-lg-5" style="color:white ;margin-right: 0px;"> أدخل كود
+                                    البطاقة
+                                    وابدأ
+                                    بالتّعلّم</p>
+                                @endif
 
-            <p class="mt-3  col-lg-5 font18px" style="color: white"> <span><i class="fa fa-list"
-                        style="font-size:18px;"></i>
-                </span> عدد دروس الدورة :
-                {{ $lessoncount }} درساً مسجلاً</p>
-        </div>
-        @if ($width > 481)
+                                <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
+                                    placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
 
-            <div class="row coursedetales mt-5">
-                <button type="" class=" btncouresdetales  col-lg-6"><label class="" class="font14px "
-                        aria-current="page" for="modal-toggle-order"> اطلب بطاقتك
-                    </label></button>
-                <p class=" inpoutlabel mr-3 col-lg-5" style="color: white;"> أدخل كود البطاقة
-                    وابدأ
-                    بالتّعلّم</p>
+                                <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
+                            </div>
+
+                </form>
+                <br>
+                <br>
             </div>
-            <div class="row coursedetales">
-
-                <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
-                    {{ $b->price }} ₪
-                </p>
-        @endif
-        @if (($width > 480) & ($width < 1028))
-            <div class="row coursedetales mt-5">
-
-                <button type="button1" class=" btncouresdetales  col-lg-6"><label class="font14px " aria-current="page"
-                        for="modal-toggle-order"> اطلب بطاقتك </label></button>
-                <p class="mt-3 font18px col-lg-3" style="color: #85FE78; "> السعر :
-                    {{ $b->price }} ₪
-                </p>
-                <p class=" inpoutlabel mr-3 col-lg-5" style="color:white ;margin-right: 0px;"> أدخل كود
-                    البطاقة
-                    وابدأ
-                    بالتّعلّم</p>
-        @endif
-
-        <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
-            placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
-
-        <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
-        </div>
-
-        </form>
-        <br>
-        <br>
-        </div>
         </div>
         <div class="column2">
             <img class="imgditels " src="{{ asset('/img/teatcher_course/' . $b->img_teatcher) }}" alt="">
@@ -114,56 +114,56 @@
         </div>
 
         @endif
-        @if ($width < 481)
-            <div class="row mobiw">
+        @windowWidthLessThan(480)
+        <div class="row mobiw">
 
-                <div class="col-12">
-                    <form action="{{ url('codesend/' . $user) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+            <div class="col-12">
+                <form action="{{ url('codesend/' . $user) }}" method="POST">
+                    @csrf
+                    @method('PUT')
 
-                        <div class="mobiw">
-                            <div class="row coursename mt-5 ">
+                    <div class="mobiw">
+                        <div class="row coursename mt-5 ">
 
-                                <p class="user_name h3 font48px"> {{ $b->name }}</p>
-                                <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
-                            </div>
-                            <div class="row coursedetales mt-5">
-                                <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"><span> <i
-                                            class="fa   fa-user" style="font-size:18px;color:blanchedalmond"></i>
-                                    </span> مدرس الدورة :
-                                    @foreach ($teatcher as $teatchers)
-                                        {{ $teatchers->name }}
-                                </p>
-        @endforeach
+                            <p class="user_name h3 font48px"> {{ $b->name }}</p>
+                            <p class="user_name h3 font48px">{{ $b->branche }} - {{ $b->chabters }} </p>
+                        </div>
+                        <div class="row coursedetales mt-5">
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond;"><span> <i class="fa   fa-user"
+                                        style="font-size:18px;color:blanchedalmond"></i>
+                                </span> مدرس الدورة :
+                                @foreach ($teatcher as $teatchers)
+                                    {{ $teatchers->name }}
+                            </p>
+                            @endforeach
 
-        <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"><span><i class="fa fa-list"
-                    style="font-size:18px;"></i>
-            </span> عدد دروس الدورة :
-            {{ $lessoncount }} درساً مسجلاً</p>
-        </div>
-        <div class="row coursedetales mt-5">
-            <button type="button" class=" btncouresdetales  col-lg-6"><label class=" " aria-current="page"
-                    for="modal-toggle-order"> اطلب بطاقتك </label></button>
-            <p class="mt-3  col-lg-3" style="color: #85FE78; margin-right: 10px;"> السعر :
-                {{ $b->price }} ₪
-            </p>
-        </div>
-        <div class="row coursedetales">
+                            <p class="mt-3  col-lg-4 font18px" style="color: blanchedalmond"><span><i class="fa fa-list"
+                                        style="font-size:18px;"></i>
+                                </span> عدد دروس الدورة :
+                                {{ $lessoncount }} درساً مسجلاً</p>
+                        </div>
+                        <div class="row coursedetales mt-5">
+                            <button type="button" class=" btncouresdetales  col-lg-6"><label class=" "
+                                    aria-current="page" for="modal-toggle-order"> اطلب بطاقتك </label></button>
+                            <p class="mt-3  col-lg-3" style="color: #85FE78; margin-right: 10px;"> السعر :
+                                {{ $b->price }} ₪
+                            </p>
+                        </div>
+                        <div class="row coursedetales">
 
 
-            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-top: 10px;"> أدخل كود البطاقة
-                وابدأ
-                بالتّعلّم</p>
-            <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
-                placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
+                            <p class=" mr-3 col-lg-5" style="color: blanchedalmond;margin-top: 10px;"> أدخل كود البطاقة
+                                وابدأ
+                                بالتّعلّم</p>
+                            <input class="mt-3 inputorder col-lg-4" required @error('error') is-invalid @enderror
+                                placeholder="حافظ على سريّة معلوماتك..." name="code" type="text">
 
-            <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
-        </div>
+                            <button type="submit" class=" btnsubmitorder mt-3 col-lg-6">إدخال </button>
+                        </div>
 
-        </form>
+                </form>
 
-        </div>
+            </div>
 
         </div>
         <div class="column2">
@@ -176,30 +176,30 @@
     <section>
 
         {{-- navbar  --}}
-        @if ($width > 1028)
+        @windowWidthGreaterThan(1028)
 
-            <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light mt-5">
-
-
-                <div class=" navbar-collapse" id="navbarSupportedContent1">
-                    <ul class="navbar-nav  mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#about">حول الدورة </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tetcher">مدرّس الدورة</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#how">ماذا سأتعلم؟ </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#dd">أسئلة شائعة </a>
-                        </li>
+        <nav class=" navbar-expand-lg navbarcourse dir navbar-light bg-light mt-5">
 
 
-                    </ul>
-                </div>
-            </nav>
+            <div class=" navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav  mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#about">حول الدورة </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tetcher">مدرّس الدورة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how">ماذا سأتعلم؟ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dd">أسئلة شائعة </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
         @endif
     </section>
     <section class="mt100px">
@@ -224,33 +224,32 @@
                     <div class="col-2"></div>
                     <div class="col-2">
                         <div class="row" style="--bs-gutter-x:0">
-                            @if ($width > 1028)
+                            @windowWidthGreaterThan(1028)
 
-                                @foreach ($teatcher as $teatchers)
-                                    <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
-                                        alt="">
-                                @endforeach
+                            @foreach ($teatcher as $teatchers)
+                                <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
+                                    alt="">
+                            @endforeach
                         </div>
                         <div class="row">
                             <p class="nametetcher" style="color: #27AC1F;margin-right:15%;">{{ $teatchers->name }}</p>
                         </div>
                         @endif
-                        @if (($width > 480) & ($width < 1028))
-                            @foreach ($teatcher as $teatchers)
-                                <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
-                                    alt="">
-                            @endforeach
+                        @windowWidthBetween(600, 1028)
+                        @foreach ($teatcher as $teatchers)
+                            <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
+                                alt="">
+                        @endforeach
                     </div>
                     <div class="row">
                         <p class="nametetcher">{{ $teatchers->name }}</p>
                     </div>
                     @endif
-                    @if ($width < 481)
+                    @windowWidthLessThan(480)
 
-                        @foreach ($teatcher as $teatchers)
-                            <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}"
-                                alt="">
-                        @endforeach
+                    @foreach ($teatcher as $teatchers)
+                        <img class="imgtatecher " src="{{ asset('/img/teacher/' . $teatchers->img) }}" alt="">
+                    @endforeach
                 </div>
                 <div class="row">
                     <p class="nametetcher">{{ $teatchers->name }}</p>
@@ -856,25 +855,30 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{--  --}}
-                                        @if (session('message65') || session('message1') || session('message3') || session('message'))
-                                            <script>
-                                                $('#modal-toggle-massage').click();
-                                            </script>
-                                        @endif
-                                        <script>
-                                            function changeIcon(anchor) {
-                                                var icon = anchor.querySelector("i");
-                                                icon.classList.toggle('fa-plus');
-                                                icon.classList.toggle('fa-minus');
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                                anchor.querySelector("span").textContent = icon.classList.contains('fa-plus') ? "Read more" : "Read less";
+                        {{--  --}}
+                        @if (session('message65') || session('message1') || session('message3') || session('message'))
+                            <script>
+                                $('#modal-toggle-massage').click();
+                            </script>
+                        @endif
+                        <script>
+                            function changeIcon(anchor) {
+                                var icon = anchor.querySelector("i");
+                                icon.classList.toggle('fa-plus');
+                                icon.classList.toggle('fa-minus');
 
-                                            }
-                                        </script>
-                                    @endsection
-                                    <script></script>
-                                    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/regestar.css'])
-                                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                                anchor.querySelector("span").textContent = icon.classList.contains('fa-plus') ? "Read more" : "Read less";
+
+                            }
+                        </script>
+                    @endsection
+                    <script></script>
+                    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/button.js', 'resources/css/custom.css', 'resources/css/login.css', 'resources/css/regestar.css'])
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

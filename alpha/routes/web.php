@@ -245,6 +245,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/order/{order_id}/tosucsses', [App\Http\Controllers\Admin\OrderController::class, 'tosucsses'])->name('order.tosucsses');
         Route::get('/order/{order_id}/toorder', [App\Http\Controllers\Admin\OrderController::class, 'toorder'])->name('order.toorder');
 
+        //aboutmore
+        Route::get('/aboutmore', [App\Http\Controllers\Admin\HomeController::class, 'aboutmore'])->name('aboutmore');
+        Route::get('/aboutmore/add', [App\Http\Controllers\Admin\HomeController::class, 'aboutmoreadd'])->name('aboutmore.add');
+        Route::post('/aboutmore/add', [App\Http\Controllers\Admin\HomeController::class, 'aboutmorestore'])->name('aboutmore.store');
+        Route::get('/aboutmore/edit/{id}', [App\Http\Controllers\Admin\HomeController::class, 'aboutmoreedit'])->name('aboutmore.show');
+        Route::get('/aboutmore/{aboutmore_id}/delete', [App\Http\Controllers\Admin\HomeController::class, 'aboutmoredestroy'])->name('aboutmore.destroy');
+        Route::put('/aboutmore/update/{id}', [App\Http\Controllers\Admin\HomeController::class, 'aboutmoreupdate'])->name('aboutmore.update');
+
 
 
         // results

@@ -35,7 +35,10 @@
           @endforeach
 
       </div>
-      <h3 class="text-center font42px mt-3"> دورات التوجيهي </h3>
+      <?php if( $branch->name == 'الفرع العلمي	' )    ?>
+    <h1>dddddd</h1>
+      <? endif;?>
+
       <h3 class="text-center font42px font-weight-bold"> {{ $branch->name }} </h3>
 
       <div class="d-flex justify-content-center mt-5 dir">
@@ -90,7 +93,7 @@
                                   alt="...">
                               <div class="card-body">
                                   <p class="card-title-home font18px margin-b4">{{ $coursces->name }}</p>
-                                  <p class=" font18px ">{{ $coursces->summary }}</p>
+                                  <p class=" font14px ">{{ $coursces->summary }}</p>
                                   <a class="card-button font14px margin-t4"
                                       href="{{ url('coursesditels' . '/' . $coursces->id) }}">
                                       قراءة المزيد ></a>

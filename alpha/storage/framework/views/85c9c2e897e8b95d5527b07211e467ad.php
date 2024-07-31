@@ -10,6 +10,12 @@
       <meta name="description"
           content="استكشف دورات التوجيهي على منصة ألفا التعليمية، دورات اون لاين مُصمّمة للفرعين العلمي والادبي، شرح شامل للمواد ومتاح في أي وقت وعلى أيدي أمهر الأساتذة في فلسطين
 ">
+      <style>
+          body {
+              background-color: #f8f8f8;
+
+          }
+      </style>
       <meta name="keywords" content="تعلم في أي وقت وأي مكان,  دورات توجيهي أون لاين, منصة ألفا
 ">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,7 +25,7 @@
       <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coursess): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <meta name="<?php echo e($coursess->name); ?>" content="<?php echo e(url('coursesditels' . '/' . $coursess->id)); ?>" />
       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-      <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css']); ?>
+      <?php echo app('Illuminate\Foundation\Vite')(['resources/css/mediaipad.css', 'resources/css/vedio.css']); ?>
       <?php $__currentLoopData = $iconfav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iconfavs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <link rel="icon" type="image/x-icon" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
           <link rel="stylesheet" type="text/css" href="<?php echo e(asset('img/Favoriteicon/' . $iconfavs->img)); ?>">
@@ -64,7 +70,7 @@ if (isset($__slots)) unset($__slots);
           <div class="slider dir " style=" margin-top: 70px;">
               <div class="row">
 
-                  <?php if($width > 1029): ?>
+                  <?php if($agent->isDesktop()): ?>
                       <div class="col float-right ring">
                           <div>
 
@@ -87,16 +93,18 @@ if (isset($__slots)) unset($__slots);
                                       <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
                                           </button></a>
                                   </div>
-                                  <div class="col">
+                                  <div class="col ">
+
                                       <div class="row">
-                                          <div class="col-sm-3"> <i class="fa fa-play-circle-o"
-                                                  style="font-size:48px;color:#27AC1F"></i>
-                                          </div>
-                                          <div class="col-sm-9 mt">
-                                              <p style="font-size: 20px;color:#27AC1F; font-weight:700;">تعرّف أكثر</p>
-                                          </div>
+                                          <label class=" button3" style="color:#27AC1F; " aria-current="page"
+                                              for="modal-toggle-vedio">
+                                              تعرف اكثر
+                                          </label>
+
+
                                       </div>
                                   </div>
+
                               </div>
                           </div>
                       </div>
@@ -110,45 +118,8 @@ if (isset($__slots)) unset($__slots);
           </div>
           <?php endif; ?>
 
-          <?php if(($width > 481) & ($width < 1028)): ?>
-              <div class="col float-right ring">
-                  <div>
-
-                      <p class="font55px"><span style="color: #27AC1F">تعلّم في </span> أي وقت، وأي
-                          مكان</p>
-                  </div>
-                  <div>
-                      <p class="font18px" style="margin-top:20px;    font-weight:700 ;
-">نحن نقدم لك كافة دورات مرحلة
-                          التوجيهي التي تحتاجها
-                          للحـصـول عـلى مـعـدل
-                          تحلم به وعلى ايدي امهر الاساتذة.</p>
-                  </div>
-                  <div>
-                      <div class="row dir " style="margin-top:20px">
-                          <div class="col">
-                              <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
-                                  </button></a>
-                          </div>
-                          <div class="col">
-                              <div class="row">
-                                  <div class="col-sm-9 mt"><i class="fal fa-play-circle font20px" style="color:#27AC1F"></i>
-                                      <span class="font20px" style="color:#27AC1F; font-weight:700;">تعرّف أكثر</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col  float-left">
-                  <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <img class="img-home" src="<?php echo e(asset('img/slider/' . $slider->img)); ?>" alt="">
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              </div>
-              </div>
-              </div>
-          <?php endif; ?>
-          <?php if($width < 480): ?>
+          
+          <?php if($agent->isMobile()): ?>
               <div class="col ">
                   <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sliders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <img class="img-home" src="<?php echo e(asset('img/slider/' . $sliders->img)); ?>" alt="">
@@ -171,20 +142,26 @@ if (isset($__slots)) unset($__slots);
                               <a href="<?php echo e(url('/courses')); ?> "><button class="button1 ">ابدأ الآن
                                   </button></a>
                           </div>
-                          <div class="col">
+                          <div class="col mt-2">
+
                               <div class="row">
-                                  <div class="col-sm-9 mt"><i class="fa fa-play-circle-o font20px"
-                                          style="color:#27AC1F"></i>
-                                      <span class="" style="color:#27AC1F; font-weight:700;font-size:18px;">تعرّف
-                                          أكثر</span>
+                                  <div class="col ">
+
+                                      <div class="row">
+                                          <label class="btncouresdetale button3"
+                                              style="color:#27AC1F; font-weight:700;font-size:1.25vw;
+                                            "
+                                              aria-current="page" for="modal-toggle-vedio">
+                                              تعرف اكثر
+                                          </label>
+
+                                      </div>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
-              </div>
 
-              </div>
+                  </div>
               </div>
           <?php endif; ?>
       </section>
@@ -208,9 +185,9 @@ if (isset($__slots)) unset($__slots);
                                   <?php $auth = 1; ?>
 
                                   <div class="col colcard">
-                                      <div class="card-home card  " id="card-profile">
+                                      <div class="card-home card  " id="">
                                           <img src="<?php echo e(asset('img/courses/' . $coursenames->img_name)); ?>"
-                                              class="card-img-top-profile" alt="...">
+                                              class="card-img-top-home" alt="...">
                                           <div class="card-body">
                                               <?php $__currentLoopData = $lessonidds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lessonidsa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                   <?php if($coursenames->id == $lessonidsa->idcoures): ?>
@@ -259,7 +236,7 @@ if (isset($__slots)) unset($__slots);
                                       alt="...">
                                   <div class="card-body">
                                       <p class="card-title-home font18px margin-b4"><?php echo e($courses->name); ?></p>
-                                      <p class=" font18px "><?php echo e($courses->summary); ?></p>
+                                      <p class=" font14px "><?php echo e($courses->summary); ?></p>
                                       <a class="card-button font14px margin-t4"
                                           href="<?php echo e(url('coursesditels' . '/' . $courses->id)); ?>">
                                           قراءة المزيد ></a>
@@ -288,7 +265,7 @@ if (isset($__slots)) unset($__slots);
                   الوطن!
               </p>
           </div>
-          <?php if($width > 481): ?>
+          <?php if($agent->isDesktop()): ?>
               
               <div id="carousel" class="carousel shadow-lg slider-tet slide">
                   <img src="<?php echo e(asset('img/Vector.png')); ?>" id ="shapetetcher1" alt="">
@@ -313,7 +290,7 @@ if (isset($__slots)) unset($__slots);
               </div>
           <?php endif; ?>
 
-          <?php if($width < 480): ?>
+          <?php if($agent->isMobile()): ?>
               <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -333,40 +310,82 @@ if (isset($__slots)) unset($__slots);
 
 
               <style>
-                  .img-1 {
-                      position: relative;
-                      width: 200px;
-                      height: auto;
-                      border-radius: 50%;
-                      top: -127px !important;
-                      /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+                  @media (max-width: 480px) {
+
+                      /* .img-1 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  position: relative;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  width: 200px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  height: auto;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  border-radius: 50%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  top: -127px !important;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+                      /* } */
+
+
+                      .carousel-indicators li {
+                          cursor: pointer;
+                          border-radius: 50% !important;
+                          width: 15px;
+                          height: 15px;
+                          opacity: 0.5;
+                          margin: 0 15px 18px 15px;
+                          color: #27AC1F;
+                          background-color: #27AC1F !important;
+                          bottom: -30px;
+                          position: relative
+                      }
+
+
+                      .carousel-indicators li::marker {
+                          visibility: hidden;
+                          color: #cd1e27;
+                          font-size: 0px
+                      }
+
+                      #carouselExample {
+                          box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
+                      }
+
+                      .carousel-inner {
+                          border-radius: 15px !important
+                      }
                   }
 
-                  .carousel-indicators li {
-                      cursor: pointer;
-                      border-radius: 50% !important;
-                      width: 10px;
-                      height: 10px;
-                      opacity: 0.5;
-                      margin: 0 15px 18px 15px;
-                      color: #27AC1F;
-                      background-color: #27AC1F !important;
-                      bottom: -30px;
-                      position: relative
-                  }
+                  @media (min-width: 481px) and (max-width: 769px) {
+                      .img-1 {
+                          position: relative;
+                          width: 600px;
+                          height: auto;
+                          top: -17px !important;
+                          /* box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5) */
+                      }
 
-                  .carousel-indicators li::marker {
-                      visibility: hidden;
-                      color: #cd1e27;
-                      font-size: 0px
-                  }
+                      .carousel-indicators li {
+                          cursor: pointer;
+                          border-radius: 50% !important;
+                          width: 25px;
+                          height: 25px;
+                          opacity: 0.5;
+                          margin: 0 15px 18px 15px;
+                          color: #27AC1F;
+                          background-color: #27AC1F !important;
+                          bottom: -30px;
+                          position: relative
+                      }
 
-                  #carouselExample {
-                      box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
-                  }
+                      .carousel-indicators li::marker {
+                          visibility: hidden;
+                          color: #cd1e27;
+                          font-size: 0px
+                      }
 
-                  .carousel-inner {
-                      border-radius: 15px !important
+                      #carouselExample {
+                          box-shadow: -0px 5px 10px rgba(7, 7, 7, 0.5) !important
+                      }
+
+                      .carousel-inner {
+                          border-radius: 15px !important
+                      }
                   }
               </style>
               <div class="container px-2 px-md-4 py-5 mx-auto ">
@@ -379,9 +398,10 @@ if (isset($__slots)) unset($__slots);
                                       <div class="carousel-item <?php echo e($key == 0 ? 'active' : ''); ?>">
                                           <img class="d-block d-block   img-slider-teacher"
                                               src="<?php echo e(asset('img/sliderphone/' . $sliderteachermobs->img)); ?>"
-                                              alt="<?php echo e($sliderteachermobs->id); ?>">
+                                              alt="صورة معلومات عن المعلم">
                                       </div>
                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                  
                               </div>
                               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                                   data-bs-slide="prev">
@@ -393,13 +413,7 @@ if (isset($__slots)) unset($__slots);
                                   <span class="carousel-control-next-icon"></span>
                                   <span class="visually-hidden">Next</span>
                               </button>
-                              <ol class="carousel-indicators">
-                                  <?php $__currentLoopData = $sliderteachermob; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sliderteachermobs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                      <li data-target="#carouselExample" class="<?php echo e($key == 0 ? 'active' : ''); ?>"
-                                          data-slide-to="0">
-                                      </li>
-                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                              </ol>
+                              
                           </div>
 
                       </div>
@@ -442,6 +456,39 @@ if (isset($__slots)) unset($__slots);
 
           </div>
 
+      </section>
+      <section>
+          <div class="rt-container">
+              <div class="col-rt-12">
+                  <div class="Scriptcontent">
+
+                      <!-- Login Form Popup HTML -->
+
+                      <input id="modal-toggle-vedio" type="checkbox">
+                      <label class="modal-backdrop" data-bs-backdrop="static" tabindex="-1"
+                          for="modal-toggle-vedio"></label>
+                      <div class="modal-content-vedio">
+                          <label class="modal-close-btn" for="modal-toggle-vedio">
+                              <svg width="30" height="30">
+                                  <line x1="5" y1="5" x2="20" y2="20" />
+                                  <line x1="20" y1="5" x2="5" y2="20" />
+                              </svg>
+                          </label>
+                          <!--  LOG IN  -->
+
+                          <div class="col-12 dir" style="margin: auto;">
+
+                              <div class="vidio " style="height: 50%;width: 80%;margin: auto;">
+                                  <?php $__currentLoopData = $aboutmore; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $aboutmores): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <video style="height: 50%;width: 80%;margin: auto;" controls autoplay
+                                          style="--plyr-color-main: #1ac266; " crossorigin playsinline poster="">
+                                          <source src="<?php echo e(asset('img/aboutmore/' . $aboutmores->vedio)); ?>"
+                                              type="video/mp4" size="576">
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                              </div>
+                          </div>
+                      </div>
       </section>
   <?php $__env->stopSection(); ?>
   <?php $c = 'show'; ?>
@@ -498,5 +545,8 @@ if (isset($__slots)) unset($__slots);
           if (e.target.id == 'ac-wrapper') document.getElementById('ac-wrapper').style.display = 'none';
       }
   </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/sajed/alpha/resources/views/welcome.blade.php ENDPATH**/ ?>

@@ -21,7 +21,9 @@ class AboutController extends Controller
         $mission = DB::table('abouts')->where('summernote', '<>', '')->get();
         $aboutalpha = DB::table('abouts')->where('aboutalpha', '<>', '')->get();
         $slider =  DB::table('sliders')->where('page', '=', 'حول الفا')->get();
-        return view('about', compact('vision', 'mission', 'slider', 'aboutalpha','agent'));
+        $aboutmore =  DB::table('aboutmore')->get();
+
+        return view('about', compact('vision', 'aboutmore', 'mission', 'slider', 'aboutalpha', 'agent'));
     }
 
     /**

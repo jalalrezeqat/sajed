@@ -50,8 +50,10 @@ class LoginController extends Controller
      *
      
      */
-    protected function authenticated()
-    {
-        Auth::logoutOtherDevices(request(key: 'password'));
-    }
+   protected function authenticated(Request $request, $user): void
+{
+	Auth::guard('web')->logoutOtherDevices($request->password));
+    $user->session_id = Session::getId();
+    $user->save();
+}
 }

@@ -32,7 +32,7 @@ class MarkcourseController extends Controller
     {
 
         $nameofcourse = DB::table('courses')->where('id', '=', $id)->first();
-        $mark = DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->name)->where('nameofstudant', '=', Auth::user()->id)->first();
+        $mark = DB::table('markcourses')->where('nameofcourse', '=', $nameofcourse->id)->where('nameofstudant', '=', Auth::user()->id)->first();
 
         $student = new markcourse();
         if ($mark != null) {
